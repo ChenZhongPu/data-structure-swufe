@@ -1,0 +1,10 @@
+[book]
+authors = ["CHEN zhongpu"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Hands On Data Structures"
+
+
+[output.html]
+mathjax-support = true
