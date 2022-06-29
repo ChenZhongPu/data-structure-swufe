@@ -29,3 +29,5 @@
 - [Hash](hash/intro.md)
 - [Sorting](sorting/intro.md)
 - [Graphs](graph/intro.md)
+- [Appendix](appendix/intro.md)
+    - [IDEA for Java](appendix/java.md)
