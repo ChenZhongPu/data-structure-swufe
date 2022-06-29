@@ -190,6 +190,32 @@ Basically, you can regard `List` as a more powerful array, and you are required 
 
 And of course, prefer to the enhanced `for-each` if you need to make an iteration over a list. Some legacy code may use `iterator()` method, but it is no longer preferred today. This suggestion is also valid for `Map` and `List`.
 
+### Collections
+`List` is a sub-interface of `Collection`. Like `java.util.Arrays`, [java.util.Collections](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html) provides plenty static handy methods. For example,
+
+- `sort​(List<T> list)`: Sorts the specified list into ascending order, according to the natural ordering of its elements.
+
+```java
+List<Integer> list = Arrays.asList(1, 9, 4, 2);
+Collections.sort(list);
+// now list is [1, 2, 4, 9]
+```
+
+- `reverse​(List<?> list)`: Reverses the order of the elements in the specified list.
+
+```java
+List<Integer> list = Arrays.asList(1, 9, 4, 2);
+Collections.reverse(list);
+// now list is [2, 4, 9, 1]
+```
+
+- `max​(Collection<? extends T> coll)`: Returns the maximum element of the given collection, according to the natural ordering of its elements.
+
+```java
+List<Integer> list = Arrays.asList(1, 9, 4, 2);
+int v = Collections.max(list); // v is 9
+```
+
 ## Map
 Here I mainly talk about [java.util.HashMap](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html). `Map` can be used to represent a mapping between a key and a value, and we assume that keys are unique. For example:
 
@@ -200,13 +226,13 @@ Here I mainly talk about [java.util.HashMap](https://docs.oracle.com/en/java/jav
 | City | Country |
 | Country | GDP |
 
-Different from `List`, a map should manage a list of pairs. Let's consider a shopping cart which maintains pairs of ISBN (key) and amount (value).
+Different from `List`, a map should manage a collection of pairs. Let's consider a shopping cart which maintains pairs of ISBN (key) and amount (value).
 
 ```java
 Map<String, Integer> cart = new HashMap<>();
 ```
 
-Here we should specify the types of key and value as generics, respectively.
+Here we should specify the types of key and value as generics, respectively. To some extent, we can imagine a list as a map whose key is implicitly the index.
 
 To add an item (three books whose ISBN is *7801*) into this cart:
 
@@ -260,6 +286,16 @@ for (String s : set) {
    System.out.println(s);
 }
 ```
+
+Another key fact is that there is no order defined in a set, which is essentially `set` used in mathematics. For example, `(0, 1, 2)` and `(1, 0, 2)` are equivalent. 
+
+```java
+Set<Integer> a = new HashSet<>(Arrays.asList(0, 1, 2));
+Set<Integer> b = new HashSet<>(Arrays.asList(1, 0, 2));
+System.out.println(a.equals(b)); // true
+```
+
+In addition, we can also conclude that indexing in a set is meaningless.
 
 You are required to know and practice at least those methods:
 

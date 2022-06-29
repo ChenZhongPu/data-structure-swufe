@@ -1,5 +1,5 @@
 # IDEA for Java
-In this book, we use JDK 11. 
+In this book, we use JDK 11, and the IntelliJ IDEA Community is enough for our course.
 
 ## Create an empty project without building system
 
