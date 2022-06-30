@@ -31,3 +31,4 @@
 - [Graphs](graph/intro.md)
 - [Appendix](appendix/intro.md)
     - [IDEA for Java](appendix/java.md)
+    - [PyCharm for Python](appendix/pycharm.md)

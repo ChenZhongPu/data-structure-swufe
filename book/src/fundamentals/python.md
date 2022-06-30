@@ -154,9 +154,10 @@ To get the value via a key:
 ```python
 v = cart['9902']
 v = cart.get('9902')
+v = cart.get('9902', 0)
 ```
 
-To some extent, we can imagine a list as a map whose key is implicitly the index. Readers can explore the differences between those two methods to get a value, and it leaves as an exercise.
+To some extent, we can imagine a list as a map whose key is implicitly the index. Readers can explore the differences between indexing syntax and `get()` to obtain a value.
 
 You are required to know and practice at least those methods:
 
@@ -181,6 +182,19 @@ The syntax to iterate a dict is slightly different:
 for k, v in cart.items():
     print(k, v)
 ```
+
+## Collections
+The [collections](https://docs.python.org/3/library/collections.html) module implements specialized container datatypes providing alternatives to Python’s general purpose built-in containers (i.e., *list*, *tuple*, *set*, and *dict*). In the following, I will introduce `defaultdict` which can supply missing values based on `dict`.
+
+```python
+from collections import defaultdict
+cart = defaultdict(int)
+print(cart['8899'])
+cart['3344'] += 3
+print(cart['3344'])
+```
+
+Readers can compare its usage with the regular `dict`.
 
 ---
 [^list] Java 16 brought a shorter `toList()` method.

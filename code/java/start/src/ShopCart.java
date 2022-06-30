@@ -2,16 +2,45 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShopCart {
+    private final Map<String, Integer> carts;
+
+    public ShopCart() {
+        carts = new HashMap<>();
+    }
+
+    public int size() {
+        return carts.size();
+    }
+
+    public void addBook(String name) {
+        int amount = carts.getOrDefault(name, 0) + 1;
+        carts.put(name, amount);
+    }
+
+    public void addBook(String name, int num) {
+        assert num > 0;
+        int amount = carts.getOrDefault(name, 0) + num;
+        carts.put(name, amount);
+    }
+
+    public int getAmount(String name) {
+        return carts.getOrDefault(name, 0);
+    }
+
     public static void main(String[] args) {
-        Map<String, Integer> cart = new HashMap<>();
-        cart.put("7801", 3);
-        cart.put("9922", 1);
+        ShopCart shopCart = new ShopCart();
+        shopCart.addBook("8899");
 
-        int amount = cart.get("7801");
-        System.out.println(amount);
+        assert shopCart.size() == 1;
+        assert shopCart.getAmount("8899") == 1;
+        assert shopCart.getAmount("7788") == 0;
 
-        for (Map.Entry<String, Integer> entry : cart.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
+        shopCart.addBook("7788", 2);
+        assert shopCart.getAmount("7788") == 2;
+
+        shopCart.addBook("7788");
+        assert shopCart.getAmount("7788") == 3;
+
+        assert shopCart.size() == 2;
     }
 }

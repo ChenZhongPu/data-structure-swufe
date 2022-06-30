@@ -188,7 +188,7 @@ Basically, you can regard `List` as a more powerful array, and you are required 
 - `size()`
 - `toArray()`
 
-And of course, prefer to the enhanced `for-each` if you need to make an iteration over a list. Some legacy code may use `iterator()` method, but it is no longer preferred today. This suggestion is also valid for `Map` and `List`.
+And of course, prefer to the enhanced `for-each` if you need to make an iteration over a list. **Some legacy code may use `iterator()` method manually, but it is no longer preferred today**. This suggestion also holds true other collections like `Map` and `List`.
 
 ### Collections
 `List` is a sub-interface of `Collection`. Like `java.util.Arrays`, [java.util.Collections](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html) provides plenty static handy methods. For example,
@@ -260,6 +260,7 @@ You are required to know and practice at least those methods:
 - `containsKey()`
 - `entrySet()`
 - `get()`
+- `getOrDefault()`
 - `isEmpty()`
 - `keySet()`
 - `put()`
