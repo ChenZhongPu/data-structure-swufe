@@ -5,6 +5,7 @@
     - [Java Built-in Data Structures](fundamentals/java.md)
     - [Python Built-in Data Structures](fundamentals/python.md)
     - [Algorithm Analysis](fundamentals/alg.md)
+    - [Test Driven Development](fundamentals/tdd.md)
     - [Exercise](fundamentals/exercise.md)
 - [Stacks and Queues](stack_queue/intro.md)
     - [Stacks](stack_queue/stack.md)

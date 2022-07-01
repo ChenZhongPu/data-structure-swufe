@@ -1,6 +1,7 @@
 # Python Built-in Data Structures
-In this section, we will introduce three essential data structures in Python. You can refer to [Data Structures](https://docs.python.org/3/tutorial/datastructures.html) from Python's official tutorial.
+In this section, we will introduce three essential data structures in Python. You can find more in [Data Structures](https://docs.python.org/3/tutorial/datastructures.html) from Python's official tutorial and [Common Python Data Structures ](https://realpython.com/python-data-structures/).
 
+In addition, a quick overview about the *type hinting* in Python will also be covered.
 
 ## List
 Python's list assembles Java's `ArrayList`, representing a resizable array of items.
@@ -195,6 +196,51 @@ print(cart['3344'])
 ```
 
 Readers can compare its usage with the regular `dict`.
+
+## Type hinting
+Python is featured for its *dynamic typing* and [duck typing](https://realpython.com/lessons/duck-typing/).
+
+> If it walks like a duck and it quacks like a duck, then it must be a duck.
+
+But sometimes for large projects, the code will become more maintainable if the typing is specified, and the [typing](https://docs.python.org/3/library/typing.html) module make it possible.
+
+```python
+def say_hello(name: str) -> str:
+    return f'Hello {name}'
+```
+
+This wordy version is more readable by providing the types of the parameter and returned value, and programmers who use *static typing* languages (e.g., Java) would feel more conformable. The following code is implemented with Java:
+
+```java
+public String sayHello(String name) {
+    return String.format("Hello %s", name);
+}
+```
+
+It is worthy to note that the Python runtime does not enforce function and variable type annotations. So it is still okay to pass a non-str value (e.g., an integer) to `say_hello()`:
+
+```python
+hi = say_hello(42)
+```
+
+In contrast, your code won't be complied if you use `sayHello(42)` in Java.
+
+Since Python is a *duck typing* language, it will check for the presence of a given method or attribute. For example,
+
+```python
+def say_length(name: str) -> str:
+    return f'Hello {len(name)}'
+```
+
+In this case, Python will expect that `len()` can be applied on the parameter. So `say_length(42)` will throw a *TypeError*, while the following code works well:
+
+```python
+say_length('data')
+say_length([1, 9, 4, 9])
+say_length({'S', 'W', 'E', 'N'})
+```
+
+*Type hinting* is very helpful for large projects, but for simplicity, I will not use this feature for most cases throughout this book.
 
 ---
 [^list] Java 16 brought a shorter `toList()` method.

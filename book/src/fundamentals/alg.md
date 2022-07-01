@@ -136,11 +136,11 @@ For example, we can say
 ### Case study: Fibonacci
 Based on the observation, we make an insightful hypothesize that the running time of recursive implementation `fibonacci` is at an exponential growth. 
 
-According to the code, we know that in order to computer `fibonacci(n)`, it is required to compute `fibonacci(n - 1)` and `fibonacci(n - 2)`. If we use \((T(n)\\)) to denote the time used to compute `fibonacci(n)`, then we can:
+According to the code, we know that in order to computer `fibonacci(n)`, it is required to compute `fibonacci(n - 1)` and `fibonacci(n - 2)`. If we use \\( T(n) \\) to denote the time used to compute `fibonacci(n)`, then we have:
 
 \\[T(n) = T(n-1) + T(n-2) + O(1)\\]
 
-The \\(O(1)\\) here means the addition operation. You can prove that \\(T(n) = O(2^n)\\)[^fib], and this visualization also validates the theoretical result.
+The \\(O(1)\\) here means the addition operation. You can prove that \\(T(n) = O(2^n)\\)[^fib], and the visualization plotting also validates this theoretical result.
 
 ---
 [^fast] Another important question is "Why does my program run out of memory?", which cares about the space efficiency.
