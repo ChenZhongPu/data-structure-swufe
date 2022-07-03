@@ -1,6 +1,7 @@
 def search(a, target):
     """
-    Binary search
+    Binary search.
+
     :param a: a sorted list
     :param target
     :return: the index of `target` (-1 if not found)

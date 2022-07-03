@@ -9,6 +9,8 @@
     - [Exercise](fundamentals/exercise.md)
 - [Stacks and Queues](stack_queue/intro.md)
     - [Stacks](stack_queue/stack.md)
+        - [Stacks in Python](stack_queue/stack_python.md)
+        - [Stacks in Java](stack_queue/stack_java.md)
     - [Queues](stack_queue/queue.md)
     - [Dequeues](stack_queue/dequeue.md)
     - [Exercise](stack_queue/exercise.md)

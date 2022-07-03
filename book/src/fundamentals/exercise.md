@@ -47,4 +47,4 @@ a = sorted(a)
 ```
 
 ---
-7. Please give a big O characterization in terms of `n` for [BinarySearch.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/main/java/org/swufe/datastructure/BinarySearch.java) or [binary_search.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/test/java/org/swufe/datastructure/binary_search.py).
+7. Please give a big O characterization in terms of `n` for [BinarySearch.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/main/java/org/swufe/datastructure/BinarySearch.java) or [binary_search.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/binary_search.py).
