@@ -58,6 +58,14 @@ public Item pop() {
 }
 ```
 
+Another common approach is to throw an exception if the stack is empty:
+
+```java
+if (isEmpty()) {
+    throw new NoSuchElementException("Stack underflow");
+}
+```
+
 ## Iterator
 Iterators play the magic behind the scenes when we use the enhanced *for* loop. 
 
@@ -113,10 +121,44 @@ stack.forEach(System.out::println);
 
 ## Application: matching parentheses & arithmetic expression evaluation
 
-Readers can try to implement the client code using `ArrayListStack` for these two applications, and this leaves as an exercise.
+Readers can try to implement the client code using `ArrayListStack` for these two applications, and this is left as an exercise.
 
+## Stack based on array
+In [Stack in Python](./stack_python.md), we summarized the times complexity of the operations of a stack:
+
+| Operation | Running time |
+| -------- |  ------- |
+| push()  | \\(O(1)\\) |
+| pop() | \\(O(1)\\) |
+| is_empty() | \\(O(1)\\) |
+| size() | \\(O(1)\\) |
+
+We also pointed out that as for `push()` and `pop()`, the worst time is is *amortized* because it may have a bad time cost once a while. Now let's explore what happens exactly.
+
+First, both `ArrayList` in Java and `list` in Python are based on arrays whose size are fixed. So how can we `push()` a new item onto it when it is *full*? The solution is to resize the array and copy the items to a new array[^resize]. To understand this, we shall introduce two different concepts:
+
+- **size**: how many items are there in the collection?
+- **capacity**: how many items can this collection hold at most without resizing?
+
+```java
+List<String> list = new ArrayList<>();
+```
+
+The *size* of `list` is 0, and the default *capacity* is 10. So, even if you do not add any item into this list, it has an array with size of 10 inside. And after adding 10 items, the underlying array will be resized to a larger one in order to hold more data. During the resizing, a copying operation is required, so it can result in a bad running time once a while.
+
+Therefore, if we would like to use arrays to hold the data for stacks, we shall deal with the resizing manually. The complete code can be found at [ArrayStack.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/ArrayStack.java).
+
+
+```java
+private void resize(int capacity) {
+    assert capacity >= n;
+    a = Arrays.copyOf(a, capacity);
+}
+```
 
 ---
 [^next] In Python, the `__next__()` can be regarded as the combination of `next()` and `hasNext()` here.
 
 [^inner] Python's inner class does support this feature.
+
+[^resize] The resizing operation also happens when the size is much smaller than the capacity.

@@ -246,7 +246,7 @@ To get an item by its key (i.e, `ISBN`):
 int amount = cart.get("7801");
 ```
 
-Then what if the key does not exist? This leaves as an exercise for readers. Now let's make an iteration over a map. 
+Then what if the key does not exist? This is left as an exercise for readers. Now let's make an iteration over a map. 
 
 ```java
 for (Map.Entry<String, Integer> entry : cart.entrySet()) {
