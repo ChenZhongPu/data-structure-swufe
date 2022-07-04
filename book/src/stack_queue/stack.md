@@ -6,6 +6,8 @@ A **stack** is a collection of objects that are inserted and removed according t
 
 It also supports two more operations sometimes: `size()` and `isEmpty()`, returning *number of items in the stack*, and answering *is the stack empty?*, respectively.
 
+> Stack: a pile of things arranged one on top of another (from Cambridge dictionary).
+
 When you hear of *stacks*, you shall image a stack of documents (or plates) as illustrated in the following figure[^stack]:
 
 <img src="image/stack.png" width="40%">
@@ -27,20 +29,29 @@ The importance of stacks in computing is profound. For example, the operating sy
 
 ```html
 <!-- a.html -->
-<a href="b.html">Go to B</a>
+<a href="b.html">Next</a>
 ```
 
 ```html
 <!-- b.html -->
-<a href="c.html">Go to C</a>
+<a href="c.html">Next</a>
 ```
 
 ```html
 <!-- c.html -->
-<a href="d.html">Go go D</a>
+<a href="d.html">Next</a>
 ```
 
 When you click a hyperlink, your browser displays the new page (and pushes on a stack). You can keep clicking on hyperlinks to visit new pages, but you can always revisit the previous page by clicking the back button (popping it from the stack). The LIFO policy offered by a stack provides just the behavior that you expect.
+
+| Action |  Contents in the stack |  Where you are |
+| ---- |  ------- | ------ | 
+| (Start from a.html) | [] | a.html |
+| Click `Next` | [a.html] | b.html |
+| Click `Next` | [a.html, b.html] | c.html |
+| Click `Next` | [a.html, b.html, c.html] | d.html |
+| Click `Back` | [a.html, b.html] | c.html |
+| Click `Back` | [a.html] | b.html |
 
 
 ---
