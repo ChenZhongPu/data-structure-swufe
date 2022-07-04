@@ -3,7 +3,6 @@ class Stack:
 
     def __init__(self):
         self._data = []
-        self._index = 0
 
     def push(self, item):
         self._data.append(item)
@@ -20,11 +19,20 @@ class Stack:
         return self.size() == 0
 
     def __iter__(self):
-        self._index = self.size()
-        return self
+        return ReverseListIterator(self._data)
+
+
+class ReverseListIterator:
+    """
+    An iterator for a stack by reversing a list
+    """
+
+    def __init__(self, data):
+        self._data = data
+        self._i = len(data)
 
     def __next__(self):
-        if self._index == 0:
+        if self._i == 0:
             raise StopIteration
-        self._index -= 1
-        return self._data[self._index]
+        self._i -= 1
+        return self._data[self._i]

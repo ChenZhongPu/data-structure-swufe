@@ -1,5 +1,5 @@
 # Exercise
-1. As for stacks, another operation `top()` is often used. It works like `pop()`, but it will keep the item in the stack. Please implement `top()` method in Java or Python.
+1. As for stacks, another operation `top()` (or `peek()`) is often used. It works like `pop()`, but it will keep the item in the stack. Please implement `top()` (or `peek()`) method in Java or Python.
 
 ---
 2. In [stack.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/stack.py), we would often expect that `len()` can be used directly like other collections in Python:
@@ -38,3 +38,6 @@ Please try to refactor via [operator](https://docs.python.org/3/library/operator
 v = evaluate.compute('( ( 1 + sqrt ( 5.0 ) ) / 2.0 )')
 print(v)
 ```
+
+---
+4. Please implement matching parentheses and arithmetic expression evaluation based on [ArrayListStack.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/ArrayListStack.java) using Java respectively.

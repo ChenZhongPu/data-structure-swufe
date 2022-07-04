@@ -1,4 +1,4 @@
-# Python
+# Stack In Python
 Fortunately, the `list` in Python supports the operations required by stacks. To be specific,
 
 - `append()` is to add an new item an the *end* of the list, so it behaves exactly the same as `push()`.
@@ -99,16 +99,26 @@ for i in a:
 
 Why can we use `for` to iterate the list? The iterator behind the scenes plays the magic! See more at [Iterators](https://docs.python.org/3/tutorial/classes.html#iterators).
 
+It is often a good practice to prepare a single class as the iterator which offers the `__next__()` method:
+
+```python
+class ReverseListIterator:
+    def __init__(self, data):
+        self._data = data
+        self._i = len(data)
+
+    def __next__(self):
+        if self._i == 0:
+            raise StopIteration
+        self._i -= 1
+        return self._data[self._i]
+```
+
+And `Stack`'s `__iter__()` method returns an instance of the iterator:
+
 ```python
 def __iter__(self):
-    self._index = self.size()
-    return self
-
-def __next__(self):
-    if self._index == 0:
-        raise StopIteration
-    self._index -= 1
-    return self._data[self._index]
+    return ReverseListIterator(self._data)
 ```
 
 In this way, we can iterate the stack as we do for other collections:
