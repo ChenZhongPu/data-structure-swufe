@@ -58,11 +58,11 @@ public Item pop() {
 }
 ```
 
-Another common approach is to throw an exception if the stack is empty:
+Another common approach is to throw an exception if the stack is empty, and we adopt this implementation in this book:
 
 ```java
 if (isEmpty()) {
-    throw new NoSuchElementException("Stack underflow");
+    throw new NoSuchElementException("Pop from empty stack!");
 }
 ```
 

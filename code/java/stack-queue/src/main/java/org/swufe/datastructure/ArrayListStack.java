@@ -2,6 +2,7 @@ package org.swufe.datastructure;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * A last-in, first-out (LIFO) data structure.
@@ -34,7 +35,7 @@ public class ArrayListStack<Item> implements Iterable<Item> {
 
     public Item pop() {
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException("Pop from empty stack!");
         }
         Item v = elements.get(size() - 1);
         elements.remove(size() - 1);

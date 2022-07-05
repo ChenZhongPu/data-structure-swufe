@@ -1,6 +1,7 @@
 from unittest import TestCase
 import unittest
 from stack import Stack
+from no_element import NoElement
 
 
 class TestStack(TestCase):
@@ -13,7 +14,7 @@ class TestStack(TestCase):
         s.push(3)
         self.assertEqual(s.pop(), 3)
         self.assertEqual(s.pop(), 5)
-        self.assertEqual(s.pop(), None)
+        self.assertRaises(NoElement, s.pop)
         self.assertEqual(s.size(), 0)
         self.assertTrue(s.is_empty())
 

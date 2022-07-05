@@ -2,6 +2,8 @@ package org.swufe.datastructure;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayListStackTest {
@@ -15,7 +17,7 @@ class ArrayListStackTest {
         stack.push(3);
         assertEquals(stack.pop(), 3);
         assertEquals(stack.pop(), 5);
-        assertNull(stack.pop());
+        assertThrowsExactly(NoSuchElementException.class, stack::pop);
         assertEquals(stack.size(), 0);
         assertTrue(stack.isEmpty());
     }

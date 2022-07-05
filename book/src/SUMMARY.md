@@ -12,6 +12,8 @@
         - [Stacks in Python](stack_queue/stack_python.md)
         - [Stacks in Java](stack_queue/stack_java.md)
     - [Queues](stack_queue/queue.md)
+        - [Queues in Python](stack_queue/queue_python.md)
+        - [Queues in Java](stack_queue/queue_java.md)
     - [Dequeues](stack_queue/dequeue.md)
     - [Exercise](stack_queue/exercise.md)
 - [Lists](list/intro.md)

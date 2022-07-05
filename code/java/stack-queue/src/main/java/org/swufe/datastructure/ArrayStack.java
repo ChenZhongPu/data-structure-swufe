@@ -38,7 +38,7 @@ public class ArrayStack<Item> implements Iterable<Item> {
     }
 
     public Item pop() {
-        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        if (isEmpty()) throw new NoSuchElementException("Pop from empty stack!");
         Item item = a[n-1];
         a[n-1] = null;
         n--;

@@ -41,3 +41,7 @@ print(v)
 
 ---
 4. Please implement matching parentheses and arithmetic expression evaluation based on [ArrayListStack.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/ArrayListStack.java) using Java respectively.
+
+
+---
+5. The theoretical analysis shows that the time complexity of `dequeue()` of circular queues is \\(O(1)\\). Please design experiments and visualize your results to validate the theoretical cost.

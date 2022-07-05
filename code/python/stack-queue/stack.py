@@ -1,3 +1,6 @@
+from no_element import  NoElement
+
+
 class Stack:
     """A last-in, first-out (LIFO) data structure."""
 
@@ -9,7 +12,7 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            return None
+            raise NoElement('Pop from empty stack!')
         return self._data.pop()
 
     def size(self):

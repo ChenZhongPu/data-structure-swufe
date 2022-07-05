@@ -79,12 +79,27 @@ def pop(self):
     return self._data.pop()
 ```
 
-Another common approach is to return a `None` when it is empty:
+Another common approach is to return a `None` when it is empty, but it would be troublesome if the item itself is a `None`:
 
 ```python
 def pop(self):
     if self.is_empty():
         return None
+    return self._data.pop()
+```
+
+A third approach is to use a self-defined exception class, and we will adopt this implementation in this book.
+
+```python
+class NoElement(Exception):
+    """Error attempting to access an element from an empty collection."""
+    pass
+```
+
+```python
+def pop(self):
+    if self.is_empty():
+        raise NoElement('Pop from empty stack!')
     return self._data.pop()
 ```
 
