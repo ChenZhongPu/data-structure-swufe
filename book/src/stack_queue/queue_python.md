@@ -174,7 +174,7 @@ old.append(4)
 print(data)
 ```
 
-Now let's revisit the implementation of `_resize()`. After `self._data = [None] * capacity` is called, it becomes
+Therefore, `old` and `data` refer to the same object, but with different names[^memory]. Now let's revisit the implementation of `_resize()`. After `self._data = [None] * capacity` is called, it becomes
 
 <img src="image/list_address2.png" width="70%">
 
@@ -188,3 +188,5 @@ The complete code can be found at [circular_queue.py](https://github.com/ChenZho
 [^random] To avoid the randomness brought by a single operation, we repeat it 20 times. Since 20 is much smaller than the size of queue, the measured time still makes sense.
 
 [^rear] Some designs assume that `rear` points to the last item in a queue. In this case, `rear` is -1 when the queue is empty.
+
+[^memory] https://towardsdatascience.com/python-memory-and-objects-e7bec4a2845

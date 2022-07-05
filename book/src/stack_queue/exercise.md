@@ -1,5 +1,5 @@
 # Exercise
-1. As for stacks, another operation `top()` (or `peek()`) is often used. It works like `pop()`, but it will keep the item in the stack. Please implement `top()` (or `peek()`) method in Java or Python.
+1. As for stacks, another operation `top()` (also known as `peek()`) is often used. It works like `pop()`, but it will keep the item in the stack. Please implement `peek()` method in Java or Python.
 
 ---
 2. In [stack.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/stack.py), we would often expect that `len()` can be used directly like other collections in Python:
@@ -44,4 +44,15 @@ print(v)
 
 
 ---
-5. The theoretical analysis shows that the time complexity of `dequeue()` of circular queues is \\(O(1)\\). Please design experiments and visualize your results to validate the theoretical cost.
+5. The theoretical analysis shows that the time complexity of `dequeue()` of circular queues is \\(O(1)\\). Please design experiments and visualize your results to validate this theoretical cost based on [circular_queue.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/circular_queue.py).
+
+---
+6. The built-in `id()` function returns the memory address, and  You can also check if two variables are pointing to the same object using `is` operator. Try to use those two methods to validate `a` and `b` point to the same object:
+
+```python
+a = [1, 2, 3]
+b = a
+```
+
+---
+7. Please implement a queue based on `ArrayList` in Java.
