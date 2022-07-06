@@ -49,3 +49,34 @@ Except for the syntax itself, they are the same exactly! The complete code can b
 According to the theoretical analysis, the time complexity of `dequeue()` of circular queues is \\(O(1)\\). To what follows, I design a small benchmark to evaluate its performance ([Benchmark.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/Benchmark.java)).
 
 We initialize the size in the range of [10000000, 20000000, 30000000, 40000000, 50000000], and we find that no matter how the size changes, the measured is always 0! It is super fast with a constant time complexity.
+
+
+## A few notes on `Queue` interface
+> When you need queues, please have a look at the implementing classes of [Queue](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html) interface, instead of implementing a new one from the scratch.
+
+Java offers the [Queue](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html) interface, which has the following methods:
+
+- `add()`: Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+- `remove()`: Retrieves and removes the head of this queue.
+
+These two methods would throw exceptions. In contrast, it also provides a pair of APIs to return special value:
+
+- `offer()`: Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions.
+- `poll()`: Retrieves and removes the head of this queue, or returns null if this queue is empty.
+
+To use a queue, we often need to choose one of its implementing classes, such as [ArrayDeque](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayDeque.html), [LinkedList](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/LinkedList.html). For example,
+
+```java
+Queue<String> q = new LinkedList<>();
+q.offer("data");
+q.offer("structure");
+q.offer("is");
+q.offer("fun");
+assert Objects.equals(q.poll(), "data");
+assert Objects.equals(q.poll(), "structure");
+```
+
+Although we have not learned `LinkedList` in detail yet, we are still able to use its public APIs[^linkedlist] because the interface makes such promise.
+
+---
+[^linkedlist] [LinkedList](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/LinkedList.html) is very complex by offering plenty of APIs.

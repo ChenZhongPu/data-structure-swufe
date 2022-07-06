@@ -56,3 +56,6 @@ b = a
 
 ---
 7. Please implement a queue based on `ArrayList` in Java.
+
+---
+8. As for queues, another operation `first()` (also known as `peek()`) is often used. It works like `dequeue()`, but it will keep the item in the queue. Please implement `peek()` method in Java or Python based on circular queues.

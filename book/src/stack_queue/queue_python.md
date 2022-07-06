@@ -182,6 +182,10 @@ The next step is to copy from `old[front..rear]` to `data[0.._size]`. Of course,
 
 The complete code can be found at [circular_queue.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/circular_queue.py). Please try to implement an iterator for circular queues on your own before checking the code in GitHub.
 
+## A few notes on queues
+
+> When you need queues, please consider [collections.deque](https://docs.python.org/3/library/collections.html#collections.deque), instead of implementing a new one from the scratch.
+
 ---
 [^time] Like stacks, the time complexity of `enqueue()` is *amortized*.
 
