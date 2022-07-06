@@ -1,5 +1,5 @@
 # Stack In Java
-> Java has a built-in library called `java.util.Stack`, but you should avoid using it when you want a stack. It has several additional operations that are not normally associated with a stack, e.g., getting the ith element.
+> Java has a built-in library called `java.util.Stack`, but you should avoid using it when you want a stack. It has several additional operations that are not normally associated with a stack, e.g., getting the ith element. 
 
 ## Stack based on ArrayList
 Our first stacks are based on `ArrayList`, and the overall implementation is very similar to the one based on the `list` in Python. An upfront note is that generics are preferred for collections in Java, so the class is declared like:

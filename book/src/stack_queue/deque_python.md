@@ -59,7 +59,7 @@ def delete_last(self):
 ## Application: number of recent calls
 This application is from [leetcode](https://leetcode.com/problems/number-of-recent-calls/), and readers shall check the question description by themselves.
 
-As for this problem, one possible algorithm is to use `deque`:
+As for this problem, one feasible algorithm is to use `deque`:
 
 ```python
 from collections import deque

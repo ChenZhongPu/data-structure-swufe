@@ -162,7 +162,7 @@ As we can see, all APIs are with a constant time complexity.
 Note that the time complexity of `push()` and `pop()` is *amortized*. Roughly speaking, it means \\(O(1)\\) happens most of time, but it may have a larger time complexity only once a while[^resize]; and on average, the worst complexity is still  \\(O(1)\\). 
 
 ## Application (1): matching parentheses
-In this subsection, we explore an application of stacks by considering matching parentheses in arithmetic expressions. Here we assume that only parentheses `()`, braces `{}`, and brackets `[]` are allowed.
+In this subsection, we explore an application of stacks by considering matching parentheses in arithmetic expressions. Here we assume that only parentheses `()`, braces `{}`, and brackets `[]` are allowed. This application is also found at [leetcode](https://leetcode.com/problems/valid-parentheses/).
 
 Clearly, each opening symbol must match its corresponding closing symbol. For example:
 

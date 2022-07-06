@@ -59,3 +59,11 @@ b = a
 
 ---
 8. As for queues, another operation `first()` (also known as `peek()`) is often used. It works like `dequeue()`, but it will keep the item in the queue. Please implement `peek()` method in Java or Python based on circular queues.
+
+
+---
+9. Please implement a deque based on circular arrays in Java.
+
+
+---
+10. Try to solve problems tagged with [stack]((https://leetcode.com/tag/stack/) ) or [queue](https://leetcode.com/tag/queue/) in leetcode.
