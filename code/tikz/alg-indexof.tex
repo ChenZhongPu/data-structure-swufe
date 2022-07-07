@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{algorithm2e}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\RestyleAlgo{ruled}
+\begin{algorithm}
+% \TitleOfAlgo{dd}
+\caption{indexOf(a, o)}
+$n\gets a.size()$ \\
+\For{$i\gets 0$ \KwTo $n$}{
+    \If{$a[i] == o$}{
+        \Return{i}
+    }
+}
+\Return{-1}
+\end{algorithm}
+
+\end{document}
