@@ -3,7 +3,7 @@ In this section, we will formally introduce an important concept:
 
 > Abstract Data type (ADT) is a type (or class) for objects whose behavior is defined by a set of values and a set of operations.
 
-So, the previous introduced stacks, queues, and deques all are ADTs. For example, we can say "a stack is an ADT that supports `push()` and `pop()` method". Note that the definition of ADT only mentions what operations are to be performed but not how these operations will be implemented. For example, a queue based on `ArrayList` and a queue based on circular arrays are two different implementations of the queue ADT.
+So, the previous introduced stacks, queues, and deques all are ADTs. You do not need to know how a data type is implemented in order to be able to use it. Note that the definition of ADT only mentions what operations are to be performed but not how these operations will be implemented. For example, a queue based on `ArrayList` and a queue based on circular arrays are two different implementations of the queue ADT.
 
 The list ADT represent an ordered collection containing **linear sequence of elements**, but with more general support for adding or removing elements at arbitrary positions. Since it is linear, locations within a list ADT are easily described with an integer **index**.
 
