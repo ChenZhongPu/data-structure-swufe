@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{addLast(head, element)}
+\KwIn{$head$ of a linked list, and a new $element$.}
+\If{isEmpty(head)}{
+    $head\gets$ Node$(element)$
+}\Else{
+    $tail\gets head$ \\
+    \While{tail.next $\neq$ null}{
+        $tail\gets tail.next$
+    }
+    $tail.next \gets$ Node$(element)$
+}
+\end{algorithm}
+\end{document}

@@ -5,14 +5,14 @@ A typical illustration of a (singly) linked list is like:
 
 <img src="image/single-list.png" width="60%">
 
-> Our implementation serves as a model for the code that we use for building
-more complex data structures throughout the book, so you should read this section
-carefully, even if you have experience working with linked lists.
+> Our implementation serves as a model for the code that we use for building more complex data structures throughout the book, so you should read this section carefully, even if you have experience working with linked lists.
 
 As we can see, a linked list consists of a sequence of *nodes*, and the previous node has a link pointing to the next one. The following is working definition for linked lists:
 
 > A linked list is a **recursive** data structure that is either empty (`null`) or a
 reference to a node having an item and a reference to a linked list.
+
+By default, a linked list is a **singly linked list**, whose node has only one link to the next node. If every node also has a link to its previous node, it is called **doubly linked list**.
 
 With object-oriented programming, implementing linked lists is not difficult. We start with a class that defines the node abstraction:
 
@@ -62,7 +62,7 @@ One solution is to check whether its size is 0. The following shows an equivalen
 
 The main idea is that we create a new node with the new element, set its `next` link to refer to the current `head`, and set the list’s `head` to point to the new node.
 
-<img src="image/sll-addfirst.png" width="70%">
+<img src="image/sll-addfirst.png" width="80%">
 
 This figure illustrates (a) before the insertion; (b) after a new node is created and linked to the existing head; (c) after reassignment of the head reference to the newest node.
 
@@ -75,11 +75,25 @@ The last position is also known as `tail`. If the linked list also maintains the
 
 <img src="image/sll-addlast.png" width="80%">
 
-
 But we have to consider another corner case: **when the linked list is empty, both `head` and `tail` is null, so it is illegal to use `tail.next = newest`**.
 
 <img src="image/alg-sll-addlast.png" width="80%">
 
-> We need to care about whether a node is null when designing algorithms for linked list ADT.
+> We need to care about whether a node is null when designing algorithms for linked list ADT[^null].
 
-Additionally, if we introduce a `tail` for a linked list, the algorithm for adding an element should be updated accordingly. Readers can also explore how to add an element at the end of a linked list if `tail` is not stored.
+Additionally, if we introduce a `tail` for a linked list, the algorithm for adding an element should be updated accordingly. Now let's consider the situation where the `tail` does not exist. In this case, we need to compute the `tail` manually first.
+
+<img src="image/alg-sll-addlast2.png" width="80%">
+
+## `removeFirst()`: remove an element at the beginning
+If the linked list is empty, then an exception should be thrown. Otherwise, we update the `head` to the second node.
+
+<img src="image/sll-removefirst.png" width="80%">
+
+## `removeLast()`: remove an element at the end
+The basic idea seems simple: if the linked list is empty, then an exception should be thrown. Otherwise, we update the `tail` to the second node to last. The key point is how to find *the second node to last*.
+
+As we can see, it is a little bit tricky to delete the last node of a singly linked list, and we will introduce a simpler and more efficient way based on doubly linked lists.
+
+---
+[^null] You may consider some corner cases: the list is null, the size is one.
