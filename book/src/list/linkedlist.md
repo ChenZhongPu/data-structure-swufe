@@ -42,7 +42,7 @@ second.next = third
 
 From the definition, we can know that one is able to use the first node (`first` in our case) to represent a whole linked list, and the first node often is known as `head`. As for the procedure-oriented programming language (e.g., C), this is only  way to design a linked list.
 
-To what follows, I will describe the common methods for a linked list ADT in a procedure-first way, and we are going to translate those pseudo code into Python or Java code in the following sections. 
+To what follows, I will describe the common methods for a linked list ADT in a procedure-first way, and we are going to translate those pseudo code into Python or Java code in the following sections.
 
 ## `size()`: the number of elements
 
@@ -68,10 +68,10 @@ This figure illustrates (a) before the insertion; (b) after a new node is create
 
 <img src="image/alg-sll-addfirst.png" width="80%">
 
-Recall that adding an element to an array cost \\(O(n)\\), but this algorithm costs only \\(O(1)\\).
+Recall that adding an element to an array cost \\(O(n)\\) when resizing is required, but this algorithm always costs only \\(O(1)\\).
 
 ## `addLast()`: add an element at the end
-The last position is also known as `tail`. If the linked list also maintains the `tail` node, then the implementation is trivial: just update the `tail` reference itself to the newly created node. 
+The last position is also known as `tail`. If the linked list also maintains the `tail` node, then the implementation is trivial: just update the `tail` reference itself to the newly created node. It runs in \\(O(1)\\).
 
 <img src="image/sll-addlast.png" width="80%">
 
@@ -79,21 +79,31 @@ But we have to consider another corner case: **when the linked list is empty, bo
 
 <img src="image/alg-sll-addlast.png" width="80%">
 
-> We need to care about whether a node is null when designing algorithms for linked list ADT[^null].
+> We need to care about whether a node is null when designing algorithms for the linked list ADT[^null].
 
-Additionally, if we introduce a `tail` for a linked list, the algorithm for adding an element should be updated accordingly. Now let's consider the situation where the `tail` does not exist. In this case, we need to compute the `tail` manually first.
+Additionally, if we introduce a `tail` for a linked list, the algorithm for adding an element should be updated accordingly. Now let's consider the situation where the `tail` does not exist. In this case, we need to compute the `tail` manually first, and therefore it runs in \\(O(N)\\).
 
 <img src="image/alg-sll-addlast2.png" width="80%">
+
+We can also obverse another trade-off here: maintaining an extra pointer (i.e., `tail`) costs some overhead in space, but it gains much performance in time.
 
 ## `removeFirst()`: remove an element at the beginning
 If the linked list is empty, then an exception should be thrown. Otherwise, we update the `head` to the second node.
 
 <img src="image/sll-removefirst.png" width="80%">
 
+This can be done in \\(O(1)\\):
+
+<img src="image/alg-sll-removefirst.png" width="80%">
+
 ## `removeLast()`: remove an element at the end
 The basic idea seems simple: if the linked list is empty, then an exception should be thrown. Otherwise, we update the `tail` to the second node to last. The key point is how to find *the second node to last*.
 
-As we can see, it is a little bit tricky to delete the last node of a singly linked list, and we will introduce a simpler and more efficient way based on doubly linked lists.
+
+<img src="image/alg-sll-removelast.png" width="80%">
+
+As we can see, it is a little bit tricky to delete the last node of a singly linked list. Since we have to walk though the linked list, the time complexity is \\(O(N)\\). We will introduce a simpler and more efficient way based on doubly linked lists.
+
 
 ---
 [^null] You may consider some corner cases: the list is null, the size is one.

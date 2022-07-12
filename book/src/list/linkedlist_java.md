@@ -1,0 +1,2 @@
+# Linked List in Java
+The complete code can be found at [LinkedList.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/lists/src/main/java/org/swufe/datastructure/LinkedList.java).

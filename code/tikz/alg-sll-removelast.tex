@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{removeLast(head, tail)}
+\KwIn{$head$ and tail of a linked list.}
+\tcp{case 1: it is empty}
+\If{isEmpty(head)}{
+    raise an error
+} \Else{
+    \tcp{case 2: the size is 1}
+    \If{head = tail}{
+        $head\gets null$ \\
+        $tail\gets null$
+    }
+    \tcp{case 3: the size is greater than 1} 
+    \Else{
+        $walk\gets head$ \\
+        \While{walk.next $\neq$ tail}{
+            $walk\gets walk.next$
+        }
+        $walk.next\gets null$ \\
+        $tail\gets walk$
+    }
+}
+\end{algorithm}
+\end{document}

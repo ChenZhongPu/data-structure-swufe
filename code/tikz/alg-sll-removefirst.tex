@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{removeFirst(head)}
+\KwIn{$head$ of a linked list.}
+\If{isEmpty(head)}{
+    raise an error
+} \Else{
+    $head \gets head.next$
+}
+\end{algorithm}
+\end{document}

@@ -5,18 +5,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * A singly linked list.
+ */
 public class LinkedList<Item> implements Iterable<Item> {
-    private class Node {
+    private static class Node<Item> {
         Item item;
-        Node next;
+        Node<Item> next;
         Node(Item item) {
             this.item = item;
             next = null;
         }
     }
 
-    private Node head;
-    private Node tail;
+    private Node<Item> head;
+    private Node<Item> tail;
     private int size;
 
     public LinkedList() {
@@ -34,7 +37,7 @@ public class LinkedList<Item> implements Iterable<Item> {
     }
 
     public void addFirst(Item item) {
-        Node node = new Node(item);
+        Node<Item> node = new Node<>(item);
         node.next = head;
         head = node;
         if (tail == null) {
@@ -44,8 +47,8 @@ public class LinkedList<Item> implements Iterable<Item> {
     }
 
     public void addLast(Item item) {
-        Node oldTail = tail;
-        tail = new Node(item);
+        Node<Item> oldTail = tail;
+        tail = new Node<>(item);
         if (oldTail == null) {
             head = tail;
         } else {
@@ -59,7 +62,7 @@ public class LinkedList<Item> implements Iterable<Item> {
             throw new NoSuchElementException();
         } else {
             head = head.next;
-            if (isEmpty()) {
+            if (head == null) {
                 tail = null;
             }
             size -= 1;
@@ -76,7 +79,7 @@ public class LinkedList<Item> implements Iterable<Item> {
                 tail = null;
             } else {
                 // head -> ... -> walk -> tail
-                Node walk = head;
+                Node<Item> walk = head;
                 while (walk.next != tail) {
                     walk = walk.next;
                 }
@@ -89,7 +92,7 @@ public class LinkedList<Item> implements Iterable<Item> {
 
     public int indexOf(Item item) {
         int index = -1;
-        Node walk = head;
+        Node<Item> walk = head;
         while (walk != null) {
             index += 1;
             if (walk.item.equals(item)) {
@@ -102,7 +105,7 @@ public class LinkedList<Item> implements Iterable<Item> {
     }
 
     /**
-     * Insert `item` at index `i`
+     * Insert item at index i
      * @param i
      * @param item
      */
@@ -117,22 +120,22 @@ public class LinkedList<Item> implements Iterable<Item> {
         } else {
             // before: head -> ... -> (i-1-th node: walk) -> (i-th node) -> ... -> tail
             // after: head -> ... -> (i-1-th node: walk) -> Node(item) -> (i-th node) -> ... -> tail
-            Node walk = getNode(i - 1);
-            Node ith = walk.next;
-            Node node = new Node(item);
+            Node<Item> walk = getNode(i - 1);
+            Node<Item> ith = walk.next;
+            Node<Item> node = new Node<>(item);
             walk.next = node;
             node.next = ith;
             size += 1;
         }
     }
 
-    private Node getNode(int i) {
+    private Node<Item> getNode(int i) {
         if (i < 0 || i >= size) {
             throw new IndexOutOfBoundsException();
         }
 
         int cnt = 0;
-        Node walk = head;
+        Node<Item> walk = head;
         while (cnt < i) {
             walk = walk.next;
             cnt += 1;
@@ -141,15 +144,21 @@ public class LinkedList<Item> implements Iterable<Item> {
         return walk;
     }
     public Item get(int i) {
-        Node walk = getNode(i);
+        Node<Item> walk = getNode(i);
         assert walk != null;
         return walk.item;
     }
 
     public void set(int i, Item item) {
-        Node walk = getNode(i);
+        Node<Item> walk = getNode(i);
         assert walk != null;
         walk.item = item;
+    }
+
+    public void clear() {
+        while (!isEmpty()) {
+            removeFirst();
+        }
     }
 
     /**
@@ -157,7 +166,7 @@ public class LinkedList<Item> implements Iterable<Item> {
      */
     public List<Item> toArrayList() {
         List<Item> results = new ArrayList<>();
-        Node walk = head;
+        Node<Item> walk = head;
         while (walk != null) {
             results.add(walk.item);
             walk = walk.next;
@@ -171,7 +180,7 @@ public class LinkedList<Item> implements Iterable<Item> {
     }
 
     private class LinkedListIterator implements Iterator<Item> {
-        private Node walk = head;
+        private Node<Item> walk = head;
         @Override
         public boolean hasNext() {
             return walk != null;

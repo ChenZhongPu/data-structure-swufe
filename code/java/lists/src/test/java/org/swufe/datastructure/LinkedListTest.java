@@ -44,5 +44,8 @@ class LinkedListTest {
         assertEquals(list.size(), 6);
         assertEquals(list.get(5), "!");
         list.forEach(System.out::println);
+
+        list.clear();
+        assertTrue(list.isEmpty());
     }
 }
