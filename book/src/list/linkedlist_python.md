@@ -19,6 +19,30 @@ The code above shows the procedure of removing the first element in a linked lis
 
 > `is` will return True if two variables point to the same object (in memory). `==` will return True if the objects referred to by the variables are equal. See more at [Is there a difference between "==" and "is"?](https://stackoverflow.com/questions/132988/).
 
+### Shorter yet obscure
+As for nodes in linked lists, we shall focus on how to assign values and relink the `next` pointer. Sometimes, *relinking* twice can be shortened by leveraging of `__init__`. For example, the following code is to add an element onto a stack (we will check it later):
+
+```python
+# push() = add_first()
+def push(self, item):
+    node = Node(item)
+    node.next = self._head
+    self._head = node
+    self._size += 1
+```
+
+It can be shortened to:
+
+```python
+# push() = add_first()
+def push(self, item):
+    self._head = Node(item, self._head)
+    self._size += 1
+```
+
+It is shorter, but a bit more difficult to understand. Some people may strive for elegance and prefer to shorter code, while others may give a priority to ease-of-understanding. Again, it is a *trade-off*.
+
+
 ## Stack based on linked lists
 In this subsection, we are going to implement a stack based on singly linked lists. 
 

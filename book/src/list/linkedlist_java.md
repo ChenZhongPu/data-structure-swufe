@@ -36,6 +36,8 @@ As we can see, only the `head` pointer is necessary here. The complete code can 
 | `pop()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
 
 
+Note that the implementation of `push()` can also be shortened, as we did in [Linked List in Python: Shorter yet obscure](./linkedlist_python.md#shorter-yet-obscure).
+
 ## Queue based on linked lists
 In this subsection, we are going to implement a stack based on singly linked lists. 
 
@@ -52,3 +54,11 @@ We shall maintain both `head` and `tail` for a queue. The complete code can be f
 | ---- | ---- | ----- | ----- |
 | `enqueue()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
 | `dequeue()` | \\(O(N)\\) | \\(O(1)\\) | Not the circular array |
+
+## Circularly linked list
+A **circularly linked list** is essentially a singly linked list in which the `next` reference to the tail node is set to refer back to the head of the list (rather than `null`).
+
+<img src="image/circular_linkedlist.png" width="80%">
+
+This ADT can be used in applications in which data can be more naturally viewed as having a *cyclic order*, with well-defined neighboring relationships, but no fixed beginning or end.
+
