@@ -19,7 +19,7 @@ private static class Node<Item> {
 See more at **Item 24: Favor static member classes over nonstatic** in [Effective Java](https://book.douban.com/subject/27047716/).
 
 ## Stack based on linked lists
-In this subsection, we are going to implement a stack based on linked lists. 
+In this subsection, we are going to implement a stack based on singly linked lists. 
 
 > A stack is a collection of objects that are inserted and removed according to the last-in, first-out (LIFO) policy.
 
@@ -34,3 +34,21 @@ As we can see, only the `head` pointer is necessary here. The complete code can 
 | ---- | ---- | ----- | ----- |
 | `push()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
 | `pop()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
+
+
+## Queue based on linked lists
+In this subsection, we are going to implement a stack based on singly linked lists. 
+
+> A queue is a collection of objects that are inserted and removed according to the first-in, first-out (FIFO) policy.
+
+The two main operations of a queue can be described in the following, and both of them run in \\(O(1)\\):
+
+- `enqueue()`: `add_last()` in a linked list
+- `dequeue()`: `remove_first()` in a linked list
+
+We shall maintain both `head` and `tail` for a queue. The complete code can be found at [LinkedQueue.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/lists/src/main/java/org/swufe/datastructure/LinkedQueue.java), which is a simplified implementation of a linked list.
+
+|  | Array-based queue | LinkedList-based queue  | Note |
+| ---- | ---- | ----- | ----- |
+| `enqueue()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
+| `dequeue()` | \\(O(N)\\) | \\(O(1)\\) | Not the circular array |

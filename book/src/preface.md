@@ -21,7 +21,7 @@ Note that there are many awesome books available about data structures and algor
 - [Data Structures & Algorithms in Python](https://book.douban.com/subject/10607365/) by Michael T. Goodrich, Roberto Tamassia, Michael H. Goldwasser.
 - [Data Structures and Algorithm Analysis in Java](https://book.douban.com/subject/10530466/) by Mark A. Weiss.
 
-It is highly recommended to read those masterpieces if you want to an in-depth understanding, for this book is tailored for students in SWUFE by eliminating or simplifying many obscure yet important parts.
+It is highly recommended to read those masterpieces if you want to have an in-depth understanding, for this book is tailored for students in SWUFE by eliminating or simplifying many obscure (yet important) parts.
 
 The motivation of this book is to help students obtain hands-on skills in terms of data structures by putting emphasis on coding and programming itself. It is also worthwhile to note that data structures are not limited to some specific programing languages. In this book, we will focus on the object-oriented way, and cover the implementations in both Java and Python.
 
