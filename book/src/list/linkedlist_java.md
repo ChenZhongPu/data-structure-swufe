@@ -1,2 +1,36 @@
 # Linked List in Java
 The complete code can be found at [LinkedList.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/lists/src/main/java/org/swufe/datastructure/LinkedList.java).
+
+
+## A few notes on implementation
+It is good practice to make the inner `Node` class being *private static*:
+
+```java
+private static class Node<Item> {
+    Item item;
+    Node<Item> next;
+    Node(Item item) {
+        this.item = item;
+        next = null;
+    }
+}
+```
+
+See more at **Item 24: Favor static member classes over nonstatic** in [Effective Java](https://book.douban.com/subject/27047716/).
+
+## Stack based on linked lists
+In this subsection, we are going to implement a stack based on linked lists. 
+
+> A stack is a collection of objects that are inserted and removed according to the last-in, first-out (LIFO) policy.
+
+The two main operations of a stack can be described in the following, and both of them run in \\(O(1)\\):
+
+- `push()`: `add_first()` in a linked list
+- `pop()`: `remove_first()` in a linked list
+
+As we can see, only the `head` pointer is necessary here. The complete code can be found at [LinkedStack.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/lists/src/main/java/org/swufe/datastructure/LinkedStack.java), which is a simplified implementation of a linked list.
+
+|  | Array-based stack | LinkedList-based stack  | Note |
+| ---- | ---- | ----- | ----- |
+| `push()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
+| `pop()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
