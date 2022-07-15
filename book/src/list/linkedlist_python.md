@@ -23,3 +23,15 @@ The code above shows the procedure of removing the first element in a linked lis
 In this subsection, we are going to implement a stack based on linked lists. 
 
 > A stack is a collection of objects that are inserted and removed according to the last-in, first-out (LIFO) policy.
+
+The two main operations of a stack can be described in the following, and both of them run in \\(O(1)\\):
+
+- `push()`: `add_first()` in a linked list
+- `pop()`: `remove_first()` in a linked list
+
+As we can see, only the `head` pointer is necessary here. The complete code can be found at [linked_stack.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/lists/linked_stack.py), which is a simplified implementation of a linked list.
+
+|  | Array-based stack | LinkedList-based stack  | Note |
+| ---- | ---- | ----- | ----- |
+| `push()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
+| `pop()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |

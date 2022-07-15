@@ -15,12 +15,3 @@ class RecentCounter:
             self.data.popleft()
         self.data.append(t)
         return len(self.data) - cnt
-
-
-obj = RecentCounter()
-print(obj.ping(1))
-print(obj.ping(100))
-print(obj.ping(3001))
-v = obj.ping(3002)
-print(v)
-
