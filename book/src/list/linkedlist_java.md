@@ -60,5 +60,47 @@ A **circularly linked list** is essentially a singly linked list in which the `n
 
 <img src="image/circular_linkedlist.png" width="80%">
 
-This ADT can be used in applications in which data can be more naturally viewed as having a *cyclic order*, with well-defined neighboring relationships, but no fixed beginning or end.
+This ADT can be used in applications in which data can be more naturally viewed as having a *cyclic order*, with well-defined neighboring relationships, but no fixed beginning or end. Note that there is a link from `tail` to `head`, so only `tail` is required for a circularly linked list.
+
+In what follows, We elaborate some key implementations of this ADT in Java, and the full code can be found at [CircularLinkedList.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/lists/src/main/java/org/swufe/datastructure/CircularLinkedList.java):
+### `addFirst()`
+
+```java
+public void addFirst(Item item) {
+    if (size == 0) {
+        tail = new Node<>(item);
+        tail.next = tail; // link to itself circularly
+    } else {
+        tail.next = new Node<>(item, tail.next);
+    }
+    size += 1;
+}
+```
+
+### `addLast()`
+
+```java
+public void addLast(Item item) {
+    addFirst(item);
+    tail = tail.next;
+}
+```
+
+### `removeFirst()`
+
+```java
+public void removeFirst() {
+    if (size == 0) {
+        throw new NoSuchElementException();
+    }
+    Node<Item> head = tail.next;
+    if (head == tail) {
+        // only one element
+        tail = null;
+    } else {
+        tail.next = head.next;
+    }
+    size -= 1;
+}
+```
 
