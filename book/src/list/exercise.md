@@ -33,4 +33,4 @@ public class MyArrayList<E> implements List<E> {
 7. Please design an algorithm to convert a linked list to an array in Python.
 
 ---
-8. Please try to implement a stack based on singly linked lists using an inner `Node` class.
+8. Please try to implement a stack based on singly linked lists using an inner `Node` class in Python.

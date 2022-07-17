@@ -76,3 +76,48 @@ We shall maintain both `head` and `tail` for a queue. The complete code can be f
 | ---- | ---- | ----- | ----- |
 | `enqueue()` | \\(O(1)\\) | \\(O(1)\\) | Array-based is amortized |
 | `dequeue()` | \\(O(N)\\) | \\(O(1)\\) | Not the circular array |
+
+## Circularly linked list
+A **circularly linked list** is essentially a singly linked list in which the `next` reference to the tail node is set to refer back to the head of the list (rather than `null`).
+
+<img src="image/circular_linkedlist.png" width="80%">
+
+This ADT can be used in applications in which data can be more naturally viewed as having a *cyclic order*, with well-defined neighboring relationships, but no fixed beginning or end. Note that there is a link from `tail` to `head`, so only `tail` is required for a circularly linked list.
+
+In what follows, We elaborate some key implementations of this ADT in Python, and the full code can be found at [circular_linked_list.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/lists/circular_linked_list.py):
+
+### `addFirst()`
+
+```python
+def add_first(self, item):
+    if self.is_empty():
+        self._tail = self.Node(item)
+        self._tail.next = self._tail
+    else:
+        self._tail.next = self.Node(item, self._tail.next)
+    self._size += 1
+```
+
+### `addLast()`
+
+```python
+def add_last(self, item):
+    self.add_first(item)
+    self._tail = self._tail.next
+```
+
+### `removeFirst()`
+
+```python
+def remove_first(self):
+    if self.is_empty():
+        raise NoElement
+    head = self._tail.next
+    if head is self._tail:
+        # only one element
+        self._tail = None
+    else:
+        self._tail.next = head.next
+    self._size -= 1
+```
+

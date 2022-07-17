@@ -111,8 +111,17 @@ public class CircularLinkedList<Item> implements Iterable<Item> {
     }
 
     private class LinkedIterator implements Iterator<Item> {
-        Node<Item> node = tail.next;
-        int i = 0;
+        Node<Item> node;
+        int i;
+
+        LinkedIterator() {
+            this.i = 0;
+            if (size > 0) {
+                node = tail.next;
+            } else {
+                node = null;
+            }
+        }
 
         @Override
         public boolean hasNext() {
