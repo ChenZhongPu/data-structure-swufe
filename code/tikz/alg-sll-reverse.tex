@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{reverseList(head)}
+\KwIn{The $head$ of a linked list.}
+\KwOut{The reversed $head$ of the linked list.}
+\If{head = null}{
+    \Return{null}
+}
+$pre\gets null$ \\
+$cur\gets head$ \\
+\While{cur.next $\neq$ null}{
+    $next\gets cur.next$ \\
+    $cur.next\gets pre$ \\
+    $pre\gets cur$ \\
+    $cur\gets next$
+}
+\tcp{$cur$ is the last node}
+$cur.next\gets pre$ \\
+\Return{cur}
+\end{algorithm}
+\end{document}

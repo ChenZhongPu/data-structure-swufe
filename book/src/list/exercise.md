@@ -34,3 +34,40 @@ public class MyArrayList<E> implements List<E> {
 
 ---
 8. Please try to implement a stack based on singly linked lists using an inner `Node` class in Python.
+
+
+---
+9. Try to implement the `==` operation by overriding `__eq__()` method for a singly linked list in Python. We would say two lists are identical when they have the same data and the arrangement of data is also the same.
+
+```python
+a = LinkedList()
+a.add_last(1)
+a.add_last(3)
+
+b = LinkedList()
+b.add_last(1)
+b.add_last(3)
+
+assert a == b
+```
+
+---
+10. Try to override `equals()` method for a singly linked list in Java. We would say two lists are identical when they have the same data and the arrangement of data is also the same.
+
+```java
+LinkedList<Integer> a = new LinkedList<>();
+a.addLast(1);
+a.addLast(3);
+
+LinkedList<Integer> b = new LinkedList<>();
+b.addLast(1);
+b.addLast(3);
+
+assert(a.equals(b));
+```
+
+---
+11. Try to implement all operations shown in [LinkedListProblems](http://cslibrary.stanford.edu/105/LinkedListProblems.pdf).
+
+---
+12. Try to solve [LeetCode: 92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/).
