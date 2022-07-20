@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{addLast(header, trailer, element)}
+\KwIn{$header$ and $trailer$ of a linked list, and a new $element$.} 
+$walk\gets header$ \\
+\While{walk.next $\neq$ trailer}{
+    $walk\gets walk.next$
+}
+\tcp{$walk$ is the second node to last}
+
+\end{algorithm}
+\end{document}

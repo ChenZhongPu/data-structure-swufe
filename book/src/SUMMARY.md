@@ -24,7 +24,7 @@
     - [Linked List](list/linkedlist.md)
         - [Linked List in Python](list/linkedlist_python.md)
         - [Linked List in Java](list/linkedlist_java.md)
-    - [Array vs. Linked](list/arr_link.md)
+    - [Doubly Linked List](list/double_link.md)
     - [Case Study](list/case.md)
     - [Exercise](list/exercise.md)
 - [Trees](tree/intro.md)
