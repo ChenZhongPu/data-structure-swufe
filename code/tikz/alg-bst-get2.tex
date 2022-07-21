@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{get(x, key)}
+\KwIn{The node $x$ of a BST, and a $key$}
+\KwOut{The node containing $key$}
+\If{x = null or key = x.key}{
+    \Return{x}
+}
+\If{key $<$ x.key}{
+    \Return{get(x.left, key)}
+}\Else{
+    \Return{get(x.right, key)}
+}
+\end{algorithm}
+\end{document}

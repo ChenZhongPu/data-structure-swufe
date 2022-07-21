@@ -63,7 +63,7 @@ LinkedList<Integer> b = new LinkedList<>();
 b.addLast(1);
 b.addLast(3);
 
-assert(a.equals(b));
+assert a.equals(b);
 ```
 
 ---
@@ -71,3 +71,6 @@ assert(a.equals(b));
 
 ---
 12. Try to solve [LeetCode: 92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/).
+
+---
+13. Try to convert the binary search implementation ([BinarySearch.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/main/java/org/swufe/datastructure/BinarySearch.java) or [binary_search.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/binary_search.py)) to a recursive version.

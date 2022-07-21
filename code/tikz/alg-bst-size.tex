@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{size(node)}
+\KwIn{A $node$ of a BST.}
+\KwOut{The size of the tree rooted at $node$.}
+\If{node = null}{
+    \Return{0}
+} \Else{
+    \Return{node.n}
+}
+\end{algorithm}
+\end{document}
