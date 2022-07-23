@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{removeMin(x)}
+\KwIn{The node $x$ of a BST}
+\KwOut{The new root of the BST originally rooted at $x$}
+\tcp{assume that x $\neq$ null}
+\If{x.left = null}{
+    \Return{x.right}
+}
+$x.left\gets removeMin(x.left)$ \\
+$x.n\gets size(x.left) + size(x.right) + 1$ \\
+\Return{x}
+\end{algorithm}
+\end{document}

@@ -29,7 +29,7 @@
     - [Exercise](list/exercise.md)
 - [Trees](tree/intro.md)
     - [General Trees](tree/general.md)
-    - [Binary Search Trees](tree/bst.md)
+    - [Binary Search Trees (1)](tree/bst.md)
     - [Balanced Search Trees](tree/balanced.md)
     - [Tree Traversal Algorithms](tree/traversal.md)
     - [Case Study](tree/case.md)

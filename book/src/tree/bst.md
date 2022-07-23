@@ -1,4 +1,4 @@
-# Binary Search Trees
+# Binary Search Trees (1)
 A tree without any restriction is unpractical in general, and in this section, we introduce a simple restriction that each node has exactly two links, which are called its **left** and **right** links, that point to nodes called its *left child* and *right child*, respectively.
 
 <img src="image/binary.png" width="60%">
@@ -79,7 +79,13 @@ And our implementations will benefit a lot from such recursive design. However, 
 
 <img src="image/alg-bst-size.png" width="80%">
 
-Then the size of a BST is `size(root)`; it runs with a constant time complexity.
+Then the size of a BST is `size(root)`; it runs with a constant time complexity. By the way, given the implementation of `size()`, we can also offer `isEmpty()` to check whether a BST is empty:
+
+```java
+public boolean isEmpty() {
+    return size() == 0;
+}
+```
 
 ### `put()`
 This method is often called `insert()` in some implementations, and it is used to add a new key to a BST.
@@ -126,6 +132,79 @@ Then to get a node from a BST given a `key`, we can use
 
 ```java
 return get(root, key);
+```
+
+### `removeMin()`
+This method (also known as `deleteMin()`) is to remove the node with the smallest key. Note that it is always located at the **leftmost** in a BST.
+
+#### Iterative `removeMin()`
+We will descend the node from `root` to the *leftmost* leaf. Like `put()`, a parent pointer is also maintained.
+
+<img src="image/alg-bst-removemin2.png" width="80%">
+
+The time complexity is also \\(O(h)\\).
+
+#### Recursive `removeMin()`
+It takes a node `x` as a root and then returns a new node as the root after removing the node with the smallest key.
+
+- *Base case*: When its left child is `null`, remove itself, and return its right child.
+- *Recursion*: Update `x.left` to `removeMin(x.left)`.
+
+<img src="image/alg-bst-removemin.png" width="80%">
+
+Then removing the node with the smallest key in a BST can be written as
+
+```java
+public void removeMin() {
+    if (isEmpty()) throw new NoSuchElementException();
+    root = removeMin(root);
+}
+```
+
+By the way, it is also easy to implement the algorithm `min()` to get the smallest key from a BST:
+
+```java
+public Key min() {
+    if (isEmpty()) throw new NoSuchElementException();
+    return min(root).key;
+}
+private Node<Key> min(Node<Key> x) {
+    if (x.left == null) return x;
+    else return min(x.left);
+}
+```
+
+### `removeMax()`
+This method (also known as `deleteMax()`) is to remove the node with the largest key. Note that it is always located at the **rightmost** in a BST. The main idea is the same with `removeMin()`, so the implementation is left as an exercise for readers. In addition, readers can also design the algorithm `max()` to get the largest key in a BST.
+
+### `remove()`
+This method is often called `delete()`, which is used to delete a node given a `key`. In fact, *this is the most complicated algorithm for a BST*.
+
+#### Iterative `remove()`
+The iterative implementation is a bit tricky, and it is omitted in this book. Curious readers can refer to *Introduction to Algorithms*.
+
+#### Recursive `remove()`
+Like other recursive algorithms in a BST, `remove(x, key)` takes a node `x` and removes the node with `key` in the tree rooted at `x`, and returns a new root.
+
+Like what we did in `get()`, we shall descend the current node if `x.key` does not equal `key. And the real tricky part is how to handle the case when they are identical.
+
+- If `x` does not have any child, then return `null`.
+- If `x` has just one child, then return that child.
+- Otherwise, `x` can be replaced with the leftmost (i.e, *min*) node `y` in the tree rooted at `x.right`. Essentially, `y` is the successor of `x`. In addition, *the right child of updated `x` becomes `deleteMin(right, key)`*, and the left child remains unchanged.
+
+
+             10                              11
+           /     \         delete(10)      /     \
+          7       15       --------->    7        15 
+         /  \    /  \                   /  \        \ 
+        5    8  11   18                5    8        18
+
+<img src="image/alg-bst-delete.png" width="80%">
+
+Then removing node by a given key in a BST is 
+
+```java
+root = remove(root, key);
 ```
 
 ---
