@@ -17,3 +17,12 @@
           7       15       --------->     7       15 
         /  \    /   \                    /       /  \ 
        5    8  11   18                 5        11   18
+
+---
+4. Please implement `removeMax(x, key)` which returns a new root for a BST in an iterative way.
+
+---
+5. Please implement all order-based operations for a BST introduced in [Binary Search Tree (2)](./bst2.md).
+
+---
+6. Please summarize the time complexity of insertion operation for an unordered linked list, an ordered array and a BST on the worst-case and average-case, respectively.

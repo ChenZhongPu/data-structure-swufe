@@ -136,7 +136,7 @@ public class BST2 {
             z = z.left;
         }
         if (y == null) {
-            x = x.right;
+            x = z.right;
         } else {
             y.left = z.right;
         }
@@ -210,16 +210,14 @@ public class BST2 {
     }
 
     private void inOrder(Node x) {
-        if (x.left != null) inOrder(x.left);
-        System.out.println(x.key);
-        if (x.right != null) inOrder(x.right);
+        if (x != null) {
+            inOrder(x.left);
+            System.out.println(x.key);
+            inOrder(x.right);
+        }
     }
 
     public void inOrder() {
-        if (isEmpty()) {
-            System.out.println("Empty!");
-            return;
-        }
         inOrder(root);
     }
 
@@ -249,8 +247,7 @@ public class BST2 {
         n = bst2.search(19);
         assert n == null;
         bst2.inOrder();
-        System.out.println("----");
         bst2.remove(12);
-        bst2.inOrder();
+        assert bst2.isBST();
     }
 }

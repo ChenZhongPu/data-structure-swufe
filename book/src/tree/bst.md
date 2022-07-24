@@ -49,7 +49,7 @@ class BST:
 ```
 
 ### A few notes on *comparable*
-In a BST, the keys should be *comparable*. The basic data types, such as `int`, `double`, and `String` are comparable. Then what about a `Dog` class?  Can we say a dog is larger or smaller than another dog? Such comparison makes sense if and only if a `Dog` is comparable.
+In a BST, the keys should be *comparable*. The basic data types, such as `int`, `double`, and `String` are comparable. Then what about a `Dog` class? Can we say a dog is larger or smaller than another dog? Such comparison makes sense if and only if a `Dog` is comparable.
 
 In Java, it is enforced by the [Comparable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html) interface, and it can also combined with generics. In addition, we can use its `compareTo()` method, instead of the comparison operators (e.g., >, <, ==) in the code.
 
@@ -62,7 +62,7 @@ class Node<Key extends Comparable<Key>> {
 In Python, in order to use the comparison operator (e.g., >, <, ==) directly, one shall provide the rich comparison methods for ordering in the user-defined class[^comparison]. Luckily, it is the responsibility for people who use a BST, not for us who create a BST.
 
 ## BST implementation
-
+The complete code (using *recursions*) can be found at [BST.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST.java) and [bst.py](). In addition, an iterative implementation can be found at [BST2.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST2.java).
 ### `size()`
 We can also maintain the `size` member variable in a BST like we did in linked lists. Here we adopt another solution: `Node` holds an instance variable `n` which givens the node count in the subtree rooted at the node.
 
@@ -201,10 +201,42 @@ Like what we did in `get()`, we shall descend the current node if `x.key` does n
 
 <img src="image/alg-bst-delete.png" width="80%">
 
-Then removing node by a given key in a BST is 
+The time complexity is also \\(O(h)\\).
+
+Then removing node by a given `key` in a BST is 
 
 ```java
 root = remove(root, key);
+```
+
+## A few notes on Python's implementation[^static]
+Since Python supports nested methods, we can define some *private* methods as *nested*. For example, the recursive implementation of `get(x, key)` will only be called by `get(key)`, and it can be designed as a *nested* one:
+
+```python
+def get(self, key):
+    def _get(x: BST.Node):
+        if x is None or key == x.key:
+            return x
+        if key < x.key:
+            return _get(x.left)
+        elif key > x.key:
+            return _get(x.right)
+    if key is None:
+        raise KeyError
+    return _get(self._root)
+```
+
+Note that the inner method can access the parameter of its outer method, so the repeated `key` can be omitted.
+
+On the other hand, some helper methods will be called by several other methods. In that case, it can be designed as a *static* one:
+
+```python
+@staticmethod
+def _size(x: Node):
+    if x is None:
+        return 0
+    else:
+        return x.n
 ```
 
 ---
@@ -213,3 +245,5 @@ root = remove(root, key);
 [^parent] Some implementations would also maintain an extra link to its parent.
 
 [^comparison] See more at https://stackoverflow.com/questions/8276983/.
+
+[^static] The *inner* and *static* implementations are not compulsory, and it is fine to always use the regular instance methods.

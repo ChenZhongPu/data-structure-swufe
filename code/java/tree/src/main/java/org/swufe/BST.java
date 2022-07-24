@@ -58,6 +58,7 @@ public class BST<Key extends Comparable<Key>> {
     }
 
     public void put(Key key) {
+        if (key == null) throw new IllegalArgumentException();
         root = put(root, key);
     }
 
@@ -74,6 +75,7 @@ public class BST<Key extends Comparable<Key>> {
     }
 
     private Node<Key> get(Key key) {
+        if (key == null) throw new IllegalArgumentException();
         return get(root, key);
     }
 
@@ -146,5 +148,14 @@ public class BST<Key extends Comparable<Key>> {
     public Key max() {
         if (isEmpty()) throw new NoSuchElementException();
         return max(root).key;
+    }
+
+    private int height(Node<Key> x) {
+        if (x == null) return -1;
+        else return 1 + Math.max(height(x.left), height(x.right));
+    }
+
+    public int height() {
+        return height(root);
     }
 }

@@ -20,7 +20,15 @@ class BSTTest {
         bst.put(15);
         bst.put(17);
         bst.put(13);
+        //           12
+        //         /    \
+        //       5      18
+        //     /  \    /  \
+        //    2    9  15  19
+        //            / \
+        //          13   17
         assertEquals(bst.size(), 9);
+        assertEquals(bst.height(), 3);
         assertTrue(bst.contains(9));
         assertFalse(bst.contains(7));
 
