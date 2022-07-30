@@ -170,6 +170,7 @@ public class BST2 {
             parent.right = v;
         }
     }
+
     public void remove(int key) {
         Node x = root;
         Node parent = null;
@@ -243,7 +244,7 @@ public class BST2 {
         bst2.inOrder();
         System.out.println("----");
         bst2.removeMax();
-        assert bst2.contains(19);
+        assert !bst2.contains(19);
         n = bst2.search(19);
         assert n == null;
         bst2.inOrder();

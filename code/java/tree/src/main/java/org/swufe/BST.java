@@ -1,5 +1,8 @@
 package org.swufe;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -157,5 +160,26 @@ public class BST<Key extends Comparable<Key>> {
 
     public int height() {
         return height(root);
+    }
+
+    private void range(Node<Key> x, List<Key> result, Key low, Key high) {
+        if (x == null) return;
+        int cmp_lo = low.compareTo(x.key);
+        int cmp_hi = high.compareTo(x.key);
+        if (cmp_lo < 0) {
+            range(x.left, result, low, high);
+        }
+        if (cmp_lo <=0 && cmp_hi >= 0) {
+            result.add(x.key);
+        }
+        if (cmp_hi > 0) {
+            range(x.right, result, low, high);
+        }
+    }
+    public List<Key> range(Key low, Key high) {
+        assert low.compareTo(high) <= 0;
+        List<Key> result = new ArrayList<>();
+        range(root, result, low, high);
+        return result;
     }
 }

@@ -31,6 +31,8 @@ And you can even provide additional message for an assertion:
 assert f.fibonacci(5) == 5 : "Error when n is 5";
 ```
 
+Note that you need to add `-ea` option to enable assertions. In Intellij IDEA, it can be set in `Run > Edit Configurations... > Configuration > VM options`.
+
 ### Python
 
 ```python

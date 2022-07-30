@@ -32,6 +32,8 @@
     - [Binary Search Trees (1)](tree/bst.md)
     - [Binary Search Trees (2)](tree/bst2.md)
     - [Balanced Search Trees](tree/balanced.md)
+    - [Red Black Trees (1)](tree/rbt.md)
+    - [Red Black Trees (2)](tree/rbt2.md)
     - [Case Study](tree/case.md)
     - [Exercise](tree/exercise.md)
 - [Priority Queues](pq/intro.md)

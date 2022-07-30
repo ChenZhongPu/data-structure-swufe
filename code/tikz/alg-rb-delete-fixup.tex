@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{delete-fixup(x)}
+\tcp{$x$ is the child of the deleted node}
+\While{x $\neq$ root and x.color = BLACK}{
+    \If{x = x.p.left}{
+        \tcp{is $x$ a left child?}
+        $w\gets x.p.right$ \tcp{$w$ is $x$'s sibling}
+        \If{x.color = RED}{
+            \tcp{case 1}
+            $w.color\gets BLACK$ \\
+            $x.p.color\gets RED$ \\
+            left-rotate($x.p$) \\
+            $w\gets x.p.right$
+        }
+        \If{w.left.color = BLACK and w.right.color = BLACK}{
+            \tcp{case 2}
+            $w.color\gets RED$ \\
+            $x\gets x.p$
+        }\Else{
+            \If{w.right.color = BLACK}{
+                \tcp{case 3}
+                $w.left.color\gets BLACK$ \\
+                $w.color\gets RED$ \\
+                right-rotate($w$) \\
+                $w\gets x.p.right$
+            }
+            \tcp{case 4}
+            $w.color\gets x.p.color$ \\
+            $x.p.color\gets BLACK$ \\
+            $w.right.color\gets BLACK$ \\
+            left-rotate($x.p$) \\
+            $x\gets root$
+        }
+    }\Else{
+        \tcp{symmetric with above, with "right" and "left" exchanged}
+    }
+}
+\end{algorithm}
+\end{document}

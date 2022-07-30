@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{put(key)}
+\KwIn{A new $key$}
+$z\gets Node(key)$ \tcp{the new node}
+$x\gets root$ \tcp{node being compared with $z$}
+$y\gets null$ \tcp{$y$ will be parent of $z$}
+\While{x $\neq$ null}{
+    \tcp{descend until reaching the sentinel}
+    $y\gets x$ \\
+    \uIf{key $<$ x.key}{
+        $x\gets x.left$
+    }\uElseIf{key $>$ x.key} {
+        $x\gets x.right$
+    }\uElse{
+        \Return{} \tcp{stop if duplicated keys are found}
+    }
+}
+$z.p\gets y$ \tcp{found the location: insert $z$ with parent $y$}
+\uIf{y = null}{
+    $root\gets z$ \tcp{tree was empty}
+}\uElseIf{z.key $<$ y.key}{
+    $y.left\gets z$
+}\uElse{
+    $y.right\gets z$
+}
+insert-fixup($z$)
+\end{algorithm}
+\end{document}

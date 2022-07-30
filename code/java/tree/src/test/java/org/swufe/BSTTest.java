@@ -2,6 +2,11 @@ package org.swufe;
 
 import org.junit.jupiter.api.Test;
 
+import java.security.Key;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BSTTest {
@@ -31,6 +36,9 @@ class BSTTest {
         assertEquals(bst.height(), 3);
         assertTrue(bst.contains(9));
         assertFalse(bst.contains(7));
+
+        List<Integer> keys = bst.range(8, 15);
+        assertEquals(keys, Arrays.asList(9, 12, 13, 15));
 
         assertEquals(bst.min(), 2);
         assertEquals(bst.max(), 19);

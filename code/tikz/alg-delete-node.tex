@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{delete(z)}
+\KwIn{The to-be-deleted node $z$}
+\uIf{z.left = null}{
+    transplant(z, z.right) \tcp{replace $z$ by its right child}
+}\uElseIf{z.right = null} {
+    transplant(z, z.left) \tcp{replace $z$ by its left child}
+}\Else{
+    $y\gets min(z.right)$ \tcp{$y$ is $z$'s successor}
+    \If{y $\ne$ z.right}{
+        $transplant(y, y.right)$ \\
+        $y.right\gets z.right$ \\
+        $y.right.p\gets y$
+    }
+    $transplant(z, y)$ \\
+    $y.left\gets z.left$ \\
+    $y.left.p\gets y$
+}
+\end{algorithm}
+\end{document}

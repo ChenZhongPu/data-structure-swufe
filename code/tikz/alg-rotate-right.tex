@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{right-rotate(y)}
+\KwIn{A node $y$ of a BST}
+\tcp{$y.left$ is not null}
+$x\gets y.left$ \\
+$y.left\gets x.right$ \\
+\If{x.right $\neq$ null}{
+    $x.right.p\gets y$
+}
+$x.p\gets y.p$ \\
+\uIf{y.p = null}{
+    $root\gets x$ \tcp{if y was the root}
+}\uElseIf{y = y.p.left} {
+    $y.p.left\gets x$ \tcp{if y was a left child}
+}\uElse{
+    $y.p.right\gets x$ \tcp{if y was a right child}
+}
+$x.right\gets y$ \\
+$y.p\gets x$ \\
+\end{algorithm}
+\end{document}

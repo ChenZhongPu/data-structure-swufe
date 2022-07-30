@@ -23,6 +23,7 @@ When studying trees, you will be immersed with a ton of terminologies. Please ca
 - The **level** of a node is the same as depth when using zero-based counting.
 - Each non-root node can be treated as the root node of its own **subtree**, which includes that node and all its descendants.
 - Number of nodes in the tree is called **size of a tree**.
+- A **path** is a sequence of nodes with the property that each node in the sequence is adjacent to the node linked to it. A path that does not repeat nodes is called a **simple path**.
 
 ---
 [^descendant] The counterpart of an ancestor is called **descendant**, meaning a node reachable by repeated proceeding from parent to child. Also known as *subchild*. 

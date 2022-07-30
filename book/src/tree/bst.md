@@ -9,13 +9,13 @@ In a **binary search tree**, each node also has a key (and a value)[^value], wit
 
 > A binary search tree (**BST**) is a binary tree where each node has a (*comparable*) key and satisfies the restriction that the key in any node is larger than the keys in all nodes in that node’s left subtree and smaller than the keys in all nodes in that node’s right subtree.
 
-<img src="image/bst.png" width="60%">
+<img src="image/bst2.png" width="60%">
 
-The reason why the ordering restriction matters is that it can reduce the time of searching greatly. For example, given a binary search tree with integer keys, how to search 65? Let's start from its root:
+The reason why the ordering restriction matters is that it can reduce the time of searching greatly. For example, given a binary search tree with integer keys, how to search 6? Let's start from its root (8):
 
-- Since 65 > 44, go to its right child.
-- Since 65 < 88, go to its left child.
-- Since 65 == 65, bingo!
+- Since 6 < 8, go to its left child.
+- Since 6 < 3, go to its right child.
+- Since 6 == 6, bingo!
 
 Only three comparisons are required while searching, and this idea is also found at the binary search of a sorted list (recall [BinarySearch.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/main/java/org/swufe/datastructure/BinarySearch.java) or [binary_search.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/binary_search.py)).
 
@@ -62,7 +62,7 @@ class Node<Key extends Comparable<Key>> {
 In Python, in order to use the comparison operator (e.g., >, <, ==) directly, one shall provide the rich comparison methods for ordering in the user-defined class[^comparison]. Luckily, it is the responsibility for people who use a BST, not for us who create a BST.
 
 ## BST implementation
-The complete code (using *recursions*) can be found at [BST.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST.java) and [bst.py](). In addition, an iterative implementation can be found at [BST2.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST2.java).
+The complete code (using *recursions*) can be found at [BST.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST.java) and [bst.py](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/tree/bst.py). In addition, an iterative implementation can be found at [BST2.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST2.java).
 ### `size()`
 We can also maintain the `size` member variable in a BST like we did in linked lists. Here we adopt another solution: `Node` holds an instance variable `n` which givens the node count in the subtree rooted at the node.
 
@@ -94,9 +94,9 @@ This method is often called `insert()` in some implementations, and it is used t
 
 <img src="image/alg-bst-put2.png" width="80%">
 
-The following figure shows inserting a node with key 13 into a binary search tree. The simple path from the root down to the position where the node is inserted is shown in blue. The new node and the link to its parent are highlighted in orange.
+The following figure shows inserting a node with key 7 into a binary search tree. The simple path from the root down to the position where the node is inserted is shown in blue. The new node and the link to its parent are highlighted in orange.
 
-<img src="image/bst-insert.png" width="80%">
+<img src="image/bst-insert.png" width="70%">
 
 As we can see, to insert a new key, we shall descend from the root to a leaf. Suppose *h* is the height of the tree, the time complexity of `put()` is \\(O(h)\\).
 

@@ -22,7 +22,28 @@
 4. Please implement `removeMax(x, key)` which returns a new root for a BST in an iterative way.
 
 ---
-5. Please implement all order-based operations for a BST introduced in [Binary Search Tree (2)](./bst2.md).
+5. Ordered-based operations.
+
+- Please implement all order-based operations for a BST introduced in [Binary Search Tree (2)](./bst2.md).
+- Can you implement them in an iterative way?
 
 ---
-6. Please summarize the time complexity of insertion operation for an unordered linked list, an ordered array and a BST on the worst-case and average-case, respectively.
+6. Please argue that inserting a new key into a RBT will never violate Property 1, 3 and 4.
+
+---
+7. Try to implement a RBT with a global `NIL` object.
+
+---
+8. Please plot the height of a RBT with random *N* keys.
+
+---
+9. A node `x` is inserted into a RBT with `put()` and then is immediately deleted with `remove()`. Is the resulting tree always the same as the initial red-black tree? Justify your answer.
+
+---
+10. If we didn't introduce `NIL` object, then how to handle the case when `x` is `null` for the deletion on a RBT?
+
+---
+11. Draw the RBT that results when you insert items with the keys (10, 2, 30, 40, 26, 32, 11, 18) in that order into an initially empty tree.
+
+---
+12. Please design an algorithm to check whether a given RBT is valid.
