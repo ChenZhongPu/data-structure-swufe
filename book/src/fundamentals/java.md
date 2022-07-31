@@ -39,7 +39,7 @@ Furthermore, those three steps can be even shortened into one line:
 double[] a = { 3.14, 3.15, 3.16 };
 ```
 
-Note that like most programming languages, Java would provide default values even if you do not initialize them, but it is a bad practice to rely on the complier. So **please make an initialization explicitly before using an array**.
+Note that like most programming languages, Java would provide default values even if you do not initialize them, but it is a bad practice to rely on the compiler. So **please make an initialization explicitly before using an array**.
 
 ### Accessing an array
 We can access an array via *indexing*:
@@ -96,7 +96,7 @@ public class Grocery {
 }
 ```
 
-There is a golden rule in programming: **don't repeat yourself**, so we would like to manages either `Book` or `Fruit` using one piece of code. Since every class in Java is inherited from `Object`, what about `Object[]`? Well, it is feasible but it is also error-prone, because it cannot prevent users adding both books and fruits to our system at the same time. To solve this problem, you should use generics. Generics have been a part of the language since Java 5, and see more at [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html).
+There is a golden rule in programming: **don't repeat yourself**, so we would like to manage either `Book` or `Fruit` using one piece of code. Since every class in Java is inherited from `Object`, what about `Object[]`? Well, it is feasible, but it is also error-prone, because it cannot prevent users adding both books and fruits to our system at the same time. To solve this problem, you should use generics. Generics have been a part of the language since Java 5, and see more at [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html).
 
 But keep in mind that arrays and generics do not mix well. For example, the following code will result in *generic array creation* at compile time:
 
@@ -124,7 +124,7 @@ public class Manager<E> {
 }
 ```
 
-Since casting an `Object[]` to `E[]` is unsafe, we use `@SuppressWarnings("unchecked")`[^unchecked] to tell the complier that I know what I am doing and please don't give me any warning. Don't get frustrated if you don't fully understand what the code above means, and we will go back to discuss the code in detail later. What you need to know now is to realize the importance of generics and possible traps when combining generics and arrays.
+Since casting an `Object[]` to `E[]` is unsafe, we use `@SuppressWarnings("unchecked")`[^unchecked] to tell the compiler that I know what I am doing, and please don't give me any warning. Don't get frustrated if you don't fully understand what the code above means, and we will go back to discuss the code in detail later. What you need to know now is to realize the importance of generics and possible traps when combining generics and arrays.
 
 By the way, it is very straightforward to make use of the generic class:
 
@@ -143,7 +143,7 @@ As a Java programmer, you should get familiar with `java.util.Arrays` which offe
 List<String> books = Arrays.asList("Gone with the Wind", "Hands on Data Structures");
 ```
 
-- `fill​(int[] a, int val)`: Assigns the specified int value to each element of the specified array of ints.
+- `fill​(int[] a, int val)`: Assigns the specified int value to each element of the specified array of `int`s.
 
 ```java
 int[] arr = new int[100];
@@ -168,7 +168,7 @@ Arrays.sort(arr);
 ```
 
 ## List
-Here I mainly talk about [java.util.ArrayList](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html), which is an resizable-array implementation of `java.util.List`. Keep in mind that never use raw types for collections, including `List`, `Set` and `Map`, and make friends with generics! 
+Here I mainly talk about [java.util.ArrayList](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html), which is a resizable-array implementation of `java.util.List`. Keep in mind that never use raw types for collections, including `List`, `Set` and `Map`, and make friends with generics! 
 
 ```java
 List<String> books = new ArrayList<>(); // generics

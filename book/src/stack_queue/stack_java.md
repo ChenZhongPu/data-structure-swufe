@@ -113,7 +113,7 @@ private class ReverseArrayListIterator implements Iterator<Item> {
 
 The complete code can be found at [ArrayListStack.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/ArrayListStack.java).
 
-By the way, [Iterable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html) has offered a default `forEach()` API since 1.8, so the print code can be shorten to 
+By the way, [Iterable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html) has offered a default `forEach()` API since 1.8, so the print code can be shortened to 
 
 ```java
 stack.forEach(System.out::println);
@@ -124,7 +124,7 @@ stack.forEach(System.out::println);
 Readers can try to implement the client code using `ArrayListStack` for these two applications, and this is left as an exercise.
 
 ## Stack based on array
-In [Stack in Python](./stack_python.md), we summarized the times complexity of the operations of a stack:
+In [Stack in Python](./stack_python.md), we summarized the time complexity of the operations of a stack:
 
 | Operation | Running time |
 | -------- |  ------- |

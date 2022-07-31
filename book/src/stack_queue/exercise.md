@@ -66,4 +66,4 @@ b = a
 
 
 ---
-10. Try to solve problems tagged with [stack]((https://leetcode.com/tag/stack/) ) or [queue](https://leetcode.com/tag/queue/) in leetcode.
+10. Try to solve problems tagged with [stack]((https://leetcode.com/tag/stack/) ) or [queue](https://leetcode.com/tag/queue/) in LeetCode.

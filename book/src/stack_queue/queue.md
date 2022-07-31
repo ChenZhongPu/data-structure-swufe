@@ -13,7 +13,7 @@ When you hear of *queues*, you shall image a line of people waiting for the serv
 <img src="image/queue.png" width="50%">
 
 
-As a running example of *queues*, let's consider what happens when you are calling 10086. Suppose there is only one telephone operator and she is free now:
+As a running example of *queues*, let's consider what happens when you are calling 10086. Suppose there is only one telephone operator, and she is free now:
 
 | Action | Contents in the queue | Who is being served |
 | ----- | ------ | -------- |

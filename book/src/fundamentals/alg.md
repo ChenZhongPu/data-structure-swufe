@@ -76,7 +76,7 @@ According to the observation[^fig], some students may quickly make an insightful
 
 
 ## Mathematical models
-D.E. Knuth postulated that, despite all of the complicating factors in understanding the running times of our programs, it is possible, in principle, to build a mathematical model to describe the running time of any program. Knuth’s basic insight is simple: the total running time of a program is determined by two primary factors:
+D.E. Knuth postulated that, despite all the complicating factors in understanding the running times of our programs, it is possible, in principle, to build a mathematical model to describe the running time of any program. Knuth’s basic insight is simple: the total running time of a program is determined by two primary factors:
 
 - The cost of executing each statement
 - The frequency of execution of each statement
@@ -107,7 +107,7 @@ The frequency of the inner statement of this function is *(n-1) + (n-2) + ... + 
 
 \\[ \frac{n \times (n-1)}{n} = \frac{n^2 - n}{2} \\]
 
-Curious readers can try to implement a faster algorithm for this problem[^two-sum]. Note that here I put emphasis on *the worst case*, because if your are lucky enough, the sum of the first and second item equals target, then the frequency in the *best* case is only 1.
+Curious readers can try to implement a faster algorithm for this problem[^two-sum]. Note that here I put emphasis on *the worst case*, because if you are lucky enough, the sum of the first and second item equals target, then the frequency in the *best* case is only 1.
 
 As for the notation \\(\frac{n^2 - n}{2}\\), we can know that it is the \\(\frac{n^2}{2}\\) that plays a major rule in terms of the growth, so we can say \\(\frac{n^2}{2}\\) approximates to \\(\frac{n^2 - n}{2}\\). In addition, when it comes to the order of growth, the constant here (i.e., 1/2) is also insignificant. The following shows some typical approximations:
 

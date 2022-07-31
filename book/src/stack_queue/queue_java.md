@@ -48,7 +48,7 @@ Except for the syntax itself, they are the same exactly! The complete code can b
 ## An experimental evaluation
 According to the theoretical analysis, the time complexity of `dequeue()` of circular queues is \\(O(1)\\). To what follows, I design a small benchmark to evaluate its performance ([Benchmark.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/Benchmark.java)).
 
-We initialize the size in the range of [10000000, 20000000, 30000000, 40000000, 50000000], and we find that no matter how the size changes, the measured is always 0! It is super fast with a constant time complexity.
+We initialize the size in the range of [10000000, 20000000, 30000000, 40000000, 50000000], and we find that no matter how the size changes, the measured is always 0! It is very fast with a constant time complexity.
 
 
 ## A few notes on `Queue` interface

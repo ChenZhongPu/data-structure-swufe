@@ -54,4 +54,4 @@ The complete code can be found at [LeetCode206.java](https://github.com/ChenZhon
 
 [^sum] You don't really have to design a method to compute a sum, because we can use the built-in `sum()` method directly in Python.
 
-[^stack] Some algorithms are called **tail recursive** because the last statement in the algorithm is to "restart" the algorithm. Tail recursive algorithms are usually translated into loops by most compliers, so there is no any efficiency deficit in runtime. See more at [What is tail recursion?](https://stackoverflow.com/questions/33923/).
+[^stack] Some algorithms are called **tail recursive** because the last statement in the algorithm is to "restart" the algorithm. Tail recursive algorithms are usually translated into loops by most compilers, so there is not any efficiency deficit in runtime. See more at [What is tail recursion?](https://stackoverflow.com/questions/33923/).

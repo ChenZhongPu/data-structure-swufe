@@ -123,7 +123,7 @@ You are required to know and practice at least those methods:
 Like the list, iterations via `for`, `len()`, `in` (`not in`), and set comprehensions are also supported. 
 
 ## Dictionary
-Python's dic assembles Java's `HashMap`, representing an collection of key-value pairs. Dictionaries can be used to represent a mapping between a key and a value, and we assume that keys are unique. For example:
+Python's `dict` assembles Java's `HashMap`, representing a collection of key-value pairs. Dictionaries can be used to represent a mapping between a key and a value, and we assume that keys are unique. For example:
 
 | Key | Value |
 |---------|---------|
@@ -185,7 +185,7 @@ for k, v in cart.items():
 ```
 
 ## Collections
-The [collections](https://docs.python.org/3/library/collections.html) module implements specialized container datatypes providing alternatives to Python’s general purpose built-in containers (i.e., *list*, *tuple*, *set*, and *dict*). In the following, I will introduce `defaultdict` which can supply missing values based on `dict`.
+The [collections](https://docs.python.org/3/library/collections.html) module implements specialized container data types providing alternatives to Python’s general purpose built-in containers (i.e., *list*, *tuple*, *set*, and *dict*). In the following, I will introduce `defaultdict` which can supply missing values based on `dict`.
 
 ```python
 from collections import defaultdict

@@ -1,7 +1,7 @@
 # Stack In Python
 Fortunately, the `list` in Python supports the operations required by stacks. To be specific,
 
-- `append()` is to add an new item an the *end* of the list, so it behaves exactly the same as `push()`.
+- `append()` is to add a new item at the *end* of the list, so it behaves exactly the same as `push()`.
 - `pop`(). Aha! The same method name as we expect.
 
 ```python
@@ -16,7 +16,7 @@ a.push(6)
 v = a.pop() # 6
 ```
 
-But, we cannot get its size and check the emptiness of a `list` in an object-oriented way. To this end, a better way is to encapsulate the data and related operations in a class. The following is the skelton of `Stack`, and the complete code can be found at [stack.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/stack.py). Because the list is an array, we call the following implementation **array-based stack**.
+But, we cannot get its size and check the emptiness of a `list` in an object-oriented way. To this end, a better way is to encapsulate the data and related operations in a class. The following is the skeleton of `Stack`, and the complete code can be found at [stack.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/stack.py). Because the list is an array, we call the following implementation **array-based stack**.
 
 ```python
 class Stack:
@@ -148,7 +148,7 @@ for i in s:
 ```
 
 ## Time complexity
-The following table summerizes the array-based stack's time complexity:
+The following table summarizes the array-based stack's time complexity:
 
 | Operation | Running time |
 | -------- |  ------- |
@@ -159,10 +159,10 @@ The following table summerizes the array-based stack's time complexity:
 
 As we can see, all APIs are with a constant time complexity. 
 
-Note that the time complexity of `push()` and `pop()` is *amortized*. Roughly speaking, it means \\(O(1)\\) happens most of time, but it may have a larger time complexity only once a while[^resize]; and on average, the worst complexity is still  \\(O(1)\\). 
+Note that the time complexity of `push()` and `pop()` is *amortized*. Roughly speaking, it means \\(O(1)\\) happens most of time, but it may have a larger time complexity only once a while[^resize]; and on average, the worst complexity is still \\(O(1)\\). 
 
 ## Application (1): matching parentheses
-In this subsection, we explore an application of stacks by considering matching parentheses in arithmetic expressions. Here we assume that only parentheses `()`, braces `{}`, and brackets `[]` are allowed. This application is also found at [leetcode](https://leetcode.com/problems/valid-parentheses/).
+In this subsection, we explore an application of stacks by considering matching parentheses in arithmetic expressions. Here we assume that only parentheses `()`, braces `{}`, and brackets `[]` are allowed. This application is also found at [LeetCode](https://leetcode.com/problems/valid-parentheses/).
 
 Clearly, each opening symbol must match its corresponding closing symbol. For example:
 
@@ -186,7 +186,7 @@ The idea of this algorithm can be described in plain English:
 
 - Scan the expression for left to right.
 - If the character belongs to openings (i.e., `([{`), it is pushed on a stack.
-- If the character belongs to the closings (i.e., `)]}`), an item popped from the stack will be checked if it is matched with the character. If matched, continue to scan; otherwise, return `False`.
+- If the character belongs to the closings (i.e., `)]}`), an item popped from the stack will be checked whether it is matched with the character or not. If so, continue to scan; otherwise, return `False`.
 - After scanning, if the stack is empty, return `True`; otherwise, return `False`.
 
 The steps above can be translated into the code:

@@ -178,7 +178,7 @@ Therefore, `old` and `data` refer to the same object, but with different names[^
 
 <img src="image/list_address2.png" width="70%">
 
-The next step is to copy from `old[front..rear]` to `data[0.._size]`. Of course, the range from `front` to `near` may be circular so it should be computed through the mod operation.
+The next step is to copy from `old[front..rear]` to `data[0.._size]`. Of course, the range from `front` to `near` may be circular, so it should be computed through the mod operation.
 
 The complete code can be found at [circular_queue.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/circular_queue.py). Please try to implement an iterator for circular queues on your own before checking the code in GitHub.
 

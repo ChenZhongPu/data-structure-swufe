@@ -3,7 +3,7 @@ In a singly linked list, each node maintains a reference to the node that is imm
 
 <img src="image/alg-sll-removelast.png" width="80%">
 
-To boost the efficiency, we define a linked list in which each node keeps an explicit reference to the node before it and a reference to the node after it. Such ADT is known as a **doubly link list**, and it allows a greater variety of \\(O(1)\\) update operations. We continue to use the term `next` for the reference to teh node that follows another, and we introduce the term `prev` for the preference to the node that precedes it.
+To boost the efficiency, we define a linked list in which each node keeps an explicit reference to the node before it and a reference to the node after it. Such ADT is known as a **doubly link list**, and it allows a greater variety of \\(O(1)\\) update operations. We continue to use the term `next` for the reference to the node that follows another, and we introduce the term `prev` for the preference to the node that precedes it.
 
 ## Head and Trailer sentinels
 As we can see, we need to address some special cases (e.g., the size is 0/1) when implementing an API for linked lists. In order to avoid such boundaries checking, it helps to add special nodes at both ends of the list: 
@@ -15,7 +15,7 @@ These *dummy* nodes are referred to **sentinels** (or guards), and they do not s
 
 <img src="image/dummy.png">
 
-> Although we could implement a doubly linked list without sentinel nodes (just as we did with the singly linked list), the slight extra memory devoted to the sentinels greatly simplifies the logic of our operations for the simple reason that **both *header* and *trailer* always exist and they will never be changed**.
+> Although we could implement a doubly linked list without sentinel nodes (just as we did with the singly linked list), the slight extra memory devoted to the sentinels greatly simplifies the logic of our operations for the simple reason that **both *header* and *trailer* always exist, and they will never be changed**.
 
 Let's see an example to show the convenience brought by `header` sentinel in a singly linked list for `addLast()` method. 
 

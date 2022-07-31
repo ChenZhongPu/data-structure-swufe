@@ -21,7 +21,7 @@ A red-black tree is a binary search tree that satisfies the following **red-blac
 
 <img src="image/rbt.png" width="80%">
 
-We call the number of black nodes on any simple path from, but not including, a node *x* down to a leaf the **black-height** of the node, denoted bh(*x*). By property 5, the notion of black-height is well defined, since all descending simple paths from the node have the same number of black nodes. The black-height of a red-black tree is the black-height of its root. Take the red-black tree for instance, the *black-height* is 2.
+We call the number of black nodes on any simple path from, but not including, a node *x* down to a leaf the **black-height** of the node, denoted bh(*x*). By property 5, the notion of black-height is well-defined, since all descending simple paths from the node have the same number of black nodes. The black-height of a red-black tree is the black-height of its root. Take the red-black tree for instance, the *black-height* is 2.
 
 ### A few notes on leaves
 The leaf (`null`) here serves as a *sentinel* (recall the design of the doubly linked list). The sentinel makes it possible to treat a `null` child of a node *x* as an ordinary node whose parent is *x*, and this design leads to simpler code (especially for the deleting algorithm).
@@ -91,7 +91,7 @@ Rotation is a local operation in a search tree that preserves the **binary-searc
 
 <img src="image/rotate.png" width="70%">
 
-Let me emphasize the fact again that that a rotation operation preserves the binary-search tree property: the keys in \\(\alpha\\) precede *x.key*, which precedes the keys in \\(\beta\\), which precede *y.key*, which precedes the keys in \\(\gamma\\).
+Let me emphasize the fact again that a rotation operation preserves the binary-search tree property: the keys in \\(\alpha\\) precede *x.key*, which precedes the keys in \\(\beta\\), which precede *y.key*, which precedes the keys in \\(\gamma\\).
 
 ### Left rotations
 

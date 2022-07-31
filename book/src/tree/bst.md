@@ -3,7 +3,7 @@ A tree without any restriction is unpractical in general, and in this section, w
 
 <img src="image/binary.png" width="60%">
 
-Such data structure is known as **binary tree**, and we can define it as a either a null link or a node with a left link and a right link, each references to (disjoint) subtrees that are themselves binary trees. 
+Such data structure is known as **binary tree**, and we can define it as either a null link or a node with a left link and a right link, each references to (disjoint) subtrees that are themselves binary trees. 
 
 In a **binary search tree**, each node also has a key (and a value)[^value], with an ordering restriction to support efficient search.
 
@@ -49,7 +49,7 @@ class BST:
 ### A few notes on *comparable*
 In a BST, the keys should be *comparable*. The basic data types, such as `int`, `double`, and `String` are comparable. Then what about a `Dog` class? Can we say a dog is larger or smaller than another dog? Such comparison makes sense if and only if a `Dog` is comparable.
 
-In Java, it is enforced by the [Comparable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html) interface, and it can also combined with generics. In addition, we can use its `compareTo()` method, instead of the comparison operators (e.g., >, <, ==) in the code.
+In Java, it is enforced by the [Comparable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html) interface, and it can also be combined with generics. In addition, we can use its `compareTo()` method, instead of the comparison operators (e.g., >, <, ==) in the code.
 
 ```java
 class Node<Key extends Comparable<Key>> {
@@ -57,7 +57,7 @@ class Node<Key extends Comparable<Key>> {
 }
 ```
 
-In Python, in order to use the comparison operator (e.g., >, <, ==) directly, one shall provide the rich comparison methods for ordering in the user-defined class[^comparison]. Luckily, it is the responsibility for people who use a BST, not for us who create a BST.
+As for Python, in order to use the comparison operator (e.g., >, <, ==) directly, one shall provide the rich comparison methods for ordering in the user-defined class[^comparison]. Luckily, it is the responsibility for people who use a BST, not for us who create a BST.
 
 ## BST implementation
 The complete code (using *recursions*) can be found at [BST.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST.java) and [bst.py](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/tree/bst.py). In addition, an iterative implementation can be found at [BST2.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST2.java).

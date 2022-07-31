@@ -23,11 +23,11 @@ Once you have grasped the usages of an array, you are able to implement your own
 ## Pseudo code
 Previously, we use either plain English or a specific programming language to describe an algorithm, but it lacks of generality to some extent. This is because data structures and algorithms can be virtually written in all programming languages[^lan]. Therefore, we are seeking for a more general approach. The plain English is a candidate method, but it is overly verbose. More importantly, it is not accurate. 
 
-In this subsection, we will going to study the pseudo-code programming. The term *pseudo-code* refers to an informal, English-like notation for describing how an algorithm, a method, a class, or a program will work.
+In this subsection, we are going to study the pseudo-code programming. The term *pseudo-code* refers to an informal, English-like notation for describing how an algorithm, a method, a class, or a program will work.
 
 Pseudo-code is written using English-like statements, so target language coding details should be avoided if possible. On the other hand, common language elements such `if`, `for` and `return` can be used to used. Even, some common operations of well known ADT can also be adopted to simplify the statements (e.g., `push()`, `size()`).
 
-> There is no standard about how to write pseudo code. In this book, we will mainly follow the styles in [algorithm2e](https://www.ctan.org/pkg/algorithm2e).
+> There is no standard about how to write pseudo-code. In this book, we will mainly follow the styles in [algorithm2e](https://www.ctan.org/pkg/algorithm2e).
 
 ### Example: `indexOf(a, o)`
 

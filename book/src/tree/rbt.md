@@ -26,7 +26,7 @@ What violations of the red-black properties might occur?
 - **Case a**: If `z` is the `root`, then it violates Property 2. The solution to this is naive: just re-color it to *BLACK*.
 - **Case b**: If `z` is not the `root`, and its parent is also colored in *RED*, then it violates Property 4. The solution to this is a bit complicated.
 
-In describing the structure of a RBT, we’ll often need to refer to the sibling of a node’s parent. We use the term **uncle** for such a node. The following figures show show `insert-up()` operates on a sample RBT, with cases depending in part on the colors of a node, its parent, and its uncle.
+In describing the structure of a RBT, we’ll often need to refer to the sibling of a node’s parent. We use the term **uncle** for such a node. The following figures show `insert-up()` operates on a sample RBT, with cases depending in part on the colors of a node, its parent, and its uncle.
 
 <img src="image/rbt-insert-fixup1.png" width="70%">
 

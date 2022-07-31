@@ -40,7 +40,7 @@ first.next = second
 second.next = third
 ```
 
-From the definition, we can know that one is able to use the first node (`first` in our case) to represent a whole linked list, and the first node often is known as `head`. As for the procedure-oriented programming language (e.g., C), this is only  way to design a linked list.
+From the definition, we can know that one is able to use the first node (`first` in our case) to represent a whole linked list, and the first node often is known as `head`. As for the procedure-oriented programming language (e.g., C), this is the only way to design a linked list.
 
 To what follows, I will describe the common methods for a linked list ADT in a procedure-first way, and we are going to translate those pseudo code into Python or Java code in the following sections.
 
@@ -85,7 +85,7 @@ Additionally, if we introduce a `tail` for a linked list, the algorithm for addi
 
 <img src="image/alg-sll-addlast2.png" width="80%">
 
-We can also obverse another trade-off here: maintaining an extra pointer (i.e., `tail`) costs some overhead in space, but it gains much performance in time.
+We can also observe another trade-off here: maintaining an extra pointer (i.e., `tail`) costs some overhead in space, but it gains much performance in time.
 
 ## `removeFirst()`: remove an element at the beginning
 If the linked list is empty, then an exception should be thrown. Otherwise, we update the `head` to the second node.
@@ -102,7 +102,7 @@ The basic idea seems simple: if the linked list is empty, then an exception shou
 
 <img src="image/alg-sll-removelast.png" width="80%">
 
-As we can see, it is a little bit tricky to delete the last node of a singly linked list. Since we have to walk though the linked list, the time complexity is \\(O(N)\\). We will introduce a simpler and more efficient way based on doubly linked lists.
+As we can see, it is a little tricky to delete the last node of a singly linked list. Since we have to walk through the linked list, the time complexity is \\(O(N)\\). We will introduce a simpler and more efficient way based on doubly linked lists.
 
 
 ---
