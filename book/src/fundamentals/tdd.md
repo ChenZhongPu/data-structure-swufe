@@ -99,6 +99,8 @@ void addTwoNegatives() {
 
 A test case can be either *passed* or *failed*. If all test cases are passed, we can somewhat ensure that this program works as we expected[^bug]. Otherwise, it indicates that there is some bugs in our code, and we should fix them before moving on. The comprehensive usage of `JUnit 5` is out of the scope of this book, readers can refer to [A Guide to JUnit 5](https://www.baeldung.com/junit-5) for a quick start.
 
+By the way, all assertions are enabled when executing the unit tests.
+
 ### Python
 Luckily, the [unittest](https://docs.python.org/3/library/unittest.html) module is built with Python, so we do not have to rely on any third-party library.
 

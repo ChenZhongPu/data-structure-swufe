@@ -89,3 +89,11 @@ And the size of the heap is `len(self._pq) - 1`.
 
 ### Java
 If we use [ArrayList](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html) which has the resizing capability, the code is similar to the Python version. Instead, I choose the built-in array type and implement the resizing method by ourselves, as we did for stacks.
+
+By the way, to swap two elements in an `ArrayList`, we can use:
+
+```java
+private void swap(int i, int j) {
+    Collections.swap(pq, i, j);
+}
+```

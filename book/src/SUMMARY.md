@@ -39,6 +39,7 @@
 - [Priority Queues](pq/intro.md)
     - [PQ Implementation (1)](pq/imp.md)
     - [PQ Implementation (2)](pq/imp2.md)
+    - [Case Study](pq/case.md)
     - [Exercise](pq/exercise.md)
 - [Hash](hash/intro.md)
 - [Sorting](sorting/intro.md)
