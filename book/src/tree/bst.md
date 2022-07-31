@@ -11,7 +11,7 @@ In a **binary search tree**, each node also has a key (and a value)[^value], wit
 
 <img src="image/bst2.png" width="60%">
 
-The reason why the ordering restriction matters is that it can reduce the time of searching greatly. For example, given a binary search tree with integer keys, how to search 6? Let's start from its root (8):
+For example, given a binary search tree with integer keys, how to search 6? Let's start from its root (8):
 
 - Since 6 < 8, go to its left child.
 - Since 6 < 3, go to its right child.
@@ -21,10 +21,8 @@ Only three comparisons are required while searching, and this idea is also found
 
 Let's recap the *binary-search-tree property* again: Let *x* be a node in a binary search tree.
 
-- If *y* is a node in the left subtree of *x*, then \\(y.key \leq x.key \\).
-- If *y* is a node in the right subtree of *x*, then \\(y.key \geq x.key \\).
-
-For simplicity, we assume all keys are unique in our implementation. In other words, duplicated key are not allowed.
+- If *y* is a node in the left subtree of *x*, then \\(y.key < x.key \\).
+- If *y* is a node in the right subtree of *x*, then \\(y.key > x.key \\).
 
 ## BST structure
 Now let's talk about how to design a BST. Like a linked list, a BST can be represented by its *root* node due to the fact that it is recursive, where a node[^parent] consists of

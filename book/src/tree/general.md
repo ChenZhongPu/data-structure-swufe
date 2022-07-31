@@ -24,6 +24,7 @@ When studying trees, you will be immersed with a ton of terminologies. Please ca
 - Each non-root node can be treated as the root node of its own **subtree**, which includes that node and all its descendants.
 - Number of nodes in the tree is called **size of a tree**.
 - A **path** is a sequence of nodes with the property that each node in the sequence is adjacent to the node linked to it. A path that does not repeat nodes is called a **simple path**.
+- **Complete tree**: a tree in which every level, except possibly the deepest, is entirely filled (all nodes are as far left as possible).
 
 ---
 [^descendant] The counterpart of an ancestor is called **descendant**, meaning a node reachable by repeated proceeding from parent to child. Also known as *subchild*. 
