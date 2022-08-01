@@ -51,4 +51,19 @@ class MaxPQ2Test {
         pq.delMax();
         assertEquals(pq.max().getName(), "HARD SOFT");
     }
+
+    @Test
+    void immutable() {
+        MaxPQ2<Book> pq = new MaxPQ2<>();
+        Book b1 = new Book("Gone with the wind", 89, "Margaret Mitchell");
+        Book b2 = new Book("Data structures", 120, "Unknown");
+        Book b3 = new Book("The old man and the sea", 36, "Ernest Hemingway");
+        pq.insert(b1);
+        pq.insert(b2);
+        pq.insert(b3);
+
+        assertEquals(pq.max().getName(), "Data structures");
+        b2.setPrice(b2.getPrice() * 0.5);
+        assertEquals(pq.max().getName(), "Data structures");
+    }
 }

@@ -1,5 +1,5 @@
 # Case Study
-In this section, we will study the *comparison* in depth and then implement a more flexible `MaxPQ`. Note that the basic skills can also be applied in all ordered collections, including the BST in the previous chapter.
+In this section, we will study the *comparison* in depth and then implement a more flexible `MaxPQ`. Note that the basic skills can also be applied in all ordered collections, including the BST in the previous chapter. Finally, I will introduce the standard binary heap libraries.
 
 ## Comparison in depth
 ### Java
@@ -153,7 +153,7 @@ The `MaxPQ` requires that the keys are ordered, but we should not always expect 
 - If this comparator is null, then we still try to use the `Comparable` interface as the last resort.
 - Otherwise, we would use this self-defined comparator.
 
-The complete code can be found at [MaxPQ2.java]((https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/pq/src/main/java/org/swufe/datastructures/MaxPQ2.java).
+The complete code can be found at [MaxPQ2.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/pq/src/main/java/org/swufe/datastructures/MaxPQ2.java).
 
 ### Python
 Because Python is a dynamic language, the statement "*sometimes you are unable to change the class you want to compare*" does not hold true. For example, we can specify `__lt__()` in the runtime:
@@ -171,6 +171,59 @@ User.__lt__ = user_cmp
 ```
 
 But this approach is not Pythonic. Alternatively, you can pass a function as a key for the sort comparison, as we did for `sort()` method. Another feasible choice is to pass a `less()` function that returns a boolean value directly. Such function can be seen as a user-defined comparator.
+
+## Standard libraries
+
+> Again, like queues, we do not have to implement our own priority queues in most cases, and you should first check if the standard libraries can meet your requirements.
+
+### Java
+Among Java's collections family, [PriorityQueue](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/PriorityQueue.html) ,implementing interface [Queue](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html), works like [MaxPQ2.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/pq/src/main/java/org/swufe/datastructures/MaxPQ2.java). The elements of the priority queue are ordered according to their *natural ordering* (i.e., `Comparable`), or by a `Comparator`. **Note that it is a minimum heap**.
+
+- *insert*: `add()` or `offer()`
+- *return the minimum*: `peek()`
+- *remove the minimum*: `remove()` or `poll`
+
+```java
+Queue<Integer> pq = new PriorityQueue<>();
+pq.add(1);
+pq.add(9);
+pq.add(4);
+pq.add(0);
+pq.add(6);
+pq.add(3);
+System.out.println(pq.peek()); // 0
+System.out.println(pq.remove()); // 0
+System.out.println(pq.peek()); // 1
+```
+
+### Python
+Module [heapq](https://docs.python.org/3/library/heapq.html) provides an implementation of the heap queue algorithm, also known as the priority queue algorithm. Note that `heap[0]` is the smallest item, so **it is also a minimum heap**. 
+
+```python
+pq = []
+heapq.heappush(pq, 1)
+heapq.heappush(pq, 9)
+heapq.heappush(pq, 4)
+heapq.heappush(pq, 0)
+heapq.heappush(pq, 6)
+heapq.heappush(pq, 3)
+print(heapq.heappop(pq))  # 0
+print(pq[0])  # 1: works like `peek()`
+print(heapq.heappop(pq))  # 1
+```
+
+By the way, the tutorial also provides an approach to solve the problem that the data elements are not comparable:
+
+```python
+from dataclasses import dataclass, field
+from typing import Any
+
+@dataclass(order=True)
+class PrioritizedItem:
+    priority: int
+    item: Any=field(compare=False)
+```
+
 
 ---
 [^reverse1] If you would like a reverse order, you can use `Arrays.sort(a, Collections.reverseOrder())`. As for a list, you can use `Collections.sort(a, Collections.reverseOrder())`.
