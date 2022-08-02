@@ -97,3 +97,42 @@ private void swap(int i, int j) {
     Collections.swap(pq, i, j);
 }
 ```
+
+## How to construct a heap from elements
+Given a list of *N* elements, how to construct a heap from them? A naive way is to call the `insert()` method *N* times. Essentially, it is to call *N* times `swim()`, which takes \\(O(N\lg{N})\\) time totally.
+
+```java
+@SuppressWarnings("unchecked")
+public MaxPQ(Key[] data) {
+    n = data.length;
+    pq = (Key[]) new Comparable[n + 1];
+    System.arraycopy(data, 0, pq, 1, n);
+    for (int k = 1; k <= n; k--) {
+        swim(k);
+    }
+}
+```
+
+A clever method that is much more efficient is to use `sink()` to make sub-heaps as we go, which takes \\(O(N)\\) time in total.
+
+```java
+@SuppressWarnings("unchecked")
+public MaxPQ(Key[] data) {
+    n = data.length;
+    pq = (Key[]) new Comparable[n + 1];
+    System.arraycopy(data, 0, pq, 1, n);
+    for (int k = n / 2; k >= 1; k--) {
+        sink(k);
+    }
+}
+```
+
+In what follows, let's prove that sink-based heap construction uses at most *2N* compares and at most *N* exchanges. 
+
+It suffices to prove that sink-based heap construction uses fewer than *N* exchanges because the number of compares is at most twice the number of exchanges. For simplicity, assume that the binary heap is perfect (i.e., a binary tree in which every level is completely filled) and has height *h*. 
+
+A key at height *k* can be exchanged with at *k* keys beneath it when it is sunk down. Since there are \\(2^{h-k}\\) nodes at height *k*, the total number of exchanges is at most
+
+\\[h + 2(h - 1) + 4(h - 2) + 8(h - 3) + \dots + 2^{h}(0) =
+2^{h+1} - h - 2 = n - (h + 1) \leq n.
+\\]

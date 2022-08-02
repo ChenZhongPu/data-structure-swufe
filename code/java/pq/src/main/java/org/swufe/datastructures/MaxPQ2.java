@@ -1,12 +1,9 @@
 package org.swufe.datastructures;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class MaxPQ2<Key> {
-    private ArrayList<Key> pq;
+    private List<Key> pq;
     private Comparator<Key> comparator;
 
     public MaxPQ2() {
@@ -17,6 +14,28 @@ public class MaxPQ2<Key> {
         pq = new ArrayList<>();
         pq.add(null);
         this.comparator = comparator;
+    }
+
+    public static <T> MaxPQ2<T> fromListBySwim(List<T> data) {
+        MaxPQ2<T> maxPQ2 = new MaxPQ2<>();
+        maxPQ2.pq.addAll(data);
+        int n = maxPQ2.size();
+        for (int k = 1; k <= n; k++) {
+            maxPQ2.swim(k);
+        }
+        assert maxPQ2.isMaxHeap();
+        return maxPQ2;
+    }
+
+    public static <T> MaxPQ2<T> fromListBySink(List<T> data) {
+        MaxPQ2<T> maxPQ2 = new MaxPQ2<>();
+        maxPQ2.pq.addAll(data);
+        int n = maxPQ2.size();
+        for (int k = n / 2; k >= 1; k--) {
+           maxPQ2.sink(k);
+        }
+        assert maxPQ2.isMaxHeap();
+        return maxPQ2;
     }
 
     public int size() {

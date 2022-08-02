@@ -23,4 +23,11 @@ class MaxPQTest {
         assertEquals(pq.delMax(), 11);
         assertEquals(pq.max(), 9);
     }
+
+    @Test
+    void fromArray() {
+        Integer[] data = {1, 9, 4, 6, 8, 10, 7};
+        MaxPQ<Integer> pq = new MaxPQ<>(data);
+        assertEquals(pq.max(), 10);
+    }
 }

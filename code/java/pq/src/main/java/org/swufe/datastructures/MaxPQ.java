@@ -15,6 +15,17 @@ public class MaxPQ<Key extends Comparable<Key>> {
         n = 0;
     }
 
+    @SuppressWarnings("unchecked")
+    public MaxPQ(Key[] data) {
+        n = data.length;
+        pq = (Key[]) new Comparable[n + 1];
+        System.arraycopy(data, 0, pq, 1, n);
+        for (int k = n / 2; k >= 1; k--) {
+            sink(k);
+        }
+        assert isMaxHeap();
+    }
+
     public int size() {
         return n;
     }

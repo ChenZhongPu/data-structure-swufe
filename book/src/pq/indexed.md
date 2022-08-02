@@ -41,3 +41,15 @@ It means that the *n*-th location of the heap (`pq`) stores the *key*'s associat
 - `keys`: a *key* has an associated index *i*
 - `pq`: the heap whose position *j* stores index *i*, and the comparator is based on `keys[i]`
 - `qp`: the reverse array of `pq`
+
+Readers can try to implement the following methods, and the complete code can be found at [IndeMinPQ.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/pq/src/main/java/org/swufe/datastructures/IndeMinPQ.java) and [index_min_pq.py](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/pq/index_min_pq.py).
+
+```java
+public int delMin() {
+    // remove the minimum key and return its index
+}
+
+public void changeKey(int i, Key key) {
+    // change the key associated with index `i` to `key`
+}
+```

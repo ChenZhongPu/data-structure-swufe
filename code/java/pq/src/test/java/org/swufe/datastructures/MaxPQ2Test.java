@@ -2,7 +2,9 @@ package org.swufe.datastructures;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,4 +68,19 @@ class MaxPQ2Test {
         b2.setPrice(b2.getPrice() * 0.5);
         assertEquals(pq.max().getName(), "Data structures");
     }
+
+    @Test
+    void fromListSwim() {
+        List<Integer> data = Arrays.asList(1, 9, 4, 6, 8, 10, 7);
+        MaxPQ2<Integer> pq = MaxPQ2.fromListBySwim(data);
+        assertEquals(pq.max(), 10);
+    }
+
+    @Test
+    void fromListSink() {
+        List<Integer> data = Arrays.asList(1, 9, 4, 6, 8, 10, 7);
+        MaxPQ2<Integer> pq = MaxPQ2.fromListBySink(data);
+        assertEquals(pq.max(), 10);
+    }
+
 }

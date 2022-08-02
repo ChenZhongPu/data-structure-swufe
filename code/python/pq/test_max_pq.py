@@ -21,6 +21,11 @@ class TestMaxPQ(TestCase):
         self.assertEqual(pq.del_max(), 11)
         self.assertEqual(pq.max(), 9)
 
+    def test_from_list(self):
+        data = [1, 9, 4, 6, 8, 10, 7]
+        pq = MaxPQ(data)
+        self.assertEqual(pq.max(), 10)
+
 
 if __name__ == '__main__':
     unittest.main()

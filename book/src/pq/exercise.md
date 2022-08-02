@@ -18,3 +18,5 @@
 9. How to use [PriorityQueue](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/PriorityQueue.html) or [heapq](https://docs.python.org/3/library/heapq.html) as a minimum heap?
 ---
 10. Please design an algorithm to sort a list based on the heap.
+---
+11. Please give the time analysis for *swim*-based heap construction.

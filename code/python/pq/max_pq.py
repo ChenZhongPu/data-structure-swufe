@@ -4,9 +4,15 @@ from no_element import NoElement
 class MaxPQ:
     """A max binary heap."""
 
-    def __init__(self):
+    def __init__(self, data=None):
         self._pq = []
         self._pq.append(None)  # append a dummy key at index 0
+        if data is not None:
+            self._pq.extend(data)
+            n = len(data)
+            for k in range(n // 2, 0, -1):
+                self._sink(k)
+            assert self._is_max_heap()
 
     def size(self):
         return len(self._pq) - 1
