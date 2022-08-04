@@ -24,6 +24,8 @@ Let's recap the *binary-search-tree property* again: Let *x* be a node in a bina
 - If *y* is a node in the left subtree of *x*, then \\(y.key < x.key \\).
 - If *y* is a node in the right subtree of *x*, then \\(y.key > x.key \\).
 
+> As we can see, we can use a BST to represent a **dynamic set** if only *keys* are considered. If *values* are also involved, it is in fact a *map*. Throughout this book, we mainly focus on dynamic sets.
+
 ## BST structure
 Now let's talk about how to design a BST. Like a linked list, a BST can be represented by its *root* node due to the fact that it is recursive, where a node[^parent] consists of
 
@@ -238,7 +240,7 @@ def _size(x: Node):
 ```
 
 ---
-[^value] For simplicity, the associated value is not discussed in this chapter.
+[^value] For simplicity, the associated value (also known as satellite data) is not discussed in this chapter.
 
 [^parent] Some implementations would also maintain an extra link to its parent.
 
