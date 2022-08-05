@@ -48,6 +48,8 @@
     - [Hash Functions](hash/function.md)
         - [Hash in Java](hash/java.md)
         - [Hash in Python](hash/python.md)
+    - [Open-addressing Hashing](hash/open.md)
+    - [Case Study](hash/case.md)
 - [Sorting](sorting/intro.md)
 - [Graphs](graph/intro.md)
 - [Appendix](appendix/intro.md)

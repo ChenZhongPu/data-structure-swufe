@@ -17,7 +17,7 @@ Let's recap with the goal of a *hash function* again: map a key *k* to an intege
 
 ## Hash code
 ### Integer
-Both Java and Python rely on 32-bit hash codes, so for base types `byte`, `short`, `int`, and `char`, we can achieve a good hash code simply by casting a value to `int`. So the hash code of `123` is simply `123`.
+Java relies on 32-bit hash codes[^32], so for base types `byte`, `short`, `int`, and `char`, we can achieve a good hash code simply by casting a value to `int`. So the hash code of `123` is simply `123`.
 
 As for `float`, we can **treat its bit representation as an integer**. In Java, this is done by `Float.floatToIntBits(x)` given a float `x`. In Python, this can be done by the following code:
 
@@ -100,4 +100,6 @@ In practice, the multiplication method is best in the special case where the num
 \\[h(k) = (ka \ mod \ 2^{w}) >>> (w - \ell)\\]
 
 ---
+[^32] The size of Python's hash codes depend on the machine architecture. See more at [hash()](https://docs.python.org/3/reference/datamodel.html#object.__hash__).
+
 [^mask] We omitted the *mask code* here for simplicity. The real code inside **for** is `h = 31 * h + (v & 0xff)`. The use of a small prime integer such as 31 ensures that the bits of all the characters play a role. 

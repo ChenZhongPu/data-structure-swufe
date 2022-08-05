@@ -11,7 +11,7 @@ class Book:
         return hash((self._name, self._price))
 ```
 
-Like Java, an important rule to obey is that if a class defines equivalence through `__eq__`, then any implementation of `__hash__` must be consistent, in that if `x == y`, then `hash(x) == hash(y)`. 
+Like Java, an important rule to obey is that if a class defines equivalence through `__eq__`, then any implementation of `__hash__` must be consistent, in that if `x == y`, then `hash(x) == hash(y)`. Note that since Python uses a variable number of bits to store integers, it does not make sense to use bit shift operations on the result.
 
 ## A good hash function
 In summary, we have three primary requirements in implementing a good hash function for a given data type:

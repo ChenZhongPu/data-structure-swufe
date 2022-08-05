@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{xcolor}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\pagestyle{empty}
+\begin{document}
+\begin{algorithm}
+\caption{hash-delete(k)}
+$i\gets 0$ \\
+$q\gets h(k) \ mod \ m$ \\
+\While{i $<$ m and k $\neq$ keys[q]}{
+    $i\gets i + 1$ \\
+    $q\gets h(k, i)$ \tcp{$q\gets (q + 1) \ mod \ m$}
+}
+\If{i = m}{
+    \tcp{no such key}
+    \Return{}
+}
+\tcp{delete key and associated value}
+$keys[q]\gets null$ \\
+$values[q]\gets null$ \\
+\tcp{rehash all keys in the same cluster}
+$q = (q + 1) \ mod \ m$  \\
+\While{keys[q] $\neq$ null}{
+    $keyToRehash\gets keys[q]$ \\
+    $valueToRehash\gets values[q]$ \\
+    $keys[q]\gets null$ \\
+    $values[q]\gets null$ \\
+    $n\gets n - 1$ \\
+    put($keyToRehash, valueToRehash$) \\
+    $q = (q + 1) \ mod \ m$  \\
+}
+$n\gets n - 1$
+\end{algorithm}
+\end{document}

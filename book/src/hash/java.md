@@ -40,6 +40,18 @@ private int hash(Object x) {
 }
 ```
 
+### The implementation in JDK
+
+```java
+private int hash(Object x) {
+    int h = x.hashCode();
+    h ^= (h >>> 16);
+    return h & (m - 1);
+}
+```
+
+The above is how `HashMap` computes the hash in JDK. Suppose *m* is the power of 2, then modular operation can be replaced by a bit shift operation (`h & (m - 1) == h % m`).
+
 ## A good hash function
 In summary, we have three primary requirements in implementing a good hash function for a given data type:
 
