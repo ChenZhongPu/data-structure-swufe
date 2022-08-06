@@ -49,7 +49,6 @@ The following is the pseudo code for selection sort. Readers can try to implemen
 
 <img src="image/alg-selection-sort.png" width="80%">
 
-
 Note that here we used an English statement to describe the swapping operation in line 9.
 
 ---

@@ -72,7 +72,7 @@ Then its hash code can be computed as:
 \\[(31 \times areaCode + prefix) \times 31 + lineNum\\]
 
 ## Compression function
-Since our goal is an array index, not a 32-bit integer, we need to perform a compression function on the hash code. If keys are short non-negative integers, the compression function itself is the hash function.
+Since our goal is an array index, not a 32-bit integer, we need to perform a compression function on the hash code. If keys are short non-negative integers, the compression function itself is the hash function. In what follows, we introduce three common compression functions for hashing.
 
 ### The division method
 The **division method** for creating functions maps a key (hash code) *k* into one of *m* slots by taking the remainder of *k* divided by *m*. That is, the compression function is:
@@ -92,12 +92,14 @@ That is, the compression function is
 \\[h(k) = \lfloor m(kA \ mod \ 1)\rfloor\\]
 
 The general multiplication method has the advantage that the value of
-*m* is not critical and you can choose it independently of how you choose the multiplicative constant *A*.
+*m* is not critical and you can choose it independently of how you choose the multiplicative constant *A*. In practice, the multiplication method is best in the special case where the number *m* of hash-table slots is an exact power of 2, 
 
-### The multiply-shift method
-In practice, the multiplication method is best in the special case where the number *m* of hash-table slots is an exact power of 2, so that \\(m = 2^{\ell}\\) for some integer \\(\ell\\). If you choose a fixed *w*-bit positive integer \\(a = A2^{w}\\), where *0 < A < 1* so that *a* is in the range \\(0 < a < 2^{w}\\). You can define the hash function
+### The MAD method
+A more sophisticated compression function, which helps eliminate repeated patterns in a set of integer keys, is the **Multiply-Add-and-Divide** (or "MAD") method. This method maps an integer *k* to
 
-\\[h(k) = (ka \ mod \ 2^{w}) >>> (w - \ell)\\]
+\\[((ak + b)\ mod \ p)\ mod \ m\\]
+
+where *p* is a prime number larger than *m*, and *a* and *b* are integers chosen at random from the interval *[0, p − 1]*, with *a > 0*. 
 
 ---
 [^32] The size of Python's hash codes depend on the machine architecture. See more at [hash()](https://docs.python.org/3/reference/datamodel.html#object.__hash__).

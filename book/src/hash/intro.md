@@ -8,3 +8,5 @@ In this chapter, we mainly focus on three dictionary operations:
 - *search*
 - *insert*
 - *delete*
+
+Like a BST, we mainly focus on *keys*, so the ADT is a **set**. If we also consider the *values*, then it is a **symbol table** (a.k.a., map).
