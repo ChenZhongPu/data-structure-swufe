@@ -4,7 +4,7 @@ In this section, we will introduce three essential data structures in Python. Yo
 In addition, a quick overview about the *type hinting* in Python will also be covered.
 
 ## List
-Python's list assembles Java's `ArrayList`, representing a resizable array of items.
+Python's list resembles Java's `ArrayList`, representing a resizable array of items.
 
 ```python
 num = [1, 9, 4, 2]

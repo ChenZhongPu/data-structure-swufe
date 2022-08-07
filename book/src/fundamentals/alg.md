@@ -105,7 +105,7 @@ class Solution:
 
 The frequency of the inner statement of this function is *(n-1) + (n-2) + ... + 1* in the worst case:
 
-\\[ \frac{n \times (n-1)}{n} = \frac{n^2 - n}{2} \\]
+\\[ \frac{n \times (n-1)}{2} = \frac{n^2 - n}{2} \\]
 
 Curious readers can try to implement a faster algorithm for this problem[^two-sum]. Note that here I put emphasis on *the worst case*, because if you are lucky enough, the sum of the first and second item equals target, then the frequency in the *best* case is only 1.
 
