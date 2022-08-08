@@ -2,9 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{tipa}
-\newcommand*{\codefont}{\fontfamily{Comic Sans MS}\selectfont}
 \usepackage{graphicx}
 \usepackage{transparent}
+\usepackage{xeCJK}
 \usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
 \usepackage{tikz}
 \usetikzlibrary{calc,shadows.blur}
@@ -15,6 +15,14 @@
 \usepackage{csquotes}
 \usepackage{outlines}
 \usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
+\urlstyle{same}
 \usetheme{metropolis}
 \metroset{block=fill}
 \usecolortheme{default}
@@ -410,7 +418,7 @@ The time complexity of fibonacci is $O(2^n)$.
 \end{alertblock}
 \end{frame}
 
-\section{Test-driven Development}
+\section{\textcolor{darkmidnightblue}{Test-driven Development}}
 \begin{frame}[fragile]
     \frametitle{TDD}
     \begin{exampleblock}{Question}
@@ -461,6 +469,20 @@ assert fibonacci(5) == 5
 
 \end{frame}
 
+\begin{frame}[fragile=singleslide]
+    Note that \texttt{assert} is enabled in Python by default. To disable it, you can call Python with the \alert{-O} flag.
+
+    \begin{verbatim}
+        python3 -O <your program>
+    \end{verbatim}
+
+    Also note that \texttt{assert} is disabled in Java by default. To enable is, you can run the program with the \alert{-ea} flag.
+
+    \begin{verbatim}
+        java -ea <your program>
+    \end{verbatim} 
+\end{frame}
+
 \begin{frame}[fragile]
 The main usage of \alert{assert} is: \textbf{it should (not) meet some conditions}.
 
@@ -477,6 +499,95 @@ def fibonacci(n):
         return fibonacci(n - 1) + fibonacci(n - 2) 
 \end{minted}  
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Unit Test}
+\begin{quote}
+    For modern software engineering, the test driven development (TDD) is widely adopted, and \alert{unit tests} serve as an essential component in TDD. 
+\end{quote}
+
+A unit test should:
+\begin{itemize}
+    \item test one method
+    \item provide some specific arguments to that method
+    \item test that the result is as expected
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+
+    \begin{minted}[bgcolor=LightGray]{java}
+public class Add {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+    \end{minted}  
+In Java, the most popular unit test framework is \href{https://junit.org/junit5/}{JUnit 5}.
+
+\begin{minted}[bgcolor=LightGray]{java}
+@Test
+void add() {
+    Add a = new Add();
+    assertEquals(a.add(1, 2), 3);
+}    
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+In Python, the \href{https://docs.python.org/3/library/unittest.html}{unittest} module, inspired by JUnit, has a similar flavor as major unit testing frameworks in other languages.
+\begin{minted}[bgcolor=LightGray]{python}
+class Test(TestCase):
+    def test_add(self):
+        self.assertEqual(add(2, 1), 3)
+
+    def test_add_negatives(self):
+        self.assertEqual(add(-2, -2), -4)    
+\end{minted}
+
+\end{frame}
+
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[height=.4\paperheight]{week2/dijkstra}
+    \end{center}
+
+   \begin{quote}
+    Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.
+    \begin{flushright}
+        --- Edsger W. Dijkstra
+    \end{flushright}
+   \end{quote} 
+
+\end{frame}
+
+\begin{frame}
+    \section{\textcolor{darkmidnightblue}{Conclusion}}
+
+    \begin{enumerate}
+        \item Big O notation
+        \item Evaluation through visualization
+        \item Unit test
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Homework 1}
+All exercises can be found on the online book \href{https://chenzhongpu.github.io/data-structure-swufe/}{Hands On Data Structures}.    
+
+\begin{enumerate}
+    \item Ex4, Chapter 1 (5 marks)
+    \item Ex5, Chapter 1 (5 marks)
+\end{enumerate}
+\begin{tikzpicture}
+    \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+    text width=25em,anchor=south west,rounded corners]
+    {Please submit your homework before the deadline through \textbf{FeiShu Document}. Please follow the naming rule: \alert{HW<n>\_YourName\_StudentNum} (e.g., HW1\_李大锤\_2020123).
+    };
+\end{tikzpicture} 
 \end{frame}
 
 \end{document}

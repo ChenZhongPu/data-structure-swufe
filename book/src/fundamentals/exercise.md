@@ -1,6 +1,6 @@
 # Exercise
 
-1. In [CoffeeDB.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/start/CoffeeDB.java), we maintain a collection of coffees in an `ArrayList`, and this class offers a simple search method:
+1. In [CoffeeDB.java](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/start/src/CoffeeDB.java), we maintain a collection of coffees in an `ArrayList`, and this class offers a simple search method:
 
 ```java
 public List<Coffee> findByName(String name) {
@@ -48,3 +48,6 @@ a = sorted(a)
 
 ---
 7. Please give a big O characterization in terms of `n` for [BinarySearch.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/main/java/org/swufe/datastructure/BinarySearch.java) or [binary_search.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/binary_search.py).
+
+---
+8. Please design experiments to compare the efficiency between [fast_two_sum.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/) and [naive_two_sum.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/naive_two_sum.py). 

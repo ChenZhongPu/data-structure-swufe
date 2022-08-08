@@ -6,13 +6,13 @@ Fortunately, the `list` in Python supports the operations required by stacks. To
 
 ```python
 a = []
-a.push(5)
-a.push(3)
+a.append(5)
+a.append(3)
 v = a.pop() # 3
 v = a.pop() # 5
-a.push(7)
-a.push(9)
-a.push(6)
+a.append(7)
+a.append(9)
+a.append(6)
 v = a.pop() # 6
 ```
 
@@ -134,6 +134,13 @@ And `Stack`'s `__iter__()` method returns an instance of the iterator:
 ```python
 def __iter__(self):
     return ReverseListIterator(self._data)
+```
+
+We can also use the built-in `reversed()` iterator:
+
+```python
+def __iter__(self):
+    return reversed(self._data)
 ```
 
 In this way, we can iterate the stack as we do for other collections:
