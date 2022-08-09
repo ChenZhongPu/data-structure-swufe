@@ -119,7 +119,7 @@ for (int i = 1; i < N; i++)
 \begin{frame}[fragile]
     \begin{tikzpicture}
         \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-        text width=25em,anchor=south west,rounded corners]
+        text width=28em,anchor=south west,rounded corners]
         {High-level APIs won't change the time complexity. Sometimes they may be even slower.
         };
     \end{tikzpicture} 
@@ -600,7 +600,7 @@ public class ArrayStack<Item>{
           \node[slot, decorate] {}; 
           \\ 
         };
-        \node[below=of insert, xshift=-1cm] (start) {size = 3, capacity = 5};
+        \node[below=of insert, xshift=-1cm] (start) {\textbf{size} = 3, \textbf{capacity} = 5};
         \draw[->,thick,red, decorate] (start) -- (insert);      
         \end{tikzpicture} 
 
@@ -671,7 +671,7 @@ public class ArrayStack<Item>{
       \\ 
     };
     \draw[->, thick,decorate] (4n1) -- (5n1);
-    \draw[->, thick, decorate] (4n2) -- (5n2);
+    \draw[->, thick,decorate] (4n2) -- (5n2);
 
     \node[below=of shrink, xshift=-1.5cm, yshift=0.4cm] (start3) {\alert{shrink}};
     \draw[->,thick,red, decorate] (start3) -- (shrink);

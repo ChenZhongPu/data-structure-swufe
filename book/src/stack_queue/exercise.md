@@ -67,3 +67,8 @@ b = a
 
 ---
 10. Try to solve problems tagged with [stack]((https://leetcode.com/tag/stack/) ) or [queue](https://leetcode.com/tag/queue/) in LeetCode.
+
+---
+11. Postfix notation is an unambiguous way of writing an arithmetic expression without parentheses. It is defined so that if "(exp1)op(exp2)" is a normal fully parenthesized expression whose operation is `op`, the postfix version of this is "exp1 exp2 op". 
+
+So, for example, the postfix version of "((5 + 2) * (8 − 3))/4" is "5 2 + 8 3 − * 4 /". Describe an algorithm to evaluate an expression in postfix notation. For simplicity, the numbers and operators are separated with a space.
