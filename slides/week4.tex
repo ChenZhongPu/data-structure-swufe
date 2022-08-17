@@ -552,6 +552,7 @@ def _resize(self, capacity):
 \begin{frame}[fragile]
     \frametitle{Deque}
 Double ended queue, or \alert{deque}. It is often pronounced \emph{deck} to avoid confusion.
+
 \begin{tikzpicture}
     \colorlet{good}{green!75!black}
     \colorlet{bad}{red}
@@ -634,6 +635,12 @@ deque.offerFirst("data");
 deque.offerLast("fun");
     \end{minted} 
 \end{frame}
+
+{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+The \alert{deque} provides complete and consistent set of both LIFO stack operations and FIFO queue operations.
+\end{frame}
+}
 
 \begin{frame}[fragile]
     \frametitle{LeetCode 933. Number of Recent Calls}

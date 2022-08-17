@@ -13,6 +13,14 @@
 \usepackage{csquotes}
 \usepackage{outlines}
 \usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
+\urlstyle{same}
 \usetheme{metropolis}
 \metroset{block=fill}
 \usecolortheme{default}
@@ -170,7 +178,7 @@ double[] a = {3.14, 3.15, 3.16};
             System.out.println(a[i]);
         }        
         \end{minted}
-Enhanced \textbf{foo} statement (a.k.a., \emph{foo-each}).
+Enhanced \textbf{for} statement (a.k.a., \emph{for-each}).
         \begin{minted}
             [
                 bgcolor=LightGray
@@ -401,7 +409,8 @@ print(cart['7801'])
 \end{minted}
 \end{frame}
 
-\section{Why To Learn Data Structures?}
+
+\section{\textcolor{darkmidnightblue}{Why To Learn Data Structures?}}
 
 \begin{frame}[fragile]
 \begin{minted}[bgcolor=LightGray]{python}

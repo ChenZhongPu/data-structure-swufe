@@ -280,7 +280,7 @@ Another operation \texttt{top()} (a.k.a., \texttt{peek()}) is often used. It wor
 
 \begin{frame}[fragile]
 \begin{block}{Exception}
-    You need also consider the condition that cannot be handley by the ``normal flow''.
+    You need also consider the condition that cannot be handled by the ``normal flow''.
 \end{block}
 
 What will happen if we \texttt{pop} from an empty stack?
@@ -709,6 +709,12 @@ public Item pop() {
         \item Iterator
     \end{enumerate}
 \end{frame}
+
+{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+  If you would like a LIFO data structure, never use \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html}{java.util.Stack}. You can either use a \alert{deque}, or implement it on your own.
+\end{frame}
+}
 
 \begin{frame}
     \frametitle{Task}
