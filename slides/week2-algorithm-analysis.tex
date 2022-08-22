@@ -278,6 +278,14 @@ def cubic_sum(n):
 Given $g(n)\sim af(n)$, we can say the \textbf{order of growth} of $g(n)$ is $f(n)$ because the constant $a$ won't change the growth tendency.
 \end{frame}
 
+\begin{frame}
+\begin{quote}
+    The \alert{order of growth} of an algorithm is an approximation of the time required to run a computer program as the input size increases.
+\end{quote}
+    
+
+\end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Approximation Examples}
 
@@ -319,6 +327,20 @@ Given $g(n)\sim af(n)$, we can say the \textbf{order of growth} of $g(n)$ is $f(
             \end{tabular}
         \end{table}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+Suppose $f(x)$ and $g(x)$ are two functions defined on some subset of the real numbers. We write 
+
+\[f(x) = O(g(x))\]
+
+if and only if there exists constants $N$ and $C$ such that
+
+\[|f(x)| \leq Cg(x), \forall x > N\]
+    
+
+Intuitively, this means that $f$ does not grow faster than $g$ ($g$ is the \alert{upper bound} of $f$).
+
 \end{frame}
 
 \begin{frame}[fragile]
