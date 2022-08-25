@@ -25,7 +25,7 @@ class Node {
 
 ```python
 class Node:
-    def __int__(self, item, next=None):
+    def __init__(self, item, next=None):
         self.item = item
         self.next = next
 ```

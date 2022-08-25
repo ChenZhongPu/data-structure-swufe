@@ -110,7 +110,7 @@ Try to explain what an \textbf{ADT} (abstract data type) is by searching on the 
     \includegraphics[height=0.6\paperheight]{cover}};
 }
     \begin{frame}
-        \section{\textcolor{darkmidnightblue}{1. List}}
+        \section{\textcolor{darkmidnightblue}{1. From List to ADT}}
     \end{frame}
 
 }
@@ -203,7 +203,12 @@ A \texttt{list/stack/queue/deque} is an \textbf{ADT}.
 \end{frame}
 
 \begin{frame}[fragile]
-But, being \emph{continuous} is a double-edged sword.
+
+    \begin{tikzpicture}
+        \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
+        text width=20em,anchor=south west,rounded corners]
+        {But, being \emph{continuous} is a double-edged sword.};
+    \end{tikzpicture}
 
 \begin{tikzpicture}
   \matrix[nodes=draw]
@@ -216,7 +221,7 @@ But, being \emph{continuous} is a double-edged sword.
 
 \begin{itemize}
     \item Efficient in many index-based operations (e.g., \texttt{get(i)}).
-    \item Inefficient due to resizing (e.g., removing the first element).
+    \item Inefficient while shifting or copying (e.g., removing the 1st element).
 \end{itemize}
 
 \pause
@@ -237,6 +242,72 @@ As for the List ADT, there is yet another implementation, named \alert{linked li
   \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
 \end{tikzpicture}
 
+\end{frame}
+
+\begin{frame}
+
+    \section{\textcolor{darkmidnightblue}{2. Linked Lists}} 
+
+    \begin{quote}
+        A linked list is a data structure in which the objects are arranged in a linear order, and the order in a linked list is determined by a pointer in each object.
+    \end{quote}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{2.1 Definition}
+
+    \begin{columns}
+        \column{.5\textwidth}
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+            draw, rectangle split horizontal}, >=stealth, start chain]
+        
+          \node[list,on chain] (A) {1};
+          \node[list,on chain] (B) {9};
+          \node[list,on chain] (C) {8};
+          \node[on chain,draw,inner sep=6pt] (D) {};
+          \draw (D.north east) -- (D.south west);
+          \draw (D.north west) -- (D.south east);
+          \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+          \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+          \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+          \node[below=of A, yshift=1cm] (head){\alert{head}};
+    
+          \node[on chain,draw,inner sep=6pt, below=of A] (E) {};
+          \draw (E.north east) -- (E.south west);
+          \draw (E.north west) -- (E.south east);
+    
+          \node[below=of E, yshift=1cm] {\alert{head}};
+        \end{tikzpicture}
+        \column{.4\textwidth}
+        \begin{tikzpicture}
+            \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+            text width=12em,anchor=south west,rounded corners]
+            {reference = pointer = link};
+        \end{tikzpicture}
+    \end{columns}
+
+    \begin{quote}
+        A linked list is a \textbf{recursive} data structure that is either empty (null) or a reference to a node having an item and a reference to a linked list.
+    \end{quote}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{2.2 Node in Python}
+
+    \begin{minted}[bgcolor=LightGray]{python}
+class Node:
+    def __init__(self, item, next=None):
+        self.item = item
+        self.next = next
+
+first = Node(1) # first is the head
+second = Node(9)
+third = Node(8)
+first.next = second
+second.next = third
+    \end{minted}
 \end{frame}
 
 \end{document}
