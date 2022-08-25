@@ -5,6 +5,9 @@
 \usepackage{graphicx}
 \usepackage{transparent}
 \usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usetikzlibrary{matrix,backgrounds}
@@ -90,7 +93,6 @@
     \item What is a \texttt{deque}?
 \end{enumerate}
 \end{frame}
-
 
 \begin{frame}
     \frametitle{Task}
@@ -272,16 +274,15 @@ As for the List ADT, there is yet another implementation, named \alert{linked li
           \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
           \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
           \node[below=of A, yshift=1cm] (head){\alert{head}};
+
+          \node[fit=(B)(C)(D), dashed, draw](remain) {};
+
+          \node[above=of remain, yshift=-1cm]{\alert{a linked list}};
     
-          \node[on chain,draw,inner sep=6pt, below=of A] (E) {};
-          \draw (E.north east) -- (E.south west);
-          \draw (E.north west) -- (E.south east);
-    
-          \node[below=of E, yshift=1cm] {\alert{head}};
         \end{tikzpicture}
         \column{.4\textwidth}
         \begin{tikzpicture}
-            \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+            \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
             text width=12em,anchor=south west,rounded corners]
             {reference = pointer = link};
         \end{tikzpicture}
@@ -291,23 +292,302 @@ As for the List ADT, there is yet another implementation, named \alert{linked li
         A linked list is a \textbf{recursive} data structure that is either empty (null) or a reference to a node having an item and a reference to a linked list.
     \end{quote}
 
+    \begin{tikzpicture}
+            \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+            text width=25em,anchor=south west,rounded corners]
+            {We can use the \alert{\texttt{head}} node to represent a linked list.};
+    \end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2.2 Node in Python}
+    \frametitle{Node}
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {\textcolor{blue}{\texttt{item}}};
+      \node[list,on chain] (B) {\textcolor{blue}{\texttt{item}}};
 
-    \begin{minted}[bgcolor=LightGray]{python}
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- node[below, yshift=-.3cm] {\textcolor{blue}{\texttt{next}}}(B);
+    \end{tikzpicture}
+
+    \begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
 class Node:
     def __init__(self, item, next=None):
         self.item = item
         self.next = next
 
-first = Node(1) # first is the head
-second = Node(9)
-third = Node(8)
-first.next = second
-second.next = third
+class LinkedList:
+    def __init__(self, head=None):
+        self.head = head
     \end{minted}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{2.2 Pseudo-code}
+
+    \begin{quote}
+        The term \alert{pseudo-code} refers to an informal, English-like notation for describing how an algorithm, a method, a class, or a program will work.
+    \end{quote}
+
+    \textbf{Example}: \texttt{indexOf(a, o)} which returns the index of the first occurrence of the specified element \texttt{o} in array \texttt{a}, or -1 if \texttt{a} does not contain \texttt{o}.
+\end{frame}
+
+\begin{frame}[fragile]
+
+    \textbf{Example}: \texttt{indexOf(a, o)} which returns the index of the first occurrence of the specified element \texttt{o} in array \texttt{a}, or -1 if \texttt{a} does not contain \texttt{o}.
+
+    \scalebox{.8}{  
+        \begin{algorithm}[H]
+        \caption{indexOf(a, o)}
+        $n\gets a.size()$ \\
+        \For{$i\gets 0$ \KwTo $n$}{
+            \If{$a[i] == o$}{
+                \Return{i}
+            }
+        }
+        \Return{-1}
+    \end{algorithm}
+    }
+\pause
+        \begin{tikzpicture}
+            \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+            text width=25em,anchor=south west,rounded corners]
+            {There is no standard about how to write pseudo-code.};
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+Given the \alert{\texttt{head}} of a linked list, how to check whether it is empty or not?
+    
+\pause
+
+\scalebox{.8}{  
+    \begin{algorithm}[H]
+    \caption{isEmpty(head)}
+    \KwIn{Head node $head$ of a linked list.}
+    \KwOut{Return true if it is empty.}
+    \Return{head == null}
+\end{algorithm}
+}
+\end{frame}
+
+{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+  In what follows, I will describe the algorithms using pseudo-code.
+\end{frame}
+}
+
+\begin{frame}
+    \frametitle{2.3 Common Operations: search()}
+    Given the \alert{\texttt{head}} of a linked list, find the first element with item \alert{\texttt{k}} in this list, returning a pointer to this element. 
+    
+\scalebox{.8}{  
+    \begin{algorithm}[H]
+    \caption{search(head, k)}
+    \KwIn{The $head$ of a linked list, and a target $k$.}
+    \KwOut{Return the node whose item is $k$.}
+    $x\gets head$ \\
+    \While{x $\neq$ null and x.item $\neq$ k} {
+        $x\gets x.next$
+    }
+    \Return{x}
+\end{algorithm}
+}
+
+\pause
+\textbf{Question}: What is the time complexity of \texttt{search()}?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise 1}
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+    \end{tikzpicture}
+
+   How to implement \texttt{contains(head, k)} based on \texttt{search(head, k)}? 
+
+   \begin{itemize}
+    \item \texttt{contains(head, 9)} returns \texttt{true}.
+    \item \texttt{contains(head, 6)} returns \texttt{false}.
+   \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exercise 2}
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+    \end{tikzpicture}
+
+ Given the \alert{\texttt{head}} of a linked list, return the size of the list.
+    
+\pause
+
+\begin{tikzpicture}
+    \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+    text width=28em,anchor=south west,rounded corners]
+    {In practice, we can implicitly store \texttt{size} as an attribute of a list.};
+\end{tikzpicture}
+
+\begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.size = 0
+\end{minted}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{2.3 Common Operations: addFirst()}
+
+    To add an element at the beginning of the list. The core idea is to \textbf{create a new node whose \texttt{next} is the current \texttt{head}, and then update \texttt{head} to this newly created node}.
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+    \end{tikzpicture}
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {6};
+      \node[list,on chain] (B) {1};
+      \node[list,on chain] (C) {9};
+      \node[list, on chain] (D) {8};
+      \node[on chain,draw,inner sep=6pt] (E) {};
+      \draw (E.north east) -- (E.south west);
+      \draw (E.north west) -- (E.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+      \draw[*->] let \p1 = (D.two), \p2 = (D.center) in (\x1,\y2) -- (E);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+    \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+\begin{columns}
+    \column{.4\textwidth}<1->
+    \begin{enumerate}
+        \item Create a new node
+        \item Set up the \alert{\texttt{next}}
+        \item Update the \alert{\texttt{head}}
+    \end{enumerate}
+    \column{.6\textwidth}<2->
+    \textbf{Question}: Can we even simplify the code using \texttt{Node}'s constructor?
+\end{columns}
+
+    \scalebox{.85}{  
+    \begin{algorithm}[H]
+    \caption{addFirst(head, element)}
+    $x\gets Node(element)$ \\
+    $x.next\gets head$ \\
+    $head\gets x$
+    \end{algorithm}
+} 
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{2.3 Common Operations: removeFirst()}
+To remove an element at the beginning in a list. The core idea is to \textbf{update the \alert{\texttt{head}} to the second node}.
+    
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+    \end{tikzpicture}
+
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {9};
+      \node[list,on chain] (B) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+    \end{tikzpicture}
+
+    \pause
+How do you think of it?
+    \begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
+head = head.next
+    \end{minted}
+\end{frame}
+
+
+\begin{frame}
+
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \caption{removeFirst(head)}
+        \If{isEmpty(head)} {
+            raise an error
+        } \Else {
+            $head\gets head.next$
+        }
+        \end{algorithm}
+    } 
+
+    \begin{tikzpicture}
+    \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+    text width=28em,anchor=south west,rounded corners]
+    {Always pay attention to \textbf{corner cases} (e.g., the list is empty)!};
+\end{tikzpicture}
+
+\end{frame}
 \end{document}
