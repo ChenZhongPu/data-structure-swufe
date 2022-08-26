@@ -1,0 +1,599 @@
+\documentclass[aspectratio=169, 14pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{tipa}
+\usepackage{graphicx}
+\usepackage{transparent}
+\usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\renewcommand{\thealgocf}{}
+\usepackage{setspace}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{matrix,backgrounds}
+\usetikzlibrary{arrows}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{calc,shadows.blur,fit,positioning}
+\usetikzlibrary{shapes.multipart,chains}
+\usepackage{minted}
+\usepackage{fontawesome5}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
+\urlstyle{same}
+\usetheme{metropolis}
+\metroset{block=fill}
+\usecolortheme{default}
+\definecolor{darkmidnightblue}{rgb}{0.0, 0.2, 0.4}
+\definecolor{LightGray}{gray}{0.9}
+
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Data Structures] %optional
+{Data Structures}
+
+\subtitle{Doubly Linked Lists}
+
+\author[CHEN Zhongpu] % (optional)
+{CHEN Zhongpu}
+
+\institute[] % (optional)
+{
+  School of Computing and Artificial Intelligence \\
+  \href{mailto:zpchen@swufe.edu.cn}{zpchen@swufe.edu.cn}
+}
+
+\date[] % (optional)
+{SWUFE, Fall 2022}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+% \AtBeginSection[]
+% {
+%   \begin{frame}
+%     \frametitle{Table of Contents}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+% }
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+% \begin{frame}
+% \frametitle{Table of Contents}
+% \tableofcontents
+% \end{frame}
+%--------------------------------------------------------
+\begin{frame}
+\frametitle{A Small Quiz}
+{\large \faIcon{question-circle}} What does the following code do?
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \caption{someOperation}
+        \If{isEmpty(head)} {
+            raise an error
+        } \Else {
+            $head\gets head.next$
+        }
+        \end{algorithm}
+    } 
+\end{frame}
+
+\begin{frame}
+    \frametitle{A Small Quiz}
+    {\large \faIcon{question-circle}} Please describe the main idea of \texttt{removeLast()}? And what is the time complexity?
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+    
+      \node[below=of A, yshift=1cm]{\alert{head}};
+      \node[below=of C, yshift=1cm]{\alert{tail}};
+    
+    \end{tikzpicture}
+
+    \pause
+    \begin{tikzpicture}
+        \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
+        text width=26em,anchor=south west,rounded corners]
+        {What if we can get \underline{the second node to last} from \alert{\texttt{tail}}?};
+    \end{tikzpicture}
+
+\end{frame}
+
+{
+    % \usebackgroundtemplate{\transparent{0.3}{\begin{picture}
+    %     \includegraphics[height=0.7\paperheight]{cover}
+    % \end{picture}    
+    % }}
+\usebackgroundtemplate{
+  \tikz[overlay,remember picture] 
+  \node[opacity=0.3, at=(current page.south east),anchor=south east, yshift=2cm,xshift=4cm] {
+    \includegraphics[height=0.6\paperheight]{cover}};
+}
+    \begin{frame}
+        \section{\textcolor{darkmidnightblue}{1. Doubly Linked Lists}}
+    \end{frame}
+
+}
+
+\begin{frame}
+    \frametitle{1.1 Doubly Linked Lists}
+
+By default, a linked list is a \textbf{singly linked list}, whose node has only one link to the \alert{\texttt{next}} node. If every node also has a link to its \alert{\texttt{previous}} node, it is called \textbf{doubly linked list}.
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+
+
+        \node[on chain,draw,inner sep=6pt] (AA) {};
+        \draw (AA.north east) -- (AA.south west);
+        \draw (AA.north west) -- (AA.south east);
+      \node[list,on chain] (A) {\nodepart{second}1};
+      \node[list,on chain] (B) {\nodepart{second}9};
+      \node[list,on chain] (C) {\nodepart{second}8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+
+
+
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+      \draw[*->, blue, thick] let \p1 = (A.one), \p2 = (A.center) in (\x1,\y2) to[out=-80,in=-120] (AA);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, red, thick] let \p1 = (C.three), \p2 = (C.center) in (\x1,\y2) to[out=80,in=120] (D);
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+    
+    \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}[fragile]
+The node in a doubly linked list contains: \alert{\texttt{item}}, \alert{\texttt{prev}} and \alert{\texttt{next}}.
+
+\begin{minted}[bgcolor=LightGray]{python}
+class Node:
+    def __init__(self, item=None, prev=None, nxt=None):
+        self.item = item
+        self.prev = prev
+        self.next = nxt 
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exercise}
+{\large \faIcon{code}} Given a doubly linked list with \alert{\texttt{head}} and \alert{\texttt{tail}}, how to remove the last node?
+
+\begin{itemize}
+    \item \textbf{Case 1}: the list is empty.
+    \item \textbf{Case 2}: the size is 1.
+    \item \textbf{Case 3}: the size is greater than 1.
+\end{itemize}
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+
+
+        \node[on chain,draw,inner sep=6pt] (AA) {};
+        \draw (AA.north east) -- (AA.south west);
+        \draw (AA.north west) -- (AA.south east);
+      \node[list,on chain] (A) {\nodepart{second}1};
+      \node[list,on chain] (B) {\nodepart{second}9};
+      \node[list,on chain] (C) {\nodepart{second}8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+
+
+
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+      \draw[*->, blue, thick] let \p1 = (A.one), \p2 = (A.center) in (\x1,\y2) to[out=-80,in=-120] (AA);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, red, thick] let \p1 = (C.three), \p2 = (C.center) in (\x1,\y2) to[out=80,in=120] (D);
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+
+      \node[below=of A, yshift=.5cm]{\alert{head}};
+      \node[below=of C, yshift=.5cm]{\alert{tail}};
+    
+    \end{tikzpicture}
+    
+\end{frame}
+
+\begin{frame}
+
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \setstretch{1}
+        \caption{removeLast(head, tail)}
+        \If{isEmpty(head)} {
+            \tcp{case 1: it is empty}
+            raise an error
+        }\ElseIf{head == tail} {
+            \tcp{case 2: the size is 1}
+            $head\gets null$ \\
+            $tail\gets null$ 
+        }\Else{
+            \tcp{case 3: the size is greater than 1}
+            $x\gets tail.prev$\\
+            $x.next\gets null$ \\
+            $tail\gets x$
+        }
+        \end{algorithm}
+    } 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{1.2 Revisit}
+\begin{tikzpicture}
+    \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+    text width=28em,anchor=south west,rounded corners]
+    {Always pay attention to \textbf{corner cases} (e.g., the list is empty)!};
+\end{tikzpicture}
+
+\begin{exampleblock}{Insight}
+The fewer cases, the simpler code.
+\end{exampleblock}
+
+\pause
+
+To make it possible, we can introduce \alert{sentinels} (i.e., \emph{dummy nodes}) for linked lists.
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain, node distance=.8cm]
+
+        \node[on chain,draw,inner sep=6pt] (AA) {};
+        \draw (AA.north east) -- (AA.south west);
+        \draw (AA.north west) -- (AA.south east);
+
+        \node[list, on chain, fill=gray!30] (header) {};
+      \node[list,on chain] (A) {\nodepart{second}1};
+      \node[list,on chain] (B) {\nodepart{second}9};
+      \node[list,on chain] (C) {\nodepart{second}8};
+      \node[list, on chain, fill=gray!30] (trailer) {};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+
+
+            
+      \draw[*->, red, thick] let \p1 = (header.three), \p2 = (header.center) in (\x1,\y2) to[out=80,in=120] (A);
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+      \draw[*->, blue, thick] let \p1 = (A.one), \p2 = (A.center) in (\x1,\y2) to[out=-80,in=-120] (header);
+      \draw[*->, blue, thick] let \p1 = (header.one), \p2 = (header.center) in (\x1,\y2) to[out=-80,in=-120] (AA);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, red, thick] let \p1 = (C.three), \p2 = (C.center) in (\x1,\y2) to[out=80,in=120] (trailer);
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+     \draw[*->, red, thick] let \p1 = (trailer.three), \p2 = (trailer.center) in (\x1,\y2) to[out=80,in=120] (D);
+      \draw[*->, blue, thick] let \p1 = (trailer.one), \p2 = (trailer.center) in (\x1,\y2) to[out=-80,in=-120] (C);
+
+      \node[below=of header, yshift=.5cm]{\alert{header}};
+      \node[below=of trailer, yshift=.5cm]{\alert{trailer}};
+    
+    \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+        \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \setstretch{1}
+        \caption{removeLast(header, trailer)}
+        \If{isEmpty(head)} {
+            \tcp{case 1: it is empty}
+            raise an error
+        }\Else{
+            \tcp{case 2: it is not empty}
+            $x\gets trailer.prev$ \\
+            $predecessor\gets x.prev$ \\
+            $predecessor.next\gets trailer$ \\
+            $trailer.prev\gets predecessor$
+        }
+        \end{algorithm}
+    }   
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain, node distance=.8cm]
+
+        \node[on chain,draw,inner sep=6pt] (AA) {};
+        \draw (AA.north east) -- (AA.south west);
+        \draw (AA.north west) -- (AA.south east);
+
+        \node[list, on chain, fill=gray!30] (header) {};
+      \node[list,on chain] (A) {\nodepart{second}1};
+      \node[list,on chain] (B) {\nodepart{second}9};
+      \node[list,on chain] (C) {\nodepart{second}8};
+      \node[list, on chain, fill=gray!30] (trailer) {};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+
+      \draw[*->, red, thick] let \p1 = (header.three), \p2 = (header.center) in (\x1,\y2) to[out=80,in=120] (A);
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+      \draw[*->, blue, thick] let \p1 = (A.one), \p2 = (A.center) in (\x1,\y2) to[out=-80,in=-120] (header);
+      \draw[*->, blue, thick] let \p1 = (header.one), \p2 = (header.center) in (\x1,\y2) to[out=-80,in=-120] (AA);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, red, thick] let \p1 = (C.three), \p2 = (C.center) in (\x1,\y2) to[out=80,in=120] (trailer);
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+     \draw[*->, red, thick] let \p1 = (trailer.three), \p2 = (trailer.center) in (\x1,\y2) to[out=80,in=120] (D);
+      \draw[*->, blue, thick] let \p1 = (trailer.one), \p2 = (trailer.center) in (\x1,\y2) to[out=-80,in=-120] (C);
+
+      \node[below=of header, yshift=.5cm]{\alert{header}};
+      \node[below=of trailer, yshift=.5cm]{\alert{trailer}};
+      \node[below=of C, yshift=.4cm] {\alert{x}};
+      \node[below=of B, yshift=.5cm] {\alert{predecessor}};
+    \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+   {\large \faIcon{code}} Given a \texttt{node} in a doubly linked list, how to remove it?
+
+       \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain,]
+
+
+      \node[list,on chain] (A) {};
+      \node[list,on chain] (B) {};
+      \node[list,on chain] (C) {};
+
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+
+      \node[below=of A, yshift=.5cm]{\alert{predecessor}};
+      \node[below=of B, yshift=.5cm]{\alert{node}};
+      \node[below=of C, yshift=.4cm] {\alert{successor}};
+    \end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+       \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain,]
+
+
+      \node[list,on chain] (A) {};
+      \node[list,on chain] (B) {};
+      \node[list,on chain] (C) {};
+
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+
+      \node[below=of A, yshift=.5cm]{\alert{predecessor}};
+      \node[below=of B, yshift=.5cm]{\alert{node}};
+      \node[below=of C, yshift=.4cm] {\alert{successor}};
+    \end{tikzpicture}
+
+\scalebox{.9}{  
+    \begin{algorithm}[H]
+        \caption{remove(node)}
+        $predecessor\gets node.prev$ \\
+        $successor\gets node.next$ \\
+        $predecessor.next\gets successor$ \\
+        $successor.prev\gets predecessor$
+    \end{algorithm}
+}
+    
+\pause
+{\large \faIcon{question-circle}} How to implement \texttt{removeLast()} and \texttt{removeFirst()} based on \texttt{remove()}?
+\end{frame}
+
+\begin{frame}
+    \frametitle{1.3 addFirst()}
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+      \node[below=of C, yshift=1cm]{\alert{tail}};
+    \end{tikzpicture}
+    
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \caption{addFirst(head, tail, element)}
+        \tcp{singly linked list}
+        $head\gets Node(element, head)$ \\
+        \If{tail == null} {
+            $tail\gets head$
+        }
+        \end{algorithm}
+    } 
+
+\end{frame}
+
+\begin{frame}
+
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain, node distance=.8cm]
+
+        \node[on chain,draw,inner sep=6pt] (AA) {};
+        \draw (AA.north east) -- (AA.south west);
+        \draw (AA.north west) -- (AA.south east);
+
+        \node[list, on chain, fill=gray!30] (header) {};
+      \node[list,on chain] (A) {\nodepart{second}1};
+      \node[list,on chain] (B) {\nodepart{second}9};
+      \node[list,on chain] (C) {\nodepart{second}8};
+      \node[list, on chain, fill=gray!30] (trailer) {};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+
+      \draw[*->, red, thick] let \p1 = (header.three), \p2 = (header.center) in (\x1,\y2) to[out=80,in=120] (A);
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+      \draw[*->, blue, thick] let \p1 = (A.one), \p2 = (A.center) in (\x1,\y2) to[out=-80,in=-120] (header);
+      \draw[*->, blue, thick] let \p1 = (header.one), \p2 = (header.center) in (\x1,\y2) to[out=-80,in=-120] (AA);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, red, thick] let \p1 = (C.three), \p2 = (C.center) in (\x1,\y2) to[out=80,in=120] (trailer);
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+     \draw[*->, red, thick] let \p1 = (trailer.three), \p2 = (trailer.center) in (\x1,\y2) to[out=80,in=120] (D);
+      \draw[*->, blue, thick] let \p1 = (trailer.one), \p2 = (trailer.center) in (\x1,\y2) to[out=-80,in=-120] (C);
+
+      \node[below=of header, yshift=.5cm]{\alert{header}};
+      \node[below=of trailer, yshift=.5cm]{\alert{trailer}};
+    \end{tikzpicture}
+
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \caption{addFirst(header, trailer, element)}
+        \tcp{doubly linked list}
+        $x\gets header.next$ \\
+        $node\gets Node(element, header, x)$ \\
+        $header.next\gets node$ \\
+        $x.prev\gets node$ \\
+        \end{algorithm}
+    }  
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+            \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain, node distance=.8cm]
+
+        \node[on chain,draw,inner sep=6pt] (AA) {};
+        \draw (AA.north east) -- (AA.south west);
+        \draw (AA.north west) -- (AA.south east);
+
+        \node[list, on chain, fill=gray!30] (header) {};
+      \node[list,on chain] (A) {\nodepart{second}1};
+      \node[list,on chain] (B) {\nodepart{second}9};
+      \node[list,on chain] (C) {\nodepart{second}8};
+      \node[list, on chain, fill=gray!30] (trailer) {};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+
+      \draw[*->, red, thick] let \p1 = (header.three), \p2 = (header.center) in (\x1,\y2) to[out=80,in=120] (A);
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+      \draw[*->, blue, thick] let \p1 = (A.one), \p2 = (A.center) in (\x1,\y2) to[out=-80,in=-120] (header);
+      \draw[*->, blue, thick] let \p1 = (header.one), \p2 = (header.center) in (\x1,\y2) to[out=-80,in=-120] (AA);
+
+      \draw[*->, red, thick] let \p1 = (B.three), \p2 = (B.center) in (\x1,\y2) to[out=80,in=120] (C);
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+      \draw[*->, red, thick] let \p1 = (C.three), \p2 = (C.center) in (\x1,\y2) to[out=80,in=120] (trailer);
+      \draw[*->, blue, thick] let \p1 = (C.one), \p2 = (C.center) in (\x1,\y2) to[out=-80,in=-120] (B);
+     \draw[*->, red, thick] let \p1 = (trailer.three), \p2 = (trailer.center) in (\x1,\y2) to[out=80,in=120] (D);
+      \draw[*->, blue, thick] let \p1 = (trailer.one), \p2 = (trailer.center) in (\x1,\y2) to[out=-80,in=-120] (C);
+
+      \node[below=of header, yshift=.5cm]{\alert{header}};
+      \node[below=of trailer, yshift=.5cm]{\alert{trailer}};
+    \end{tikzpicture}
+
+{\large \faIcon{code}} How to add an element at the end of a list?
+    \pause
+
+        \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \caption{addLast(header, trailer, element)}
+        $x\gets trailer.prev$ \\
+        $node \gets Node(element, x, trailer)$ \\
+        $trailer.prev \gets node$ \\
+        $x.next\gets node$
+        \end{algorithm}
+    }  
+\end{frame}
+
+\begin{frame}
+    \frametitle{1.4 addBetween()}
+
+To add an element between two nodes.
+
+\begin{columns}
+    \column{.4\textwidth}<1->
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=3,
+        draw, rectangle split horizontal}, >=stealth, start chain,]
+
+
+      \node[list,on chain] (A) {};
+      \node[list,on chain] (B) {};
+
+      \draw[*->, red, thick] let \p1 = (A.three), \p2 = (A.center) in (\x1,\y2) to[out=80,in=120] (B);
+
+      \draw[*->, blue, thick] let \p1 = (B.one), \p2 = (B.center) in (\x1,\y2) to[out=-80,in=-120] (A);
+
+
+      \node[below=of A, yshift=.5cm]{\alert{predecessor}};
+      \node[below=of B, yshift=.5cm]{\alert{successor}};
+    \end{tikzpicture}
+    \column{.6\textwidth}<2->
+    {\large \faIcon{question-circle}} How to implement \texttt{addFirst()} and \texttt{addLast()} based on \texttt{addBetween()}?
+\end{columns}
+
+
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+            \caption{addBetween}
+            $node\gets Node(element, predecessor, successor)$ \\
+            $predecessor.next\gets node$ \\
+            $successor.prev\gets node$
+            \end{algorithm}
+    }
+
+\end{frame}
+\end{document}

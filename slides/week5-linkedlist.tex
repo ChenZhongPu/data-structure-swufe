@@ -823,7 +823,7 @@ To remove an element at the end of a list. The core idea is to \textbf{update th
 
     \scalebox{.85}{  
         \begin{algorithm}[H]
-        \caption{removeLast(head, tail, element)}
+        \caption{removeLast(head, tail)}
         $x\gets head$ \\
         \While{x.next $\neq$ tail} {
             $x\gets x.next$
@@ -842,7 +842,7 @@ To remove an element at the end of a list. The core idea is to \textbf{update th
     \scalebox{.82}{  
         \begin{algorithm}[H]
         \setstretch{.9}
-        \caption{removeLast(head, tail, element)}
+        \caption{removeLast(head, tail)}
         \If{isEmpty(head)} {
             \tcp{case 1: it is empty}
             raise an error
