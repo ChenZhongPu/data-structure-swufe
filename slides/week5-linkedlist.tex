@@ -8,6 +8,7 @@
 \newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
 \renewcommand{\thealgocf}{}
+\usepackage{setspace}
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usetikzlibrary{matrix,backgrounds}
@@ -88,7 +89,7 @@
 \begin{frame}
 \frametitle{A Small Quiz}
 \begin{enumerate}
-    \item A queue implements a LIFO policy.
+    \item A queue implements a LIFO policy. (True or False)
     \item What does \texttt{[None] * 10} mean in Python?
     \item What is a \texttt{deque}?
 \end{enumerate}
@@ -331,12 +332,16 @@ class LinkedList:
         The term \alert{pseudo-code} refers to an informal, English-like notation for describing how an algorithm, a method, a class, or a program will work.
     \end{quote}
 
-    \textbf{Example}: \texttt{indexOf(a, o)} which returns the index of the first occurrence of the specified element \texttt{o} in array \texttt{a}, or -1 if \texttt{a} does not contain \texttt{o}.
+    \begin{exampleblock}{Example}
+        \texttt{indexOf(a, o)} which returns the index of the first occurrence of the specified element \texttt{o} in array \texttt{a}, or -1 if \texttt{a} does not contain \texttt{o}. 
+    \end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]
 
-    \textbf{Example}: \texttt{indexOf(a, o)} which returns the index of the first occurrence of the specified element \texttt{o} in array \texttt{a}, or -1 if \texttt{a} does not contain \texttt{o}.
+    \begin{exampleblock}{Example}
+        \texttt{indexOf(a, o)} which returns the index of the first occurrence of the specified element \texttt{o} in array \texttt{a}, or -1 if \texttt{a} does not contain \texttt{o}. 
+    \end{exampleblock}
 
     \scalebox{.8}{  
         \begin{algorithm}[H]
@@ -360,7 +365,7 @@ class LinkedList:
 
 \begin{frame}
     \frametitle{Exercise}
-Given the \alert{\texttt{head}} of a linked list, how to check whether it is empty or not?
+{\large \faIcon{code}} Given the \alert{\texttt{head}} of a linked list, how to check whether it is empty or not?
     
 \pause
 
@@ -398,7 +403,7 @@ Given the \alert{\texttt{head}} of a linked list, how to check whether it is emp
 }
 
 \pause
-\textbf{Question}: What is the time complexity of \texttt{search()}?
+{\large \faIcon{question-circle}} \textbf{Question}: What is the time complexity of \texttt{search()}?
 \end{frame}
 
 \begin{frame}
@@ -418,7 +423,7 @@ Given the \alert{\texttt{head}} of a linked list, how to check whether it is emp
 
     \end{tikzpicture}
 
-   How to implement \texttt{contains(head, k)} based on \texttt{search(head, k)}? 
+    {\large \faIcon{code}} How to implement \texttt{contains(head, k)} based on \texttt{search(head, k)}? 
 
    \begin{itemize}
     \item \texttt{contains(head, 9)} returns \texttt{true}.
@@ -444,7 +449,7 @@ Given the \alert{\texttt{head}} of a linked list, how to check whether it is emp
 
     \end{tikzpicture}
 
- Given the \alert{\texttt{head}} of a linked list, return the size of the list.
+    {\large \faIcon{code}} Given the \alert{\texttt{head}} of a linked list, how to return the size of the list?
     
 \pause
 
@@ -514,7 +519,7 @@ class LinkedList:
         \item Update the \alert{\texttt{head}}
     \end{enumerate}
     \column{.6\textwidth}<2->
-    \textbf{Question}: Can we even simplify the code using \texttt{Node}'s constructor?
+    {\large \faIcon{question-circle}}  \textbf{Question}: Can we even simplify the code using \texttt{Node}'s constructor?
 \end{columns}
 
     \scalebox{.85}{  
@@ -590,4 +595,420 @@ head = head.next
 \end{tikzpicture}
 
 \end{frame}
+
+\begin{frame}
+    \frametitle{2.4 Common Operation: addLast()}
+    
+    To add an element at the end of the list. The core idea is to \textbf{set \alert{tail}'s \texttt{next} to the newly created node}.
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+
+      \node[below=of C, yshift=1cm]{\textcolor{blue}{tail}};
+
+    \end{tikzpicture}
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[list, on chain] (E) {6};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (E);
+
+      \draw[*->] let \p1 = (E.two), \p2 = (E.center) in (\x1,\y2) -- (D); 
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+
+    \begin{columns}
+        \column{.4\textwidth}
+        \begin{enumerate}
+            \item Locate the \alert{tail}
+            \item Create a new node
+            \item Set up \alert{tail}'s \texttt{next}
+        \end{enumerate}
+        \column{.6\textwidth}
+        {\large \faIcon{question-circle}}  \textbf{Question}: How to locate the \alert{\texttt{tail}}?
+    \end{columns}
+
+\pause
+\scalebox{.85}{  
+    \begin{algorithm}[H]
+    \caption{addLast(head, element)}
+    $tail\gets head$ \\
+    \While{tail.next $\neq$ null} {
+        $tail\gets tail.next$
+    }
+    $tail.next\gets Node(element)$
+    \end{algorithm}
+} 
+
+{\large \faIcon{lightbulb}} \textbf{Think twice}: Does the code work when the list is empty?
+
+\end{frame}
+
+\begin{frame}
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \caption{addLast(head, element)}
+        $tail\gets head$ \\
+        \While{tail.next $\neq$ null} {
+            $tail\gets tail.next$
+        }
+        \If{tail == null} {
+            \tcp{the list is empty}
+            $head\gets Node(element)$
+        } \Else {
+            $tail.next\gets Node(element)$
+        }
+
+        \end{algorithm}
+    } 
+
+    \begin{tikzpicture}
+        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+        text width=25em,anchor=south west,rounded corners]
+        {Again, always pay attention to \textbf{corner cases}!};
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Revisit tail}
+
+\begin{columns}
+    \column{.4\textwidth}
+    \begin{enumerate}
+        \item Locate the \alert{tail}
+        \item Create a new node
+        \item Set up \alert{tail}'s \texttt{next}
+    \end{enumerate}
+    \column{.6\textwidth}
+    {\large \faIcon{question-circle}} \textbf{Question}: What is the time complexity of \texttt{addLast()}?
+\end{columns}
+
+\pause
+\begin{tikzpicture}
+    \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
+    text width=25em,anchor=south west,rounded corners]
+    {If a list also holds a reference to \alert{tail}, the time complexity of \texttt{addLast()} is $O(1)$.};
+\end{tikzpicture}
+
+\begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+    draw, rectangle split horizontal}, >=stealth, start chain]
+
+  \node[list,on chain] (A) {1};
+  \node[list,on chain] (B) {9};
+  \node[list,on chain] (C) {8};
+  \node[on chain,draw,inner sep=6pt] (D) {};
+  \draw (D.north east) -- (D.south west);
+  \draw (D.north west) -- (D.south east);
+  \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+  \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+  \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+  \node[below=of A, yshift=1cm]{\alert{head}};
+
+  \node[below=of C, yshift=1cm]{\alert{tail}};
+
+\end{tikzpicture}
+
+\begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+    draw, rectangle split horizontal}, >=stealth, start chain]
+
+  \node[list,on chain] (A) {1};
+  \node[list,on chain] (B) {9};
+  \node[list,on chain] (C) {8};
+  \node[list, on chain] (E) {6};
+  \node[on chain,draw,inner sep=6pt] (D) {};
+  \draw (D.north east) -- (D.south west);
+  \draw (D.north west) -- (D.south east);
+  \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+  \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+  \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (E);
+
+  \draw[*->] let \p1 = (E.two), \p2 = (E.center) in (\x1,\y2) -- (D); 
+
+  \node[below=of A, yshift=1cm]{\alert{head}};
+  \node[below= of E, yshift=1cm]{\alert{tail}};
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Task}
+
+\begin{block}{Linked Lists}
+    Many implementations for linked lists would hold three fields: \texttt{head}, \texttt{tail}, and \texttt{size}.
+\end{block}
+
+{\large \faIcon{book-reader}} Please read \href{https://chenzhongpu.github.io/data-structure-swufe/list/linkedlist.html#addlast-add-an-element-at-the-end}{addLast(): add an element at the end} in Section 3.3.1 to understand the pseudo-code of \texttt{addLast(head, tail, element)};
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{2.5 Common Operations: removeLast()}
+  
+\begin{columns}
+    \column{.45\textwidth}<1->
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+    
+      \node[below=of A, yshift=1cm]{\alert{head}};
+      \node[below=of C, yshift=1cm]{\alert{tail}};
+    
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (D);
+    
+      \node[below=of A, yshift=1cm]{\alert{head}};
+      \node[below=of B, yshift=1cm]{\alert{tail}};
+    
+    \end{tikzpicture}
+    \column{.55\textwidth}<2->
+    \begin{enumerate}
+        \item Locate the second node to last $x$
+        \item Update $x$'s \texttt{next}
+        \item Update \texttt{tail}
+    \end{enumerate}
+\end{columns}
+
+To remove an element at the end of a list. The core idea is to \textbf{update the tail to the second node to last}. 
+
+\end{frame}
+
+\begin{frame}
+
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+        \caption{removeLast(head, tail, element)}
+        $x\gets head$ \\
+        \While{x.next $\neq$ tail} {
+            $x\gets x.next$
+        }
+        $x.next\gets null$ \\
+        $tail\gets x$
+        \end{algorithm}
+    } 
+
+    {\large \faIcon{lightbulb}} \textbf{Think twice}: Does the code work when the list is empty or the size is 1?
+
+\end{frame}
+
+\begin{frame}
+
+    \scalebox{.82}{  
+        \begin{algorithm}[H]
+        \setstretch{.9}
+        \caption{removeLast(head, tail, element)}
+        \If{isEmpty(head)} {
+            \tcp{case 1: it is empty}
+            raise an error
+        }\ElseIf{head == tail} {
+            \tcp{case 2: the size is 1}
+            $head\gets null$ \\
+            $tail\gets null$ 
+        }\Else{
+            \tcp{case 3: the size is greater than 1}
+            $x\gets head$ \\
+            \While{x.next $\neq$ tail}{
+                    $x\gets x.next$
+            }
+            $x.next\gets null$ \\
+            $tail\gets x$ 
+        }
+        \end{algorithm}
+    } 
+
+\end{frame}
+
+{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+Try to implement those common operations in Python or Java based on the pseudo-code after class.
+\end{frame}
+}
+
+\begin{frame}
+    \section{\textcolor{darkmidnightblue}{3. Stacks And Queues}} 
+    How to implement stacks and queues based on linked lists?
+\end{frame}
+
+\begin{frame}
+    \frametitle{3.1 Stacks}
+    
+To follow the \textbf{LIFO} policy, elements should be pushed and popped from the same end.
+
+
+\begin{columns}
+    \column{.54\textwidth}
+    \begin{table}
+        \begin{tabular}{ll}
+          \toprule
+          Operation & Time Complexity \\
+          \midrule
+          \texttt{addFirst()} & $O(1)$\\
+          \texttt{addLast()} & $O(1)$ \\
+          \texttt{removeFirst()} & $O(1)$ \\
+          \texttt{removeLast()} & $O(N)$ \\
+          \bottomrule
+        \end{tabular}
+    \end{table}
+    \column{.45\textwidth}
+    {\large \faIcon{question-circle}} \textbf{Question}: As for stacks, which end is better (\texttt{head} or \texttt{tail})?
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{3.2 Queues}
+To follow the \textbf{FIFO} policy, elements should be enqueued and dequeued from the different end.
+
+\begin{itemize}
+    \item \texttt{enqueue()}: \texttt{addLast()} in a linked list
+    \item \texttt{dequeue()}: \texttt{removeFirst()} in a linked list
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \section{\textcolor{darkmidnightblue}{4. More Operations}} 
+    Operations apart from \texttt{addFirst()/addLast()/removeFirst()/removeLast()}
+\end{frame}
+
+\begin{frame}
+    \frametitle{4.1 get(i)}
+To return the i-th node of a list.
+    
+\scalebox{.8}{  
+    \begin{algorithm}[H]
+    \caption{get(i)}
+    \If{i > size - 1 or i < 0} {
+        raise OutOfTheBound error
+    }
+    $cnt\gets 0$ \\
+    $x\gets head$ \\
+    \While{cnt < i}{
+        $x\gets x.next$ \\
+        $cnt\gets cnt + 1$
+    }
+    \Return{x}
+    \end{algorithm}
+}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+{\large \faIcon{code}} Please write the pseudo-code of \texttt{indexOf(k)} for a linked list.
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{4.2 set(i, k)}
+To set the item of the i-th node of a list to $k$.
+
+\begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+    draw, rectangle split horizontal}, >=stealth, start chain]
+
+  \node[list,on chain] (A) {1};
+  \node[list,on chain] (B) {9};
+  \node[list,on chain] (C) {8};
+  \node[on chain,draw,inner sep=6pt] (D) {};
+  \draw (D.north east) -- (D.south west);
+  \draw (D.north west) -- (D.south east);
+  \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+  \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+  \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+  \node[below=of A, yshift=1cm]{\alert{head}};
+\end{tikzpicture}
+
+\pause
+\scalebox{.85}{  
+    \begin{algorithm}[H]
+    \caption{set(i, k)}
+    $x\gets get(i)$ \\
+    $x.item\gets k$
+    \end{algorithm}
+}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{4.3 insert(i, k)}
+To insert a node whose item is $k$ at position $i$.
+
+\scalebox{.8}{  
+    \begin{algorithm}[H]
+    \caption{insert(i, k)}
+    \If{i == 0} {
+        addFirst(k)
+    }\ElseIf{i == size} {
+        addLast(k)
+    }\Else {
+        $x\gets get(i - 1)$ \\
+        $x.next\gets Node(k, x.next)$
+    }
+    \end{algorithm}
+}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise}
+    {\large \faIcon{code}} Please write the pseudo-code of \texttt{delete(i)} for a linked list.
+\end{frame}
+
+\begin{frame}
+
+    \section{\textcolor{darkmidnightblue}{Conclusion}}  
+\begin{enumerate}
+    \item ADT
+    \item Array List vs. Linked List
+    \item Adding and removing elements on a linked list
+\end{enumerate}
+\end{frame}
+
 \end{document}

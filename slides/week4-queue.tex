@@ -32,8 +32,7 @@
     \state{final}{}
 }
 \usepackage{minted}
-\usepackage{csquotes}
-\usepackage{outlines}
+\usepackage{fontawesome5}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \hypersetup{
@@ -130,7 +129,7 @@ print(s.pop())
     \includegraphics[height=0.6\paperheight]{cover}};
 }
     \begin{frame}
-        \section{\textcolor{darkmidnightblue}{Queue}}
+        \section{\textcolor{darkmidnightblue}{1. Queue}}
     \end{frame}
 }
 
@@ -149,7 +148,7 @@ print(s.pop())
 \end{frame}
 
 \begin{frame}
-    \frametitle{Queue}
+    \frametitle{1.1 Queue}
 
     \begin{exampleblock}{Queue}
         A queue is a collection of objects that are inserted and removed according to the 
@@ -246,7 +245,7 @@ class Queue:
 \end{frame}
 
 \begin{frame}
-    \frametitle{Time Complexity}
+    \frametitle{1.2 Time Complexity}
     \begin{table}
         \caption{Queue's time complexity}
         \begin{tabular}{lr}
@@ -264,7 +263,7 @@ class Queue:
 \end{frame}
 
 \begin{frame}
-    \frametitle{Circular Queue}
+    \frametitle{1.3 Circular Queue}
 A better way is to \textbf{use an array circularly}. Such structure is also known as a \alert{ring buffer} or \alert{circular buffer} in many applications.
 
 \begin{columns}
@@ -443,7 +442,7 @@ A better way is to \textbf{use an array circularly}. Such structure is also know
             \end{scope}
         \end{tikzpicture}
         \column{0.55\textwidth}
-        What will \alert{rear} become after calling one more \texttt{enqueue()}?
+        {\large \faIcon{question-circle}} What will \alert{rear} become after calling one more \texttt{enqueue()}?
 \pause
 
 \begin{block}{Modular}
@@ -500,7 +499,7 @@ def dequeue(self):
     \end{minted} 
 \end{frame}
 \begin{frame}[fragile]
-    \frametitle{Resizing}
+    \frametitle{1.4 Resizing}
     As for a circular array, we need deal with the \textbf{resizing} for either enlarging or shrinking.
 
     \begin{tikzpicture}[slot/.style={minimum size=0.9cm,rectangle}, data/.style={slot, fill=black!30}, enqueue/.style={slot, fill=red!40}, dequeue/.style={slot, fill=orange!40}, >=Stealth, decoration=penciline]
@@ -547,66 +546,88 @@ def _resize(self, capacity):
     \end{minted} 
 \end{frame}
 
-\section{\textcolor{darkmidnightblue}{Deque}}
+\section{\textcolor{darkmidnightblue}{2. Deque}}
 
 \begin{frame}[fragile]
-    \frametitle{Deque}
-Double ended queue, or \alert{deque}. It is often pronounced \emph{deck} to avoid confusion.
+    \frametitle{2.1 Deque}
+\textbf{Double ended queue}, or \alert{deque}. It is often pronounced \emph{deck} (\textipa{/dek/}) to avoid confusion.
 
-\begin{tikzpicture}
-    \colorlet{good}{green!75!black}
-    \colorlet{bad}{red}
-    \colorlet{neutral}{black!60}
-    \colorlet{none}{white}
-  
-    \node[align=center,text width=3cm]{Circular Queue};
-  
-    \begin{scope}[line width=6mm,rotate=270]
-      \draw[good]          (144:2cm) arc (144:324:2cm);
-      \draw[neutral]       (-36:2cm) arc (-36:144:2cm);
-  
-      \newcount\mycount
-      \foreach \angle in {0,72,...,3599}
-      {
-        \mycount=\angle\relax
-        \divide\mycount by 2\relax
-        \draw[black!15,very thick] (\the\mycount:17mm) -- (\the\mycount:23mm);
-      }
+\begin{columns}
+    \column{.5\textwidth}
+    \begin{tikzpicture}
+        \colorlet{good}{green!75!black}
+        \colorlet{bad}{red}
+        \colorlet{neutral}{black!60}
+        \colorlet{none}{white}
       
-      \draw (160:2cm) node[above, red] {0};
+        \node[align=center,text width=3cm]{Circular Queue};
+      
+        \begin{scope}[line width=6mm,rotate=270]
+          \draw[good]          (144:2cm) arc (144:324:2cm);
+          \draw[neutral]       (-36:2cm) arc (-36:144:2cm);
+      
+          \newcount\mycount
+          \foreach \angle in {0,72,...,3599}
+          {
+            \mycount=\angle\relax
+            \divide\mycount by 2\relax
+            \draw[black!15,very thick] (\the\mycount:17mm) -- (\the\mycount:23mm);
+          }
+          
+          \draw (160:2cm) node[above, red] {0};
+    
+          \draw (135:3cm) node[below, red] (1) {1};
+          \draw (135:3.5cm) node (front) {
+            \large front}; 
+          \draw [<-, thick] (front) -- (1);
+          \draw (130:2cm) node[white] {10};
+    
+          \draw (100:2.5cm) node[below, red] {2}; 
+          \draw (95:2cm) node[white] {20}; 
+    
+          \draw (60:2.2cm) node[below, red] {3}; 
+          \draw (50:2cm) node[white] {30}; 
+    
+          \draw (20:2cm) node[below, red] {4};
+          \draw (20:2cm) node[white] {40};
+    
+          \draw (-20:2cm) node[below, red] {5};
+          \draw (-20:2cm) node[white] {50}; 
+    
+          \draw (-60:2.2cm) node[below, red] (6) {6};
+          \node[below left=of 6, yshift=2cm, xshift=1.5cm] (rear) {\large rear}; 
+          \node at (-60:2cm) (6th) {};
+          \draw[->, thick] (rear)++ (-0.2,-0.3) -- (6th);
+          \draw (-100:2.6cm) node[below, red] {7};
+          \draw (-140:3cm) node[below, red] {8}; 
+          \draw (-160:2cm) node[above, red] {9};
+    
+        \end{scope}
+    \end{tikzpicture}  
+    \column{.5\textwidth}
+    \begin{itemize}
+        \item Insert to the front
+        \item Insert to the rear
+        \item Remove from the front
+        \item Remove from the rear
+    \end{itemize}
+    All can be done in $O(1)$.
+\end{columns}
+  
+\end{frame}
 
-      \draw (135:3cm) node[below, red] (1) {1};
-      \draw (135:3.5cm) node (front) {
-        \large front}; 
-      \draw [<-, thick] (front) -- (1);
-      \draw (130:2cm) node[white] {10};
+\begin{frame}
+    \frametitle{Questions}
+    \begin{itemize}
+        \item {\large \faIcon{question-circle}} How to implement a LIFO stack using a deque?
+        \item {\large \faIcon{question-circle}} How to implement a FIFO queue using a deque?
+    \end{itemize}
 
-      \draw (100:2.5cm) node[below, red] {2}; 
-      \draw (95:2cm) node[white] {20}; 
 
-      \draw (60:2.2cm) node[below, red] {3}; 
-      \draw (50:2cm) node[white] {30}; 
-
-      \draw (20:2cm) node[below, red] {4};
-      \draw (20:2cm) node[white] {40};
-
-      \draw (-20:2cm) node[below, red] {5};
-      \draw (-20:2cm) node[white] {50}; 
-
-      \draw (-60:2.2cm) node[below, red] (6) {6};
-      \node[below left=of 6, yshift=2cm, xshift=1.5cm] (rear) {\large rear}; 
-      \node at (-60:2cm) (6th) {};
-      \draw[->, thick] (rear)++ (-0.2,-0.3) -- (6th);
-      \draw (-100:2.6cm) node[below, red] {7};
-      \draw (-140:3cm) node[below, red] {8}; 
-      \draw (-160:2cm) node[above, red] {9};
-
-    \end{scope}
-\end{tikzpicture}    
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Deque In Python}
+    \frametitle{2.2 Deque In Python}
 
     Luckily, \href{https://docs.python.org/3/library/collections.html}{collections.deque} has been designed in Python, which have fast appends and pops from both ends.
 
@@ -625,7 +646,7 @@ print(q)
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Deque In Java}
+    \frametitle{2.3 Deque In Java}
     Java is shipped with the \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Deque.html}{Deque} interface as well as many useful implementing classes, including \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayDeque.html}{ArrayDeque}, \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/LinkedList.html}{LinkedList}.    
     \begin{minted}[bgcolor=LightGray]{java}
 Deque<String> deque = new ArrayDeque<>();
@@ -642,11 +663,55 @@ The \alert{deque} provides complete and consistent set of both LIFO stack operat
 \end{frame}
 }
 
+\begin{frame}
+    \frametitle{Stack With Two Queues}
+Please implement \href{https://leetcode.com/problems/implement-stack-using-queues/}{a stack with two queues}.    
+
+\begin{itemize}
+    \item \texttt{push(e)}
+        \begin{itemize}
+            \item If \texttt{q1} is empty, enqueue \texttt{e} to \texttt{q1}
+            \item Otherwise, enqueue all elements from \texttt{q1} to \texttt{q2}, enqueue \texttt{e} to \texttt{q1}, and then enqueue all elements from \texttt{q2} back to \texttt{q1}.
+        \end{itemize}
+    \item \texttt{pop()}: \texttt{dequeue()} from \texttt{q1}
+\end{itemize}
+
+{\large \faIcon{code}} Try to implement this algorithm is Python.
+\end{frame}
+
+\begin{frame}[fragile]
+
+\begin{minted}[bgcolor=LightGray, baselinestretch=1, fontsize=\small]{python}
+from collections import deque
+
+
+class MyStack:
+    def __init__(self):
+        self.q1 = deque()
+        self.q2 = deque()
+
+    def push(self, x: int) -> None:
+        while self.q1:
+            self.q2.append(self.q1.popleft())
+        self.q1.append(x)
+        while self.q2:
+            self.q1.append(self.q2.popleft())
+
+    def pop(self) -> int:
+        return self.q1.popleft()
+\end{minted}
+
+\end{frame}
+
 \begin{frame}[fragile]
     \frametitle{LeetCode 933. Number of Recent Calls}
 \href{https://leetcode.com/problems/number-of-recent-calls/}{933. Number of Recent Calls}
-\pause
-\begin{minted}[bgcolor=LightGray, baselinestretch=1, fontsize=\footnotesize]{python}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+    \begin{minted}[bgcolor=LightGray]{python}
 from collections import deque
 
 
@@ -655,11 +720,12 @@ class RecentCounter:
         self.data = deque()
 
     def ping(self, t: int) -> int:
-        while len(self.data) > 0 and (t - 3000) > self.data[0]:
+        while self.data and (t - 3000) > self.data[0]:
             self.data.popleft()
         self.data.append(t)
         return len(self.data)
-\end{minted}
+        \end{minted}
+
 \end{frame}
 
 \begin{frame}

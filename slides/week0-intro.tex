@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{transparent}
 \usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
+\usepackage{pgfplots}
 \usepackage{tikz}
 \usetikzlibrary{calc,shadows.blur}
 \usepackage{fontawesome5}
@@ -147,18 +148,46 @@ books.add(new Book("Gone with the wind", 99.0));
 String[] books = {"Gone with the Wind", 
 "Hands on Data Structures"};
     \end{minted} 
-   \begin{exampleblock}{Question}
-    Can we add a new book onto \emph{books}?
-    \end{exampleblock} 
+    {\large \faIcon{question-circle}} Can we add a new book onto \emph{books}?
 \pause
-    \begin{quote}
-An array in most programming languages is in a fixed size. To put it in another way, you cannot add or remove any item.
-    \end{quote}
+
+    \begin{tikzpicture}
+        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+        text width=28em,anchor=south west,rounded corners]
+        {An array in most programming languages is in a fixed size. To put it in another way, you cannot add or remove any item.};
+    \end{tikzpicture} 
 \end{frame}
 
 \begin{frame}
     \begin{center}
-        \includegraphics[height=0.75\paperheight]{week0/rb-time}
+        \begin{tikzpicture}[scale=0.95]
+            \begin{axis}[
+                xlabel={size},
+                ylabel={time (ms)},
+                ymajorgrids=true,
+                grid style=dashed,
+                legend pos=north west,
+            ]
+            \addplot[
+                color=blue,
+                mark=square,
+                line width=1pt,
+                ]
+                coordinates {
+               (1000000, 34)(2000000, 69)(3000000, 129)(4000000, 179)(5000000, 201)
+                };
+                \addlegendentry{ArrayList}
+            
+            \addplot[color=red,
+            mark=diamond,
+            line width=1pt,]
+            coordinates {
+                (1000000, 0)(2000000, 0)(3000000, 0)(4000000, 0)(5000000, 0)
+                 };
+            \addlegendentry{Red-black Tree}
+
+            \end{axis}
+            \end{tikzpicture}  
     \end{center}
     \begin{block}{Fact 2}
         \textbf{Different data structures have varying \alert{efficiencies}.}

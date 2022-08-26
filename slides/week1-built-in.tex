@@ -94,7 +94,7 @@
     \includegraphics[height=0.6\paperheight]{cover}};
 }
     \begin{frame}
-        \section{\textcolor{darkmidnightblue}{Java Built-in Data Structures}}
+        \section{\textcolor{darkmidnightblue}{1. Java Built-in Data Structures}}
     \end{frame}
 
 }
@@ -114,7 +114,7 @@
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{1. Array}
+    \frametitle{1.1 Array}
     \begin{quote}
         An \alert{array} is a container object that holds a fixed number of values of a single type.
     \end{quote}
@@ -191,7 +191,7 @@ Enhanced \textbf{for} statement (a.k.a., \emph{for-each}).
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2. ArrayList}
+    \frametitle{1.2 ArrayList}
     \begin{tikzpicture}
         \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
         text width=25em,anchor=south west,rounded corners]
@@ -225,7 +225,7 @@ Enhanced \textbf{for} statement (a.k.a., \emph{for-each}).
 
 \begin{frame}[fragile]
     \frametitle{Collections}
-    \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html}{java.util.Collections} provides plenty static handy methods.
+    \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html}{java.util.Collections} provides plenty of handy static methods.
 
 \begin{minted}[bgcolor=LightGray]{java}
 List<Integer> list = Arrays.asList(1, 9, 4, 2);
@@ -237,7 +237,7 @@ Collections.reverse(list);
 
 
 \begin{frame}
-    \frametitle{3. HashMap}
+    \frametitle{1.3 HashMap}
     \alert{Map} can be used to represent a mapping between a \emph{key} and a \emph{value}, and we assume that keys are unique.
     \begin{table}
         \caption{Key-value examples}
@@ -304,7 +304,7 @@ int amount = cart.get("7802");
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{4. HashSet}
+    \frametitle{1.4 HashSet}
     \begin{minted}[bgcolor=LightGray]{java}
 Set<String> set = new HashSet<>();
 set.add("hello");
@@ -342,12 +342,12 @@ System.out.println(set.size()); // 2
     \includegraphics[height=0.6\paperheight]{cover}};
 }
     \begin{frame}
-        \section{\textcolor{darkmidnightblue}{Python Built-in Data Structures}}
+        \section{\textcolor{darkmidnightblue}{2. Python Built-in Data Structures}}
     \end{frame}
 }
 
 \begin{frame}[fragile]
-    \frametitle{1. List}
+    \frametitle{2.1 List}
     Python's \alert{list} resembles Java's \emph{ArrayList}, representing a resizable array of items.
 
     \begin{minted}[bgcolor=LightGray]{python}
@@ -395,7 +395,7 @@ You are required to know and practice at least those methods:
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2. Set and Dict}
+    \frametitle{2.2 Set and Dict}
 Python's \alert{set} resembles Java's \emph{HashSet}, representing an unordered collection of items without duplication.
 \begin{minted}[bgcolor=LightGray]{python}
 words = {'hello', 'world', 'hello'}
@@ -410,7 +410,7 @@ print(cart['7801'])
 \end{frame}
 
 
-\section{\textcolor{darkmidnightblue}{Why To Learn Data Structures?}}
+\section{\textcolor{darkmidnightblue}{3. Why To Learn Data Structures?}}
 
 \begin{frame}[fragile]
 \begin{minted}[bgcolor=LightGray]{python}
