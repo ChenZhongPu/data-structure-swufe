@@ -596,4 +596,365 @@ To add an element between two nodes.
     }
 
 \end{frame}
+
+\begin{frame}
+    \frametitle{1.5 Time Complexity}
+    \begin{table}
+        \caption*{Doubly Linked Lists}
+        \begin{tabular}{ll}
+          \toprule
+          Operation & Time Complexity \\
+          \midrule
+          \texttt{addFirst()} & $O(1)$\\
+          \texttt{addLast()} & $O(1)$ \\
+          \texttt{removeFirst()} & $O(1)$ \\
+          \texttt{removeLast()} & $O(1)$ \\
+          \bottomrule
+        \end{tabular}
+    \end{table}    
+
+\end{frame}
+
+\begin{frame}
+    \section{\textcolor{darkmidnightblue}{2. Array vs. Linked List}}
+    There is not a one-size-fits-all solution.
+
+\end{frame}
+
+\begin{frame}
+    \begin{table}
+        \caption*{Array vs. Linked List}
+        \begin{tabular}{ll}
+          \toprule
+          Array & Linked List \\
+          \midrule
+          Continuous memory layout & Non-continuous \\
+          Fixed in size & Dynamic \\
+          Allocated in compile time & Allocated at run time \\
+          Use less memory & Use more memory \\
+          Faster indexing  & Slower traversing \\
+          Slower insertion and deletion & Faster insertion and deletion \\
+          \bottomrule
+        \end{tabular}
+    \end{table} 
+\end{frame}
+
+\begin{frame}
+    \section{\textcolor{darkmidnightblue}{3. Case Study}}
+    It is adapted from \href{http://cslibrary.stanford.edu/105/LinkedListProblems.pdf}{18 linked list problems}.
+\end{frame}
+
+{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+  There are several different representations of a singly/doubly linked list:
+  \begin{itemize}
+    \item head
+    \item head + tail
+    \item header + trailer
+  \end{itemize}
+\end{frame}
+}
+
+\begin{frame}
+    \frametitle{3.1 count()}
+Given a \alert{\texttt{head}} of a singly linked list, return the count of a target element \texttt{k}.    
+
+\pause
+\scalebox{.85}{  
+    \begin{algorithm}[H]
+        \setstretch{1}
+        \caption{count(head, k)}
+        $cnt\gets 0$ \\
+        $x\gets head$ \\
+        \While{x $\neq$ null} {
+            \If{x.item == k} {
+                $cnt\gets cnt + 1$
+            }
+            $x\gets x.next$
+        }
+        \Return{cnt}
+        \end{algorithm}
+}
+\end{frame}
+
+\begin{frame}
+    \frametitle{3.2 sortedInsert()}
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {5};
+      \node[list,on chain] (C) {9};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+    \end{tikzpicture}
+
+    To insert a node whose item is \texttt{k} so that the list is in ascending order.
+
+    \pause
+    \begin{itemize}
+        \item \textbf{Case 1}: the list is empty.
+        \item \textbf{Case 2}: the item of \texttt{head} is greater than or equal to \texttt{k}.
+        \item \textbf{Case 3}: the item of \texttt{head} is less than \texttt{k}.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+            \setstretch{1}
+            \caption{sortedInsert(head, k)}
+            $node\gets Node(k)$ \\
+            \If{head == null or head.item $\geq$ k} {
+                \tcp{case 1 and case 2}
+                $node.next\gets head$ \\
+                $head\gets node$
+            }\Else {
+                \tcp{case 3}
+                $x\gets head$ \\
+                \While{x.next $\neq$ null and x.next.item $<$ k} {
+                    $x\gets x.next$
+                }
+                $node.next\gets x.next$ \\
+                $x.next\gets node$
+            }
+            \end{algorithm}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{3.3 reverseList()}
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+    
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{head}};
+    \end{tikzpicture}
+
+To reverse a list, and return the reversed \texttt{head}.
+
+\begin{itemize}
+    \item \textbf{Case 1}: the list is empty.
+    \item \textbf{Case 2}: the size is 1.
+    \item \textbf{Case 3}: the size is greater than 1.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{Two-pointers}
+
+    \begin{columns}
+        \column{.34\textwidth}
+        \begin{verbatim}
+next = cur.next
+cur.next = pre
+pre = cur
+cur = next
+        \end{verbatim}
+        \column{.64\textwidth}
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+            draw, rectangle split horizontal}, >=stealth, start chain]
+    
+          \node[on chain, draw, inner sep=6pt] (prev) {};
+          \draw (prev.north east) -- (prev.south west);
+          \draw (prev.north west) -- (prev.south east);
+          \node[list,on chain] (A) {1};
+          \node[list,on chain] (B) {9};
+          \node[list,on chain] (C) {8};
+          \node[on chain,draw,inner sep=6pt] (D) {};
+          \draw (D.north east) -- (D.south west);
+          \draw (D.north west) -- (D.south east);
+          \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+          \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+          \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+    
+          \node[below=of A, yshift=1cm]{\alert{cur}};
+          \node[below=of prev, yshift=.9cm]{\alert{pre}};
+          \node[below=of B, yshift=1cm]{\alert{next}};
+        \end{tikzpicture}
+\pause
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+            draw, rectangle split horizontal}, >=stealth, start chain]
+            \node[on chain, draw, inner sep=6pt] (null) {};
+            \draw (null.north east) -- (null.south west);
+            \draw (null.north west) -- (null.south east);
+    
+          \node[list,on chain] (A) {1};
+          \node[list,on chain] (B) {9};
+          \node[list,on chain] (C) {8};
+          \node[on chain,draw,inner sep=6pt] (D) {};
+          \draw (D.north east) -- (D.south west);
+          \draw (D.north west) -- (D.south east);
+          \draw[*->, red] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) to[out=80,in=80] (null);
+          \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+          \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+    
+          \node[below=of A, yshift=1cm]{\alert{pre}};
+          \node[below=of B, yshift=1cm]{\alert{cur}};
+          \node[below=of C, yshift=1cm]{\alert{next}};
+        \end{tikzpicture}
+    \pause
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+            draw, rectangle split horizontal}, >=stealth, start chain]
+            \node[on chain, draw, inner sep=6pt] (null) {};
+            \draw (null.north east) -- (null.south west);
+            \draw (null.north west) -- (null.south east);
+    
+          \node[list,on chain] (A) {1};
+          \node[list,on chain] (B) {9};
+          \node[list,on chain] (C) {8};
+          \node[on chain,draw,inner sep=6pt] (D) {};
+          \draw (D.north east) -- (D.south west);
+          \draw (D.north west) -- (D.south east);
+          \draw[*->, red] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) to[out=80,in=80] (null);
+          \draw[*->, red] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) to[out=80,in=80] (A);
+          \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+    
+          \node[below=of B, yshift=1cm]{\alert{pre}};
+          \node[below=of C, yshift=1cm]{\alert{cur}};
+          \node[below=of D, yshift=1cm]{\alert{next}};
+        \end{tikzpicture}
+        \pause
+        \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+            draw, rectangle split horizontal}, >=stealth, start chain]
+            \node[on chain, draw, inner sep=6pt] (null) {};
+            \draw (null.north east) -- (null.south west);
+            \draw (null.north west) -- (null.south east);
+    
+          \node[list,on chain] (A) {1};
+          \node[list,on chain] (B) {9};
+          \node[list,on chain] (C) {8};
+          \node[on chain,draw,inner sep=6pt] (D) {};
+          \draw (D.north east) -- (D.south west);
+          \draw (D.north west) -- (D.south east);
+          \draw[*->, red] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) to[out=80,in=80] (null);
+          \draw[*->, red] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) to[out=80,in=80] (A);
+          \draw[*->, red] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) to[out=80,in=80] (B);
+    
+          \node[below=of C, yshift=1cm]{\alert{pre}};
+          \node[below=of D, yshift=1cm]{\alert{cur}};
+        \end{tikzpicture}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+    \column{.4\textwidth}
+    \begin{verbatim}
+pre = null
+cur = head
+while (cur != null) {
+    next = cur.next
+    cur.next = pre
+    pre = cur
+    cur = next
+}
+return pre  
+    \end{verbatim}
+    \column{.64\textwidth}
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+
+      \node[on chain, draw, inner sep=6pt] (prev) {};
+      \draw (prev.north east) -- (prev.south west);
+      \draw (prev.north west) -- (prev.south east);
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+      \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+      \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+      \node[below=of A, yshift=1cm]{\alert{cur}};
+      \node[below=of prev, yshift=.9cm]{\alert{pre}};
+      \node[below=of B, yshift=1cm]{\alert{next}};
+    \end{tikzpicture}
+
+    \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+        draw, rectangle split horizontal}, >=stealth, start chain]
+        \node[on chain, draw, inner sep=6pt] (null) {};
+        \draw (null.north east) -- (null.south west);
+        \draw (null.north west) -- (null.south east);
+
+      \node[list,on chain] (A) {1};
+      \node[list,on chain] (B) {9};
+      \node[list,on chain] (C) {8};
+      \node[on chain,draw,inner sep=6pt] (D) {};
+      \draw (D.north east) -- (D.south west);
+      \draw (D.north west) -- (D.south east);
+      \draw[*->, red] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) to[out=80,in=80] (null);
+      \draw[*->, red] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) to[out=80,in=80] (A);
+      \draw[*->, red] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) to[out=80,in=80] (B);
+
+      \node[below=of C, yshift=1cm]{\alert{pre}};
+      \node[below=of D, yshift=1cm]{\alert{cur}};
+    \end{tikzpicture}
+
+    {\large \faIcon{question-circle}} When to terminate the traversal?
+
+    \pause
+    {\large \faIcon{question-circle}} Can the code handle case 1 and 2?
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \scalebox{.85}{  
+        \begin{algorithm}[H]
+            \caption{reverseList(head)}
+            $pre\gets null$ \\
+            $cur\gets head$ \\
+            \While{cur $\neq$ null} {
+                $next\gets cur.next$ \\
+                $cur.next\gets pre$ \\
+                $pre\gets cur$ \\
+                $cur\gets next$
+            }
+            \Return{pre}
+            \end{algorithm}
+    }
+
+    {\large \faIcon{code}} Try to solve \href{https://leetcode.com/problems/reverse-linked-list/}{LeetCode: 206. Reverse Linked List} using Java or Python.
+
+\end{frame}
+
+\begin{frame}
+
+    \section{\textcolor{darkmidnightblue}{Conclusion}} 
+    \begin{enumerate}
+        \item Doubly Linked List
+        \item Array vs. Linked List
+        \item Pointer moving
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Course Preview}
+{\large \faIcon{exclamation-triangle}} The next week's lesson will be held in Lab, and you will be asked to finish several programming assignments in class.
+
+\end{frame}
+
 \end{document}
