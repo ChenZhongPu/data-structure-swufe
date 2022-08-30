@@ -203,7 +203,7 @@ def len_of_list(a):
     \frametitle{Exercise}
 \begin{columns}
     \column{.5\textwidth}
-    Given a linked list with \alert{head}, how to get its length recursively?
+    {\large \faIcon{code}} Given a linked list with \alert{head}, how to get its length recursively?
     \column{.5\textwidth}
     \begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
         draw, rectangle split horizontal}, >=stealth, start chain]
@@ -384,13 +384,44 @@ All recursions can be transformed into \textbf{iterative} algorithms. Generally,
 \begin{frame}
 \frametitle{Summary}
 
-There are three important rules of thumb in developing recursive programs:
+{\large \faIcon{lightbulb}} There are three important rules of thumb in developing recursive programs:
 
 \begin{enumerate}
     \item The recursion has a \textbf{base case}.
     \item Recursive calls must address sub-problems that are \textbf{smaller} in some sense.
     \item Recursive calls should not address sub-problems that overlap.
 \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exercise}
+{\large \faIcon{code}} \textbf{Binary search}: return the rank of a \texttt{key} in a sorted array.    
+
+\begin{tikzpicture}
+  
+    \matrix[nodes=draw]
+    {
+      \node {2}; &
+      \node {3}; &
+      \node {6}; &
+      \node {8}; &
+      \node {13}; & 
+      \node {17}; &
+      \node {18}; \\
+    };
+  \end{tikzpicture}
+  \begin{minted}[baselinestretch=0.8,bgcolor=LightGray]{java}
+private int rank(int key, int[] a, int lo, int hi) {
+    if (lo > hi) return -1;
+    int mid = lo + (hi - lo) / 2;
+    if (key < a[mid]) 
+        return rank(key, a, lo, mid - 1);
+    else if (key > a[mid])
+        return rank(key, a, mid + 1, hi);
+    else return mid;
+}
+  \end{minted}
+
 \end{frame}
 
 \end{document}
