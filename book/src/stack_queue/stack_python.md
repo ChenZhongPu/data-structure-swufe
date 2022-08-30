@@ -112,7 +112,7 @@ for i in a:
     print(i)
 ```
 
-Why can we use `for` to iterate the list? The iterator behind the scenes plays the magic! See more at [Iterators](https://docs.python.org/3/tutorial/classes.html#iterators).
+Why can we use `for` to iterate the list? The iterator behind the scenes plays the magic[^for]! See more at [Iterators](https://docs.python.org/3/tutorial/classes.html#iterators).
 
 It is often a good practice to prepare a single class as the iterator which offers the `__next__()` method:
 
@@ -280,6 +280,8 @@ def compute(expr: str) -> float:
 
 
 ---
+[^for] It will call `__getitem__()` instead if `__iter__()` is not available.
+
 [^resize] It is because of the resizing of an array.
 
 [^arithmetic] This example comes from *Algorithms, 4th*.

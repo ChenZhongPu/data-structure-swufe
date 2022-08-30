@@ -12,6 +12,7 @@
 \usepackage{minted}
 \usepackage{csquotes}
 \usepackage{outlines}
+\usepackage{fontawesome5}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \hypersetup{
@@ -407,6 +408,21 @@ Python's \alert{dict} resembles Java's \emph{HashMap}, representing a collection
 cart = {'7801': 3, '9902': 1}
 print(cart['7801'])    
 \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{minted}[bgcolor=LightGray]{python}
+empty_set = set()
+
+empty_dict = {}
+empty_dict2 = dict()
+
+# When the keys are simple strings
+words = dict(hello=2, world=1)
+    \end{minted}
+    
+\pause
+{\large \faIcon{lightbulb}} To prepare yourself for programming in Python, please read \href{https://docs.python.org/3/tutorial/datastructures.html}{5. Data Structures} thoroughly.
 \end{frame}
 
 

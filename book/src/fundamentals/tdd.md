@@ -13,7 +13,7 @@ print(fibonacci(5)) # expect: 5
 ...
 ```
 
-But this method is somewhat in a low-level. In this section, I will introduce an automated approach.
+But this method is somewhat inefficient, let alone being automatic. In this section, I will introduce a better approach.
 
 ## Assert
 An assertion allows testing the correctness of any assumptions that have been made in the program, and once an `assert` fails, the program will crash. So, assertions can be used for testing. See more at [Assertions in Java](https://www.geeksforgeeks.org/assertions-in-java/) and [Python's assert](https://realpython.com/python-assert-statement/).
@@ -102,7 +102,7 @@ A test case can be either *passed* or *failed*. If all test cases are passed, we
 By the way, all assertions are enabled when executing the unit tests.
 
 ### Python
-Luckily, the [unittest](https://docs.python.org/3/library/unittest.html) module is built with Python, so we do not have to rely on any third-party library.
+Luckily, the [unittest](https://docs.python.org/3/library/unittest.html) module is built with Python, so we do not have to rely on any third-party library[^pytest].
 
 As for [add.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/add.py), we can also follow the steps: move the cursor onto `add()`, and then right-click *Go to | Test ｜ Create New Test*. Finally, it will create `test_add.py` for us, and we can add as many test cases as we like: 
 
@@ -128,3 +128,5 @@ if __name__ == '__main__':
 [^debug] Part of the reason stems from the fact that assertions have multiple applications. In addition to tests, assertions also can be used to debug code. 
 
 [^bug] Edsger W. Dijkstra said that “Program testing can be a very effective way to show the presence of bugs, but it is hopelessly inadequate for showing their absence.” That doesn’t mean we shouldn’t try to test as much as we can!
+
+[^pytest] A third-party test library, called [pytest](https://docs.pytest.org/en/7.1.x/), is more powerful than the `unittest` module in the standard library.
