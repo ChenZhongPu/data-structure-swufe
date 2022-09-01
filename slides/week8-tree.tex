@@ -120,10 +120,9 @@ In real word, we need to use \textbf{nonlinear} data structures. For example, it
     
 \begin{tikzpicture}
 [sibling distance=6cm,-,thick,]
-\footnotesize
 \node {organism}
   child {node {plant}
-    [sibling distance=2cm]
+    [sibling distance=3cm]
     child {node {tree}
       child {node {deciduous}}
       child {node {evergreen}}
@@ -134,18 +133,16 @@ In real word, we need to use \textbf{nonlinear} data structures. For example, it
     [sibling distance=2.5cm]
     child {node {invertebrate}}
     child {node {vetebrate}
-      [sibling distance=4.7cm]
+      [sibling distance=3.4cm]
       child {node {bird}
         [sibling distance=1.5cm]
         child {node {finch}}
-        child {node {rosella}}
         child {node {sparrow}}
       }
       child {node {mammal}
         [sibling distance=1.5cm]
         child {node {dolphin}}
         child {node {human}}
-        child {node {whale}}
       }
     }
   };
@@ -328,7 +325,7 @@ every node/.style = {shape=rectangle, rounded corners,
 
     \column{.65\textwidth}
       \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered, font=\sffamily}, bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em},level/.style={sibling distance = 5cm/#1,
-    level distance = 1.5cm}, scale=.95, redline/.style = {edge from parent/.style={draw, red}}, blackline/.style={edge from parent/.style={draw, black}}]
+    level distance = 1.5cm}, scale=.95, redline/.style = {edge from parent/.style={draw, red, very thick}}, blackline/.style={edge from parent/.style={draw, black}}]
   \node [bst] (rootn) {P}
       child[redline] {node [bst](nodeq) {Q}
           child {node [bst] {A}
@@ -631,6 +628,8 @@ commonline/.style={edge from parent/.style={black,line width=0.2mm,-latex,draw}}
 
 \pause
 {\large \faIcon{question-circle}} What is the time complexity of \texttt{get()}?
+
+{\large \faIcon{question-circle}} How to implement \texttt{contains()} based on \texttt{get()}?
 \end{frame}
 
 \begin{frame}[fragile]
@@ -689,7 +688,7 @@ commonline/.style={edge from parent/.style={black,line width=0.2mm,-latex,draw}}
             \Return{}
         }
     }
-    \uIf{y = null}{
+    \uIf{y == null}{
         $root\gets z$
     }\uElseIf{key $<$ y.key}{
         $y.left\gets z$
@@ -698,7 +697,245 @@ commonline/.style={edge from parent/.style={black,line width=0.2mm,-latex,draw}}
     }
     \end{algorithm}
 }
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exercise}
+{\large \faIcon{pen-fancy}} Please draw the BST after inserting 5, 2, 4, 10, 8, 7, 42, in that order into an empty BST.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{2.6 Recursive get()}
+\begin{itemize}
+  \item \textbf{Base step}: \texttt{key} is found or reaching \texttt{null}.
+  \item \textbf{Recursive step}: get from its left or right subtree.
+\end{itemize}  
+
+\scalebox{.8}{  
+  \begin{algorithm}[H]
+    \setstretch{1.1}
+    \caption{get(x, key)}
+    \If{x == null or key == x.key}{
+        \Return{x}
+    }
+    \If{key $<$ x.key}{
+        \Return{get(x.left, key)}
+    }\Else{
+        \Return{get(x.right, key)}
+    }
+    \end{algorithm}
+}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{2.7 Recursive put()}
+\texttt{put(x, key)}: to insert a new \texttt{key} into a BST rooted at \texttt{x}, and then return the root. 
+
+\scalebox{.8}{  
+  \begin{algorithm}[H]
+    \setstretch{1}
+    \caption{put(x, key)}
+    \If{x == null}{
+        \Return{Node(key)}
+    }
+    \If{key $<$ x.key}{
+        $x.left\gets put(x.left, key)$
+    } \ElseIf{key $>$ x.key} {
+        $x.right\gets put(x.right, key)$
+    }
+    \Return{x}
+    \end{algorithm}
+}
+
+\end{frame}
+
+{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+  Generally, recursive implementations are a bit easier to verify for correctness; non-recursive implementations are a bit more efficient.
+\end{frame}
+}
+
+\begin{frame}
+  \frametitle{Exercise}
+{\large \faIcon{code}} How to count the number of nodes (i.e., \texttt{size()}) in a BST using a recursive implementation?
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{2.8 Ordered-based Operations}
+
+A BST supports a myriad of ordered-based operations, such as \texttt{min()}, \texttt{max()}, \texttt{floor()}, and \texttt{ceiling()};
+
   
+\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+  font=\sffamily},
+bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 4cm/#1,
+level distance = 1.5cm}]
+\node [bst] {8}
+  child {node [bst] {3}
+      child {node [bst] {1}}
+      child {node [bst](n6) {6}
+          child {node [bst] {4}}
+          child[edge from parent/.style={draw=none}] {node {}}
+      }
+  }
+  child {node (n10) [bst] {10}
+     child[edge from parent/.style={draw=none}] {node {}}
+      child {node [bst] {14}
+          child {node [bst] {12}}
+          child {node [bst] {18}}
+      }
+  }
+;
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{max()}
+Note that the maximum key is always located at the \textbf{rightmost} in a BST.
+
+\scalebox{.8}{  
+  \begin{algorithm}[H]
+    \setstretch{1}
+    \caption{max()}
+    \If{root == null} {
+      throw NoSuchElement Error
+    }
+    $x\gets root$ \\
+    \While{x.right $\neq$ null} {
+      $x\gets x.right$
+    }
+    \Return{x.key}
+    \end{algorithm}
+}
+
+\end{frame}
+
+\begin{frame}[fragile]
+The recursive implementation of \texttt{max()}:
+
+\scalebox{.8}{  
+  \begin{algorithm}[H]
+    \setstretch{1}
+    \caption{max(x)}
+    \If{x.right == null} {
+      \Return{x}
+    } \Else {
+      \Return{max(x.right)}
+    }
+    \end{algorithm}
+}
+
+\begin{minted}[bgcolor=LightGray]{java}
+if (root == null) {
+  throw new NoSuchElementException();
+}
+return max(root).key;
+      \end{minted}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exercise}
+  
+  {\large \faIcon{code}} Please implement \texttt{min()} in a recursive and an iterative way, respectively.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{removeMin()}
+To remove the node with the minimum key. Note that it is always located at the \textbf{leftmost} in a BST.
+
+\begin{columns}
+  \column{.45\textwidth}<1->
+  \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+    font=\sffamily},
+  bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 4cm/#1,
+  level distance = 1.5cm}, scale=.9]
+  \node [bst] {8}
+    child {node [bst] {3}
+        child {node [bst] {1}}
+        child {node [bst](n6) {6}
+            child {node [bst] {4}}
+            child[edge from parent/.style={draw=none}] {node {}}
+        }
+    }
+    child {node (n10) [bst] {10}
+       child[edge from parent/.style={draw=none}] {node {}}
+        child {node [bst] {14}
+            child {node [bst] {12}}
+            child {node [bst] {18}}
+        }
+    }
+  ;
+  \end{tikzpicture}
+  \column{.55\textwidth}<2->
+  \alert{\texttt{removeMin(x)}}: it takes a node \texttt{x} then returns a root of the subtree rooted at \texttt{x} after removing the node with the smallest key.
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+  \item \textbf{Base step}: if $x.left$ is \texttt{null}, return its right child.
+  \item \textbf{Recursive step}: otherwise, update $x.left$ to \texttt{removeMin(x.left)}.
+\end{itemize}
+
+\scalebox{.8}{  
+  \begin{algorithm}[H]
+    \caption{removeMin(x)}
+    \If{x.left = null}{
+      \Return{x.right}
+  }
+  $x.left\gets removeMin(x.left)$ \\
+  \Return{x}    
+    \end{algorithm}
+}
+\end{frame}
+
+\begin{frame}
+
+  \scalebox{.8}{  
+    \begin{algorithm}[H]
+      \setstretch{1.1}
+      \caption{removeMin()}
+      \If{root == null}{throw NoSuchElement error}
+      $x\gets root$ \\
+      $y\gets null$ \\ 
+      \While{x.left $\neq$ null}{
+      $y\gets x$ \\
+      $x\gets x.left$ 
+      }
+      \If{y == null}{
+          $root\gets x.right$
+      }\Else{
+          $y.left\gets x.right$
+      } 
+      \end{algorithm}
+  }
+
+\end{frame}
+
+\begin{frame}
+  
+  \section{\textcolor{darkmidnightblue}{Conclusion}} 
+
+  \begin{enumerate}
+    \item Trees
+    \item Binary search trees
+    \item BST: search and insert
+    \item Recursive and iterative algorithms on a BST
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{This Week's Task}
+\begin{itemize}
+  \item Implement a BST using Python or Java.
+  \item Try to implement \texttt{floor()} and \texttt{ceiling()} for BSTs.
+\end{itemize}  
 
 \end{frame}
 
