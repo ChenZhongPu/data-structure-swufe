@@ -20,6 +20,7 @@
 \usepackage{fontawesome5}
 \usepackage{booktabs}
 \usepackage{caption}
+\usepackage{bookmark}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -111,8 +112,10 @@
 
   \end{tikzpicture}
 
-  \textbf{Example}: Bob's father is Jack, and he has a sister named Alice. Which data structure can store those names and imply the relationships?
-
+  \pause
+\begin{block}{Example}
+  Bob's father is Jack, and he has a sister named Alice. Which data structure can store those names and imply the relationships?
+\end{block}
 \end{frame}
 
 \begin{frame}
@@ -400,10 +403,10 @@ every node/.style = {shape=rectangle, rounded corners,
   \begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
 class Node:
   def __init__(self, parent, children, key, value):
-    self._parent = parent
-    self._children = children
-    self._key = key
-    self._value = value
+      self._parent = parent
+      self._children = children
+      self._key = key
+      self._value = value
   \end{minted}
 
 But, for simplicity, we only consider \textbf{keys}.
