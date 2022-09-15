@@ -370,13 +370,13 @@ print(num[-1])
 print(num[2:-1])    
     \end{minted}
 
-\begin{exampleblock}{Question 1}
+\begin{block}{\faIcon{question-circle} Question 1}
     How to get the size of a list in Python?
-\end{exampleblock}
+\end{block}
 
-\begin{exampleblock}{Question 2}
+\begin{block}{\faIcon{question-circle} Question 2}
 How to get the last element of a list in Python?
-\end{exampleblock}
+\end{block}
 
 \end{frame}
 
@@ -428,6 +428,24 @@ words = dict(hello=2, world=1)
 
 \section{\textcolor{darkmidnightblue}{3. Why To Learn Data Structures?}}
 
+
+\begin{frame}
+    \frametitle{Which One Is Better?}
+
+    \includegraphics[height=.6\paperheight]{week0/box1}%
+\includegraphics[height=.6\paperheight]{week0/box2}
+
+\pause
+
+\begin{tikzpicture}
+    \node[fill=red!30,blur shadow={shadow xshift=-0.5ex},
+    text width=26em,anchor=south west,rounded corners]
+    {\faIcon{bell} How your data are organized depends on your applications.};
+\end{tikzpicture}
+    
+
+\end{frame}
+
 \begin{frame}[fragile]
 \begin{minted}[bgcolor=LightGray]{python}
 books1 = ['Gone with the wind', 'Data structures']
@@ -438,12 +456,12 @@ Suppose there are $10^6$ books, which data structure shall we choose?
 
 \pause
 
-\begin{block}{Reasons}
+\begin{exampleblock}{Reasons}
     \begin{enumerate}
         \item Understanding how a data structure and algorithm work behind the scenes is necessary when choosing an appropriate one.
         \item Sometimes you should be a creator, not just a user.
     \end{enumerate}
-\end{block}
+\end{exampleblock}
 \end{frame}
 
 \begin{frame}
@@ -454,7 +472,7 @@ Suppose there are $10^6$ books, which data structure shall we choose?
         \column{0.85\textwidth}
         \begin{quote}
         ``See that bird?" he says. ``Well, in Italian, it's a Chutto Lapittida. In Chinese, it's a Chung-long-tah, and in Japanese, it's a Katano Tekeda. You can know the name of that bird in all the languages of the world, but when you're finished, you'll know absolutely nothing whatever about the bird." 
-            (\textbf{I learned very early the difference between knowing the name of something and knowing something.})               
+            (\textbf{\alert{I learned very early the difference between knowing the name of something and knowing something.}})               
         \end{quote} 
     \end{columns}
 
