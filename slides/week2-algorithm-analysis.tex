@@ -424,6 +424,22 @@ Intuitively, this means that $f$ does not grow faster than $g$ ($g$ is the \aler
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{Example}
+    \begin{minted}[bgcolor=LightGray, baselinestretch=1]{java}
+public static int sum(int n) {
+    int partialSum = 0;
+
+    for (int i = 1; i <= n; i++) {
+        partialSum += i * i * i;
+    }
+    return partialSum;
+}
+    \end{minted}
+    
+    Its time complexity is \(O(N)\).
+\end{frame}
+
+\begin{frame}[fragile]
     
     {\large \faIcon{question-circle}} What is the time complexity of \texttt{foo()} and \texttt{two\_sum()}, respectively? 
     \begin{minted}[bgcolor=LightGray]{python}
@@ -454,6 +470,29 @@ def selection_sort(a):
                 m_idx = j
         a[i], a[m_idx] = a[m_idx], a[i]    
 \end{minted}
+\end{frame}
+
+\begin{frame}
+
+    \begin{table}
+        \begin{tabular}{rrrrrrrrrrrrr}
+          \toprule
+          i & m\_idx & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+          \midrule
+          & & S & O & R & T & E & X & A & M & P & L & E \\
+          0 & 6 & S & O & R & T & E & X & \alert{A} & M & P & L & E \\
+          1 & 4 & \textcolor{gray}{A} & O & R & T & \alert{E} & X & S & M & P & L & E \\ 
+          2 & 10 & \textcolor{gray}{A} & \textcolor{gray}{E} & R & T & O & X & S & M & P & L & \alert{E} \\
+          3 & 9 & \textcolor{gray}{A} & \textcolor{gray}{E} & \textcolor{gray}{E} & T & O & X & S & M & P & \alert{L} & R \\
+          4 & 7 & \textcolor{gray}{A} & \textcolor{gray}{E} & \textcolor{gray}{E} & \textcolor{gray}{L} & O & X & S & \alert{M} & P & T & R \\
+          5 & 7 & \textcolor{gray}{A} & \textcolor{gray}{E} & \textcolor{gray}{E} & \textcolor{gray}{L} & \textcolor{gray}{M} & X & S & \alert{O} & P & T & R \\
+          6 & 8 & \textcolor{gray}{A} & \textcolor{gray}{E} & \textcolor{gray}{E} & \textcolor{gray}{L} & \textcolor{gray}{M} & \textcolor{gray}{O} & S & X & \alert{P} & T & R \\ 
+          ... \\
+          10 & 10 & \textcolor{gray}{A} & \textcolor{gray}{E} & \textcolor{gray}{E} & \textcolor{gray}{L} & \textcolor{gray}{M} & \textcolor{gray}{O} & \textcolor{gray}{P} & \textcolor{gray}{R} & \textcolor{gray}{S} & \textcolor{gray}{T} & \alert{X} \\ 
+          \bottomrule
+        \end{tabular}
+    \end{table}
+
 \end{frame}
 
 \begin{frame}[fragile]
