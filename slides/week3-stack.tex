@@ -104,7 +104,7 @@
 \begin{frame}[fragile]
     \frametitle{A Small Quiz}
     \begin{enumerate}
-        \item Someone claims that ``the complexity of this algorithm is $O(n\log{n})$''. What does she mean?
+        \item Someone claims that ``If a program costs \(2N^2 + 3N\log{N}\), then its time complexity is $O(N\log{N})$''. How do you think of it?
         \item What is time complexity of the following code?
     \end{enumerate}
 
@@ -227,8 +227,8 @@ But, we would like a \alert{Stack} class which allows us to write code in the ob
 \begin{minted}[bgcolor=LightGray]{python}
 s = Stack()
 s.push('a')
-s.append('b')
-s.append('c')
+s.push('b')
+s.push('c')
 print(s.size())
 print(s.pop())
 print(s.pop())

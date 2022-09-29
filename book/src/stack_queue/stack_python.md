@@ -243,7 +243,7 @@ After the final right parenthesis has been processed, there is one value on the 
 101
 ```
 
-For simplicity, the code that the expression is fully parenthesized, with numbers and characters separated by whitespace:
+For simplicity, the code assume that the expression is fully parenthesized, with numbers and characters separated by whitespace:
 
 ```python
 def compute(expr: str) -> float:
