@@ -386,6 +386,20 @@ Basically, an amortized time is \textbf{the average time taken per operation, if
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{Task: learn to search}
+We know that \texttt{\alert{append()}} is to add the new element onto the \emph{back} of a list. How to add a new element onto the \emph{front} of a list?
+
+\faIcon{search} Please try to find the solution on Python's official tutorial.
+
+\begin{minted}[baselinestretch=1,bgcolor=LightGray]{python}
+s = [1, 3]
+s.append(5)
+\end{minted}  
+    
+
+\end{frame}
+
+\begin{frame}[fragile]
 Bob devises a new implementation for stacks based on the \texttt{list}. 
 
 \begin{itemize}
@@ -438,6 +452,17 @@ print(s.pop(0)) # 'b'
         \end{axis}
         \end{tikzpicture}  
 \end{center}    
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tricks in Python: \texttt{timeit}}
+To evaluate the performance of a program, we can measure the elapsing time. As for very small bits of Python code, \href{https://docs.python.org/3/library/timeit.html}{timeit} is preferred:
+
+\begin{verbatim}
+>>> timeit.timeit('a.append(3)', setup='a=[]')
+>>> timeit.timeit('a.insert(0, 3)', setup='a=[]')
+\end{verbatim}
 
 \end{frame}
 
@@ -745,12 +770,19 @@ public Item pop() {
 }
 
 \begin{frame}
-    \frametitle{Task}
+    \frametitle{Reading Task \faIcon{book-reader}}
     \begin{itemize}
         \item  Read \emph{``Application (2): arithmetic expression evaluation''} in Section 2.1.1.
-        \item Exercise 2 in Chapter 2.
     \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Homework 2}
+    \begin{enumerate}
+        \item Ex1, Chapter 2 (5 marks)
+        \item Ex2, Chapter 2 (5 marks)
+    \end{enumerate}
 \end{frame}
 
 \end{document}
