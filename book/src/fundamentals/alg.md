@@ -151,6 +151,6 @@ The \\(O(1)\\) here means the addition operation. You can prove that \\(T(n) = O
 
 [^fig] This figure is drawn by [gnuplot](http://www.gnuplot.info/) and the code can be found at [lines.gp](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/plot/lines.gp).
 
-[^two-sum] It is possible to design faster algorithms with \\( O(N\log{N}) \\) and even with \\( O(N) \\).
+[^two-sum] It is possible to design [faster algorithms](https://www3.cs.uic.edu/pub/CS211/LabsS18/Two-Sum.pdf) with \\( O(N\log{N}) \\) and even with \\( O(N) \\).
 
 [^fib] See more at https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/.
