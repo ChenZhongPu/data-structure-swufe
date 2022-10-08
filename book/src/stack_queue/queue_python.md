@@ -88,10 +88,10 @@ Now let's consider a running example to understand the principle of circular arr
 | q.enqueue(10) | 0 | 1 | 1 |
 | q.enqueue(20) | 0 | 2 | 2 |
 | q.enqueue(30) | 0 | 3 | 3 |
-| q.dequeue() | 1 | 4 | 2 |
-| q.enqueue(40) | 1 | 5 | 3 |
-| q.enqueue(50) | 1 | 6 | 4 |
-| q.dequeue() | 2 | 6 | 3 |
+| q.dequeue() | 1 | 3 | 2 |
+| q.enqueue(40) | 1 | 4 | 3 |
+| q.enqueue(50) | 1 | 5 | 4 |
+| q.dequeue() | 2 | 5 | 3 |
 
 Obviously, the `dequeue()` operation only results in a pointer shift, so **the time complexity is \\(O(1)\\)**. What a clever design! In addition, we can find that the specific pointer (i.e., *index*) does not really matter, so we can maintain *front* and *size* instead, and the *rear* can be computed based on them.
 
