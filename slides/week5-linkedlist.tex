@@ -674,17 +674,16 @@ head = head.next
     \scalebox{.85}{  
         \begin{algorithm}[H]
         \caption{addLast(head, element)}
-        $tail\gets head$ \\
-        \While{tail.next $\neq$ null} {
-            $tail\gets tail.next$
-        }
-        \If{tail == null} {
-            \tcp{the list is empty}
+        \If {isEmpty(head)} {
             $head\gets Node(element)$
-        } \Else {
+        }
+        \Else {
+            $tail\gets head$ \\
+            \While{tail.next $\neq$ null}{
+                $tail\gets tail.next$
+            }
             $tail.next\gets Node(element)$
         }
-
         \end{algorithm}
     } 
 
