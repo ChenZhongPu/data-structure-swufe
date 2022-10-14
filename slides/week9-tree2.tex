@@ -90,7 +90,7 @@
 \begin{frame}
     \frametitle{Small Quiz}
 \begin{enumerate}
-    \item Please draw the BST after inserting 4, 10, 8, 1, 7, 2, and 6 sequentially.
+    \item Please draw the BST after inserting 4, 10, 8, 1, 2, and 7 sequentially.
     \item If we use an \emph{in-order} method to traverse it, what shall we see?
 \end{enumerate}   
 
@@ -130,9 +130,89 @@ Please fill in the blank of the following algorithm.
     \includegraphics[height=0.6\paperheight]{cover}};
 }
     \begin{frame}
-        \section{\textcolor{darkmidnightblue}{xxx}}
+        \section{\textcolor{darkmidnightblue}{1. Balanced Trees}}
     \end{frame}
 
 }
+
+\begin{frame}[fragile]
+    \frametitle{1.1 What Is Balance?}
+
+    \begin{columns}
+        \column{.4\textwidth}
+        \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+            font=\sffamily},
+          bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 4cm/#1,
+          level distance = 1.5cm}]
+        \node [bst] {4}
+            child {node [bst] {1}
+                child[edge from parent/.style={draw=none}] {node {}}
+                child {node [bst](n6) {2}
+                }
+            }
+            child {node (n10) [bst] {10}
+               child {node [bst] {8}
+                    child {node [bst] {7}}
+                    child[edge from parent/.style={draw=none}] {node {}}
+               }
+               child[edge from parent/.style={draw=none}] {node {}}
+            }
+        ;
+        \end{tikzpicture}
+        \column{.59\textwidth}
+       \faIcon{question-circle} Consider the following questions:
+       
+       \begin{itemize}
+        \item Given a BST, what is time complexity of common operations (e.g., \texttt{search()}, \texttt{put()})?
+        \item What is the height if inserting 1, 2, 4, 7, 8, and 10  sequentially?
+       \end{itemize}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+   \begin{columns}
+    \column{.6\textwidth}
+    \begin{tikzpicture}
+        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+        text width=16em,anchor=south west,rounded corners]
+        {Thus, the set operations
+        are fast if the height of the search tree is small.};
+    \end{tikzpicture}
+
+    \begin{exampleblock}{Balanced Tree}
+        A search tree is \alert{balanced} if it can guarantee that basic dynamic-set operations take $O(\lg{N})$ time in the worst case.
+    \end{exampleblock} 
+    \column{.39\textwidth}
+    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=.8pt, text centered,
+        font=\sffamily},
+      bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=1.8em}, ->,>=stealth',level/.style={sibling distance = 1.8cm,
+      level distance = 1.2cm}]
+    \node [bst] {1}
+        child[edge from parent/.style={draw=none}] {node {}
+        }
+        child {node [bst] {2}
+           child[edge from parent/.style={draw=none}] {node {}
+           }
+           child {node [bst] {4}
+                child[edge from parent/.style={draw=none}] {node {}}
+                child {node [bst] {7}
+                   child[edge from parent/.style={draw=none}] {node {}}
+                   child {node [bst] {8}
+                     child[edge from parent/.style={draw=none}] {node {}
+                       }
+                     child {node [bst] {10}}
+                   }
+                }
+           }
+        }
+    ;
+    \end{tikzpicture}
+\end{columns}
+
+   
+
+\end{frame}
 
 \end{document}
