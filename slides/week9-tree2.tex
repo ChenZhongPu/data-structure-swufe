@@ -211,8 +211,40 @@ Please fill in the blank of the following algorithm.
     \end{tikzpicture}
 \end{columns}
 
-   
+\end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{1.2 Balanced Tree}
+\begin{exampleblock}{Perfectly Height-balanced}
+ A tree is \alert{perfectly} height-balanced if the left and right subtrees of any node are the same height.
+\end{exampleblock}
+
+\begin{columns}
+    \column{.4\textwidth}<1->
+    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered, font=\sffamily}, bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em},level/.style={sibling distance = 3cm/#1,
+        level distance = 1.5cm}, scale=.95]
+\node [bst] {A}
+        child {node [bst] {B}
+            child {node [bst] {D}}
+            child {node [bst] {E}}
+        }
+        child {node [bst] {C}
+            child {node [bst] {F}}
+            child {node [bst] {G}}
+        }
+;
+    \end{tikzpicture}     
+    \column{.59\textwidth}<2->
+    But \textbf{perfect height balance} is very rare: it is only possible if there are exactly $2^{H+1} - 1$ nodes.
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+
+    \section{\textcolor{darkmidnightblue}{2. AVL Tree}} 
+    An AVL tree (named after inventors \textbf{A}delson-\textbf{V}elsky and \textbf{L}andis) is a self-balancing binary search tree (BST).
 \end{frame}
 
 \end{document}

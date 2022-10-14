@@ -10,7 +10,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc,shadows.blur}
 \usepackage{fontawesome5}
-\usepackage{minted}
+\usepackage{listings}
 \usepackage{csquotes}
 \usepackage{outlines}
 \usepackage{booktabs}
@@ -27,6 +27,31 @@
 \usecolortheme{default}
 \definecolor{darkmidnightblue}{rgb}{0.0, 0.2, 0.4}
 \definecolor{LightGray}{gray}{0.9}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
@@ -131,11 +156,11 @@
 
 \pause
 
-\begin{minted}{java}
+\begin{lstlisting}[language=Java]
 List<Book> books = new ArrayList<>();
 // add/delete/find book
 books.add(new Book("Gone with the wind", 99.0));
-\end{minted}
+\end{lstlisting}
 
 \end{frame}
 %---------------------------------------------------------
@@ -144,10 +169,12 @@ books.add(new Book("Gone with the wind", 99.0));
     \begin{block}{Fact 1}
         \textbf{Different data structures have varying \alert{capabilities}.}
     \end{block}
-    \begin{minted}{java}
+
+\begin{lstlisting}[language=Java]
 String[] books = {"Gone with the Wind", 
-"Hands on Data Structures"};
-    \end{minted} 
+                "Hands on Data Structures"};    
+\end{lstlisting}
+
     {\large \faIcon{question-circle}} Can we add a new book onto \emph{books}?
 \pause
 
@@ -387,37 +414,37 @@ String[] books = {"Gone with the Wind",
 \begin{frame}[fragile]
     \begin{columns}
         \column{0.45\textwidth}
-        Python:
-\begin{minted}{python}
+        \faIcon{python} Python:
+\begin{verbatim}
     i = 42
     j = 'data'
-\end{minted}
+\end{verbatim}
     
         \column{0.45\textwidth}
-          Java:
-\begin{minted}{java}
+        \faIcon{java} Java:
+\begin{verbatim}
     int i = 42;
     String j = "data";
-\end{minted}
+\end{verbatim}
       \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Python's Fibonacci}
-    \begin{minted}[bgcolor=LightGray]{python}
+\begin{lstlisting}[language=Python]
 def fibonacci(n):
     if n == 0:
         return 0
     elif n == 1 or n == 2:
         return 1
     else:
-        return fibonacci(n - 1) + fibonacci(n - 2)        
-    \end{minted}
+        return fibonacci(n - 1) + fibonacci(n - 2)     
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Java's Fibonacci}
-    \begin{minted}[bgcolor=LightGray]{java}
+\begin{lstlisting}[language=Java]
 public long fibonacci(int n) {
     if (n == 0) {
         return 0;
@@ -426,8 +453,8 @@ public long fibonacci(int n) {
     } else {
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
-}    
-    \end{minted}
+}     
+\end{lstlisting}
 \end{frame}
 
 \end{document}
