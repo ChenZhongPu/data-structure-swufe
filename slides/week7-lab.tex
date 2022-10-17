@@ -1,4 +1,5 @@
 \documentclass[aspectratio=169, 14pt]{beamer}
+\usepackage{scalefnt}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{tipa}
@@ -16,6 +17,7 @@
 \usetikzlibrary {arrows.meta}
 \usetikzlibrary{calc,shadows.blur,fit,positioning}
 \usetikzlibrary{shapes.multipart,chains}
+\usetikzlibrary{shadows,patterns,shapes}
 \usepackage{minted}
 \usepackage{fontawesome5}
 \usepackage{booktabs}
@@ -34,6 +36,180 @@
 \definecolor{darkmidnightblue}{rgb}{0.0, 0.2, 0.4}
 \definecolor{LightGray}{gray}{0.9}
 
+\usepackage{xparse}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\DefineDictionary}{mm}
+ {
+  \arclupus_dict_def:nn { #1 } { #2 }
+ }
+
+\seq_new:N \l__arclupus_dict_temp_seq
+
+\cs_new_protected:Nn \arclupus_dict_def:nn
+ {
+  \prop_gclear_new:c { g_arclupus_#1_dict_prop }
+  \clist_map_inline:nn { #2 }
+   {
+    \__arclupus_dict_add:nn { #1 } { ##1 }
+   }
+  \cs_new:cpn { #1 } ##1 { \prop_item:cn { g_arclupus_#1_dict_prop } { ##1 } }
+ }
+
+\cs_new_protected:Nn \__arclupus_dict_add:nn
+ {
+  \seq_set_split:Nnn \l__arclupus_dict_temp_seq { / } { #2 }
+  \prop_gput:cxx { g_arclupus_#1_dict_prop }
+   {
+    \seq_item:Nn \l__arclupus_dict_temp_seq { 1 }
+   }
+   {
+    \seq_item:Nn \l__arclupus_dict_temp_seq { 2 }
+   }
+ }
+\cs_generate_variant:Nn \prop_gput:Nnn { cxx }
+\ExplSyntaxOff
+
+\DefineDictionary{var}{1/A, 2/B, 3/C}
+
+% The logic for Hanoi, we record the discs at every pole
+% as a comma separated list ending with a '.'; i.e. the
+% starting list for 4 discs would be 1,2,3,4,.
+\newcount\ndiscs
+\def\initpoles#1{
+    \def\disclist{}
+    \foreach \n in {1,...,#1} {
+        \xdef\disclist{\disclist\n,}
+    }
+    \expandafter\xdef\csname pole 1\endcsname{\disclist.}
+    \expandafter\gdef\csname pole 2\endcsname{.}
+    \expandafter\gdef\csname pole 3\endcsname{.}
+}
+
+% Delimited macro; #1 is everything up to the first ',' and
+% #2 everything after it.
+\def\head#1,#2.{#1}
+\def\tail#1,#2.{#2}
+
+% This macro updates the disc lists, its arguments are the name
+% names of the macro's corresponding to the poles, for example
+% 'pole 1' and 'pole 3'.
+\def\movedisc#1#2{
+    \edef\lista{\csname #1\endcsname}
+    \edef\listb{\csname #2\endcsname}
+    \expandafter\xdef\csname #2\endcsname{\expandafter\head\lista,\listb}
+    \expandafter\xdef\csname #1\endcsname{\expandafter\tail\lista.}
+}
+
+% Updates the lists and then draws a new frame.
+\def\move#1#2{
+    \movedisc{pole #1}{pole #2}
+    \gdef\fmsg{\node[anchor=north] at (3.8,-.5) {Moved disc from pole \var{#1} to pole \var{#2}.};}
+    \drawpoles
+}
+
+% This macro boils down to a well-known recursive solution, as given
+% here for example: http://en.wikipedia.org/wiki/Towers_of_Hanoi#Recursive_solution
+%
+% #1 Pole to move from
+% #2 Pole to move to
+% #3 Pole to use as scratch
+% #4 Number of disks
+\def\rhanoi#1#2#3#4{
+    \ifnum#4>1
+        {\advance#4 by -1 \rhanoi#1#3#2#4}
+        \move{#1}{#3}
+        {\advance#4 by -1 \rhanoi#2#1#3#4}
+    \else
+        \move{#1}{#3}
+    \fi
+}
+
+% Below is the TikZ code to draw the towers:
+\tikzset{
+    disc/.style={shade, shading=radial, rounded rectangle,minimum height=.5cm,
+        inner color=#1!20, outer color=#1!60!gray},
+    disc 1/.style={disc=yellow, minimum width=15mm},
+    disc 2/.style={disc=orange, minimum width=20mm},
+    disc 3/.style={disc=red, minimum width=25mm},
+    disc 4/.style={disc=green, minimum width=30mm},
+    disc 5/.style={disc=blue, minimum width=35mm},
+    disc 6/.style={disc=purple, minimum width=40mm},
+}
+
+% Define some colors, I don't like plain green and brown.
+\definecolor{darkgreen}{rgb}{0.2,0.55,0}
+\definecolor{darkbrown}{rgb}{0.375,0.25,0.125}
+
+\newcommand{\pole}{
+  \fill[darkbrown] (-1.6cm, 0) rectangle (1.6cm,0.25cm)
+    (-1.25mm,2.5mm) rectangle (1.25mm,4.25cm);
+}
+
+% Because the list starts with the topmost disc, we
+% use two recursive macro's to invert the drawing process.
+\newcount\curlevel
+
+% This macro checks whether the list is empty, if not,
+% it calls \rdrawdiscs which removes one element and
+% calls this one again.
+
+\def\drawdiscs#1.{
+    % If #1 is empty, this expands to \if.. which is true, otherwise
+    % we're safe to assume there's at least one element.
+    \expandafter\if#1..\else
+        \rdrawdiscs#1.
+        \advance\curlevel by 1\relax
+    \fi
+}
+
+\def\rdrawdiscs#1,#2.{
+    \drawdiscs#2.
+    {\edef\n{\the\curlevel}
+        % Draw the actual disk.
+        \node[disc #1,yshift={\n*5mm}] {#1};
+    }
+}
+
+\def\discs#1{
+    \curlevel=1
+    \expandafter\drawdiscs#1
+}
+
+% Draws the whole situation based on the lists.
+\def\drawpoles{
+    \begin{frame}{\ftitle}
+    \begin{tikzpicture}
+        \foreach \n/\x in {1/0cm,2/3.8cm,3/7.6cm} {
+            \begin{scope}[xshift=\x]
+                \pole
+                \expandafter\discs\csname pole \n\endcsname
+            \end{scope}
+        }
+        % Macro that either contains something like OK or
+        % the last move.
+        \fmsg
+        % We use this to prevent the picture from jumping between
+        % frames.
+        \useasboundingbox (-1.6cm,-1.2cm) rectangle (9.2cm,4.25cm);
+    \end{tikzpicture}
+    \end{frame}
+}
+\def\hanoi#1{
+    \ndiscs=#1
+    \initpoles{#1}
+    \xdef\ftitle{Towers of Hanoi}
+    \gdef\fmsg{}
+    % Starting frame.
+    \drawpoles
+    % Recursion draws a new frame for every step.
+    \rhanoi{1}{2}{3}{\ndiscs}
+    % Final frame.
+    \gdef\fmsg{\node[] at (3.8,2.5) {\Huge\scalefont{2}\color{darkgreen}OK};}
+    \drawpoles
+}
+% Main macro, inits the lists for the current number, sets a title
+% for the frame and starts the recursion.
 
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
@@ -393,9 +569,33 @@ All recursions can be transformed into \textbf{iterative} algorithms. Generally,
 \end{enumerate}
 \end{frame}
 
+\hanoi{3}
+
 \begin{frame}[fragile]
-    \frametitle{Exercise}
-{\large \faIcon{code}} \textbf{Binary search}: return the rank of a \texttt{key} in a sorted array.    
+    \frametitle{Towers of Hanoi}
+To move $n$ disks from pole A to pole C, how many times of moving are required?
+
+\begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
+def move(n):
+    assert n >= 0
+    if n == 0 or n == 1:
+        return n
+    # move (n-1) disks from A to B, using C
+    # move nth (largest) disk from A to C
+    # move (n-1) disks from B to C, using A
+    return 2 * move(n - 1) + 1
+\end{minted}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exercise 1: Towers of Hanoi}
+    {\large \faIcon{code}} To develop a recursive algorithm to print the process of how those disks are moved.
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exercise 2: Binary Search}
+{\large \faIcon{code}} \textbf{Binary search}: return the index of a given \alert{key} in a sorted array.    
 
 \begin{tikzpicture}
   
@@ -410,17 +610,33 @@ All recursions can be transformed into \textbf{iterative} algorithms. Generally,
       \node {18}; \\
     };
   \end{tikzpicture}
-  \begin{minted}[baselinestretch=0.8,bgcolor=LightGray]{java}
-private int rank(int key, int[] a, int lo, int hi) {
-    if (lo > hi) return -1;
-    int mid = lo + (hi - lo) / 2;
-    if (key < a[mid]) 
-        return rank(key, a, lo, mid - 1);
-    else if (key > a[mid])
-        return rank(key, a, mid + 1, hi);
-    else return mid;
-}
-  \end{minted}
+  
+  Compare the mid-item with the given \alert{key}:
+  \begin{itemize}
+    \item If the mid-item is larger, then search on the right side.
+    \item If the mid-item is smaller, then search on the left side.
+    \item Otherwise, bingo!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+The non-recursive version:
+
+\begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
+def search(a, target):
+    high = len(a) - 1
+    low = 0
+    while high >= low:
+        mid = low + (high - low) // 2
+        if a[mid] == target:
+            return mid
+        elif a[mid] > target:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return -1
+\end{minted}
+    
 
 \end{frame}
 
