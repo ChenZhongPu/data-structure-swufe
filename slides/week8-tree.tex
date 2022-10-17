@@ -4,6 +4,7 @@
 \usepackage{tipa}
 \usepackage{graphicx}
 \usepackage{transparent}
+\usepackage{multicol}
 \usepackage[ruled, lined, linesnumbered, commentsnumbered]{algorithm2e}
 \usepackage{pgfplots}
 \newcommand\mycommfont[1]{\small\ttfamily\textcolor{blue}{#1}}
@@ -921,6 +922,202 @@ To remove the node with the minimum key. Note that it is always located at the \
 
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{2.9 \texttt{remove()}}
+To remove a key, you should first find it.
+  \begin{columns}
+    \column{.45\textwidth}
+    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+      font=\sffamily},
+    bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 4cm/#1,
+    level distance = 1.5cm}, scale=.9]
+    \node [bst] {8}
+      child {node [bst] {3}
+          child {node [bst] {1}}
+          child {node [bst](n6) {6}
+              child {node [bst] {4}}
+              child[edge from parent/.style={draw=none}] {node {}}
+          }
+      }
+      child {node (n10) [bst] {10}
+         child[edge from parent/.style={draw=none}] {node {}}
+          child {node [bst] {14}
+              child {node [bst] {12}}
+              child {node [bst] {18}}
+          }
+      }
+    ;
+    \end{tikzpicture}
+    \column{.5\textwidth}
+    \begin{itemize}
+      \item To delete 7.
+      \item To delete 4.
+      \item To delete 3.
+    \end{itemize}
+  \end{columns}  
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+  \scalebox{.9}{
+    \begin{algorithm}[H]
+      \caption{remove(x, key)}
+      \If{x == null}{
+          \Return{null}
+      }
+      \uIf{key $<$ x.key}{
+          $x.left\gets remove(x.left, key)$
+      }\uElseIf{key $>$ x.key}{
+          $x.right\gets remove(x.right, key)$
+      }\Else{
+         \tcp{I'm going to delete it.}
+      }
+      \Return{x}
+      \end{algorithm}      
+  }
+
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{Case 0}: If $x$ has no child, then return $null$.
+
+\textbf{Case 1}: If $x$ has only one child, then return that child.
+  
+\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+  font=\sffamily},
+bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.5cm/#1,
+level distance = 1.5cm}, scale=.9]
+\node [bst](lefttree) {8}
+  child {node [bst](1n3) {3}
+      child {node [bst] {1}}
+      child {node [bst](n6) {6}
+          child {node [bst] {4}}
+          child[edge from parent/.style={draw=none}] {node {}}
+      }
+  }
+  child {node (n10) [bst] {10}
+     child[edge from parent/.style={draw=none}] {node {}}
+      child {node [bst] {14}
+          child {node [bst] {12}}
+          child {node [bst] {18}}
+      }
+  }
+;
+\node[red, right] at (n6.east) {$x$};
+
+\draw [-stealth, line width=0.4mm, draw=blue](3.5,-1) -- (5.5,-1)node[midway,above,shape=rectangle,draw=none]{delete $x$};
+
+\node [right=of lefttree, xshift=6cm, bst] {8}
+  child {node [bst] {3}
+    child {node [bst] {1}}
+    child {node [bst] {4}}
+  }
+  child {node (n10) [bst] {10}
+  child[edge from parent/.style={draw=none}] {node {}}
+   child {node [bst] {14}
+       child {node [bst] {12}}
+       child {node [bst] {18}}
+   }
+}
+  ;
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{Case 2}: If x has two children, then return $min(x.right)$, and then $removeMin(x.right)$.
+
+  \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+    font=\sffamily},
+  bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.5cm/#1,
+  level distance = 1.5cm}, scale=.9]
+  \node [bst](lefttree) {8}
+    child {node [bst](1n3) {3}
+        child {node [bst] {1}}
+        child {node [bst](n6) {6}
+            child {node [bst] {4}}
+            child[edge from parent/.style={draw=none}] {node {}}
+        }
+    }
+    child {node (n10) [bst] {10}
+       child[edge from parent/.style={draw=none}] {node {}}
+        child {node [bst] {14}
+            child {node [bst] {12}}
+            child {node [bst] {18}}
+        }
+    }
+  ;
+  \node[red, right] at (1n3.east) {$x$};
+
+  \draw [-stealth, line width=0.4mm, draw=blue](3.5,-1) -- (5.5,-1)node[midway,above,shape=rectangle,draw=none]{delete $x$};
+
+  \node [right=of lefttree, xshift=6cm, bst] {8}
+    child {node [bst] {4}
+      child {node [bst] {1}}
+      child {node [bst] {6}}
+    }
+    child {node (n10) [bst] {10}
+    child[edge from parent/.style={draw=none}] {node {}}
+     child {node [bst] {14}
+         child {node [bst] {12}}
+         child {node [bst] {18}}
+     }
+ }
+    ;
+  \end{tikzpicture}
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+  \begin{minted}[bgcolor=LightGray]{python}
+# Case 0 and Case 1
+if x.right is None:
+    return x.left
+if x.left is None:
+    return x.right
+# Case 2
+t = x
+x = BST._min(t.right)
+x.right = BST._remove_min(t.right)
+x.left = t.left
+  \end{minted}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Complete \texttt{remove()}}
+\scalebox{.7}{
+  \begin{algorithm}[H]
+    \caption{remove(x, key)}
+    \begin{multicols}{2}
+    \If{x = null}{
+        \Return{null}
+    }
+    \uIf{key $<$ x.key}{
+        $x.left\gets remove(x.left, key)$
+    }\uElseIf{key $>$ x.key}{
+        $x.right\gets remove(x.right, key)$
+    }\Else{
+        \If{x.right = null}{
+            \Return{x.left}
+        }
+        \If{x.left = null}{
+            \Return{x.right}
+        }
+        $t\gets x$ \\
+        $x\gets min(t.right)$ \\
+        $x.right\gets removeMin(t.right)$ \\
+        $x.left\gets t.left$
+    }
+    \Return{x}
+     \end{multicols}
+    \end{algorithm}
+}
+
+\end{frame}
+
 \begin{frame}
   
   \section{\textcolor{darkmidnightblue}{Conclusion}} 
@@ -933,12 +1130,20 @@ To remove the node with the minimum key. Note that it is always located at the \
   \end{enumerate}
 \end{frame}
 
-\begin{frame}
-  \frametitle{This Week's Task}
+\begin{frame}[fragile]
+  \frametitle{Homework}
 \begin{itemize}
-  \item Implement a BST using Python or Java.
-  \item Try to implement \texttt{floor()} and \texttt{ceiling()} for BSTs.
-\end{itemize}  
+  \item Develop an algorithm to check whether the \alert{BST property} is satisfied based on \href{https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/tree/bst.py}{bst.py}. (10 marks)
+\end{itemize}
+
+\begin{minted}[bgcolor=LightGray, baselinestretch=1.1]{python}
+def is_bst(self):
+  """
+  Return True if the BST property is satisfied.
+  Return False otherwise.
+  """
+  pass
+\end{minted}
 
 \end{frame}
 
