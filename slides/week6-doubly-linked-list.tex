@@ -628,7 +628,7 @@ To add an element between two nodes.
           \toprule
           Array & Linked List \\
           \midrule
-          Continuous memory layout & Non-continuous \\
+          Contiguous memory layout & Non-contiguous \\
           Fixed in size & Dynamic \\
           Allocated in compile time & Allocated at run time \\
           Use less memory & Use more memory \\
@@ -637,6 +637,20 @@ To add an element between two nodes.
           \bottomrule
         \end{tabular}
     \end{table} 
+\end{frame}
+
+\begin{frame}
+    \frametitle{A General Tip in Java}
+
+    \begin{tikzpicture}
+        \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
+        text width=26em,anchor=south west,rounded corners]
+        {\faIcon{lightbulb} \texttt{ArrayList} with \texttt{ArrayDeque} are preferable in many more use-cases than \texttt{LinkedList}. If you're not sure — just start with \texttt{ArrayList}.};
+    \end{tikzpicture}
+
+    \pause
+    \includegraphics[width=.85\textwidth]{week6/linked}
+
 \end{frame}
 
 \begin{frame}
