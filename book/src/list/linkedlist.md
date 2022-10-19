@@ -42,7 +42,7 @@ second.next = third
 
 From the definition, we can know that one is able to use the first node (`first` in our case) to represent a whole linked list, and the first node often is known as `head`. As for the procedure-oriented programming language (e.g., C), this is the only way to design a linked list.
 
-To what follows, I will describe the common methods for a linked list ADT in a procedure-first way, and we are going to translate those pseudo code into Python or Java code in the following sections.
+In what follows, I will describe the common methods for a linked list ADT in a procedure-first way, and we are going to translate those pseudo code into Python or Java code in the following sections.
 
 ## `size()`: the number of elements
 
