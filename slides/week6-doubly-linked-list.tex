@@ -34,6 +34,85 @@
 \definecolor{darkmidnightblue}{rgb}{0.0, 0.2, 0.4}
 \definecolor{LightGray}{gray}{0.9}
 
+\usepackage[many]{tcolorbox}
+\usepackage{varwidth}
+\usepackage{environ}
+\usepackage{xparse}
+
+\newlength{\bubblesep}
+\newlength{\bubblewidth}
+\setlength{\bubblesep}{2pt}
+\AtBeginDocument{\setlength{\bubblewidth}{.75\textwidth}}
+\definecolor{bubblegreen}{RGB}{103,184,104}
+\definecolor{bubblegray}{RGB}{241,240,240}
+
+\newcommand{\bubble}[4]{%
+  \tcbox[
+    on line,
+    arc=4.5mm,
+    colback=#1,
+    colframe=#1,
+    #2,
+  ]{\color{#3}\begin{varwidth}{\bubblewidth}#4\end{varwidth}}%
+}
+
+\ExplSyntaxOn
+\seq_new:N \l__ooker_bubbles_seq
+\tl_new:N \l__ooker_bubbles_first_tl
+\tl_new:N \l__ooker_bubbles_last_tl
+
+\NewEnviron{rightbubbles}
+ {
+  \begin{flushright}
+  \sffamily
+  \seq_set_split:NnV \l__ooker_bubbles_seq { \par } \BODY
+  \int_compare:nTF { \seq_count:N \l__ooker_bubbles_seq < 2 }
+   {
+    \bubble{bubblegreen}{rounded~corners}{white}{\BODY}\par
+   }
+   {
+    \seq_pop_left:NN \l__ooker_bubbles_seq \l__ooker_bubbles_first_tl
+    \seq_pop_right:NN \l__ooker_bubbles_seq \l__ooker_bubbles_last_tl
+    \bubble{bubblegreen}{sharp~corners=southeast}{white}{\l__ooker_bubbles_first_tl}
+    \par\nointerlineskip
+    \addvspace{\bubblesep}
+    \seq_map_inline:Nn \l__ooker_bubbles_seq
+     {
+      \bubble{bubblegreen}{sharp~corners=east}{white}{##1}
+      \par\nointerlineskip
+      \addvspace{\bubblesep}
+     }
+    \bubble{bubblegreen}{sharp~corners=northeast}{white}{\l__ooker_bubbles_last_tl}
+    \par
+   }
+   \end{flushright}
+ }
+\NewEnviron{leftbubbles}
+ {
+  \begin{flushleft}
+  \sffamily
+  \seq_set_split:NnV \l__ooker_bubbles_seq { \par } \BODY
+  \int_compare:nTF { \seq_count:N \l__ooker_bubbles_seq < 2 }
+   {
+    \bubble{bubblegray}{rounded~corners}{black}{\BODY}\par
+   }
+   {
+    \seq_pop_left:NN \l__ooker_bubbles_seq \l__ooker_bubbles_first_tl
+    \seq_pop_right:NN \l__ooker_bubbles_seq \l__ooker_bubbles_last_tl
+    \bubble{bubblegray}{sharp~corners=southwest}{black}{\l__ooker_bubbles_first_tl}
+    \par\nointerlineskip
+    \addvspace{\bubblesep}
+    \seq_map_inline:Nn \l__ooker_bubbles_seq
+     {
+      \bubble{bubblegray}{sharp~corners=west}{black}{##1}
+      \par\nointerlineskip
+      \addvspace{\bubblesep}
+     }
+    \bubble{bubblegray}{sharp~corners=northwest}{black}{\l__ooker_bubbles_last_tl}\par
+   }
+  \end{flushleft}
+ }
+\ExplSyntaxOff
 
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
@@ -86,6 +165,117 @@
 % \tableofcontents
 % \end{frame}
 %--------------------------------------------------------
+
+\begin{frame}
+    \frametitle{A Few Tips}
+
+    \begin{exampleblock}{Tips}
+        \begin{enumerate}
+            \item \faIcon{walking} Slow down. The more you understand, the less you have to memorize.
+            \item \faIcon{microphone} Talk about it. Out loud.
+            \item \faIcon{beer} Drink water. Lots of it.
+        \end{enumerate}        
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{leftbubbles}
+Hi, Alice. Can you describe a linked list in plain language? It looks like a chain.        
+    \end{leftbubbles}
+\begin{rightbubbles}
+Sure. That's a great analogy. It contains nodes where each node contains a data field and a link to the next node in the list, and that's why it is linked.  
+\end{rightbubbles}
+
+\includegraphics[width=.5\textwidth]{week6/chain}
+
+\begin{tikzpicture}[list/.style={rectangle split, rectangle split parts=2,
+    draw, rectangle split horizontal}, >=stealth, start chain]
+
+  \node[list,on chain] (A) {1};
+  \node[list,on chain] (B) {9};
+  \node[list,on chain] (C) {8};
+  \node[on chain,draw,inner sep=6pt] (D) {};
+  \draw (D.north east) -- (D.south west);
+  \draw (D.north west) -- (D.south east);
+  \draw[*->] let \p1 = (A.two), \p2 = (A.center) in (\x1,\y2) -- (B);
+  \draw[*->] let \p1 = (B.two), \p2 = (B.center) in (\x1,\y2) -- (C);
+  \draw[*->] let \p1 = (C.two), \p2 = (C.center) in (\x1,\y2) -- (D);
+
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+\begin{leftbubbles}
+Got it. So, as long as I have the \alert{\texttt{head}} node, I am able to scan the elements from left to right, right?
+\end{leftbubbles}
+
+\begin{rightbubbles}
+Yes, exactly. Do you know how to add a new element into the front of a linked list?
+\end{rightbubbles}
+
+\begin{leftbubbles}
+Well, it's a bit challenging. Step1: create a new node \alert{x}. Step 2: update \alert{x}'s next to \alert{head}.
+\end{leftbubbles}
+
+\begin{rightbubbles}
+Close. What else do you need to do?
+\end{rightbubbles}
+
+\end{frame}
+
+\begin{frame}
+
+    \begin{leftbubbles}
+Oh, a final step: update \alert{head} to \alert{x}! It is a new head after all. But I feel there is still a huge gap to write down the pseudo-code. Let alone the Python or Java code.
+    \end{leftbubbles}
+
+\begin{rightbubbles}
+Basically, it can be done by a direct ``translation".
+\end{rightbubbles}
+
+\begin{table}
+    \begin{tabular}{ll}
+      \toprule
+      Steps & Pseudo-code \\
+      \midrule
+      Create a new node $x$ & $x \gets Node(element)$ \\
+      Update $x$'s next & $x.next \gets head$ \\
+      Update $head$ & $head \gets x$\\
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{leftbubbles}
+That's amazing. I think translating it into Python code is similar. Thanks, Alice. I already feel much confident now.
+    \end{leftbubbles}
+ 
+\begin{columns}
+\column{.5\textwidth}
+\scalebox{.85}{  
+    \begin{algorithm}[H]
+    \caption{addFirst(head, element)}
+    $x\gets Node(element)$ \\
+    $x.next\gets head$ \\
+    $head\gets x$
+    \end{algorithm}
+}
+\column{.5\textwidth} 
+\begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
+def add_first(self, item):
+    node = Node(item)
+    node.next = self._head
+    self._head = node
+\end{minted}
+\end{columns}
+
+\end{frame}
+
 \begin{frame}
 \frametitle{A Small Quiz}
 {\large \faIcon{question-circle}} What does the following code do?
