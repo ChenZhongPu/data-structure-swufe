@@ -1056,4 +1056,256 @@ class Node:
         self.right = right
 \end{minted}
 \end{frame}
+
+\begin{frame}
+
+    \section{\textcolor{darkmidnightblue}{3. Red-black Tree}} 
+    Red-black tree is a kind of self-balancing binary search tree with one extra bit of storage per node: its color, which can be either \textcolor{red}{RED} or BLACK. 
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{3.1 Red-black Tree Properties}
+\begin{enumerate}
+    \item Every node is either red or black.
+    \item The root is black.
+    \item Every leaf (\texttt{null}) is black.
+    \item If a node is red, then both its children are black.
+    \item For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    
+    \begin{tikzpicture}[
+        treenode/.style = {align=center, inner sep=1pt, text centered,
+    font=\sffamily},
+  arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+  arn_r/.style = {treenode, circle, red, draw=red, 
+    text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+  arn_x/.style = {treenode, rectangle, draw=black,
+    minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
+    ,
+        ->,>=stealth',level/.style={sibling distance = 7cm/#1,
+        level distance = 1.5cm}, level 3/.style={sibling distance = 2cm}, level 4/.style={sibling distance = 0.8cm}] 
+      \node [arn_b] {33}
+          child{ node [arn_r] {15} 
+                  child{ node [arn_b] {10} 
+                      child{ node [arn_r] {5}
+                               child{ node [arn_b] {null}}
+                               child{ node [arn_b] {null}}} 
+                      child{ node [arn_b] {null} }
+                  }
+                  child{ node [arn_b] {20}
+                                  child{ node [arn_r] {18}
+                                  child{ node [arn_b] {null}}
+                                  child{ node [arn_b] {null}}}
+                                  child{ node [arn_b] {null}}
+                  }                            
+          }
+          child{ node [arn_r] {47}
+                  child{ node [arn_b] {38} 
+                                  child{ node [arn_r] {36}
+                                  child{ node [arn_b] {null}}
+                                  child{ node [arn_b] {null}}}
+                                  child{ node [arn_r] {39}
+                                  child{ node [arn_b] {null}}
+                                  child{ node [arn_b] {null}}}
+                  }
+                  child{ node [arn_b] {51}
+                                  child{ node [arn_r] {49}
+                                  child{ node [arn_b] {null}}
+                                  child{ node [arn_b] {null}}}
+                                  child{ node [arn_b] {null}}
+                  }
+              }; 
+      \end{tikzpicture}
+      
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{tikzpicture}[
+        treenode/.style = {align=center, inner sep=1pt, text centered,
+        font=\sffamily},
+      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+      arn_r/.style = {treenode, circle, red, draw=red, 
+        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+        ,
+        level/.style={sibling distance = 6cm/#1,
+        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
+      \node [arn_b] {33}
+          child{ node [arn_r] {15} 
+                  child{ node (n10) [arn_b] {10} 
+                      child{ node [arn_r] {5}
+                               } 
+                     child[noline] {node {}}
+                  }
+                  child{ node (n20) [arn_b] {20}
+                                  child{ node [arn_r] {18}
+                                  }
+                                  child [noline] {node {}}
+                  }                            
+          }
+          child{ node [arn_r] {47}
+                  child{ node [arn_b] {38} 
+                                  child{ node [arn_r] {36}}
+                                  child{ node [arn_r] {39}
+                                  }
+                  }
+                  child{ node (n51) [arn_b] {51}
+                                  child{ node [arn_r] {49}}
+                                  child [noline]{node {}}
+                  }
+              }; 
+      \end{tikzpicture}    
+      \begin{exampleblock}{black-height of node x}
+       The number of black nodes on any simple path from, but not including, a node x down to a leaf.        
+      \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{3.2 Exercise}
+Which of the followings are valid red-black trees?
+
+\begin{columns}
+    \column{.5\textwidth}<1->
+    \begin{tikzpicture}[
+        treenode/.style = {align=center, inner sep=1pt, text centered,
+        font=\sffamily},
+      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+      arn_r/.style = {treenode, circle, red, draw=red, 
+        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+        ,
+        level/.style={sibling distance = 4cm/#1,
+        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
+        \node (root) [arn_b] {30}
+         child {node [arn_r] {20}
+            child {node [arn_b] {25}}
+            child [noline] {node {}}
+         }
+         child {node [arn_r] {40}}
+        ;
+        \node [below=of root, yshift=-2cm]{(a)};
+    \end{tikzpicture}
+    \column{.5\textwidth}<2->
+    \begin{tikzpicture}[
+        treenode/.style = {align=center, inner sep=1pt, text centered,
+        font=\sffamily},
+      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+      arn_r/.style = {treenode, circle, red, draw=red, 
+        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+        ,
+        level/.style={sibling distance = 4cm/#1,
+        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
+        \node (root) [arn_b] {30}
+         child {node [arn_r] {20}
+            child {node [arn_r] {10}}
+            child [noline] {node {}}
+         }
+         child {node [arn_r] {40}}
+        ;
+        \node [below=of root, yshift=-2cm]{(b)};
+    \end{tikzpicture}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{3.2 Exercise}
+Which of the followings are valid red-black trees?
+\begin{columns}
+    \column{.5\textwidth}<1->
+    \begin{tikzpicture}[
+        treenode/.style = {align=center, inner sep=1pt, text centered,
+        font=\sffamily},
+      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+      arn_r/.style = {treenode, circle, red, draw=red, 
+        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+        ,
+        level/.style={sibling distance = 4cm/#1,
+        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
+        \node (root) [arn_b] {20}
+         child {node [arn_b] {10}
+            child [noline] {node {}}
+            child {node [arn_r] {12}
+             child [noline] {node {}}
+             child {node [arn_r]{15}}
+            }
+         }
+         child {node [arn_b] {30}
+           child {node [arn_r] {25}}
+           child [noline] {node {}}
+         }
+        ;
+        \node [below=of root, yshift=-3.5cm]{(c)};
+    \end{tikzpicture}
+    \column{.5\textwidth}<2->
+    \begin{tikzpicture}[
+        treenode/.style = {align=center, inner sep=1pt, text centered,
+        font=\sffamily},
+      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+      arn_r/.style = {treenode, circle, red, draw=red, 
+        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+        ,
+        level/.style={sibling distance = 4cm/#1,
+        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
+        \node (root) [arn_b] {20}
+         child {node [arn_b] {12}
+            child {node [arn_r] {10}}
+            child {node [arn_r] {15}}
+         }
+         child {node [arn_b] {30}
+           child {node [arn_r] {25}}
+           child [noline] {node {}}
+         }
+        ;
+        \node [below=of root, yshift=-3.5cm]{(d)};
+    \end{tikzpicture}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{3.2 Exercise}
+    Which of the followings are valid red-black trees?
+
+    \begin{tikzpicture}[
+        treenode/.style = {align=center, inner sep=1pt, text centered,
+        font=\sffamily},
+      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+      arn_r/.style = {treenode, circle, red, draw=red, 
+        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+        ,
+        level/.style={sibling distance = 4cm/#1,
+        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
+        \node (root) [arn_b] {20}
+         child {node [arn_b] {10}
+         }
+         child {node [arn_r] {50}
+           child {node [arn_b] {40}
+            child {node [arn_r] {30}}
+            child [noline] {node {}}
+           }
+           child {node [arn_b] {90}
+            child {node [arn_r] {60}}
+            child [noline] {node {}}
+           }
+         }
+        ;
+        \node [below=of root, yshift=-3.5cm]{(e)};
+    \end{tikzpicture}
+
+\end{frame}
 \end{document}
