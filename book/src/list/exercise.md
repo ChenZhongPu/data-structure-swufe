@@ -74,3 +74,13 @@ assert a.equals(b);
 
 ---
 13. Try to convert the binary search implementation ([BinarySearch.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/main/java/org/swufe/datastructure/BinarySearch.java) or [binary_search.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/binary_search.py)) to a recursive version.
+
+Note that different from the current implementations, it should return the largest index  `i` so that `a[i]` is smaller than or equal to key.  
+
+````py
+assert binary_search([1, 3, 8, 10], 3) == 1
+
+assert binary_sarch([1, 3, 8, 10], 8) == 2
+
+assert binary_search([1, 3, 8, 10], 9) == 2
+````
