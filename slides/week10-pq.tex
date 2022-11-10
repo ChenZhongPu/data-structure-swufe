@@ -696,6 +696,57 @@ public static void sort(Comparable[] a){
 \end{minted} 
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{2.6 Built-in Priority Queues}
+Again, you don't have to design a priority queue from the scratch.
+
+\begin{itemize}
+    \item \faIcon{java} \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/PriorityQueue.html}{java.util.PriorityQueue}: it is a minimum priority queue.
+    \item \faIcon{python} \href{https://docs.python.org/3/library/heapq.html}{heapq}: it is also a minimum priority queue.
+\end{itemize}
+
+\begin{minted}[bgcolor=LightGray, baselinestretch=.9]{python}
+pq = []
+heapq.heappush(pq, 1)
+heapq.heappush(pq, 4)
+heapq.heappush(pq, 0)
+heapq.heappush(pq, 6)
+heapq.heappush(pq, 3)
+print(heapq.heappop(pq))  # 0
+print(pq[0])  # 1
+\end{minted} 
+
+\end{frame}
+
+\begin{frame}[fragile]
+\faIcon{lightbulb} How to use \texttt{heapq} or \texttt{java.util.PriorityQueue} as a \textbf{max heap}? For simplicity, assume that keys are integers.
+    
+\pause
+
+\begin{minted}[bgcolor=LightGray, baselinestretch=1.1]{python}
+class MaxPQ:
+    def __init__(self):
+        self._pq = []
+    
+    def insert(self, e):
+        heapq.heapush(self._pq, -e)
+    
+    def delMax(self):
+        return -heapq.heappop(self._pq)
+\end{minted}
+
+\end{frame}
+
+\begin{frame}
+
+    \section{\textcolor{darkmidnightblue}{Conclusion}}
+    \begin{itemize}
+        \item Priority Queue
+        \item Heap and Heap Sort
+    \end{itemize}
+\end{frame}
+
+
 \begin{frame}
     \frametitle{Homework 6}
 \begin{enumerate}
