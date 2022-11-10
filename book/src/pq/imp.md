@@ -56,9 +56,9 @@ Using this representation, the relationship between *parent-children* in a binar
 - The parent of the node in position *k* is position \\(\lfloor k/2 \rfloor\\).
 - The two children of the node in position *k* are in positions *2k* and *2k + 1*.
 
-It is easy to prove by production that the height of a complete binary tree of size N is \\(\lfloor \lg{N} \rfloor\\). Due to this property, we can design algorithms in guaranteed logarithmic time.
+It is easy to prove that the height of a complete binary tree of size N is \\(\lfloor \lg{N} \rfloor\\). Due to this property, we can design algorithms in guaranteed logarithmic time.
 
 
 | data structure | insert | remove maximum |
 | ------ | ------ | -----
-| binary heap | \\(O(\lg{N})\\) | \\(O(\lg{N})\\) |
+| binary heap | \\(O(\lg{N})\\) | \\(O(\lg{N})\\) 
