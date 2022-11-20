@@ -76,17 +76,6 @@ public class KDTree {
         size = 0;
     }
 
-    private Node kd(List<Point> points, int depth) {
-        if (points.size() == 0) {
-            return null;
-        }
-        int axis = depth % 2;
-        points.sort(Comparator.comparing(a -> a.getItem(axis)));
-        int median = points.size() / 2;
-        return new Node(points.get(median), depth, kd(points.subList(0, median), depth + 1),
-                kd(points.subList(median + 1, points.size()), depth + 1));
-    }
-
     public void insert(List<Point> p) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
