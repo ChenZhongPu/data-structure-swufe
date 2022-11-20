@@ -146,6 +146,23 @@ def __lt__(self, other):
 
 Then you can use `books.sort()` directly.
 
+#### A few notes on tuples
+In many cases, items are organized as tuples. For example,
+
+```python
+books = [('Zoo', 30), ('Gone with the wind', 42), ('The A.B.C. Murders', 20)]
+```
+
+To sort these tuples in a list, a common method is to use `from operator import itemgetter`:
+
+```python
+# sort by its price (the second filed)
+books.sort(key=itemgetter(1))
+
+# sort by its name (the first filed)
+books.sort(key=itemgetter(0))
+```
+
 ## A flexible MaxPQ
 ### Java
 The `MaxPQ` requires that the keys are ordered, but we should not always expect the class implements [Comparable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html) in Java. Instead, users can pass an extra parameter as the comparator.

@@ -47,3 +47,8 @@
 
 ---
 12. Please design an algorithm to check whether a given RBT is valid.
+
+---
+13. A [k-d tree](https://en.wikipedia.org/wiki/K-d_tree) (short for k-dimensional tree) is a space-partitioning data structure for organizing points in a k-dimensional space.
+
+Please complete the code based on [kd_tree.py](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/tree/kd_tree.py) or [KDTree.java](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/tree/KDTree.java). 
