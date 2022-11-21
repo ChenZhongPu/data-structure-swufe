@@ -1027,7 +1027,7 @@ if bf < -1 and AVL._get_balance_factor(x.right) > 0:
     \frametitle{Homework 5}
 1. Please complete the proof of the lemma (5 marks).
   \begin{lemma}
-    An AVL tree with $n$ nodes has height $O(\lg{n})$. 
+    An AVL tree with $n$ nodes has height $O(\log{n})$. 
     \end{lemma} 
     \begin{proof}
     Suppose the height of node $x$ is denoted by $h(x)$. We start by showing that \alert{the subtree rooted at any node x contains at least $\lfloor 1.5^{h(x)} \rfloor$ nodes}. If the height of $x$ is -1, then $x$ must be empty (i.e., a \texttt{null} node), and the subtree rooted at $x$ indeed contains at least $\lfloor 1.5^{-1} \rfloor = 0$ node.
@@ -1042,24 +1042,9 @@ if bf < -1 and AVL._get_balance_factor(x.right) > 0:
             \end{proof}
     \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{Homework 5}
-2. Given a BST rooted at node $x$ in a BST, please develop an algorithm to make a right rotation on $x$, and returning a new root in Python (5 marks).
-
-\begin{minted}[bgcolor=LightGray, baselinestretch=1.1]{python}
-class Node:
-    def __init__(self, key, size=0, left=None, 
-                                    right=None):
-        self.key = key
-        self.size = size
-        self.left = left
-        self.right = right
-\end{minted}
-\end{frame}
-
 \begin{frame}
     \frametitle{Homework 5}
-3. Given a binary tree with a \texttt{root}, please develop an algorithm to determine whether it is a valid AVL tree. Suppose each node in the tree contains \texttt{key}, \texttt{left}, \texttt{right}, and \texttt{height}. (5 marks)
+2. Given a binary tree with a \texttt{root}, please develop an algorithm to determine whether it is a valid AVL tree. Suppose each node in the tree contains \texttt{key}, \texttt{left}, \texttt{right}, and \texttt{height}. (10 marks)
 
 (\small{Hint: you can check first whether it is a BST, and then check the AVL property.})
 
