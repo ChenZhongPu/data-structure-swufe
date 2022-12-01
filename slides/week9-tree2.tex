@@ -183,7 +183,7 @@ Please fill in the blank of the following algorithm.
     \end{tikzpicture}
 
     \begin{exampleblock}{Balanced Tree}
-        A search tree is \alert{balanced} if it can guarantee that basic dynamic-set operations take $O(\lg{N})$ time in the worst case.
+        A search tree is \alert{balanced} if it can guarantee that basic dynamic-set operations take $O(\log{N})$ time in the worst case.
     \end{exampleblock} 
     \column{.39\textwidth}
     \begin{tikzpicture}[treenode/.style = {align=center, inner sep=.8pt, text centered,
@@ -285,7 +285,7 @@ In an AVL tree, the heights of the two child subtrees of any node differ by \ale
 
 \begin{frame}
     \begin{lemma}
-        An AVL tree with $n$ nodes has height $O(\lg{n})$. 
+        An AVL tree with $n$ nodes has height $O(\log{n})$. 
     \end{lemma}
 
     \begin{proof}
@@ -312,7 +312,7 @@ It can be simplified to
 We solve $h-2i \leq 0$ to get the base case, giving $i = \frac{h}{2}$. Then we have
 \[N(h) \geq 2^{h/2} - 1 + 2^{h/2}N(0) = 2^{h/2 + 1} - 1\] 
 
-So we basically just got an inequality relating the number of nodes $n$ and the height $h$ of an AVL tree, $n\geq 2^{h/2 + 1} - 1$, which yields $h \leq 2\lg{(n + 1)} - 2$.
+So we basically just got an inequality relating the number of nodes $n$ and the height $h$ of an AVL tree, $n\geq 2^{h/2 + 1} - 1$, which yields $h \leq 2\log{(n + 1)} - 2$.
 \end{proof}
     
 
