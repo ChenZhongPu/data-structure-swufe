@@ -38,16 +38,16 @@ public List<Key> range(Key low, Key high) {
 ```
 
 ## Tree walk
-Given a tree, how can we traverse nodes? In this subsection, we will introduce three tree traversal algorithms.
+Given a tree, how can we traverse nodes? In this subsection, we will introduce three tree traversal algorithms. Note the *in-*, *pre-* and *post-* here are used to denote the position of the root while traversing.
 
-- **Inorder tree walk**. It visits the key of the root between the values in the left subtree and those in its right subtree. As for the BST above, it will traverse the keys in an ascending order (1 -> 3 -> 4 -> 6 -> 8 -> 10 -> 12 -> 14 -> 18).
+- **Inorder tree walk**. It visits the key of the root between the values in the left subtree and those in its right subtree. To put it in another way, it visits "inorder of left subtree", and then "root", and finally "inorder of right subtree". As for the BST above, it will traverse the keys in an ascending order (1 -> 3 -> 4 -> 6 -> 8 -> 10 -> 12 -> 14 -> 18).
 
 The following is to print all keys in a BST using *inorder tree walk*:
 
 <img src="image/alg-bst-inorder.png" width="80%">
 
-- **preorder tree walk**. It visits the root before the nodes in either subtree. As for the BST above, it will print 8 -> 3 -> 1 -> 6 -> 4 -> 10 -> 14 -> 12 -> 18.
-- **postorder tree walk**. It visits the root after the nodes in its subtrees. As for the BST above, it will print 1 -> 4 -> 6 -> 3 -> 8 -> 12 -> 18 -> 14 -> 10.
+- **preorder tree walk**. It visits the root before the nodes in either subtree. To put it in another way, it visits "root", and then "preorder of left subtree", and finally "preorder of right subtree". As for the BST above, it will print 8 -> 3 -> 1 -> 6 -> 4 -> 10 -> 14 -> 12 -> 18.
+- **postorder tree walk**. It visits the root after the nodes in its subtrees. To put it in another way, it visits "postorder of left subtree", and then "postorder of right subtree", and finally "root". As for the BST above, it will print 1 -> 4 -> 6 -> 3 -> 12 -> 18 -> 14 -> 10 -> 8.
 
 Curious readers can explore how to design tree traversal algorithms without recursions. 
 

@@ -25,10 +25,6 @@ class Point {
         else return y;
     }
 
-    public boolean isContained(Point lower, Point upper) {
-        return x >= lower.x && x <= upper.x && y >= lower.y && y <= upper.y;
-    }
-
     @Override
     public String toString() {
         return "Point{" +
@@ -51,18 +47,46 @@ class Point {
     }
 }
 
+class Rectangle {
+    private Point lower;
+    private Point upper;
+
+    public Rectangle(Point lower, Point upper) {
+        this.lower = lower;
+        this.upper = upper;
+    }
+
+    public Point getLower() {
+        return lower;
+    }
+
+    public Point getUpper() {
+        return upper;
+    }
+
+    public boolean isContain(Point p) {
+        return this.lower.getX() <= p.getX() && this.upper.getX() >= p.getX() &&
+                this.lower.getY() <= p.getY() && this.upper.getY() >= p.getY();
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "lower=" + lower +
+                ", upper=" + upper +
+                '}';
+    }
+}
+
 public class KDTree {
 
     private static class Node {
         private Point location;
-
-        private int depth;
         private Node left;
         private Node right;
 
-        public Node(Point location, int depth, Node left, Node right) {
+        public Node(Point location, Node left, Node right) {
             this.location = location;
-            this.depth = depth;
             this.left = left;
             this.right = right;
         }
@@ -80,7 +104,7 @@ public class KDTree {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public List<Point> range(Point lower, Point upper) {
+    public List<Point> range(Rectangle rectangle) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -94,9 +118,10 @@ public class KDTree {
 
         Point lower = new Point(500, 500);
         Point upper = new Point(504, 504);
+        Rectangle rectangle = new Rectangle(lower, upper);
         // naive method
         double start = System.currentTimeMillis();
-        List<Point> result1 = points.stream().filter(p -> p.isContained(lower, upper)).toList();
+        List<Point> result1 = points.stream().filter(rectangle::isContain).toList();
         double end = System.currentTimeMillis();
         System.out.printf("Naive method: %fms\n", end - start);
 
@@ -104,7 +129,7 @@ public class KDTree {
         kdTree.insert(points);
         // kd tree
         start = System.currentTimeMillis();
-        List<Point> result2 = kdTree.range(lower, upper);
+        List<Point> result2 = kdTree.range(rectangle);
         end = System.currentTimeMillis();
         System.out.printf("kd tree: %fms\n", end - start);
     }

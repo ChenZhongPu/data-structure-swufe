@@ -20,7 +20,7 @@ class KDTreeTest {
         KDTree kdTree = new KDTree();
         kdTree.insert(points);
 
-        List<Point> result = kdTree.range(new Point(0, 0), new Point(6, 6));
+        List<Point> result = kdTree.range(new Rectangle(new Point(0, 0), new Point(6, 6)));
 
         result.sort(Comparator.comparing(Point::getX).thenComparing(Point::getY));
         List<Point> expect = new ArrayList<>(Arrays.asList(new Point(2, 3),

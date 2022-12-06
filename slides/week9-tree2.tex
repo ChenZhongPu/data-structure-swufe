@@ -312,19 +312,35 @@ It can be simplified to
 We solve $h-2i \leq 0$ to get the base case, giving $i = \frac{h}{2}$. Then we have
 \[N(h) \geq 2^{h/2} - 1 + 2^{h/2}N(0) = 2^{h/2 + 1} - 1\] 
 
-So we basically just got an inequality relating the number of nodes $n$ and the height $h$ of an AVL tree, $n\geq 2^{h/2 + 1} - 1$, which yields $h \leq 2\log{(n + 1)} - 2$.
+So we basically just got an inequality relating the number of nodes $n$ and the height $h$ of an AVL tree, $n\geq 2^{h/2 + 1} - 1$, which yields $h \leq 2\log{(n + 1)} - 1$.
 \end{proof}
     
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Tight Bound of AVL Trees}
-    The height $h$ of an AVL tree with $n$ nodes lies in the interval:
+    \frametitle{A Shorter Proof (sketch)}
 
-    \[ \log_{2}(n + 1) \leq h + 1 < \log_{\varphi}(n + 2) + b \]
-where $\varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618$, and $b \approx -0.3277$.
+    \[
+        N(h) \geq
+    \begin{cases}
+        0,& h = -1\\
+        1, & h = 0 \\
+        2N(h - 2), & h \geq 1 \\
+    \end{cases}
+    \]
+We get $N(h) > 2^{i}N(h-2i)$. Solving the base case, we get $N(h) > 2^{h/2}$. After taking logarithms:
+
+\[h < 2\log{N(h)} = 2\log{n}\]
 \end{frame}
+
+% \begin{frame}
+%     \frametitle{Tight Bound of AVL Trees}
+%     The height $h$ of an AVL tree with $n$ nodes lies in the interval:
+
+%     \[ \log_{2}(n + 1) \leq h + 1 < \log_{\varphi}(n + 2) + b \]
+% where $\varphi = \frac{1 + \sqrt{5}}{2} \approx 1.618$, and $b \approx -0.3277$.
+% \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{2.2 Design of AVL Trees}
