@@ -121,6 +121,30 @@ Is the following tree a max heap?
 
 \end{frame}
 
+\begin{frame}
+    \frametitle{Hash}
+    \begin{exampleblock}{Hash Function}
+A hash function is any function that can be used to map data of arbitrary size to fixed-size values.        
+    \end{exampleblock}
+
+    \begin{columns}
+        \column{.4\textwidth}
+        The values returned by a hash function are called \textbf{hash values}, \textbf{hash codes}, \textbf{digests}, or simply \textbf{hashes}.
+        \column{.6\textwidth}
+        \includegraphics[width=0.9\textwidth]{week11/hashwiki}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Application}
+    \begin{exampleblock}{A Story}
+Monica had finished the course report of Data Structures, but Joey was still struggling, so he asked Monica, ``Can you please send me your report?" Monica refused because she thought they would be accused of plagiarism.
+
+And Joey added, ``You can just send me your code screen shoots, and then I pretend I make it. Nobody can tell!'' Monica agreed.
+    \end{exampleblock}
+
+    \alert{So, is the teacher able to recognize the copies?}
+\end{frame}
 {
     % \usebackgroundtemplate{\transparent{0.3}{\begin{picture}
     %     \includegraphics[height=0.7\paperheight]{cover}
@@ -173,7 +197,7 @@ Suppose you are the CTO of an online cards game company, how do you design a dat
 
     \crdtwoh \crdeigh \crdtred \crdtrec \crdfivec \crdfivec
 
-It should be able to perform \alert{search()}, \alert{delete()}, and \alert{insert()} efficiently. Note that only cards with numbers are considered in the game.
+It should be able to perform \alert{search()}, \alert{delete()}, and \alert{insert()} efficiently. Note that only cards with numbers (i.e., from \textbf{A} to \textbf{10}) are considered in the game.
 
 \end{frame}
 
@@ -182,7 +206,7 @@ It should be able to perform \alert{search()}, \alert{delete()}, and \alert{inse
     \begin{minted}[bgcolor=LightGray, baselinestretch=1.1]{python}
 cards1 = [2, 8, 3, 3, 5, 5]
 
-cards2 = [0, 1, 1, 0, 1, 0, 0, 1, 0, 0]
+cards2 = [0, 1, 2, 0, 2, 0, 0, 1, 0, 0]
     \end{minted}
 
     \textbf{\faIcon{eye} View arrays from another perspective}: As for an array, the \alert{index} is the \textbf{key}, and the stored element is the \textbf{value}. 
