@@ -9,7 +9,7 @@ Generally, it is challenging for a Chinese beginner to understand the jargon in 
 - Container：容器
 
 ## I
-- Iterate：迭代
+- Iterate：迭代 （名词iteration，形容词iterative、iteterable）
 
 ## P
 - Psuedocode：伪代码
