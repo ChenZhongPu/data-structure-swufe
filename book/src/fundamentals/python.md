@@ -10,13 +10,13 @@ Python's list resembles Java's `ArrayList`, representing a resizable array of it
 num = [1, 9, 4, 2]
 ```
 
-Since Python is a weak-type language, you can even put items with different types in a list:
+Since Python is a weak-type (and dynamic-type) language, you can even put items with different types in a list:
 
 ```python
 num = ['1', 9, 'four', 2]
 ```
 
-But it is not recommended. If you need to store items with mixing types, you can resort to a `tuple`:
+But it is not recommended. If you need to store items with mixing types, you can resort to a `tuple`. Note that tuples are immutable, while lists are mutable.
 
 ```python
 # t = 'one', 9
@@ -33,7 +33,7 @@ print(num[-1])
 print(num[2:-1])
 ```
 
-As for the iteration, Python's `for` is convenient:
+As for the iteration, Python's `for` is convenient for iterable objects:
 
 ```python
 for i in a:

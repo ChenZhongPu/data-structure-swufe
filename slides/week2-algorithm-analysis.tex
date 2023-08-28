@@ -49,7 +49,7 @@
 }
 
 \date[] % (optional)
-{SWUFE, Fall 2022}
+{SWUFE, Fall \the\year{}}
 
 %End of title page configuration block
 %------------------------------------------------------------
@@ -89,7 +89,7 @@
 		\item What does the following code snippet do?
 	\end{enumerate}
 
-	\begin{minted}[bgcolor=LightGray, fontsize=\small, breaklines=true]{python}
+	\begin{minted}[bgcolor=LightGray]{python}
 a = [i for i range(10)]
 b = [1] * 10
     \end{minted}
@@ -192,7 +192,9 @@ if __name__ == '__main__':
 
 \begin{frame}[fragile]
 	\frametitle{Mathematical Models}
-	To analyze an algorithm, a \alert{mathematical model} is needed in addition to the empirical experiments due to the following reasons:
+	\begin{block}{Motivation}
+		To analyze an algorithm, a \alert{mathematical model} is needed in addition to the empirical experiments due to the following reasons:
+	\end{block}
 	\begin{enumerate}
 		\item<1-> To compare different algorithms is feasible unless the hardware and software environments are the same.
 		\item<2-> Experiments can be done only a limited set of test inputs.
@@ -201,7 +203,6 @@ if __name__ == '__main__':
 \end{frame}
 
 \begin{frame}
-	\frametitle{Mathematical Models}
 
 	\begin{exampleblock}{Knuth's insight}
 		The total running time of a program is determined by two primary factors:
@@ -211,7 +212,9 @@ if __name__ == '__main__':
 		\end{enumerate}
 	\end{exampleblock}
 
-	Furthermore, we assume that \alert{primitive operations} take \alert{constant} time to execute. Therefore, \textbf{the running time of a program is proportional to the number of primitive operations executed.}
+	We assume that \alert{primitive operations} take \alert{constant} time to execute.
+
+	Therefore, \textbf{the running time of a program is proportional to the number of primitive operations executed.}
 
 \end{frame}
 
@@ -249,7 +252,7 @@ def cubic_sum(n):
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 	\begin{block}{Revisit}
 		Suppose there are $10^6$ books in an array. To find a book titled \emph{``Gone with the wind"}, how many times is the comparison performed?
 		\begin{enumerate}
@@ -258,15 +261,20 @@ def cubic_sum(n):
 			\item On the \textbf{average} case $10^6/2$
 		\end{enumerate}
 	\end{block}
+
+	\begin{tikzpicture}
+		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+			text width=24em,anchor=south west,rounded corners]
+		{\faIcon{lightbulb} We only focus on the \alert{worst-case running time} in this course.};
+	\end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Order of Growth}
-
-	We mainly focus on the \alert{order of growth} of the running time as a function of the input size, taking a "big-picture" approach.
+	We can simplify the cost model by taking a "big-picture" approach: it is the \alert{order of growth} (rate of growth) of the running time as a function of the input size.
 
 	\begin{table}
-		\caption{Some typical approximations}
 		\begin{tabular}{lll}
 			\toprule
 			Function              & Approximation & Order of growth \\
@@ -285,7 +293,7 @@ def cubic_sum(n):
 		\column{0.4\textwidth}
 		Compare $\frac{n^2 - n}{2}$ and $\frac{n^2}{2}$.
 
-		We can say \alert{$\frac{n^2}{2} \sim \frac{n^2 - n}{2}$}, because $\frac{n^2}{2}$ is similar to $\frac{n^2 - n}{2}$ as $n$ grows. And the order of growth is $n^2$.
+		We can say \alert{$\frac{n^2}{2} \sim \frac{n^2 - n}{2}$}, because $\frac{n^2}{2}$ is similar to $\frac{n^2 - n}{2}$ as $n$ grows. And the \textbf{order of growth} is $n^2$.
 
 		\column{0.6\textwidth}
 		\begin{tikzpicture}
@@ -353,7 +361,7 @@ def cubic_sum(n):
 
 		\column{0.59\textwidth}
 		\begin{table}
-			\caption{Common time complexity descriptions}
+			% \caption{Common time complexity descriptions}
 			\begin{tabular}{ll}
 				\toprule
 				Description  & Time complexity \\
@@ -377,13 +385,20 @@ def cubic_sum(n):
 		Suppose $f(x)$ and $g(x)$ are two functions defined on some subset of the real numbers. We write
 		\[f(x) = O(g(x))\]
 		if and only if there exists constants $N$ and $C$ such that
-		\[|f(x)| \leq Cg(x), \forall x > N\]
+		\[f(x) \leq Cg(x), \forall x > N\]
 	\end{exampleblock}
 
-	Intuitively, this means that $f$ does not grow faster than $g$ ($g$ is the \alert{upper bound} of $f$). So big-O denotes the \textbf{"less-than-or-equal-to"} concept.
+	Intuitively, this means that $f$ does not grow faster than $g$ ($g$ is the \alert{upper bound} of $f$).
 
 \end{frame}
 
+\begin{frame}
+	Big-O denotes the \textbf{"less-than-or-equal-to"} concept:
+
+	\[7n^3 + 100n^2 - 20n + 6\]
+
+	We can say the order of growth is $n^3$. To put it in another way, this function grows no faster than $n^3$, so we can write that it is $O(n^3)$.
+\end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Example}
@@ -399,28 +414,37 @@ def cubic_sum(n):
 
 	\begin{tikzpicture}
 		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-			text width=24em,anchor=south west,rounded corners]
+			text width=26em,anchor=south west,rounded corners]
 		{\faIcon{lightbulb} We should use big-O in \alert{tightest and simplest} terms.};
 	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}[fragile]
 
-	{\large \faIcon{question-circle}} What is the time complexity of \texttt{foo()} and \texttt{two\_sum()}, respectively?
-	\begin{minted}[bgcolor=LightGray]{python}
-    def foo(n):
-        for i in range(n):
-            print(i)
+	{\large \faIcon{question-circle}} What is the time complexity in 	\begin{minted}[bgcolor=LightGray]{python}
+def foo(n):
+    for i in range(n):
+        print(i)
     \end{minted}
 
 	\begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
-    def two_sum(self, nums, target):
-        for i, v in enumerate(nums):
-            for j in range(i + 1, len(nums)):
-                if v + nums[j] == target:
-                    return [i, j]
-        return []
+def two_sum(self, nums, target):
+    for i, v in enumerate(nums):
+        for j in range(i + 1, len(nums)):
+            if v + nums[j] == target:
+                return [i, j]
+    return []
     \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{minted}[bgcolor=LightGray]{python}
+def search(a, target):
+    for i, v in enumerate(a):
+        if v == target:
+            return i
+    return -1
+\end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -443,9 +467,13 @@ def search(a, target):
 
 \begin{frame}
 	\frametitle{Some Words of Caution}
-	Does the following statement make sense?
+	Do the following statements make sense?
 
-	An algorithm in $O(n)$ is always faster than an algorithm in $O(n^3)$.
+	\begin{itemize}
+		\item Since $n^2 - n = O(n^2)$ and $n^2 - 1 = O(n^2)$, we can say $n^2 - n = n^2 - 1$.
+		\item An algorithm in $O(n)$ is always faster than an algorithm in $O(n^3)$.
+	\end{itemize}
+
 \end{frame}
 
 \begin{frame}
@@ -483,13 +511,13 @@ def search(a, target):
 \begin{frame}
 	\frametitle{1.4 A Final Note}
 	\begin{alertblock}{Note}
-		A comprehensive about algorithm analysis is out of the scope of this course. You should at least understand:
-
-		\begin{itemize}
-			\item How to use big O notation to express how complex an algorithm is (in the worst case);
-			\item How to use plots to help you evaluate an algorithm.
-		\end{itemize}
+		A comprehensive about algorithm analysis is out of the scope of this course.
 	\end{alertblock}
+
+	\begin{itemize}
+		\item $\Theta(n)$
+		\item $\Omega(n)$
+	\end{itemize}
 \end{frame}
 
 
@@ -500,6 +528,102 @@ def search(a, target):
 		\item Big O notation
 		\item Evaluation through visualization
 	\end{enumerate}
+\end{frame}
+
+{
+\usebackgroundtemplate{
+	\tikz[overlay,remember picture]
+	\node[opacity=0.3, at=(current page.south east),anchor=south east, yshift=2cm,xshift=4cm] {
+		\includegraphics[height=0.6\paperheight]{cover}};
+}
+\begin{frame}
+	\section{\textcolor{darkmidnightblue}{Design an Array}}
+\end{frame}
+}
+
+\begin{frame}
+	\frametitle{Some Facts}
+	\begin{exampleblock}{Array}
+		An array is a container object that holds a fixed number of values of a single type.
+	\end{exampleblock}
+	\begin{enumerate}
+		\item A list in Python is NOT an array.
+		\item Python has module \href{https://docs.python.org/3/library/array.html}{array}, but it is mainly used for the sake of performance.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Design Goal}
+	To implement an array-like fixed-size data structure, we need to support the following operations:
+
+	\begin{minted}[bgcolor=LightGray]{python}
+arr = Array(5)
+print(len(arr))
+arr[4] = 7
+print(arr[4])
+for i in arr:
+  print(i)
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{How to save data}
+	We use the list as the underlying (private) data structure:
+	\begin{minted}[bgcolor=LightGray]{python}
+class Array:
+    def __init__(self, n):
+        self._data = [0] * n
+        self._size = n
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{How to get the length}
+	The traditional way:
+
+	\begin{minted}[bgcolor=LightGray]{python}
+class Array:
+    def get_size(self):
+        __________
+\end{minted}
+	A more \alert{Pythonic} way (using \textbf{special methods}):
+	\begin{minted}[bgcolor=LightGray]{python}
+class Array:
+    def __len__(self):
+        __________
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{How to set and get elements}
+	\begin{minted}[bgcolor=LightGray]{python}
+    def __getitem__(self, i):
+        return self._data[i]
+
+    def __setitem__(self, value, i):
+        self._data[i] = value
+\end{minted}
+	\pause
+	\begin{tikzpicture}
+		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+			text width=26em,anchor=south west,rounded corners]
+		{\faIcon{lightbulb} A class with \alert{\_\_len\_\_()} and \alert{\_\_getitem\_\_()} is \alert{iterable}.};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Exercise}
+	Try to update init method which accepts a list of values, instead of its size.
+	\begin{minted}[bgcolor=LightGray]{python}
+arr = Array(1, 2, 3, 4, 5)
+\end{minted}
+	Also, try to use it as a vector, and add methods for vector-addition and vector-subtraction.
+	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
+a = Array(1, 2, 3, 4, 5)
+b = Array(5, 4, 3, 2, 1)
+# a + b = Array(6, 6, 6, 6, 6)
+# a - b = Array(-4, -2, 0, 2, 4)
+\end{minted}
 \end{frame}
 
 \end{document}

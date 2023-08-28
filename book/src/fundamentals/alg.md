@@ -28,7 +28,7 @@ Instant end = Instant.now();
 long elapse = Duration.between(start, end).toMillis();
 ```
 
-
+> A more robust and comprehensive approach in Java is to use [JMH](https://github.com/openjdk/jmh), and the usage of it is out of the scope of this book.
 
 ### Python
 In Python, several modules can be used to deal with time/date, including `time`, `datetime`. But note that `time.time()` returns a float number representing the current time in seconds since the Epoch. You can use either of the following code to compute the elapsing time in milliseconds:
@@ -46,6 +46,8 @@ start = datetime.datetime.now()
 end = datetime.datetime.now()
 elapse = int(round((end - start).total_seconds() * 1000))
 ```
+
+Generally, to avoid the variability of the running time, we usually run the program for several times and then take the average. Luckily, the built-in [timeit](https://docs.python.org/3/library/timeit.html) makes it simple.
 
 ## Visualize the efficiency
 Sometimes, we would like to visualize the quantitative measurements of the running time of our programs. A common qualitative observation about most programs is that there is a *problem size*
@@ -103,7 +105,7 @@ class Solution:
         return []
 ```
 
-The frequency of the inner statement of this function is *(n-1) + (n-2) + ... + 1* in the worst case:
+The frequency of the inner comparison test statement of this function is *(n-1) + (n-2) + ... + 1* in the worst case:
 
 \\[ \frac{n \times (n-1)}{2} = \frac{n^2 - n}{2} \\]
 
