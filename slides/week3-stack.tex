@@ -13,35 +13,35 @@
 \usetikzlibrary {arrows.meta}
 \usetikzlibrary{decorations.pathmorphing, patterns}
 \pgfdeclaredecoration{penciline}{initial}{
-    \state{initial}[width=+\pgfdecoratedinputsegmentremainingdistance,auto corner on length=1mm,]{
-        \pgfpathcurveto%
-        {% From
-            \pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}
-                            {\pgfdecorationsegmentamplitude}
-        }
-        {%  Control 1
-        \pgfmathrand
-        \pgfpointadd{\pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}{0pt}}
-                        {\pgfqpoint{-\pgfdecorationsegmentaspect\pgfdecoratedinputsegmentremainingdistance}%
-                                        {\pgfmathresult\pgfdecorationsegmentamplitude}
-                        }
-        }
-        {%TO 
-        \pgfpointadd{\pgfpointdecoratedinputsegmentlast}{\pgfpoint{1pt}{1pt}}
-        }
-    }
-    \state{final}{}
+	\state{initial}[width=+\pgfdecoratedinputsegmentremainingdistance,auto corner on length=1mm,]{
+		\pgfpathcurveto%
+		{% From
+			\pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}
+			{\pgfdecorationsegmentamplitude}
+		}
+		{%  Control 1
+			\pgfmathrand
+			\pgfpointadd{\pgfqpoint{\pgfdecoratedinputsegmentremainingdistance}{0pt}}
+			{\pgfqpoint{-\pgfdecorationsegmentaspect\pgfdecoratedinputsegmentremainingdistance}%
+				{\pgfmathresult\pgfdecorationsegmentamplitude}
+			}
+		}
+		{%TO 
+			\pgfpointadd{\pgfpointdecoratedinputsegmentlast}{\pgfpoint{1pt}{1pt}}
+		}
+	}
+	\state{final}{}
 }
 \usepackage{minted}
 \usepackage{fontawesome5}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    }
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
 \urlstyle{same}
 \usetheme{metropolis}
 \metroset{block=fill}
@@ -63,12 +63,12 @@
 
 \institute[] % (optional)
 {
-  School of Computing and Artificial Intelligence \\
-  \href{mailto:zpchen@swufe.edu.cn}{zpchen@swufe.edu.cn}
+	School of Computing and Artificial Intelligence \\
+	\href{mailto:zpchen@swufe.edu.cn}{zpchen@swufe.edu.cn}
 }
 
 \date[] % (optional)
-{SWUFE, Fall 2022}
+{SWUFE, Fall \the\year{}}
 
 %End of title page configuration block
 %------------------------------------------------------------
@@ -102,60 +102,86 @@
 % \end{frame}
 %--------------------------------------------------------
 \begin{frame}[fragile]
-    \frametitle{A Small Quiz}
-    \begin{enumerate}
-        \item Someone claims that ``If a program costs \(2N^2 + 3N\log{N}\), then its time complexity is $O(N\log{N})$''. How do you think of it?
-        \item What is time complexity of the following code?
-    \end{enumerate}
+	\frametitle{A Small Quiz}
 
-\begin{minted}[bgcolor=LightGray]{java}
-double m = a[0];
-for (int i = 1; i < N; i++)
-    if (a[i] > m) m = a[i];
-\end{minted}  
+	What is time complexity of the following code in the worst-case?
+	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
+def find_max(a):
+    m = a[0]
+    for i in a:
+        if i > m:
+            m = i
+    return m
 
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{tikzpicture}
-        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-        text width=28em,anchor=south west,rounded corners]
-        {High-level APIs won't change the time complexity. Sometimes they may be even slower.
-        };
-    \end{tikzpicture} 
-    \begin{minted}[bgcolor=LightGray]{java}
-double[] a = {3.14, 2.7, 9.8, 6.7, 8};
-double m = Arrays.stream(a).max().getAsDouble();
-    \end{minted}  
-
-\begin{minted}[bgcolor=LightGray]{python}
-a = [3.14, 2.7, 9.8, 6.7, 8]
-m = max(a)
-\end{minted} 
+def find_max2(a):
+    return max(a)
+\end{minted}
 
 \end{frame}
+
 
 {
-    % \usebackgroundtemplate{\transparent{0.3}{\begin{picture}
-    %     \includegraphics[height=0.7\paperheight]{cover}
-    % \end{picture}    
-    % }}
+% \usebackgroundtemplate{\transparent{0.3}{\begin{picture}
+%     \includegraphics[height=0.7\paperheight]{cover}
+% \end{picture}    
+% }}
 \usebackgroundtemplate{
-  \tikz[overlay,remember picture] 
-  \node[opacity=0.3, at=(current page.south east),anchor=south east, yshift=2cm,xshift=4cm] {
-    \includegraphics[height=0.6\paperheight]{cover}};
+	\tikz[overlay,remember picture]
+	\node[opacity=0.3, at=(current page.south east),anchor=south east, yshift=2cm,xshift=4cm] {
+		\includegraphics[height=0.6\paperheight]{cover}};
 }
-    \begin{frame}
-        \section{\textcolor{darkmidnightblue}{1. Stacks}}
-    \end{frame}
+\begin{frame}
+	\section{\textcolor{darkmidnightblue}{ADT}}
+\end{frame}
 }
 
 \begin{frame}[fragile]
-    \frametitle{Example: Web Pages}
+	\frametitle{Revisit}
+	We have implemented a self-defined \alert{Array}.
 
-    \begin{columns}
-        \column{0.5\textwidth}
-        \begin{verbatim}
+	\begin{minted}[bgcolor=LightGray]{python}
+arr = Array(5)
+print(len(arr))
+arr[4] = 7
+print(arr[4])
+for i in arr:
+  print(i)
+\end{minted}
+
+	To use \alert{Array}, do we need to know how it is implemented?
+\end{frame}
+
+\begin{frame}
+	\frametitle{ADT}
+	\begin{exampleblock}{ADT}
+		An abstract data type (ADT) is a data type whose representation is hidden from the client.
+	\end{exampleblock}
+	\begin{itemize}
+		\item To use an ADT, we mainly focus on the operations specified in its \alert{API}.
+		\item To implement an ADT, we focus on the data, then implement operations on that data.
+	\end{itemize}
+\end{frame}
+{
+% \usebackgroundtemplate{\transparent{0.3}{\begin{picture}
+%     \includegraphics[height=0.7\paperheight]{cover}
+% \end{picture}    
+% }}
+\usebackgroundtemplate{
+	\tikz[overlay,remember picture]
+	\node[opacity=0.3, at=(current page.south east),anchor=south east, yshift=2cm,xshift=4cm] {
+		\includegraphics[height=0.6\paperheight]{cover}};
+}
+\begin{frame}
+	\section{\textcolor{darkmidnightblue}{1. Stacks}}
+\end{frame}
+}
+
+\begin{frame}[fragile]
+	\frametitle{Example: Web Pages}
+
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{verbatim}
 <!-- a.html -->
 <a href="b.html">Next</a>
 
@@ -165,51 +191,50 @@ m = max(a)
 <!-- c.html -->
 <a href="d.html">Next</a>
         \end{verbatim}
-        \column{0.5\textwidth} 
-        Suppose you are visiting \textbf{a.html}, and then click ``Next''. Continue to click ``Next'' until reaching \textbf{d.html}. Now start to consider click ``Back''.
-    \end{columns}
+		\column{0.5\textwidth}
+		Suppose you are visiting \textbf{a.html}, and then click "Next". Continue to click "Next" until reaching \textbf{d.html}. Now start to consider click "Back".
+	\end{columns}
 
 \end{frame}
 
 \begin{frame}
-    \begin{quote}
-        Stack: a pile of things arranged one on top of another.
-        \begin{flushright}
-            --- From Cambridge Dictionary
-        \end{flushright}
-    \end{quote}
-    \pause
-    \begin{figure}
-        \includegraphics[width=0.4\textwidth, height=0.4\paperheight]{week3/book}
-        \hfill
-        \includegraphics[width=0.4\textwidth, height=0.4\paperheight]{week3/tray}
-    \end{figure}
-    \pause
-    \begin{tikzpicture}
-        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-        text width=25em,anchor=south west,rounded corners]
-        {Last in, first out (LIFO).
-        };
-    \end{tikzpicture} 
+	\begin{quote}
+		Stack: a pile of things arranged one on top of another.
+		\begin{flushright}
+			--- From Cambridge Dictionary
+		\end{flushright}
+	\end{quote}
+	\begin{figure}
+		\includegraphics[width=0.4\textwidth, height=0.4\paperheight]{week3/book}
+		\hfill
+		\includegraphics[width=0.4\textwidth, height=0.4\paperheight]{week3/tray}
+	\end{figure}
+
+	\begin{tikzpicture}
+		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+			text width=25em,anchor=south west,rounded corners]
+		{Last in, first out (LIFO).
+		};
+	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}
-    \frametitle{1.1 Stack}
-\begin{exampleblock}{Stack}
-    A stack is a collection of objects that are inserted and removed according to the \alert{last-in, first-out (LIFO)} policy. 
-\end{exampleblock}
-It supports two basic operations:
-\begin{itemize}
-    \item \texttt{push()}: add a new element
-    \item \texttt{pop()}: remove an element
-\end{itemize}
-Additionally, it also supports other operations such as \texttt{size()}, \texttt{isEmpty()}.
+	\frametitle{1.1 Stack}
+	\begin{exampleblock}{Stack}
+		A stack is a collection of objects that are inserted and removed according to the \alert{last-in, first-out (LIFO)} policy.
+	\end{exampleblock}
+	It supports two basic operations:
+	\begin{itemize}
+		\item \texttt{push()}: add a new element
+		\item \texttt{pop()}: remove an element
+	\end{itemize}
+	Additionally, it also supports other operations such as \texttt{size()}, \texttt{isEmpty()}, and \texttt{top()}.
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Stack in Python}
-    Fortunately, the \texttt{list} in Python supports the operations required by stacks.
-\begin{minted}[bgcolor=LightGray]{python}
+	\frametitle{Stack in Python}
+	Fortunately, the \texttt{list} in Python supports the operations required by stacks.
+	\begin{minted}[bgcolor=LightGray]{python}
 s = []
 s.append('a') # append() works like push()
 s.append('b')
@@ -218,13 +243,13 @@ print(len(s))
 print(s.pop())
 print(s.pop())
 print(len(s))
-\end{minted}     
+\end{minted}
 
 \end{frame}
 
 \begin{frame}[fragile]
-But, we would like a \alert{Stack} class which allows us to write code in the object-oriented way. 
-\begin{minted}[bgcolor=LightGray]{python}
+	Let's implement our own \alert{Stack} in the object-oriented way.
+	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
 s = Stack()
 s.push('a')
 s.push('b')
@@ -233,255 +258,239 @@ print(s.size())
 print(s.pop())
 print(s.pop())
 print(s.size())
-\end{minted}      
+\end{minted}
 
 \end{frame}
 
 \begin{frame}[fragile]
-
-\begin{minted}[baselinestretch=0.9,bgcolor=LightGray]{python}
+	We use \alert{list} as the underlying data structure.
+	\begin{minted}[fontsize=\small,bgcolor=LightGray]{python}
 class Stack:
     def __init__(self):
         self._data = []
-
     def push(self, item):
         pass
-
     def pop(self):
         pass
-
     def size(self):
         pass
-
     def is_empty(self):
         pass
-\end{minted}     
+\end{minted}
 
 \end{frame}
 
 \begin{frame}[fragile]
-    \begin{minted}[bgcolor=LightGray]{python}
+	\begin{minted}[bgcolor=LightGray]{python}
 def push(self, item):
     self._data.append(item)    
 \end{minted}
 
-\begin{minted}[bgcolor=LightGray]{python}
+	\begin{minted}[bgcolor=LightGray]{python}
 def pop(self):
     return self._data.pop()   
 \end{minted}
 
-    \begin{minted}[bgcolor=LightGray]{python}
+	\begin{minted}[bgcolor=LightGray]{python}
 def size(self):
     return len(self._data)    
     \end{minted}
-\pause
-Another operation \texttt{top()} (aka \texttt{peek()}) is often used. It works like \texttt{pop()}, but it doesn't delete the element.
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{block}{Exception}
-    You need also consider the condition that cannot be handled by the ``normal flow''.
-\end{block}
+	\frametitle{Exception}
+	\begin{block}{Exception}
+		You need also consider the condition that cannot be handled by the "normal flow".
+	\end{block}
 
-{\large \faIcon{question-circle}} What will happen if we \texttt{pop} from an empty stack?
-\begin{minted}[bgcolor=LightGray]{python}
+	{\large \faIcon{question-circle}} What will happen if we \texttt{pop} from an empty stack?
+	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
 s = Stack()
-print(s.pop())   
+print(s.pop())
 \end{minted}
 
-\pause
+\end{frame}
 
-\begin{minted}[baselinestretch=0.9,bgcolor=LightGray]{python}
+\begin{frame}[fragile]
+	But we would like a self-defined exception (error) for stack ADT.
+
+	\begin{minted}[fontsize=\small,bgcolor=LightGray, breaklines=true]{python}
+class NoElement(Exception):
+    """Error attempting to access an element from an empty collection."""
+    pass
 def pop(self):
     if self.is_empty():
         raise NoElement('Pop from empty stack!')
     return self._data.pop()  
 \end{minted}
+\end{frame}
 
+\begin{frame}[fragile]
+	Yet another philosophy to handle exception in addition to \alert{look-before-you-leap}.
+
+	\begin{minted}[fontsize=\small,bgcolor=LightGray, breaklines=true]{python}
+def pop(self):
+  try:
+    return self._data.pop()
+  except:
+    raise NoElement('Pop from empty stack!')
+\end{minted}
 \end{frame}
 
 \begin{frame}
-    \frametitle{1.2 Time complexity}
-    \begin{table}
-        \caption{Stack's time complexity}
-        \begin{tabular}{lr}
-          \toprule
-          Operation & Complexity\\
-          \midrule
-          \texttt{push()} & $O(1)$\\
-          \texttt{pop()} & $O(1)$ \\
-          \texttt{size()} & $O(1)$ \\
-          \texttt{is\_empty()} & $O(1)$ \\ 
-          \bottomrule
-        \end{tabular}
-    \end{table}
+	\frametitle{1.2 Time complexity}
+	\begin{table}
+		\caption{Stack's time complexity}
+		\begin{tabular}{lr}
+			\toprule
+			Operation            & Complexity \\
+			\midrule
+			\texttt{push()}      & $O(1)$     \\
+			\texttt{pop()}       & $O(1)$     \\
+			\texttt{size()}      & $O(1)$     \\
+			\texttt{is\_empty()} & $O(1)$     \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
 
-    \begin{tikzpicture}
-        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-        text width=28em,anchor=south west,rounded corners]
-        {Note that the time complexity of \texttt{push()} and \texttt{pop()} is amortized. 
-        };
-    \end{tikzpicture} 
+	\begin{tikzpicture}
+		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+			text width=28em,anchor=south west,rounded corners]
+		{Note that the time complexity of \texttt{push()} and \texttt{pop()} is amortized.
+		};
+	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{1.3 Resizing}
-Basically, an amortized time is \textbf{the average time taken per operation, if you do many operations}.
+	\frametitle{1.3 Resizing}
+	Basically, an amortized time is \textbf{the average time taken per operation, if you do many operations}.
 
-\begin{tikzpicture}
-    \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-    text width=25em,anchor=south west,rounded corners]
-    {The reason lies in \alert{resizing} of the \texttt{list} in Python. 
-    };
-\end{tikzpicture}
-\pause
-\begin{tikzpicture}[slot/.style={minimum size=0.9cm,rectangle}, data/.style={slot, fill=black!30}, >=Stealth, decoration=penciline]
-\matrix [nodes=draw] (table1)
-{
-  \node[data, decorate] {}; &
-  \node[data, decorate] {}; &
-  \node[data, decorate] {}; & 
-  \node[slot, decorate] (insert) {}; &
-  \node[slot, decorate] {}; 
-  \\ 
-};
-\node[below=of insert, xshift=-1cm] (start) {new element};
-\draw[->,thick,red, decorate] (start) -- (insert);
-\node[below=of insert, yshift=0.8cm] {$O(1)$};
+	\begin{tikzpicture}
+		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+			text width=25em,anchor=south west,rounded corners]
+		{The reason lies in \alert{resizing} of the \texttt{list} in Python.
+		};
+	\end{tikzpicture}
+	\pause
+	\begin{tikzpicture}[slot/.style={minimum size=0.9cm,rectangle}, data/.style={slot, fill=black!30}, >=Stealth, decoration=penciline]
+		\matrix [nodes=draw] (table1)
+		{
+			\node[data, decorate] {};          &
+			\node[data, decorate] {};          &
+			\node[data, decorate] {};          &
+			\node[slot, decorate] (insert) {}; &
+			\node[slot, decorate] {};
+			\\
+		};
+		\node[below=of insert, xshift=-1cm] (start) {new element};
+		\draw[->,thick,red, decorate] (start) -- (insert);
+		\node[below=of insert, yshift=0.8cm] {$O(1)$};
 
-\matrix [nodes=draw, right=of table1](table2)
-{
-  \node[data, decorate] (2n1) {}; &
-  \node[data, decorate] (2n2) {}; &
-  \node[data, decorate] (2n3) {}; & 
-  \node[data, decorate] (2n4) {}; 
-  \\ 
-};
+		\matrix [nodes=draw, right=of table1](table2)
+		{
+			\node[data, decorate] (2n1) {}; &
+			\node[data, decorate] (2n2) {}; &
+			\node[data, decorate] (2n3) {}; &
+			\node[data, decorate] (2n4) {};
+			\\
+		};
 
-\matrix [nodes=draw, below=of table2, xshift=1cm](table3)
-{
-  \node[data, decorate] (3n1) {}; &
-  \node[data, decorate] (3n2) {}; &
-  \node[data, decorate] (3n3) {}; & 
-  \node[data, decorate] (3n4) {}; &
-  \node[slot, decorate] {}; &
-  \node[slot, decorate] (insert2) {}; & 
-  \node[slot, decorate] {}; & 
-  \node[slot, decorate] {}; & 
-  \node[slot, decorate] {};  
-  \\ 
-};
+		\matrix [nodes=draw, below=of table2, xshift=1cm](table3)
+		{
+			\node[data, decorate] (3n1) {};     &
+			\node[data, decorate] (3n2) {};     &
+			\node[data, decorate] (3n3) {};     &
+			\node[data, decorate] (3n4) {};     &
+			\node[slot, decorate] {};           &
+			\node[slot, decorate] (insert2) {}; &
+			\node[slot, decorate] {};           &
+			\node[slot, decorate] {};
+			\\
+		};
 
-\draw[->, thick] (2n1) -- (3n1);
-\draw[->, thick] (2n2) -- (3n2);
-\draw[->, thick] (2n3) -- (3n3);
-\draw[->, thick] (2n4) -- (3n4);
+		\draw[->, thick] (2n1) -- (3n1);
+		\draw[->, thick] (2n2) -- (3n2);
+		\draw[->, thick] (2n3) -- (3n3);
+		\draw[->, thick] (2n4) -- (3n4);
 
-\node[below=of insert2, xshift=-1.5cm, yshift=0.4cm] (start2) {new element};
-\draw[->,thick,red, decorate] (start2) -- (insert2);
-\node[below=of insert2, yshift=0.8cm] {$O(N)$};
+		\node[below=of insert2, xshift=-1.5cm, yshift=0.4cm] (start2) {new element};
+		\draw[->,thick,red, decorate] (start2) -- (insert2);
+		\node[below=of insert2, yshift=0.8cm] {$O(N)$};
 
-\end{tikzpicture}
-
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Task: learn to search}
-We know that \texttt{\alert{append()}} is to add the new element onto the \emph{back} of a list. How to add a new element onto the \emph{front} of a list?
-
-\faIcon{search} Please try to find the solution on Python's official tutorial.
-
-\begin{minted}[baselinestretch=1,bgcolor=LightGray]{python}
-s = [1, 3]
-s.append(5)
-\end{minted}  
-    
+	\end{tikzpicture}
 
 \end{frame}
 
 \begin{frame}[fragile]
-Bob devises a new implementation for stacks based on the \texttt{list}. 
+	Bob devises a new implementation for stacks based on the \texttt{list}.
 
-\begin{itemize}
-    \item \texttt{push()}: insert the new element in the \textbf{front} of the \texttt{list}
-    \item \texttt{pop()}: remove and return the \textbf{first} element of the \texttt{list}
-\end{itemize}
+	\begin{itemize}
+		\item \texttt{push()}: insert the new element in the \textbf{front} of the \texttt{list}
+		\item \texttt{pop()}: remove and return the \textbf{first} element of the \texttt{list}
+	\end{itemize}
 
-\begin{minted}[baselinestretch=1,bgcolor=LightGray]{python}
+	\begin{minted}[fontsize=\small,bgcolor=LightGray]{python}
 s = []
 s.insert(0, 'a')
 s.insert(0, 'b')
 s.insert(0, 'c')
 print(s.pop(0)) # 'c'
 print(s.pop(0)) # 'b'
-\end{minted}  
-    
-{\large \faIcon{lightbulb}} How do you think of his idea?
+\end{minted}
+
+	{\large \faIcon{lightbulb}} How do you think of his idea?
 \end{frame}
 
 \begin{frame}
 
-\begin{center}
-    
-    \begin{tikzpicture}[scale=1.1]
-        \begin{axis}[
-            xlabel={size},
-            ylabel={time (ms)},
-            ymajorgrids=true,
-            grid style=dashed,
-            legend pos=north west,
-        ]
-        \addplot[
-            color=blue,
-            mark=square,
-            line width=1pt,
-            ]
-            coordinates {
-           (1000000, 9)(2000000, 17)(3000000, 23)(4000000, 31)(5000000, 38) 
-            };
-            \addlegendentry{Front}
-        
-        \addplot[color=red,
-        mark=diamond,
-        line width=1pt,]
-        coordinates {
-            (1000000, 0)(2000000, 0)(3000000, 0)(4000000, 0)(5000000, 0)
-             };
-        \addlegendentry{Back}
+	\begin{center}
 
-        \end{axis}
-        \end{tikzpicture}  
-\end{center}    
+		\begin{tikzpicture}[scale=1.1]
+			\begin{axis}[
+					xlabel={size},
+					ylabel={time (ms)},
+					ymajorgrids=true,
+					grid style=dashed,
+					legend pos=north west,
+				]
+				\addplot[
+					color=blue,
+					mark=square,
+					line width=1pt,
+				]
+				coordinates {
+						(1000000, 9)(2000000, 17)(3000000, 23)(4000000, 31)(5000000, 38)
+					};
+				\addlegendentry{Front}
 
-\end{frame}
+				\addplot[color=red,
+					mark=diamond,
+					line width=1pt,]
+				coordinates {
+						(1000000, 0)(2000000, 0)(3000000, 0)(4000000, 0)(5000000, 0)
+					};
+				\addlegendentry{Back}
 
-\begin{frame}[fragile]
-    \frametitle{Tricks in Python: \texttt{timeit}}
-To evaluate the performance of a program, we can measure the elapsing time. As for very small bits of Python code, \href{https://docs.python.org/3/library/timeit.html}{timeit} is preferred:
-
-\begin{verbatim}
->>> timeit.timeit('a.append(3)', setup='a=[]')
->>> timeit.timeit('a.insert(0, 3)', setup='a=[]')
-\end{verbatim}
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example: Matching Parentheses}
+	\frametitle{Example: Matching Parentheses}
+	Here we assume that only parentheses $()$, braces $\{\}$, and brackets $[]$ are allowed.
 
-    Here we assume that only parentheses $()$, braces $\{\}$, and brackets $[]$ are allowed.
-
-    Clearly, each opening symbol must match its corresponding closing symbol. For example:
-
-    \begin{itemize}
-        \item Correct: $()(())\{([()])\}$
-        \item Incorrect: $(\{[])\}$
-    \end{itemize}
-
+	Clearly, each opening symbol must match its corresponding closing symbol. For example:
+	\begin{itemize}
+		\item Correct: $()(())\{([()])\}$
+		\item Incorrect: $(\{[])\}$
+	\end{itemize}
+	The key point: \textbf{the openings are pushed into a stack, and when a closing is encountered, it must match the opening at the top of the stack.}
 \end{frame}
 
 \begin{frame}[fragile]
-    \begin{minted}[baselinestretch=1.1,bgcolor=LightGray]{python}
+	\begin{minted}[fontsize=\small,breaklines=true,bgcolor=LightGray]{python}
 def is_matched(expr):
     openings = '([{'
     closings = ')]}'
@@ -495,23 +504,22 @@ def is_matched(expr):
             if TODO:
                 return False
     return s.is_empty()
-    \end{minted}  
+    \end{minted}
 
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{1.4 Iterator}
-    The \alert{iterator} behind the scenes plays the magic:
-
-    \begin{columns}
-        \column{0.475\textwidth}
-        \begin{minted}[bgcolor=LightGray]{python}
+	\frametitle{1.4 Iterator}
+	We would also expect that \alert{Stack} is iterable.
+	\begin{columns}
+		\column{0.475\textwidth}
+		\begin{minted}[bgcolor=LightGray]{python}
 a = [1, 9, 4, 6]
 for i in a:
     print(i)    
     \end{minted}
-        \column{0.475\textwidth} 
-        \begin{minted}[bgcolor=LightGray]{python}
+		\column{0.475\textwidth}
+		\begin{minted}[bgcolor=LightGray]{python}
 s = Stack()
 s.push(1)
 s.push(2)
@@ -520,11 +528,27 @@ for i in s:
     print(i)
     \end{minted}
 
-    \end{columns}
+	\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-    \begin{minted}[baselinestretch=1,bgcolor=LightGray]{python}
+	\frametitle{Revisit}
+	To make \alert{Array} iterable, we have implemented both \texttt{\_\_len\_\_()} and \texttt{\_\_getitem\_\_()}. What about \alert{Stack}?
+\end{frame}
+
+\begin{frame}[fragile]
+	Another way to make an ADT iterable is to implement \texttt{\_\_iter\_\_()} which returns an iterator.
+
+	\begin{minted}[bgcolor=LightGray]{python}
+def __iter__(self):
+    return reversed(self._data)
+    \end{minted}
+
+	It is also possible but cumbersome to implement an iterator class manually.
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{minted}[fontsize=\small,bgcolor=LightGray]{python}
 class ReverseListIterator:
     def __init__(self, data):
         self._data = data
@@ -534,255 +558,19 @@ class ReverseListIterator:
         if self._i == 0:
             raise StopIteration
         self._i -= 1
-        return self._data[self._i]  
+        return self._data[self._i]
     \end{minted}
 
-        \begin{minted}[bgcolor=LightGray]{python}
+	\begin{minted}[fontsize=\small,bgcolor=LightGray]{python}
 def __iter__(self):
     return ReverseListIterator(self._data)        
         \end{minted}
-
-\end{frame}
-
-\section{\textcolor{darkmidnightblue}{2. Stacks In Java}}
-
-\begin{frame}[fragile]
-    \frametitle{2.1 ArrayList-based Stack}
-    The code is roughly identical with the Python's version.
-    \begin{minted}[bgcolor=LightGray]{java}
-public class ArrayListStack<Item> {
-    private List<Item> elments;
-
-    public ArrayListStack() {
-        elments = new ArrayList<>();
-    }
-    ...
-}
-    \end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{minted}[bgcolor=LightGray]{java}
-public void push(Item item) {
-    elements.add(item);
-}
-
-public Item pop() {
-    if (isEmpty()) {
-        throw new NoSuchElementException();
-    }
-    Item v = elements.get(size() - 1);
-    elements.remove(size() - 1);
-    return v;
-}
-    \end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{2.2 Iterable and Iterator}
-    \begin{minted}[bgcolor=LightGray]{java}
-ArrayListStack<String> stack = new ArrayListStack<>();
-// ...
-for (String s : stack) {
-    System.out.println(s);
-}    
-    \end{minted}
-To make a class iterable, the first step is to add the phrase implements \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html}{Iterable}.
-
-\begin{minted}[bgcolor=LightGray, fontsize=\small]{java}
-public class ArrayListStack<Item> implements Iterable<Item>
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-
-\begin{minted}[baselinestretch=1,bgcolor=LightGray,fontsize=\small]{java}
-@Override
-public Iterator<Item> iterator() {
-    return new ReverseIterator();
-}
-\end{minted}
-
-\begin{minted}[baselinestretch=1,bgcolor=LightGray, fontsize=\small]{java}
-private class ReverseIterator implements Iterator<Item> {
-    private int i = elements.size();
-    @Override
-    public boolean hasNext() {
-        return i > 0;
-    }
-    @Override
-    public Item next() {
-        return elements.get(--i);
-    }
-}
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{2.3 Array-based Stack}
-For the sake of efficiencies, we can use the low-level \texttt{array} as the underlying storage.
-
-\begin{minted}[baselinestretch=1,bgcolor=LightGray, fontsize=\small]{java}
-public class ArrayStack<Item>{
-    private static final int INIT_CAPACITY = 10;
-    private Item[] a;
-    private int n; // number of elements on stack
-
-    @SuppressWarnings("unchecked")
-    public ArrayStack() {
-        a = (Item[]) new Object[INIT_CAPACITY];
-    }
-    ...
-}
-\end{minted}
-
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Size vs. Capacity}
-
-    \begin{columns}
-        \column{0.35\textwidth}
-        \begin{tikzpicture}[slot/.style={minimum size=0.9cm,rectangle}, data/.style={slot, fill=black!30}, >=Stealth, decoration=penciline]
-        \matrix [nodes=draw] (table1)
-        {
-          \node[data, decorate] {}; &
-          \node[data, decorate] {}; &
-          \node[data, decorate] {}; & 
-          \node[slot, decorate] (insert) {}; &
-          \node[slot, decorate] {}; 
-          \\ 
-        };
-        \node[below=of insert, xshift=-1cm] (start) {\textbf{size} = 3, \textbf{capacity} = 5};
-        \draw[->,thick,red, decorate] (start) -- (insert);      
-        \end{tikzpicture} 
-
-        \column{0.65\textwidth}        
-        We need to \textbf{resize the array}:
-
-        \begin{enumerate}
-            \item When size is too large, double the capacity
-            \item When size is two small, half the capacity
-        \end{enumerate}        
-    \end{columns}
-
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{tikzpicture}[slot/.style={minimum size=0.9cm,rectangle}, data/.style={slot, fill=black!30}, >=Stealth, decoration=penciline]
-    
-    \matrix [nodes=draw](table2)
-    {
-      \node[data, decorate] (2n1) {}; &
-      \node[data, decorate] (2n2) {}; &
-      \node[data, decorate] (2n3) {}; & 
-      \node[data, decorate] (2n4) {}; 
-      \\ 
-    };
-    
-    \matrix [nodes=draw, below=of table2, xshift=1cm](table3)
-    {
-      \node[data, decorate] (3n1) {}; &
-      \node[data, decorate] (3n2) {}; &
-      \node[data, decorate] (3n3) {}; & 
-      \node[data, decorate] (3n4) {}; &
-      \node[slot, decorate]  {}; &
-      \node[slot, decorate] (insert2) {}; & 
-      \node[slot, decorate] {}; & 
-      \node[slot, decorate] {};   
-      \\ 
-    };
-    
-    \draw[->, thick, decorate] (2n1) -- (3n1);
-    \draw[->, thick, decorate] (2n2) -- (3n2);
-    \draw[->, thick, decorate] (2n3) -- (3n3);
-    \draw[->, thick, decorate] (2n4) -- (3n4);
-    
-    \node[below=of insert2, xshift=-1.5cm, yshift=0.4cm] (start2) {\alert{expand} (enlarge)};
-    \draw[->,thick,red,decorate] (start2) -- (insert2);
-
-    
-    \matrix [nodes=draw, right=of table2, xshift=-0.2cm](table4)
-    {
-      \node[data,decorate] (4n1) {}; &
-      \node[data, decorate] (4n2) {}; &
-      \node[slot, decorate] {}; & 
-      \node[slot, decorate]  {}; &
-      \node[slot, decorate] {}; &
-      \node[slot, decorate] {}; & 
-      \node[slot, decorate] {}; & 
-      \node[slot, decorate] {}; 
-      \\ 
-    };
-
-    \matrix [nodes=draw, below=of table4, xshift=1cm](table5)
-    {
-      \node[data, decorate] (5n1) {}; &
-      \node[data, decorate] (5n2) {}; &
-      \node[slot, decorate] (shrink) {}; & 
-      \node[slot, decorate]  {};
-      \\ 
-    };
-    \draw[->, thick,decorate] (4n1) -- (5n1);
-    \draw[->, thick,decorate] (4n2) -- (5n2);
-
-    \node[below=of shrink, xshift=-1.5cm, yshift=0.4cm] (start3) {\alert{shrink}};
-    \draw[->,thick,red, decorate] (start3) -- (shrink);
-    \end{tikzpicture} 
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{minted}[baselinestretch=0.9,bgcolor=LightGray, fontsize=\small]{java}
-private void resize(int capacity) {
-    assert capacity >= n;
-    a = Arrays.copyOf(a, capacity);
-}
-
-public void push(Item item) {
-    if (n == a.length) resize(2 * a.length);
-    a[n++] = item;
-}
-
-public Item pop() {
-    if (isEmpty()) throw new NoSuchElementException();
-    Item item = a[n-1];
-    a[n-1] = null;
-    n--;
-    if (n > 0 && n == a.length / 4) resize(a.length / 2);
-    return item;
-}
-    \end{minted}
-\end{frame}
-
-\begin{frame}
-\section{\textcolor{darkmidnightblue}{Conclusion}}
-    \begin{enumerate}
-        \item Stack: LIFO
-        \item Resizing (size vs. capacity)
-        \item Iterator
-    \end{enumerate}
 \end{frame}
 
 {\setbeamercolor{palette primary}{fg=black, bg=yellow}
 \begin{frame}[standout]
-  If you would like a LIFO data structure, never use \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html}{java.util.Stack}. You can either use a \alert{deque}, or implement it on your own.
+	If you would like a LIFO data structure in Java, never use \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html}{java.util.Stack}. You can either use a \href{https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Deque.html}{java.util.Deque}, or implement it on your own.
 \end{frame}
 }
-
-\begin{frame}
-    \frametitle{Reading Task \faIcon{book-reader}}
-    \begin{itemize}
-        \item  Read \emph{``Application (2): arithmetic expression evaluation''} in Section 2.1.1.
-    \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Homework 2}
-    \begin{enumerate}
-        \item Ex1, Chapter 2 (5 marks)
-        \item Ex2, Chapter 2 (5 marks)
-    \end{enumerate}
-\end{frame}
 
 \end{document}
