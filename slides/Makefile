@@ -1,2 +1,3 @@
-clean: rm *.nav *.vrb *.pdf *.snm *.synctex.gz *.log *.toc *.out *.aux *.xdv
-	rm -r _minted-*
+clean: 
+	rm -f *.nav *.vrb *.snm *.synctex.gz *.log *.toc *.out *.aux *.xdv *.fls *.fdb_latexmk
+	rm -f -r _minted-*
