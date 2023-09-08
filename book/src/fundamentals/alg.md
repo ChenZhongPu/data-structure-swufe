@@ -47,7 +47,7 @@ end = datetime.datetime.now()
 elapse = int(round((end - start).total_seconds() * 1000))
 ```
 
-Generally, to avoid the variability of the running time, we usually run the program for several times and then take the average. Luckily, the built-in [timeit](https://docs.python.org/3/library/timeit.html) makes it simple.
+Generally, to avoid the variability of the running time, we usually run the program for several times and then take the average. Luckily, the built-in [timeit](https://docs.python.org/3/library/timeit.html) makes it simple. 
 
 ## Visualize the efficiency
 Sometimes, we would like to visualize the quantitative measurements of the running time of our programs. A common qualitative observation about most programs is that there is a *problem size*

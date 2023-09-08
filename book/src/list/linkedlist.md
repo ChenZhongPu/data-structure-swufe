@@ -81,7 +81,19 @@ But we have to consider another corner case: **when the linked list is empty, bo
 
 > We need to care about whether a node is null when designing algorithms for the linked list ADT[^null].
 
-Additionally, if we introduce a `tail` for a linked list, the algorithm for adding an element should be updated accordingly. Now let's consider the situation where the `tail` does not exist. In this case, we need to compute the `tail` manually first, and therefore it runs in \\(O(N)\\).
+Additionally, if we introduce a `tail` for a linked list, the algorithm for adding an element should be updated accordingly. Some people may think the following algorithm is more easy-to-understand:
+
+```python
+def add_last(self, item):
+    newest = Node(item)
+    if self.is_empty():
+        self.head = newest
+    else:
+        self.tail.next = newest
+    self.tail = newest
+```
+
+Now let's consider the situation where the `tail` does not exist. In this case, we need to compute the `tail` manually first, and therefore it runs in \\(O(N)\\).
 
 <img src="image/alg-sll-addlast2.png" width="80%">
 

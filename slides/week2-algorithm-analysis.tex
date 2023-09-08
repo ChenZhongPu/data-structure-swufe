@@ -30,7 +30,6 @@
 \definecolor{darkmidnightblue}{rgb}{0.0, 0.2, 0.4}
 \definecolor{LightGray}{gray}{0.9}
 
-
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
 %Title page
@@ -115,7 +114,7 @@ b = [1] * 10
 	\begin{block}{Fact 2}
 		\textbf{Different data structures have varying (time) \alert{efficiencies}.}
 	\end{block}
-	A straightforward way is to measure the elapsing time.
+	\faClock A straightforward way is to measure the elapsing time.
 	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
 import time
 start = time.time()
@@ -130,21 +129,20 @@ elapse = end - start
 	\texttt{1, 1, 2, 3, 5, 8, 13, ...}
 	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
 def fibonacci(n):
-    if n == 0:
-        return 0
-    elif n == 1 or n == 2:
+    if n == 1 or n == 2:
         return 1
     else:
         return fibonacci(n - 1) + fibonacci(n - 2)        
     \end{minted}
 	Which will cost more time? \texttt{fibonacci(10)}, or \texttt{fibonacci(20)}?
 
-	Intuitively, the time cost grows with the \textbf{input size} (\emph{problem size}).
+	Intuitively, the time grows with the \textbf{input size} (\emph{problem size}).
 \end{frame}
 
 
 \begin{frame}[fragile]
-	Still, you will find yourself asking the more detailed question: \textbf{How long will my program take, as a function of the input size?}
+	\frametitle{Empirical Analysis}
+	Run the program for various input sizes and measure running time.
 
 	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
 if __name__ == '__main__':
@@ -157,14 +155,17 @@ if __name__ == '__main__':
             f.write(f'{n}   {end - start}\n')
 \end{minted}
 
+	\faTasks	Task: try to use \textbf{timeit} module to do the same thing.
+
 \end{frame}
 
 \begin{frame}
 	\frametitle{Plot}
+	Still, you will find yourself asking the more detailed question: \textbf{How long will my program take, as a function of the input size?}
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{center}
-			\begin{tikzpicture}[scale=0.85]
+			\begin{tikzpicture}[scale=0.75]
 				\begin{axis}[
 						xlabel={n},
 						ylabel={time (ms)},
@@ -185,7 +186,7 @@ if __name__ == '__main__':
 			\end{tikzpicture}
 		\end{center}
 		\column{0.45\textwidth}
-		Popular visualization tools:  \texttt{gnuplot}, \texttt{ggplot2} in R, \texttt{Matplotlib} in Python, and \texttt{Plotly Express} in Python.
+		Popular visualization tools:  \texttt{gnuplot}, \texttt{ggplot2} in R, and \texttt{Matplotlib} in Python.
 
 	\end{columns}
 \end{frame}
@@ -204,7 +205,7 @@ if __name__ == '__main__':
 
 \begin{frame}
 
-	\begin{exampleblock}{Knuth's insight}
+	\begin{exampleblock}{Knuth's insight\footnote{Knuth has been called the "father of the analysis of algorithms", and he is the 1974 recipient of the ACM Turing Award.}}
 		The total running time of a program is determined by two primary factors:
 		\begin{enumerate}
 			\item The cost of executing each statement
@@ -212,23 +213,39 @@ if __name__ == '__main__':
 		\end{enumerate}
 	\end{exampleblock}
 
+	\[total\ time = \sum{cost \times frequency}\]
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Primitive Operations}
 	We assume that \alert{primitive operations} take \alert{constant} time to execute.
 
-	Therefore, \textbf{the running time of a program is proportional to the number of primitive operations executed.}
+	\begin{itemize}
+		\item Assigning a value to a variable
+		\item Performing an arithmetic operation
+		\item Comparing two numbers
+		\item Accessing a single element of a list
+		\item Calling a function (excluding operations within the function)
+		\item Returning from a function
+	\end{itemize}
+
+	Therefore, \alert{the running time of a program is proportional to the number of primitive operations executed.}
+
 
 \end{frame}
 
 \begin{frame}[fragile]
-
-	{\large \faIcon{question-circle}} What is the cost of the following function?
-	\begin{minted}[bgcolor=LightGray,]{python}
-def foo(n):
-    for i in range(n):
-        print(i)
-\end{minted}
-
-	{\large \faIcon{question-circle}} What is the cost of the following function?
-	\begin{minted}[bgcolor=LightGray]{python}
+	\frametitle{How to estimate the cost?}
+	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
+def foo():
+  a = 1 + 1 + 1
+  b = a * 2
+  c = [0, 1, 2, 3]
+  if b > c[3]:
+    print("b is greater than c[3]")
+  return b
 def cubic_sum(n):
     s = 0
     for i in range(1, n+1):
@@ -239,33 +256,38 @@ def cubic_sum(n):
 
 \begin{frame}[fragile]
 
-	{\large \faIcon{question-circle}} What is the frequency of the inner \alert{if} statement?
+	{\large \faIcon{question-circle}} What is the cost of the following function?
+
 	\begin{minted}[bgcolor=LightGray]{python}
-    def two_sum(self, nums, target):
-        for i, v in enumerate(nums):
-            for j in range(i + 1, len(nums)):
-                if v + nums[j] == target:
-                    return [i, j]
-        return []
-    \end{minted}
+def two_sum(nums, target):
+    for i, v in enumerate(nums):
+        for j in range(i + 1, len(nums)):
+            if v + nums[j] == target:
+                return [i, j]
+    return []
+\end{minted}
 
-
+	Consider the following cases:
+	\begin{itemize}
+		\item The target is found in the first iteration.
+		\item The target is not found or found in the last iteration.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 	\begin{block}{Revisit}
-		Suppose there are $10^6$ books in an array. To find a book titled \emph{"Gone with the wind"}, how many times is the comparison performed?
+		Suppose there are $10^6$ books in an array. To find a book titled \emph{"Gone with the wind"}, how many times is the comparing performed?
 		\begin{enumerate}
-			\item On the \textbf{best} case: 1
-			\item On the \textbf{worst} case: $10^6$
-			\item On the \textbf{average} case $10^6/2$
+			\item In the \textbf{best} case: 1
+			\item In the \textbf{worst} case: $10^6$
+			\item In the \textbf{average} case: $(10^6 + 1)/2$
 		\end{enumerate}
 	\end{block}
 
 	\begin{tikzpicture}
 		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
 			text width=24em,anchor=south west,rounded corners]
-		{\faIcon{lightbulb} We only focus on the \alert{worst-case running time} in this course.};
+		{\faIcon{lightbulb} We only focus on the \alert{worst-case running time}.};
 	\end{tikzpicture}
 
 \end{frame}
@@ -287,25 +309,31 @@ def cubic_sum(n):
 		\end{tabular}
 	\end{table}
 \end{frame}
+
 \begin{frame}[fragile]
+	\begin{exampleblock}{Order of Growth}
+		If $f(n)\sim\ cg(n)$ for some constant $c > 0$, then \alert{the order of growth} of $f(N)$ is $g(N)$.
+	\end{exampleblock}
 
 	\begin{columns}
-		\column{0.4\textwidth}
-		Compare $\frac{n^2 - n}{2}$ and $\frac{n^2}{2}$.
-
-		We can say \alert{$\frac{n^2}{2} \sim \frac{n^2 - n}{2}$}, because $\frac{n^2}{2}$ is similar to $\frac{n^2 - n}{2}$ as $n$ grows. And the \textbf{order of growth} is $n^2$.
-
-		\column{0.6\textwidth}
-		\begin{tikzpicture}
-			\begin{axis}[legend pos=north west,line width=1pt]
-				\addplot[domain=0:50,samples=100]{x*x};
-				\addlegendentry{\(n^2\)}
-				\addplot[color=red, domain=0:50,samples=100]{x*x/2};
-				\addlegendentry{\(n^2/2\)}
-				\addplot[color=blue, domain=0:50,samples=100]{(x*x - x)/2};
-				\addlegendentry{\((n^2-n)/2\)}
-			\end{axis}
-		\end{tikzpicture}
+		\column{.5\textwidth}
+		\begin{itemize}
+			\item Ignores leading coefficient
+			\item Ignores lower-order terms
+		\end{itemize}
+		\column{.5\textwidth}
+		\scalebox{0.85}{
+			\begin{tikzpicture}
+				\begin{axis}[legend pos=north west,line width=1pt]
+					\addplot[domain=0:50,samples=100]{x*x};
+					\addlegendentry{\(n^2\)}
+					\addplot[color=red, domain=0:50,samples=100]{x*x/2};
+					\addlegendentry{\(n^2/2\)}
+					\addplot[color=blue, domain=0:50,samples=100]{(x*x - x)/2};
+					\addlegendentry{\((n^2-n)/2\)}
+				\end{axis}
+			\end{tikzpicture}
+		}
 	\end{columns}
 \end{frame}
 
@@ -356,10 +384,10 @@ def cubic_sum(n):
 	\frametitle{1.2 Big O Notation}
 
 	\begin{columns}
-		\column{0.4\textwidth}
-		The order of growth is often described by the \alert{big O} notation.
+		\column{0.45\textwidth}
+		The order of growth is often described by an asymptotical notation \alert{big O}.
 
-		\column{0.59\textwidth}
+		\column{0.55\textwidth}
 		\begin{table}
 			% \caption{Common time complexity descriptions}
 			\begin{tabular}{ll}
@@ -421,11 +449,12 @@ def cubic_sum(n):
 
 \begin{frame}[fragile]
 
-	{\large \faIcon{question-circle}} What is the time complexity in 	\begin{minted}[bgcolor=LightGray]{python}
+	{\large \faIcon{question-circle}} What is the time complexity in the worst case? 	\begin{minted}[bgcolor=LightGray]{python}
 def foo(n):
     for i in range(n):
-        print(i)
-    \end{minted}
+       for j in range(5):
+          print(i, j)
+\end{minted}
 
 	\begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
 def two_sum(self, nums, target):
@@ -472,6 +501,7 @@ def search(a, target):
 	\begin{itemize}
 		\item Since $n^2 - n = O(n^2)$ and $n^2 - 1 = O(n^2)$, we can say $n^2 - n = n^2 - 1$.
 		\item An algorithm in $O(n)$ is always faster than an algorithm in $O(n^3)$.
+		\item To search an item in an array, the time complexity is $O(1)$ in the best case.
 	\end{itemize}
 
 \end{frame}
@@ -518,6 +548,7 @@ def search(a, target):
 		\item $\Theta(n)$
 		\item $\Omega(n)$
 	\end{itemize}
+
 \end{frame}
 
 
