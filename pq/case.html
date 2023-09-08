@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Case Study - Hands On Data Structures</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../fundamentals/fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fundamentals/intro.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../fundamentals/java.html"><strong aria-hidden="true">1.2.</strong> Java Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/python.html"><strong aria-hidden="true">1.3.</strong> Python Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/alg.html"><strong aria-hidden="true">1.4.</strong> Algorithm Analysis</a></li><li class="chapter-item expanded "><a href="../fundamentals/tdd.html"><strong aria-hidden="true">1.5.</strong> Test Driven Development</a></li><li class="chapter-item expanded "><a href="../fundamentals/exercise.html"><strong aria-hidden="true">1.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/intro.html"><strong aria-hidden="true">2.</strong> Stacks and Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack.html"><strong aria-hidden="true">2.1.</strong> Stacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack_python.html"><strong aria-hidden="true">2.1.1.</strong> Stacks in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/stack_java.html"><strong aria-hidden="true">2.1.2.</strong> Stacks in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/queue.html"><strong aria-hidden="true">2.2.</strong> Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/queue_python.html"><strong aria-hidden="true">2.2.1.</strong> Queues in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/queue_java.html"><strong aria-hidden="true">2.2.2.</strong> Queues in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/deque.html"><strong aria-hidden="true">2.3.</strong> Deques</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/deque_python.html"><strong aria-hidden="true">2.3.1.</strong> Deques in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/deque_java.html"><strong aria-hidden="true">2.3.2.</strong> Deques in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/exercise.html"><strong aria-hidden="true">2.4.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../list/intro.html"><strong aria-hidden="true">3.</strong> Lists</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/adt.html"><strong aria-hidden="true">3.1.</strong> The List ADT</a></li><li class="chapter-item expanded "><a href="../list/arraylist.html"><strong aria-hidden="true">3.2.</strong> Array List</a></li><li class="chapter-item expanded "><a href="../list/linkedlist.html"><strong aria-hidden="true">3.3.</strong> Linked List</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/linkedlist_python.html"><strong aria-hidden="true">3.3.1.</strong> Linked List in Python</a></li><li class="chapter-item expanded "><a href="../list/linkedlist_java.html"><strong aria-hidden="true">3.3.2.</strong> Linked List in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../list/double_link.html"><strong aria-hidden="true">3.4.</strong> Doubly Linked List</a></li><li class="chapter-item expanded "><a href="../list/case.html"><strong aria-hidden="true">3.5.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../list/exercise.html"><strong aria-hidden="true">3.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../tree/intro.html"><strong aria-hidden="true">4.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tree/general.html"><strong aria-hidden="true">4.1.</strong> General Trees</a></li><li class="chapter-item expanded "><a href="../tree/bst.html"><strong aria-hidden="true">4.2.</strong> Binary Search Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/bst2.html"><strong aria-hidden="true">4.3.</strong> Binary Search Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/balanced.html"><strong aria-hidden="true">4.4.</strong> Balanced Search Trees</a></li><li class="chapter-item expanded "><a href="../tree/rbt.html"><strong aria-hidden="true">4.5.</strong> Red Black Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/rbt2.html"><strong aria-hidden="true">4.6.</strong> Red Black Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/case.html"><strong aria-hidden="true">4.7.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../tree/exercise.html"><strong aria-hidden="true">4.8.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../pq/intro.html"><strong aria-hidden="true">5.</strong> Priority Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pq/imp.html"><strong aria-hidden="true">5.1.</strong> PQ Implementation (1)</a></li><li class="chapter-item expanded "><a href="../pq/imp2.html"><strong aria-hidden="true">5.2.</strong> PQ Implementation (2)</a></li><li class="chapter-item expanded "><a href="../pq/case.html" class="active"><strong aria-hidden="true">5.3.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../pq/indexed.html"><strong aria-hidden="true">5.4.</strong> Indexed Priority Queue</a></li><li class="chapter-item expanded "><a href="../pq/exercise.html"><strong aria-hidden="true">5.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/intro.html"><strong aria-hidden="true">6.</strong> Hash Tables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/direct.html"><strong aria-hidden="true">6.1.</strong> Direct-address Tables</a></li><li class="chapter-item expanded "><a href="../hash/table.html"><strong aria-hidden="true">6.2.</strong> Hash Tables</a></li><li class="chapter-item expanded "><a href="../hash/function.html"><strong aria-hidden="true">6.3.</strong> Hash Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/java.html"><strong aria-hidden="true">6.3.1.</strong> Hash in Java</a></li><li class="chapter-item expanded "><a href="../hash/python.html"><strong aria-hidden="true">6.3.2.</strong> Hash in Python</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/open.html"><strong aria-hidden="true">6.4.</strong> Open-addressing Hashing</a></li><li class="chapter-item expanded "><a href="../hash/case.html"><strong aria-hidden="true">6.5.</strong> Case Study</a></li></ol></li><li class="chapter-item expanded "><a href="../sorting/intro.html"><strong aria-hidden="true">7.</strong> Sorting</a></li><li class="chapter-item expanded "><a href="../graph/intro.html"><strong aria-hidden="true">8.</strong> Graphs</a></li><li class="chapter-item expanded "><a href="../appendix/intro.html"><strong aria-hidden="true">9.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/java.html"><strong aria-hidden="true">9.1.</strong> IDEA for Java</a></li><li class="chapter-item expanded "><a href="../appendix/pycharm.html"><strong aria-hidden="true">9.2.</strong> PyCharm for Python</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hands On Data Structures</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="case-study"><a class="header" href="#case-study">Case Study</a></h1>
+<p>In this section, we will study the <em>comparison</em> in depth and then implement a more flexible <code>MaxPQ</code>. Note that the basic skills can also be applied in all ordered collections, including the BST in the previous chapter. Finally, I will introduce the standard binary heap libraries.</p>
+<h2 id="comparison-in-depth"><a class="header" href="#comparison-in-depth">Comparison in depth</a></h2>
+<h3 id="java"><a class="header" href="#java">Java</a></h3>
+<p>Given an array <code>int[] a = {1, 9, 4, 6, 3}</code>, how to sort it?</p>
+<pre><code class="language-java">Arrays.sort(a);
+// a becomes {1, 3, 4, 6, 9}
+</code></pre>
+<p>It works because <code>int</code> has a built-in ascending order<sup class="footnote-reference"><a href="#reverse1">1</a></sup>. Similarly, given a list, you can use <code>Collections.sort(a)</code>. But how can you compare two books?</p>
+<pre><code class="language-java">public class Book {
+    private String name;
+    private double price;
+    private String author;
+    ...
+}
+</code></pre>
+<p>One possible way is to let <code>Book</code> implement <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html">Comparable</a>, and override its <code>toCompare()</code> method. For example, the following code will sort books by their prices in ascending order:</p>
+<pre><code class="language-java">public class Book implements Comparable&lt;Book&gt; {
+    @Override
+    public int compareTo(Book o) {
+        return Double.compare(price, o.price);
+    }
+}
+</code></pre>
+<p>Then you can sort books:</p>
+<pre><code class="language-java">List&lt;Book&gt; books = new ArrayList&lt;&gt;();
+books.add(new Book(&quot;Gone with the wind&quot;, 89));
+books.add(new Book(&quot;Data structures&quot;, 120));
+books.add(new Book(&quot;The old man and the sea&quot;, 36));
+Collections.sort(books);
+</code></pre>
+<p>However, <strong>sometimes you are unable to change the class you want to compare, and you may even want different comparing rules in different settings</strong>. In this case, you can use <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Comparator.html">Comparator</a> by providing an on-the-fly comparing criterion in its <code>compare()</code> method:</p>
+<pre><code class="language-java">class BookNameComparator implements Comparator&lt;Book&gt; {
+    @Override
+    public int compare(Book o1, Book o2) {
+        return o1.getName().compareTo(o2.getName());
+    }
+}
+</code></pre>
+<p>Then, you can use the following code:</p>
+<pre><code class="language-java">// you can use either line, but the second one is recommended
+Collections.sort(books, new BookNameComparator());
+books.sort(new BookNameComparator());
+</code></pre>
+<p>In Java 8 and above, you also can use lambda expression to shorten the code without providing an explicit comparator class:</p>
+<pre><code class="language-java">// you can use either line, but the second one is recommended 
+books.sort((a, b) -&gt; a.getAuthor().compareTo(b.getAuthor()));
+books.sort(Comparator.comparing(Book::getAuthor));
+</code></pre>
+<h3 id="python"><a class="header" href="#python">Python</a></h3>
+<p>Python provides two kinds of basic methods to sort items. In what follows, I only take <code>sort()</code> method as the example, and most rules are also applicable for <code>sorted()</code>. </p>
+<ul>
+<li><code>sort()</code>: in-place sorting, as we have seen in Java</li>
+<li><code>sorted()</code>: return a sorted collection, and leave the origin collection unchanged</li>
+</ul>
+<pre><code class="language-python">a = [1, 9, 4, 6, 3]
+b = sorted(a)
+# b is [1, 3, 4, 6, 9]
+# a is unchanged
+a.sort()
+# now a becomes [1, 3, 4, 6, 9] 
+</code></pre>
+<p>In fact, the syntax of <code>sort()</code> is <code>list.sort(key=..., reverse=...)</code>. So we further specify two parameters:</p>
+<ul>
+<li><em>key</em>: function that serves as a key for the sort comparison</li>
+<li><em>reverse</em>: if <code>True</code>, the sorted list is reversed (or sorted in descending order)</li>
+</ul>
+<pre><code class="language-python">a = [1, 9, 4, 6, 3]
+a.sort(reverse=True)
+# a becomes [9, 6, 4, 3, 1] 
+</code></pre>
+<p>The role of <code>key</code> is similar to that of <code>Comparator</code> in Java. Suppose there is a <code>Book</code> class:</p>
+<pre><code class="language-python">class Book:
+    def __init__(self, name, price, author):
+        self.name = name
+        self.price = price
+        self.author = author
+</code></pre>
+<p>To pass a lambda expression to key:</p>
+<pre><code class="language-python">books.sort(key=lambda book: book.price)
+</code></pre>
+<p>You can also pass a built-in or self-defined method:</p>
+<pre><code class="language-python">def book_title(b):
+    return b.name
+
+books.sort(key=book_title)
+</code></pre>
+<p>Alternatively, you can also provide a method accepting two parameters, and returning -1, 1, 0 as the results. The mechanism is the same with <code>Comparator</code>: </p>
+<pre><code class="language-python">from functools import cmp_to_key
+
+def book_title_len(b1: Book, b2: Book):
+    &quot;&quot;&quot;the longer first&quot;&quot;&quot;
+    if len(b1.name) &lt; len(b2.name):
+        return 1
+    elif len(b1.name) &gt; len(b2.name):
+        return -1
+    else:
+        return 0
+
+books.sort(key=cmp_to_key(book_title_len))
+</code></pre>
+<p>By default, the <code>sort()</code> method relies on <code>&lt;</code> operator, and it can be overridden by the <code>__lt__()</code> method:</p>
+<pre><code class="language-python">def __lt__(self, other):
+    return self.price &lt; other.price
+</code></pre>
+<p>Then you can use <code>books.sort()</code> directly.</p>
+<h4 id="a-few-notes-on-tuples"><a class="header" href="#a-few-notes-on-tuples">A few notes on tuples</a></h4>
+<p>In many cases, items are organized as tuples. For example,</p>
+<pre><code class="language-python">books = [('Zoo', 30), ('Gone with the wind', 42), ('The A.B.C. Murders', 20)]
+</code></pre>
+<p>To sort these tuples in a list, a common method is to use <code>from operator import itemgetter</code>:</p>
+<pre><code class="language-python"># sort by its price (the second filed)
+books.sort(key=itemgetter(1))
+
+# sort by its name (the first filed)
+books.sort(key=itemgetter(0))
+</code></pre>
+<h2 id="a-flexible-maxpq"><a class="header" href="#a-flexible-maxpq">A flexible MaxPQ</a></h2>
+<h3 id="java-1"><a class="header" href="#java-1">Java</a></h3>
+<p>The <code>MaxPQ</code> requires that the keys are ordered, but we should not always expect the class implements <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html">Comparable</a> in Java. Instead, users can pass an extra parameter as the comparator.</p>
+<ul>
+<li>If this comparator is null, then we still try to use the <code>Comparable</code> interface as the last resort.</li>
+<li>Otherwise, we would use this self-defined comparator.</li>
+</ul>
+<p>The complete code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/pq/src/main/java/org/swufe/datastructures/MaxPQ2.java">MaxPQ2.java</a>.</p>
+<h3 id="python-1"><a class="header" href="#python-1">Python</a></h3>
+<p>Because Python is a dynamic language, the statement &quot;<em>sometimes you are unable to change the class you want to compare</em>&quot; does not hold true. For example, we can specify <code>__lt__()</code> in the runtime:</p>
+<pre><code class="language-python">class User:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+def user_cmp(self, other):
+    return self.age &lt; other.age
+
+User.__lt__ = user_cmp
+</code></pre>
+<p>But this approach is not Pythonic. Alternatively, you can pass a function as a key for the sort comparison, as we did for <code>sort()</code> method. Another feasible choice is to pass a <code>less()</code> function that returns a boolean value directly. Such function can be seen as a user-defined comparator.</p>
+<h2 id="standard-libraries"><a class="header" href="#standard-libraries">Standard libraries</a></h2>
+<blockquote>
+<p>Again, like queues, we do not have to implement our own priority queues in most cases, and you should first check if the standard libraries can meet your requirements.</p>
+</blockquote>
+<h3 id="java-2"><a class="header" href="#java-2">Java</a></h3>
+<p>Among Java's collections family, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/PriorityQueue.html">PriorityQueue</a> ,implementing interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Queue.html">Queue</a>, works like <a href="https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/pq/src/main/java/org/swufe/datastructures/MaxPQ2.java">MaxPQ2.java</a>. The elements of the priority queue are ordered according to their <em>natural ordering</em> (i.e., <code>Comparable</code>), or by a <code>Comparator</code>. <strong>Note that it is a minimum heap</strong>.</p>
+<ul>
+<li><em>insert</em>: <code>add()</code> or <code>offer()</code></li>
+<li><em>return the minimum</em>: <code>peek()</code></li>
+<li><em>remove the minimum</em>: <code>remove()</code> or <code>poll</code></li>
+</ul>
+<pre><code class="language-java">Queue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;();
+pq.add(1);
+pq.add(9);
+pq.add(4);
+pq.add(0);
+pq.add(6);
+pq.add(3);
+System.out.println(pq.peek()); // 0
+System.out.println(pq.remove()); // 0
+System.out.println(pq.peek()); // 1
+</code></pre>
+<h3 id="python-2"><a class="header" href="#python-2">Python</a></h3>
+<p>Module <a href="https://docs.python.org/3/library/heapq.html">heapq</a> provides an implementation of the heap queue algorithm, also known as the priority queue algorithm. Note that <code>heap[0]</code> is the smallest item, so <strong>it is also a minimum heap</strong>. </p>
+<pre><code class="language-python">pq = []
+heapq.heappush(pq, 1)
+heapq.heappush(pq, 9)
+heapq.heappush(pq, 4)
+heapq.heappush(pq, 0)
+heapq.heappush(pq, 6)
+heapq.heappush(pq, 3)
+print(heapq.heappop(pq))  # 0
+print(pq[0])  # 1: works like `peek()`
+print(heapq.heappop(pq))  # 1
+</code></pre>
+<p>By the way, the tutorial also provides an approach to solve the problem that the data elements are not comparable:</p>
+<pre><code class="language-python">from dataclasses import dataclass, field
+from typing import Any
+
+@dataclass(order=True)
+class PrioritizedItem:
+    priority: int
+    item: Any=field(compare=False)
+</code></pre>
+<hr />
+<p><sup class="footnote-reference"><a href="#reverse1">1</a></sup> If you would like a reverse order, you can use <code>Arrays.sort(a, Collections.reverseOrder())</code>. As for a list, you can use <code>Collections.sort(a, Collections.reverseOrder())</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../pq/imp2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../pq/indexed.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../pq/imp2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../pq/indexed.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

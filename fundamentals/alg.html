@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Algorithm Analysis - Hands On Data Structures</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../fundamentals/fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fundamentals/intro.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../fundamentals/java.html"><strong aria-hidden="true">1.2.</strong> Java Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/python.html"><strong aria-hidden="true">1.3.</strong> Python Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/alg.html" class="active"><strong aria-hidden="true">1.4.</strong> Algorithm Analysis</a></li><li class="chapter-item expanded "><a href="../fundamentals/tdd.html"><strong aria-hidden="true">1.5.</strong> Test Driven Development</a></li><li class="chapter-item expanded "><a href="../fundamentals/exercise.html"><strong aria-hidden="true">1.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/intro.html"><strong aria-hidden="true">2.</strong> Stacks and Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack.html"><strong aria-hidden="true">2.1.</strong> Stacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack_python.html"><strong aria-hidden="true">2.1.1.</strong> Stacks in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/stack_java.html"><strong aria-hidden="true">2.1.2.</strong> Stacks in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/queue.html"><strong aria-hidden="true">2.2.</strong> Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/queue_python.html"><strong aria-hidden="true">2.2.1.</strong> Queues in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/queue_java.html"><strong aria-hidden="true">2.2.2.</strong> Queues in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/deque.html"><strong aria-hidden="true">2.3.</strong> Deques</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/deque_python.html"><strong aria-hidden="true">2.3.1.</strong> Deques in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/deque_java.html"><strong aria-hidden="true">2.3.2.</strong> Deques in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/exercise.html"><strong aria-hidden="true">2.4.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../list/intro.html"><strong aria-hidden="true">3.</strong> Lists</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/adt.html"><strong aria-hidden="true">3.1.</strong> The List ADT</a></li><li class="chapter-item expanded "><a href="../list/arraylist.html"><strong aria-hidden="true">3.2.</strong> Array List</a></li><li class="chapter-item expanded "><a href="../list/linkedlist.html"><strong aria-hidden="true">3.3.</strong> Linked List</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/linkedlist_python.html"><strong aria-hidden="true">3.3.1.</strong> Linked List in Python</a></li><li class="chapter-item expanded "><a href="../list/linkedlist_java.html"><strong aria-hidden="true">3.3.2.</strong> Linked List in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../list/double_link.html"><strong aria-hidden="true">3.4.</strong> Doubly Linked List</a></li><li class="chapter-item expanded "><a href="../list/case.html"><strong aria-hidden="true">3.5.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../list/exercise.html"><strong aria-hidden="true">3.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../tree/intro.html"><strong aria-hidden="true">4.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tree/general.html"><strong aria-hidden="true">4.1.</strong> General Trees</a></li><li class="chapter-item expanded "><a href="../tree/bst.html"><strong aria-hidden="true">4.2.</strong> Binary Search Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/bst2.html"><strong aria-hidden="true">4.3.</strong> Binary Search Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/balanced.html"><strong aria-hidden="true">4.4.</strong> Balanced Search Trees</a></li><li class="chapter-item expanded "><a href="../tree/rbt.html"><strong aria-hidden="true">4.5.</strong> Red Black Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/rbt2.html"><strong aria-hidden="true">4.6.</strong> Red Black Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/case.html"><strong aria-hidden="true">4.7.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../tree/exercise.html"><strong aria-hidden="true">4.8.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../pq/intro.html"><strong aria-hidden="true">5.</strong> Priority Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pq/imp.html"><strong aria-hidden="true">5.1.</strong> PQ Implementation (1)</a></li><li class="chapter-item expanded "><a href="../pq/imp2.html"><strong aria-hidden="true">5.2.</strong> PQ Implementation (2)</a></li><li class="chapter-item expanded "><a href="../pq/case.html"><strong aria-hidden="true">5.3.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../pq/indexed.html"><strong aria-hidden="true">5.4.</strong> Indexed Priority Queue</a></li><li class="chapter-item expanded "><a href="../pq/exercise.html"><strong aria-hidden="true">5.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/intro.html"><strong aria-hidden="true">6.</strong> Hash Tables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/direct.html"><strong aria-hidden="true">6.1.</strong> Direct-address Tables</a></li><li class="chapter-item expanded "><a href="../hash/table.html"><strong aria-hidden="true">6.2.</strong> Hash Tables</a></li><li class="chapter-item expanded "><a href="../hash/function.html"><strong aria-hidden="true">6.3.</strong> Hash Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/java.html"><strong aria-hidden="true">6.3.1.</strong> Hash in Java</a></li><li class="chapter-item expanded "><a href="../hash/python.html"><strong aria-hidden="true">6.3.2.</strong> Hash in Python</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/open.html"><strong aria-hidden="true">6.4.</strong> Open-addressing Hashing</a></li><li class="chapter-item expanded "><a href="../hash/case.html"><strong aria-hidden="true">6.5.</strong> Case Study</a></li></ol></li><li class="chapter-item expanded "><a href="../sorting/intro.html"><strong aria-hidden="true">7.</strong> Sorting</a></li><li class="chapter-item expanded "><a href="../graph/intro.html"><strong aria-hidden="true">8.</strong> Graphs</a></li><li class="chapter-item expanded "><a href="../appendix/intro.html"><strong aria-hidden="true">9.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/java.html"><strong aria-hidden="true">9.1.</strong> IDEA for Java</a></li><li class="chapter-item expanded "><a href="../appendix/pycharm.html"><strong aria-hidden="true">9.2.</strong> PyCharm for Python</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hands On Data Structures</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="algorithm-analysis"><a class="header" href="#algorithm-analysis">Algorithm Analysis</a></h1>
+<p>How fast is a program?<sup class="footnote-reference"><a href="#fast">1</a></sup> If the (time) efficiency is our major concern, then we have to ask this question regularly.</p>
+<h2 id="a-hands-on-method"><a class="header" href="#a-hands-on-method">A hands-on method</a></h2>
+<p>A straightforward way is to measure the elapsing time. In the following, we will use a tiny program (<a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/start/src/Fibonacci.java">Fibonacci.java</a> and <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/fibonacci.py">fibonacci.py</a>) to compute the nth fibonacci number.</p>
+<h3 id="java"><a class="header" href="#java">Java</a></h3>
+<p>In Java, there are many APIs available in terms of time/date, including <code>System.currentTimeMillis()</code>, <code>Instant.now</code>. You can use either of the following method<sup class="footnote-reference"><a href="#java-time">2</a></sup> to compute the elapsing time in milliseconds:</p>
+<pre><code class="language-java">long start = System.currentTimeMillis();
+// your program runs
+long end = System.currentTimeMillis();
+long elapse = end - start;
+</code></pre>
+<pre><code class="language-java">long start = Instant.now().toEpochMilli();
+// your program runs
+long end = Instant.now().toEpochMilli();
+long elapse = end - start;
+</code></pre>
+<pre><code class="language-java">Instant start = Instant.now();
+// your programs runs
+Instant end = Instant.now();
+long elapse = Duration.between(start, end).toMillis();
+</code></pre>
+<blockquote>
+<p>A more robust and comprehensive approach in Java is to use <a href="https://github.com/openjdk/jmh">JMH</a>, and the usage of it is out of the scope of this book.</p>
+</blockquote>
+<h3 id="python"><a class="header" href="#python">Python</a></h3>
+<p>In Python, several modules can be used to deal with time/date, including <code>time</code>, <code>datetime</code>. But note that <code>time.time()</code> returns a float number representing the current time in seconds since the Epoch. You can use either of the following code to compute the elapsing time in milliseconds:</p>
+<pre><code class="language-python">start = int(round(time.time() * 1000))
+# your program runs
+end = int(round(time.time() * 1000))
+elapse = end - start
+</code></pre>
+<pre><code class="language-python">start = datetime.datetime.now()
+# your program runs
+end = datetime.datetime.now()
+elapse = int(round((end - start).total_seconds() * 1000))
+</code></pre>
+<p>Generally, to avoid the variability of the running time, we usually run the program for several times and then take the average. Luckily, the built-in <a href="https://docs.python.org/3/library/timeit.html">timeit</a> makes it simple. </p>
+<h2 id="visualize-the-efficiency"><a class="header" href="#visualize-the-efficiency">Visualize the efficiency</a></h2>
+<p>Sometimes, we would like to visualize the quantitative measurements of the running time of our programs. A common qualitative observation about most programs is that there is a <em>problem size</em>
+that characterizes the difficulty of the computational task. For example, <code>fibonacci(30)</code> will definitely coast more time than <code>fibonacci(3)</code>. Here the parameter (i.e., <code>3</code> and <code>30</code>) can be seen as the problem size.</p>
+<p>A simple way is to save <em>(size, time)</em> per line in a file (<a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/start/src/FibTime.java">FibTime.java</a> and <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/fib_time.py">fib_time.py</a>), and then to visualize results using tools like <a href="http://www.gnuplot.info/">gnuplot</a>, <a href="https://ggplot2.tidyverse.org/">ggplot2 in R</a>, <a href="https://matplotlib.org/">Matplotlib in Python</a>, and <a href="https://plotly.com/python/plotly-express/">Plotly Express in Python</a>.</p>
+<blockquote>
+<p>Many people tend to plot the data from the memory directly, but plotting the data from a file is more common in practice. Therefore, we deliberately separate the data computing and plotting in this book.</p>
+</blockquote>
+<p>Here I use the Python version as the example:</p>
+<pre><code class="language-python">if __name__ == '__main__':
+    ns = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    with open('fib_python.txt', 'w') as f:
+        for n in ns:
+            start = int(round(time.time() * 1000))
+            fibonacci(n)
+            end = int(round(time.time() * 1000))
+            f.write(f'{n}   {end - start}\n')
+</code></pre>
+<p>Note that here the problem size starts from <code>20</code>, because the time is near to 0 when the problem size is less than 20.</p>
+<img src="img/fib_python.png" width="80%">
+<p>According to the observation<sup class="footnote-reference"><a href="#fig">3</a></sup>, some students may quickly make an insightful hypothesize that the running time is at an exponential growth, and I will analyze it through a mathematical model soon. By the way, the Java version of Fibonacci is much faster than the Python version.</p>
+<h2 id="mathematical-models"><a class="header" href="#mathematical-models">Mathematical models</a></h2>
+<p>D.E. Knuth postulated that, despite all the complicating factors in understanding the running times of our programs, it is possible, in principle, to build a mathematical model to describe the running time of any program. Knuth’s basic insight is simple: the total running time of a program is determined by two primary factors:</p>
+<ul>
+<li>The cost of executing each statement</li>
+<li>The frequency of execution of each statement</li>
+</ul>
+<p>The former is a property of the computer and the language itself, and the second one is a property of the program and the input. The primary challenge is to determine the frequency of execution of the statements. Here are some examples:</p>
+<pre><code class="language-python">def foo(n):
+    for i in range(n):
+        print(i)
+</code></pre>
+<p>The frequency of the inner statement of this function is <em>n</em>.</p>
+<p>Sometimes, frequency analysis can lead to complicated and lengthy mathematical expressions. Consider the <a href="https://leetcode.com/problems/two-sum/">two-sum</a> problem, and the following is a naive solution:</p>
+<pre><code class="language-python">class Solution:
+    def two_sum(self, nums, target):
+        for i, v in enumerate(nums):
+            for j in range(i + 1, len(nums)):
+                if v + nums[j] == target:
+                    return [i, j]
+        return []
+</code></pre>
+<p>The frequency of the inner comparison test statement of this function is <em>(n-1) + (n-2) + ... + 1</em> in the worst case:</p>
+<p>\[ \frac{n \times (n-1)}{2} = \frac{n^2 - n}{2} \]</p>
+<p>Curious readers can try to implement a faster algorithm for this problem<sup class="footnote-reference"><a href="#two-sum">4</a></sup>. Note that here I put emphasis on <em>the worst case</em>, because if you are lucky enough, the sum of the first and second item equals target, then the frequency in the <em>best</em> case is only 1.</p>
+<p>As for the notation \(\frac{n^2 - n}{2}\), we can know that it is the \(\frac{n^2}{2}\) that plays a major rule in terms of the growth, so we can say \(\frac{n^2}{2}\) approximates to \(\frac{n^2 - n}{2}\). In addition, when it comes to the order of growth, the constant here (i.e., 1/2) is also insignificant. The following shows some typical approximations:</p>
+<div class="table-wrapper"><table><thead><tr><th>Function</th><th>Approximation</th><th>Order of growth</th></tr></thead><tbody>
+<tr><td>\(N^3/6 - N^2/2 + N/3\)</td><td>\(N^3/6\)</td><td>\(N^3\)</td></tr>
+<tr><td>\(N^2/2 - N/2\)</td><td>\(N^2/2\)</td><td>\(N^2\)</td></tr>
+<tr><td>\(lg{N} + 1\)</td><td>\(lg{N}\)</td><td>\(lg{N}\)</td></tr>
+<tr><td>3</td><td>3</td><td>1</td></tr>
+</tbody></table>
+</div>
+<p>The order of growth in the worst case can be also described by the <a href="https://en.wikipedia.org/wiki/Big_O_notation">big <em>O</em> notation</a>, e.g., \(O(n^3)\). The following shows some commonly encountered time complexity using the big <em>O</em> notation:</p>
+<div class="table-wrapper"><table><thead><tr><th>Description</th><th>Time complexity</th></tr></thead><tbody>
+<tr><td>constant</td><td>\(O(1)\)</td></tr>
+<tr><td>logarithmic</td><td>\(O(log{N})\)</td></tr>
+<tr><td>linear</td><td>\(O(N)\)</td></tr>
+<tr><td>linearithmic</td><td>\(O(N\log{N})\)</td></tr>
+<tr><td>quadratic</td><td>\(O(N^2)\)</td></tr>
+<tr><td>cubic</td><td>\(O(N^3)\)</td></tr>
+<tr><td>exponential</td><td>\(O(2^N\))</td></tr>
+</tbody></table>
+</div>
+<p>For example, we can say</p>
+<ul>
+<li>the complexity of <code>foo()</code> is \(O(N)\)</li>
+<li>the complexity of <code>two_sum()</code> is \(O(N^2)\)</li>
+</ul>
+<h3 id="case-study-fibonacci"><a class="header" href="#case-study-fibonacci">Case study: Fibonacci</a></h3>
+<p>Based on the observation, we make an insightful hypothesize that the running time of recursive implementation <code>fibonacci</code> is at an exponential growth. </p>
+<p>According to the code, we know that in order to computer <code>fibonacci(n)</code>, it is required to compute <code>fibonacci(n - 1)</code> and <code>fibonacci(n - 2)</code>. If we use \( T(n) \) to denote the time used to compute <code>fibonacci(n)</code>, then we have:</p>
+<p>\[T(n) = T(n-1) + T(n-2) + O(1)\]</p>
+<p>The \(O(1)\) here means the addition operation. You can prove that \(T(n) = O(2^n)\)<sup class="footnote-reference"><a href="#fib">5</a></sup>, and the visualization plotting also validates this theoretical result.</p>
+<hr />
+<p><sup class="footnote-reference"><a href="#fast">1</a></sup> Another important question is &quot;Why does my program run out of memory?&quot;, which cares about the space efficiency.</p>
+<p><sup class="footnote-reference"><a href="#java-time">2</a></sup> See more at https://stackoverflow.com/questions/58705657/.</p>
+<p><sup class="footnote-reference"><a href="#fig">3</a></sup> This figure is drawn by <a href="http://www.gnuplot.info/">gnuplot</a> and the code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/plot/lines.gp">lines.gp</a>.</p>
+<p><sup class="footnote-reference"><a href="#two-sum">4</a></sup> It is possible to design <a href="https://www3.cs.uic.edu/pub/CS211/LabsS18/Two-Sum.pdf">faster algorithms</a> with \( O(N\log{N}) \) and even with \( O(N) \).</p>
+<p><sup class="footnote-reference"><a href="#fib">5</a></sup> See more at https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../fundamentals/python.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../fundamentals/tdd.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../fundamentals/python.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../fundamentals/tdd.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

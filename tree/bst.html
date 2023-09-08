@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Binary Search Trees (1) - Hands On Data Structures</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../fundamentals/fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fundamentals/intro.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../fundamentals/java.html"><strong aria-hidden="true">1.2.</strong> Java Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/python.html"><strong aria-hidden="true">1.3.</strong> Python Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/alg.html"><strong aria-hidden="true">1.4.</strong> Algorithm Analysis</a></li><li class="chapter-item expanded "><a href="../fundamentals/tdd.html"><strong aria-hidden="true">1.5.</strong> Test Driven Development</a></li><li class="chapter-item expanded "><a href="../fundamentals/exercise.html"><strong aria-hidden="true">1.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/intro.html"><strong aria-hidden="true">2.</strong> Stacks and Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack.html"><strong aria-hidden="true">2.1.</strong> Stacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack_python.html"><strong aria-hidden="true">2.1.1.</strong> Stacks in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/stack_java.html"><strong aria-hidden="true">2.1.2.</strong> Stacks in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/queue.html"><strong aria-hidden="true">2.2.</strong> Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/queue_python.html"><strong aria-hidden="true">2.2.1.</strong> Queues in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/queue_java.html"><strong aria-hidden="true">2.2.2.</strong> Queues in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/deque.html"><strong aria-hidden="true">2.3.</strong> Deques</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/deque_python.html"><strong aria-hidden="true">2.3.1.</strong> Deques in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/deque_java.html"><strong aria-hidden="true">2.3.2.</strong> Deques in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/exercise.html"><strong aria-hidden="true">2.4.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../list/intro.html"><strong aria-hidden="true">3.</strong> Lists</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/adt.html"><strong aria-hidden="true">3.1.</strong> The List ADT</a></li><li class="chapter-item expanded "><a href="../list/arraylist.html"><strong aria-hidden="true">3.2.</strong> Array List</a></li><li class="chapter-item expanded "><a href="../list/linkedlist.html"><strong aria-hidden="true">3.3.</strong> Linked List</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/linkedlist_python.html"><strong aria-hidden="true">3.3.1.</strong> Linked List in Python</a></li><li class="chapter-item expanded "><a href="../list/linkedlist_java.html"><strong aria-hidden="true">3.3.2.</strong> Linked List in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../list/double_link.html"><strong aria-hidden="true">3.4.</strong> Doubly Linked List</a></li><li class="chapter-item expanded "><a href="../list/case.html"><strong aria-hidden="true">3.5.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../list/exercise.html"><strong aria-hidden="true">3.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../tree/intro.html"><strong aria-hidden="true">4.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tree/general.html"><strong aria-hidden="true">4.1.</strong> General Trees</a></li><li class="chapter-item expanded "><a href="../tree/bst.html" class="active"><strong aria-hidden="true">4.2.</strong> Binary Search Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/bst2.html"><strong aria-hidden="true">4.3.</strong> Binary Search Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/balanced.html"><strong aria-hidden="true">4.4.</strong> Balanced Search Trees</a></li><li class="chapter-item expanded "><a href="../tree/rbt.html"><strong aria-hidden="true">4.5.</strong> Red Black Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/rbt2.html"><strong aria-hidden="true">4.6.</strong> Red Black Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/case.html"><strong aria-hidden="true">4.7.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../tree/exercise.html"><strong aria-hidden="true">4.8.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../pq/intro.html"><strong aria-hidden="true">5.</strong> Priority Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pq/imp.html"><strong aria-hidden="true">5.1.</strong> PQ Implementation (1)</a></li><li class="chapter-item expanded "><a href="../pq/imp2.html"><strong aria-hidden="true">5.2.</strong> PQ Implementation (2)</a></li><li class="chapter-item expanded "><a href="../pq/case.html"><strong aria-hidden="true">5.3.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../pq/indexed.html"><strong aria-hidden="true">5.4.</strong> Indexed Priority Queue</a></li><li class="chapter-item expanded "><a href="../pq/exercise.html"><strong aria-hidden="true">5.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/intro.html"><strong aria-hidden="true">6.</strong> Hash Tables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/direct.html"><strong aria-hidden="true">6.1.</strong> Direct-address Tables</a></li><li class="chapter-item expanded "><a href="../hash/table.html"><strong aria-hidden="true">6.2.</strong> Hash Tables</a></li><li class="chapter-item expanded "><a href="../hash/function.html"><strong aria-hidden="true">6.3.</strong> Hash Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/java.html"><strong aria-hidden="true">6.3.1.</strong> Hash in Java</a></li><li class="chapter-item expanded "><a href="../hash/python.html"><strong aria-hidden="true">6.3.2.</strong> Hash in Python</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/open.html"><strong aria-hidden="true">6.4.</strong> Open-addressing Hashing</a></li><li class="chapter-item expanded "><a href="../hash/case.html"><strong aria-hidden="true">6.5.</strong> Case Study</a></li></ol></li><li class="chapter-item expanded "><a href="../sorting/intro.html"><strong aria-hidden="true">7.</strong> Sorting</a></li><li class="chapter-item expanded "><a href="../graph/intro.html"><strong aria-hidden="true">8.</strong> Graphs</a></li><li class="chapter-item expanded "><a href="../appendix/intro.html"><strong aria-hidden="true">9.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/java.html"><strong aria-hidden="true">9.1.</strong> IDEA for Java</a></li><li class="chapter-item expanded "><a href="../appendix/pycharm.html"><strong aria-hidden="true">9.2.</strong> PyCharm for Python</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hands On Data Structures</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="binary-search-trees-1"><a class="header" href="#binary-search-trees-1">Binary Search Trees (1)</a></h1>
+<p>A tree without any restriction is unpractical in general, and in this section, we introduce a simple restriction that each node has exactly two links, which are called its <strong>left</strong> and <strong>right</strong> links, that point to nodes called its <em>left child</em> and <em>right child</em>, respectively.</p>
+<img src="image/binary.png" width="60%">
+<p>Such data structure is known as <strong>binary tree</strong>, and we can define it as either a null link or a node with a left link and a right link, each references to (disjoint) subtrees that are themselves binary trees. </p>
+<p>In a <strong>binary search tree</strong>, each node also has a key (and a value)<sup class="footnote-reference"><a href="#value">1</a></sup>, with an ordering restriction to support efficient search.</p>
+<blockquote>
+<p>A binary search tree (<strong>BST</strong>) is a binary tree where each node has a (<em>comparable</em>) key and satisfies the restriction that the key in any node is larger than the keys in all nodes in that node’s left subtree and smaller than the keys in all nodes in that node’s right subtree.</p>
+</blockquote>
+<img src="image/bst2.png" width="60%">
+<p>For example, given a binary search tree with integer keys, how to search 6? Let's start from its root (8):</p>
+<ul>
+<li>Since 6 &lt; 8, go to its left child.</li>
+<li>Since 6 &lt; 3, go to its right child.</li>
+<li>Since 6 == 6, bingo!</li>
+</ul>
+<p>Only three comparisons are required while searching, and this idea is also found at the binary search of a sorted list (recall <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/unit-work/src/main/java/org/swufe/datastructure/BinarySearch.java">BinarySearch.java</a> or <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/start/binary_search.py">binary_search.py</a>).</p>
+<p>Let's recap the <em>binary-search-tree property</em> again: Let <em>x</em> be a node in a binary search tree.</p>
+<ul>
+<li>If <em>y</em> is a node in the left subtree of <em>x</em>, then \(y.key &lt; x.key \).</li>
+<li>If <em>y</em> is a node in the right subtree of <em>x</em>, then \(y.key &gt; x.key \).</li>
+</ul>
+<blockquote>
+<p>As we can see, we can use a BST to represent a <strong>dynamic set</strong> if only <em>keys</em> are considered. If <em>values</em> are also involved, it is in fact a <em>map</em>. Throughout this book, we mainly focus on dynamic sets.</p>
+</blockquote>
+<h2 id="bst-structure"><a class="header" href="#bst-structure">BST structure</a></h2>
+<p>Now let's talk about how to design a BST. Like a linked list, a BST can be represented by its <em>root</em> node due to the fact that it is recursive, where a node<sup class="footnote-reference"><a href="#parent">2</a></sup> consists of</p>
+<ul>
+<li>a link to its left subtree</li>
+<li>a link to its right subtree</li>
+<li>the key</li>
+<li>(the value)</li>
+</ul>
+<p>And it can be roughly described using the following Python code:</p>
+<pre><code class="language-python">class Node:
+    def __init__(self, key, left=None, right=None):
+        self.key = key
+        self.left = left
+        self.right = right
+
+class BST:
+    def __init__(self):
+        self.root = None
+</code></pre>
+<h3 id="a-few-notes-on-comparable"><a class="header" href="#a-few-notes-on-comparable">A few notes on <em>comparable</em></a></h3>
+<p>In a BST, the keys should be <em>comparable</em>. The basic data types, such as <code>int</code>, <code>double</code>, and <code>String</code> are comparable. Then what about a <code>Dog</code> class? Can we say a dog is larger or smaller than another dog? Such comparison makes sense if and only if a <code>Dog</code> is comparable.</p>
+<p>In Java, it is enforced by the <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html">Comparable</a> interface, and it can also be combined with generics. In addition, we can use its <code>compareTo()</code> method, instead of the comparison operators (e.g., &gt;, &lt;, ==) in the code.</p>
+<pre><code class="language-java">class Node&lt;Key extends Comparable&lt;Key&gt;&gt; {
+    ...
+}
+</code></pre>
+<p>As for Python, in order to use the comparison operator (e.g., &gt;, &lt;, ==) directly, one shall provide the rich comparison methods for ordering in the user-defined class<sup class="footnote-reference"><a href="#comparison">3</a></sup>. Luckily, it is the responsibility for people who use a BST, not for us who create a BST.</p>
+<h2 id="bst-implementation"><a class="header" href="#bst-implementation">BST implementation</a></h2>
+<p>The complete code (using <em>recursions</em>) can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST.java">BST.java</a> and <a href="https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/tree/bst.py">bst.py</a>. In addition, an iterative implementation can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/BST2.java">BST2.java</a>.</p>
+<h3 id="size"><a class="header" href="#size"><code>size()</code></a></h3>
+<p>We can also maintain the <code>size</code> member variable in a BST like we did in linked lists. Here we adopt another solution: <code>Node</code> holds an instance variable <code>n</code> which givens the node count in the subtree rooted at the node.</p>
+<pre><code class="language-python">class Node:
+    def __init__(self, key, n=1, left=None, right=None):
+        self.key = key
+        self.n = n
+        self.left = left
+        self.right = right
+</code></pre>
+<p>And our implementations will benefit a lot from such recursive design. However, as for traditional iterative implementations, we assume that <code>Node</code> does not hold <code>n</code>; Instead, the BST ADT maintains <code>size</code>.</p>
+<img src="image/alg-bst-size.png" width="80%">
+<p>Then the size of a BST is <code>size(root)</code>; it runs with a constant time complexity. By the way, given the implementation of <code>size()</code>, we can also offer <code>isEmpty()</code> to check whether a BST is empty:</p>
+<pre><code class="language-java">public boolean isEmpty() {
+    return size() == 0;
+}
+</code></pre>
+<h3 id="put"><a class="header" href="#put"><code>put()</code></a></h3>
+<p>This method is often called <code>insert()</code> in some implementations, and it is used to add a new key to a BST.</p>
+<h4 id="iterative-put"><a class="header" href="#iterative-put">Iterative <code>put()</code></a></h4>
+<p><strong>A new key will always be put as a leaf</strong>. Like the algorithms in linked list, we shall maintain a pointer as the <em>parent</em> while descending the tree.</p>
+<img src="image/alg-bst-put2.png" width="80%">
+<p>The following figure shows inserting a node with key 7 into a binary search tree. The simple path from the root down to the position where the node is inserted is shown in blue. The new node and the link to its parent are highlighted in orange.</p>
+<img src="image/bst-insert.png" width="70%">
+<p>As we can see, to insert a new key, we shall descend from the root to a leaf. Suppose <em>h</em> is the height of the tree, the time complexity of <code>put()</code> is \(O(h)\).</p>
+<h4 id="recursive-put"><a class="header" href="#recursive-put">Recursive <code>put()</code></a></h4>
+<p>To make use of recursions, we first design an algorithm to insert a <code>key</code> to the tree rooted at <code>x</code>. Since updating could modify the tree, we shall return the new <em>root</em> as the result.</p>
+<img src="image/alg-bst-put.png" width="80%">
+<p>Then to put a key onto a BST can be written as</p>
+<pre><code class="language-java">root = put(root, key);
+</code></pre>
+<p>It is worthwhile to take the time to understand the dynamics of this recursive implementation. Again, the iterative version is more efficient while the recursive one is easier to write.</p>
+<h3 id="get"><a class="header" href="#get"><code>get()</code></a></h3>
+<p>This method is often called <code>search()</code> in some implementations, and it is used to get the node containing the given <em>key</em>; <code>null</code> will be returned if the <em>key</em> is not found.</p>
+<h4 id="iterative-get"><a class="header" href="#iterative-get">Iterative <code>get()</code></a></h4>
+<p>It is, in fact, a binary search tree for a BST. It begins its search at the root and traces a simple path downward in the tree.</p>
+<img src="image/alg-bst-get.png" width="80%">
+<p>Like <code>put()</code>, the running time of <code>get()</code> is also \(O(h)\).</p>
+<h4 id="recursive-get"><a class="header" href="#recursive-get">Recursive <code>get()</code></a></h4>
+<p>We can also implement it with a plain <em>tail-recursion</em>.</p>
+<img src="image/alg-bst-get2.png" width="80%">
+<p>Then to get a node from a BST given a <code>key</code>, we can use </p>
+<pre><code class="language-java">return get(root, key);
+</code></pre>
+<h3 id="removemin"><a class="header" href="#removemin"><code>removeMin()</code></a></h3>
+<p>This method (also known as <code>deleteMin()</code>) is to remove the node with the smallest key. Note that it is always located at the <strong>leftmost</strong> in a BST.</p>
+<h4 id="iterative-removemin"><a class="header" href="#iterative-removemin">Iterative <code>removeMin()</code></a></h4>
+<p>We will descend the node from <code>root</code> to the <em>leftmost</em> leaf. Like <code>put()</code>, a parent pointer is also maintained.</p>
+<img src="image/alg-bst-removemin2.png" width="80%">
+<p>The time complexity is also \(O(h)\).</p>
+<h4 id="recursive-removemin"><a class="header" href="#recursive-removemin">Recursive <code>removeMin()</code></a></h4>
+<p>It takes a node <code>x</code> as a root and then returns a new node as the root after removing the node with the smallest key.</p>
+<ul>
+<li><em>Base case</em>: When its left child is <code>null</code>, remove itself, and return its right child.</li>
+<li><em>Recursion</em>: Update <code>x.left</code> to <code>removeMin(x.left)</code>.</li>
+</ul>
+<img src="image/alg-bst-removemin.png" width="80%">
+<p>Then removing the node with the smallest key in a BST can be written as</p>
+<pre><code class="language-java">public void removeMin() {
+    if (isEmpty()) throw new NoSuchElementException();
+    root = removeMin(root);
+}
+</code></pre>
+<p>By the way, it is also easy to implement the algorithm <code>min()</code> to get the smallest key from a BST:</p>
+<pre><code class="language-java">public Key min() {
+    if (isEmpty()) throw new NoSuchElementException();
+    return min(root).key;
+}
+private Node&lt;Key&gt; min(Node&lt;Key&gt; x) {
+    if (x.left == null) return x;
+    else return min(x.left);
+}
+</code></pre>
+<h3 id="removemax"><a class="header" href="#removemax"><code>removeMax()</code></a></h3>
+<p>This method (also known as <code>deleteMax()</code>) is to remove the node with the largest key. Note that it is always located at the <strong>rightmost</strong> in a BST. The main idea is the same with <code>removeMin()</code>, so the implementation is left as an exercise for readers. In addition, readers can also design the algorithm <code>max()</code> to get the largest key in a BST.</p>
+<h3 id="remove"><a class="header" href="#remove"><code>remove()</code></a></h3>
+<p>This method is often called <code>delete()</code>, which is used to delete a node given a <code>key</code>. In fact, <em>this is the most complicated algorithm for a BST</em>.</p>
+<h4 id="iterative-remove"><a class="header" href="#iterative-remove">Iterative <code>remove()</code></a></h4>
+<p>The iterative implementation is a bit tricky, and it is omitted in this book. Curious readers can refer to <em>Introduction to Algorithms</em>.</p>
+<h4 id="recursive-remove"><a class="header" href="#recursive-remove">Recursive <code>remove()</code></a></h4>
+<p>Like other recursive algorithms in a BST, <code>remove(x, key)</code> takes a node <code>x</code> and removes the node with <code>key</code> in the tree rooted at <code>x</code>, and returns a new root.</p>
+<p>Like what we did in <code>get()</code>, we shall descend the current node if <code>x.key</code> does not equal `key. And the real tricky part is how to handle the case when they are identical.</p>
+<ul>
+<li>
+<p>If <code>x</code> does not have any child, then return <code>null</code>.</p>
+</li>
+<li>
+<p>If <code>x</code> has just one child, then return that child.</p>
+</li>
+<li>
+<p>Otherwise, <code>x</code> can be replaced with the leftmost (i.e, <em>min</em>) node <code>y</code> in the tree rooted at <code>x.right</code>. Essentially, <code>y</code> is the successor of <code>x</code>. In addition, <em>the right child of updated <code>x</code> becomes <code>deleteMin(right, key)</code></em>, and the left child remains unchanged.</p>
+<pre><code>       10                              11
+     /     \         delete(10)      /     \
+    7       15       ---------&gt;    7        15 
+   /  \    /  \                   /  \        \ 
+  5    8  11   18                5    8        18
+</code></pre>
+</li>
+</ul>
+<img src="image/alg-bst-delete.png" width="80%">
+<p>The time complexity is also \(O(h)\).</p>
+<p>Then removing node by a given <code>key</code> in a BST is </p>
+<pre><code class="language-java">root = remove(root, key);
+</code></pre>
+<h2 id="a-few-notes-on-pythons-implementation4"><a class="header" href="#a-few-notes-on-pythons-implementation4">A few notes on Python's implementation<sup class="footnote-reference"><a href="#static">4</a></sup></a></h2>
+<p>Since Python supports nested methods, we can define some <em>private</em> methods as <em>nested</em>. For example, the recursive implementation of <code>get(x, key)</code> will only be called by <code>get(key)</code>, and it can be designed as a <em>nested</em> one:</p>
+<pre><code class="language-python">def get(self, key):
+    def _get(x: BST.Node):
+        if x is None or key == x.key:
+            return x
+        if key &lt; x.key:
+            return _get(x.left)
+        elif key &gt; x.key:
+            return _get(x.right)
+    if key is None:
+        raise KeyError
+    return _get(self._root)
+</code></pre>
+<p>Note that the inner method can access the parameter of its outer method, so the repeated <code>key</code> can be omitted.</p>
+<p>On the other hand, some helper methods will be called by several other methods. In that case, it can be designed as a <em>static</em> one:</p>
+<pre><code class="language-python">@staticmethod
+def _size(x: Node):
+    if x is None:
+        return 0
+    else:
+        return x.n
+</code></pre>
+<hr />
+<p><sup class="footnote-reference"><a href="#value">1</a></sup> For simplicity, the associated value (also known as satellite data) is not discussed in this chapter.</p>
+<p><sup class="footnote-reference"><a href="#parent">2</a></sup> Some implementations would also maintain an extra link to its parent.</p>
+<p><sup class="footnote-reference"><a href="#comparison">3</a></sup> See more at https://stackoverflow.com/questions/8276983/.</p>
+<p><sup class="footnote-reference"><a href="#static">4</a></sup> The <em>inner</em> and <em>static</em> implementations are not compulsory, and it is fine to always use the regular instance methods.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../tree/general.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../tree/bst2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../tree/general.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../tree/bst2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

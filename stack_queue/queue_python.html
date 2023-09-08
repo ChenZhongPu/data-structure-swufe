@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Queues in Python - Hands On Data Structures</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../fundamentals/fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fundamentals/intro.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../fundamentals/java.html"><strong aria-hidden="true">1.2.</strong> Java Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/python.html"><strong aria-hidden="true">1.3.</strong> Python Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/alg.html"><strong aria-hidden="true">1.4.</strong> Algorithm Analysis</a></li><li class="chapter-item expanded "><a href="../fundamentals/tdd.html"><strong aria-hidden="true">1.5.</strong> Test Driven Development</a></li><li class="chapter-item expanded "><a href="../fundamentals/exercise.html"><strong aria-hidden="true">1.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/intro.html"><strong aria-hidden="true">2.</strong> Stacks and Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack.html"><strong aria-hidden="true">2.1.</strong> Stacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack_python.html"><strong aria-hidden="true">2.1.1.</strong> Stacks in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/stack_java.html"><strong aria-hidden="true">2.1.2.</strong> Stacks in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/queue.html"><strong aria-hidden="true">2.2.</strong> Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/queue_python.html" class="active"><strong aria-hidden="true">2.2.1.</strong> Queues in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/queue_java.html"><strong aria-hidden="true">2.2.2.</strong> Queues in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/deque.html"><strong aria-hidden="true">2.3.</strong> Deques</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/deque_python.html"><strong aria-hidden="true">2.3.1.</strong> Deques in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/deque_java.html"><strong aria-hidden="true">2.3.2.</strong> Deques in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/exercise.html"><strong aria-hidden="true">2.4.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../list/intro.html"><strong aria-hidden="true">3.</strong> Lists</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/adt.html"><strong aria-hidden="true">3.1.</strong> The List ADT</a></li><li class="chapter-item expanded "><a href="../list/arraylist.html"><strong aria-hidden="true">3.2.</strong> Array List</a></li><li class="chapter-item expanded "><a href="../list/linkedlist.html"><strong aria-hidden="true">3.3.</strong> Linked List</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/linkedlist_python.html"><strong aria-hidden="true">3.3.1.</strong> Linked List in Python</a></li><li class="chapter-item expanded "><a href="../list/linkedlist_java.html"><strong aria-hidden="true">3.3.2.</strong> Linked List in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../list/double_link.html"><strong aria-hidden="true">3.4.</strong> Doubly Linked List</a></li><li class="chapter-item expanded "><a href="../list/case.html"><strong aria-hidden="true">3.5.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../list/exercise.html"><strong aria-hidden="true">3.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../tree/intro.html"><strong aria-hidden="true">4.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tree/general.html"><strong aria-hidden="true">4.1.</strong> General Trees</a></li><li class="chapter-item expanded "><a href="../tree/bst.html"><strong aria-hidden="true">4.2.</strong> Binary Search Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/bst2.html"><strong aria-hidden="true">4.3.</strong> Binary Search Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/balanced.html"><strong aria-hidden="true">4.4.</strong> Balanced Search Trees</a></li><li class="chapter-item expanded "><a href="../tree/rbt.html"><strong aria-hidden="true">4.5.</strong> Red Black Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/rbt2.html"><strong aria-hidden="true">4.6.</strong> Red Black Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/case.html"><strong aria-hidden="true">4.7.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../tree/exercise.html"><strong aria-hidden="true">4.8.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../pq/intro.html"><strong aria-hidden="true">5.</strong> Priority Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pq/imp.html"><strong aria-hidden="true">5.1.</strong> PQ Implementation (1)</a></li><li class="chapter-item expanded "><a href="../pq/imp2.html"><strong aria-hidden="true">5.2.</strong> PQ Implementation (2)</a></li><li class="chapter-item expanded "><a href="../pq/case.html"><strong aria-hidden="true">5.3.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../pq/indexed.html"><strong aria-hidden="true">5.4.</strong> Indexed Priority Queue</a></li><li class="chapter-item expanded "><a href="../pq/exercise.html"><strong aria-hidden="true">5.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/intro.html"><strong aria-hidden="true">6.</strong> Hash Tables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/direct.html"><strong aria-hidden="true">6.1.</strong> Direct-address Tables</a></li><li class="chapter-item expanded "><a href="../hash/table.html"><strong aria-hidden="true">6.2.</strong> Hash Tables</a></li><li class="chapter-item expanded "><a href="../hash/function.html"><strong aria-hidden="true">6.3.</strong> Hash Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/java.html"><strong aria-hidden="true">6.3.1.</strong> Hash in Java</a></li><li class="chapter-item expanded "><a href="../hash/python.html"><strong aria-hidden="true">6.3.2.</strong> Hash in Python</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/open.html"><strong aria-hidden="true">6.4.</strong> Open-addressing Hashing</a></li><li class="chapter-item expanded "><a href="../hash/case.html"><strong aria-hidden="true">6.5.</strong> Case Study</a></li></ol></li><li class="chapter-item expanded "><a href="../sorting/intro.html"><strong aria-hidden="true">7.</strong> Sorting</a></li><li class="chapter-item expanded "><a href="../graph/intro.html"><strong aria-hidden="true">8.</strong> Graphs</a></li><li class="chapter-item expanded "><a href="../appendix/intro.html"><strong aria-hidden="true">9.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/java.html"><strong aria-hidden="true">9.1.</strong> IDEA for Java</a></li><li class="chapter-item expanded "><a href="../appendix/pycharm.html"><strong aria-hidden="true">9.2.</strong> PyCharm for Python</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hands On Data Structures</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="queues-in-python"><a class="header" href="#queues-in-python">Queues in Python</a></h1>
+<p>An implementation of our <code>Queue</code> API based on the <code>list</code> data structure is also straightforward.</p>
+<pre><code class="language-python">class Queue:
+    &quot;&quot;&quot;A first-in, first-out (FIFO) data structure.&quot;&quot;&quot;
+
+    def __init__(self):
+        self._data = []
+
+    def size(self):
+        return len(self._data)
+
+    def is_empty(self):
+        return len(self._data) == 0
+
+    def enqueue(self, item):
+        self._data.append(item)
+
+    def dequeue(self):
+        if self.is_empty():
+            raise NoElement('Dequeue from empty queue!')
+        return self._data.pop(0)
+</code></pre>
+<p>Note that the <code>dequeue()</code> is based on <code>pop()</code> with index 0 as the parameter, meaning popping the first element from the list.</p>
+<h2 id="iterator"><a class="header" href="#iterator">Iterator</a></h2>
+<p>The iteration over a queue is like iterating a list, so we can reuse the iterator of the <code>list</code>:</p>
+<pre><code class="language-python">def __iter__(self):
+    return iter(self._data)
+</code></pre>
+<p>We do not have to implement the <code>__next__</code> method manually. By taking leveraging of iterators, we can use the following <code>for</code> statement:</p>
+<pre><code class="language-python">q = Queue()
+q.enqueue(1)
+q.enqueue(9)
+q.enqueue(4)
+q.enqueue(9)
+for i in q:
+    print(i)
+</code></pre>
+<p>The complete code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/queue.py">queue.py</a>.</p>
+<h2 id="time-complexity"><a class="header" href="#time-complexity">Time complexity</a></h2>
+<p>The following table summerizes the queue's time complexity:</p>
+<div class="table-wrapper"><table><thead><tr><th>Operation</th><th>Running time</th></tr></thead><tbody>
+<tr><td>enqueue()</td><td>\(O(1)\)</td></tr>
+<tr><td>dequeue()</td><td>\(O(N)\)</td></tr>
+<tr><td>is_empty()</td><td>\(O(1)\)</td></tr>
+<tr><td>size()</td><td>\(O(1)\)</td></tr>
+</tbody></table>
+</div>
+<p>As we can see, most operations, except for <code>dequeue()</code> are with constant time complexity<sup class="footnote-reference"><a href="#time">1</a></sup>, so it is very efficient. However, the <code>dequeue()</code> is inefficient as it grows linearly with respect to the size of the queue (i.e., <code>N</code>).</p>
+<p>To validate this theoretical analysis, I design a simple benchmark to test the performance (see <code>queue_vary_size()</code> method in <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/benchmark.py">benchmark.py</a>). The main idea is summarized in the following:</p>
+<ul>
+<li>Initialize queues with different size (1000000, 2000000, 3000000, 4000000, 5000000).</li>
+<li>Perform the <code>dequeue()</code> operation, and time it<sup class="footnote-reference"><a href="#random">2</a></sup>.</li>
+</ul>
+<img src="image/queue_benchmark.png" width="80%">
+<p>As we expect, the running time is roughly linear with respect to the size of the queue.</p>
+<p>Now let's explore the reason of the inefficiency. Since the underlying data structure is a list, when we call <code>enqueue()</code> on it, the first item will be removed and <strong>the next N-1 items will be shifted to the left</strong>. Clearly, this moving action will result in \(O(N)\). Of course this design still achieves an acceptable performance in applications in which queues have relatively modest size, but when it comes to a large amount of data, it should be improved.</p>
+<h2 id="using-an-array-circularly"><a class="header" href="#using-an-array-circularly">Using an array circularly</a></h2>
+<p>This subsection is adapted from <a href="https://www.geeksforgeeks.org/circular-queue-set-1-introduction-array-implementation/">Circular Queue</a>. Such structure is also known as <em>ring buffer</em> in many applications.</p>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/Circular-queue.png">
+<p>As illustrated in the figure above, we shall maintain a <em>front</em> pointer (i.e., <em>index</em>) to point to the first item and use <em>rear</em> pointer (i.e., <em>index</em>) to point to next available position<sup class="footnote-reference"><a href="#rear">3</a></sup>. Assume this circular array is large enough to hold all items:</p>
+<ul>
+<li><code>enqueue()</code>: update <em>rear</em> to next one in the clock-wise.</li>
+<li><code>dequeue()</code>: update <em>front</em> to next one in the clock-wise.</li>
+</ul>
+<p>Now let's consider a running example to understand the principle of circular arrays. Suppose the size of the array is 8, and the queue <code>q</code> is empty at start, and the <code>front</code> is 0:</p>
+<div class="table-wrapper"><table><thead><tr><th>Operation</th><th>Front</th><th>Rear</th><th>Size</th></tr></thead><tbody>
+<tr><td>(Start)</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>q.enqueue(10)</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>q.enqueue(20)</td><td>0</td><td>2</td><td>2</td></tr>
+<tr><td>q.enqueue(30)</td><td>0</td><td>3</td><td>3</td></tr>
+<tr><td>q.dequeue()</td><td>1</td><td>3</td><td>2</td></tr>
+<tr><td>q.enqueue(40)</td><td>1</td><td>4</td><td>3</td></tr>
+<tr><td>q.enqueue(50)</td><td>1</td><td>5</td><td>4</td></tr>
+<tr><td>q.dequeue()</td><td>2</td><td>5</td><td>3</td></tr>
+</tbody></table>
+</div>
+<p>Obviously, the <code>dequeue()</code> operation only results in a pointer shift, so <strong>the time complexity is \(O(1)\)</strong>. What a clever design! In addition, we can find that the specific pointer (i.e., <em>index</em>) does not really matter, so we can maintain <em>front</em> and <em>size</em> instead, and the <em>rear</em> can be computed based on them.</p>
+<pre><code class="language-python">class CircularQueue:
+    &quot;&quot;&quot;A queue based on a circular array.&quot;&quot;&quot;
+
+    DEFAULT_CAPACITY = 10
+
+    def __init__(self):
+        self._data = [None] * CircularQueue.DEFAULT_CAPACITY
+        self._size = 0
+        self._front = 0
+</code></pre>
+<p>Then, what if we call <code>enqueue()</code> when <em>front</em> is 6 and <em>size</em> is 1? In this case, the implicit <em>rear</em> will become 0 because <code>(7 + 1) mod 8 = 0</code>. The <code>mod</code> operation makes the pointer in arrays be circular.</p>
+<blockquote>
+<p>It is only circular conceptually, and it is still a linear array. The implementation shares many ideas with <em>Stack based on array</em> in <a href="./stack_java.html">Stacks in Java</a>.</p>
+</blockquote>
+<p>A final problem to be addressed is to resize. As we have learned in <a href="./stack_java.html">Stacks in Java</a>, we shall resize the underlying array if the size reaches to its capacity.</p>
+<pre><code class="language-python">def enqueue(self, item):
+    # expand
+    if self.size() == len(self._data):
+        self._resize(2 * len(self._data))
+    avail = (self._front + self.size()) % len(self._data)
+    self._data[avail] = item
+    self._size += 1
+</code></pre>
+<p>We always double the array's size when the size of a queue reaches to its capacity. <code>avail</code>, computed through a mod operation, means, in fact, <code>rear</code>, the available position in the array.</p>
+<pre><code class="language-python">def dequeue(self):
+    if self.is_empty():
+        raise NoElement('Dequeue from empty queue!')
+    # shrink (optional)
+    if self.size() &lt;= len(self._data) // 4:
+        self._resize(len(self._data) // 2)
+    answer = self._data[self._front]
+    self._data[self._front] = None
+    self._front = (self._front + 1) % len(self._data)
+    self._size -= 1
+    return answer
+</code></pre>
+<p>The shrink operation is optional to save the memory space. Again, we update <code>front</code> through a mod operation. When the pointer shifts, it is a good practice to let it point to <code>None</code> for the sake of garbage collection.</p>
+<p>The <em>resize</em> operation is a private method, and it is worthwhile to investigate how it works:</p>
+<pre><code class="language-python">def _resize(self, capacity):
+    assert capacity &gt; self.size()
+    old = self._data
+    self._data = [None] * capacity
+    walk = self._front
+    for i in range(self._size):
+        self._data[i] = old[walk]
+        walk = (1 + walk) % len(old)
+    self._front = 0
+</code></pre>
+<img src="image/list_address.png" width="50%">
+<p>To understand it, we shall have a basic knowledge about the object model in Python:</p>
+<p>When we create a list <code>data</code>, we essentially create a list and assigns the reference to <code>data</code>. So <code>data</code> is not the list itself, and it roughly has two parts: the <em>address</em> pointing to the list, and the <em>size</em> of the list.</p>
+<pre><code class="language-python">data = [1, 2, 3]
+old = data
+</code></pre>
+<p>If we add a new item to <code>old</code>, then <code>data</code> will also be updated:</p>
+<pre><code class="language-python">old.append(4)
+# [1, 2, 3, 4]
+print(data)
+</code></pre>
+<p>Therefore, <code>old</code> and <code>data</code> refer to the same object, but with different names<sup class="footnote-reference"><a href="#memory">4</a></sup>. Now let's revisit the implementation of <code>_resize()</code>. After <code>self._data = [None] * capacity</code> is called, it becomes</p>
+<img src="image/list_address2.png" width="70%">
+<p>The next step is to copy from <code>old[front..rear]</code> to <code>data[0.._size]</code>. Of course, the range from <code>front</code> to <code>near</code> may be circular, so it should be computed through the mod operation.</p>
+<p>The complete code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/circular_queue.py">circular_queue.py</a>. Please try to implement an iterator for circular queues on your own before checking the code in GitHub.</p>
+<h2 id="a-few-notes-on-queues"><a class="header" href="#a-few-notes-on-queues">A few notes on queues</a></h2>
+<blockquote>
+<p>When you need queues, please consider <a href="https://docs.python.org/3/library/collections.html#collections.deque">collections.deque</a>, instead of implementing a new one from the scratch.</p>
+</blockquote>
+<hr />
+<p><sup class="footnote-reference"><a href="#time">1</a></sup> Like stacks, the time complexity of <code>enqueue()</code> is <em>amortized</em>.</p>
+<p><sup class="footnote-reference"><a href="#random">2</a></sup> To avoid the randomness brought by a single operation, we repeat it 20 times. Since 20 is much smaller than the size of queue, the measured time still makes sense.</p>
+<p><sup class="footnote-reference"><a href="#rear">3</a></sup> Some designs assume that <code>rear</code> points to the last item in a queue. In this case, <code>rear</code> is -1 when the queue is empty.</p>
+<p><sup class="footnote-reference"><a href="#memory">4</a></sup> https://towardsdatascience.com/python-memory-and-objects-e7bec4a2845</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../stack_queue/queue.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../stack_queue/queue_java.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../stack_queue/queue.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../stack_queue/queue_java.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

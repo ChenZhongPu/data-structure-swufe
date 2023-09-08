@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Stacks in Java - Hands On Data Structures</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../fundamentals/fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fundamentals/intro.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../fundamentals/java.html"><strong aria-hidden="true">1.2.</strong> Java Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/python.html"><strong aria-hidden="true">1.3.</strong> Python Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/alg.html"><strong aria-hidden="true">1.4.</strong> Algorithm Analysis</a></li><li class="chapter-item expanded "><a href="../fundamentals/tdd.html"><strong aria-hidden="true">1.5.</strong> Test Driven Development</a></li><li class="chapter-item expanded "><a href="../fundamentals/exercise.html"><strong aria-hidden="true">1.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/intro.html"><strong aria-hidden="true">2.</strong> Stacks and Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack.html"><strong aria-hidden="true">2.1.</strong> Stacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack_python.html"><strong aria-hidden="true">2.1.1.</strong> Stacks in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/stack_java.html" class="active"><strong aria-hidden="true">2.1.2.</strong> Stacks in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/queue.html"><strong aria-hidden="true">2.2.</strong> Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/queue_python.html"><strong aria-hidden="true">2.2.1.</strong> Queues in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/queue_java.html"><strong aria-hidden="true">2.2.2.</strong> Queues in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/deque.html"><strong aria-hidden="true">2.3.</strong> Deques</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/deque_python.html"><strong aria-hidden="true">2.3.1.</strong> Deques in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/deque_java.html"><strong aria-hidden="true">2.3.2.</strong> Deques in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/exercise.html"><strong aria-hidden="true">2.4.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../list/intro.html"><strong aria-hidden="true">3.</strong> Lists</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/adt.html"><strong aria-hidden="true">3.1.</strong> The List ADT</a></li><li class="chapter-item expanded "><a href="../list/arraylist.html"><strong aria-hidden="true">3.2.</strong> Array List</a></li><li class="chapter-item expanded "><a href="../list/linkedlist.html"><strong aria-hidden="true">3.3.</strong> Linked List</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/linkedlist_python.html"><strong aria-hidden="true">3.3.1.</strong> Linked List in Python</a></li><li class="chapter-item expanded "><a href="../list/linkedlist_java.html"><strong aria-hidden="true">3.3.2.</strong> Linked List in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../list/double_link.html"><strong aria-hidden="true">3.4.</strong> Doubly Linked List</a></li><li class="chapter-item expanded "><a href="../list/case.html"><strong aria-hidden="true">3.5.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../list/exercise.html"><strong aria-hidden="true">3.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../tree/intro.html"><strong aria-hidden="true">4.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tree/general.html"><strong aria-hidden="true">4.1.</strong> General Trees</a></li><li class="chapter-item expanded "><a href="../tree/bst.html"><strong aria-hidden="true">4.2.</strong> Binary Search Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/bst2.html"><strong aria-hidden="true">4.3.</strong> Binary Search Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/balanced.html"><strong aria-hidden="true">4.4.</strong> Balanced Search Trees</a></li><li class="chapter-item expanded "><a href="../tree/rbt.html"><strong aria-hidden="true">4.5.</strong> Red Black Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/rbt2.html"><strong aria-hidden="true">4.6.</strong> Red Black Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/case.html"><strong aria-hidden="true">4.7.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../tree/exercise.html"><strong aria-hidden="true">4.8.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../pq/intro.html"><strong aria-hidden="true">5.</strong> Priority Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pq/imp.html"><strong aria-hidden="true">5.1.</strong> PQ Implementation (1)</a></li><li class="chapter-item expanded "><a href="../pq/imp2.html"><strong aria-hidden="true">5.2.</strong> PQ Implementation (2)</a></li><li class="chapter-item expanded "><a href="../pq/case.html"><strong aria-hidden="true">5.3.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../pq/indexed.html"><strong aria-hidden="true">5.4.</strong> Indexed Priority Queue</a></li><li class="chapter-item expanded "><a href="../pq/exercise.html"><strong aria-hidden="true">5.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/intro.html"><strong aria-hidden="true">6.</strong> Hash Tables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/direct.html"><strong aria-hidden="true">6.1.</strong> Direct-address Tables</a></li><li class="chapter-item expanded "><a href="../hash/table.html"><strong aria-hidden="true">6.2.</strong> Hash Tables</a></li><li class="chapter-item expanded "><a href="../hash/function.html"><strong aria-hidden="true">6.3.</strong> Hash Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/java.html"><strong aria-hidden="true">6.3.1.</strong> Hash in Java</a></li><li class="chapter-item expanded "><a href="../hash/python.html"><strong aria-hidden="true">6.3.2.</strong> Hash in Python</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/open.html"><strong aria-hidden="true">6.4.</strong> Open-addressing Hashing</a></li><li class="chapter-item expanded "><a href="../hash/case.html"><strong aria-hidden="true">6.5.</strong> Case Study</a></li></ol></li><li class="chapter-item expanded "><a href="../sorting/intro.html"><strong aria-hidden="true">7.</strong> Sorting</a></li><li class="chapter-item expanded "><a href="../graph/intro.html"><strong aria-hidden="true">8.</strong> Graphs</a></li><li class="chapter-item expanded "><a href="../appendix/intro.html"><strong aria-hidden="true">9.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/java.html"><strong aria-hidden="true">9.1.</strong> IDEA for Java</a></li><li class="chapter-item expanded "><a href="../appendix/pycharm.html"><strong aria-hidden="true">9.2.</strong> PyCharm for Python</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hands On Data Structures</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="stack-in-java"><a class="header" href="#stack-in-java">Stack In Java</a></h1>
+<blockquote>
+<p>Java has a built-in library called <code>java.util.Stack</code>, but you should avoid using it when you want a stack. It has several additional operations that are not normally associated with a stack, e.g., getting the ith element. </p>
+</blockquote>
+<h2 id="stack-based-on-arraylist"><a class="header" href="#stack-based-on-arraylist">Stack based on ArrayList</a></h2>
+<p>Our first stacks are based on <code>ArrayList</code>, and the overall implementation is very similar to the one based on the <code>list</code> in Python. An upfront note is that generics are preferred for collections in Java, so the class is declared like:</p>
+<pre><code class="language-java">public class ArrayListStack&lt;Item&gt; {
+    private List&lt;Item&gt; elments;
+
+    public ArrayListStack() {
+        elments = new ArrayList&lt;&gt;();
+    }
+    ...
+}
+</code></pre>
+<p>Some students may still get confused about the motivation of adopting the <code>generics</code>. It is very good feature in static languages (e.g., Java), because it will enforce types checking in the compiling stage. To put it in another way, it can forbid us mixing <em>apples</em> with <em>oranges</em>. In contrast, Python lacks such a useful feature, so the error-prone code is valid in Python:</p>
+<pre><code class="language-python">s = Stack()
+s.push(1)
+s.push('apple')
+</code></pre>
+<p>Now let's go back to the Java's implementation. As we can see, <code>ArrayListStack</code> wraps an array list inside, and the implementations of these APIs are generally straightforward as long as you know the basic usage of an <code>ArrayList</code>.</p>
+<ul>
+<li><code>push()</code> is based on <code>add()</code>:</li>
+</ul>
+<pre><code class="language-java">public void push(Item item) {
+    elements.add(item);
+}
+</code></pre>
+<ul>
+<li><code>size()</code> and <code>isEmpty()</code> have the methods with the same name:</li>
+</ul>
+<pre><code class="language-java">public int size() {
+    return elements.size();
+}
+
+public boolean isEmpty() {
+    return elements.isEmpty();
+}
+</code></pre>
+<ul>
+<li><code>pop()</code> is based on <code>remove()</code>, and it will return <code>null</code> if the stack is empty:</li>
+</ul>
+<pre><code class="language-java">public Item pop() {
+    if (isEmpty()) {
+        return null;
+    }
+    Item v = elements.get(size() - 1);
+    elements.remove(size() - 1);
+    return v;
+}
+</code></pre>
+<p>Another common approach is to throw an exception if the stack is empty, and we adopt this implementation in this book:</p>
+<pre><code class="language-java">if (isEmpty()) {
+    throw new NoSuchElementException(&quot;Pop from empty stack!&quot;);
+}
+</code></pre>
+<h2 id="iterator"><a class="header" href="#iterator">Iterator</a></h2>
+<p>Iterators play the magic behind the scenes when we use the enhanced <em>for</em> loop. </p>
+<p>In this subsection, we are going to make the following code valid:</p>
+<pre><code class="language-java">ArrayListStack&lt;String&gt; stack = new ArrayListStack&lt;&gt;();
+...
+for (String s : stack) {
+    System.out.println(s);
+}
+</code></pre>
+<p>To make a class <em>iterable</em>, the first step is to add the phrase implements <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html">Iterable</a> to its declaration, matching the interface</p>
+<pre><code class="language-java">public interface Iterable&lt;Item&gt; {
+    Iterator&lt;Item&gt; iterator();
+}
+</code></pre>
+<p>So, the signature of the class becomes</p>
+<pre><code class="language-java">public class ArrayListStack&lt;Item&gt; implements Iterable&lt;Item&gt;
+</code></pre>
+<p>It is often a good practice to prepare a single class to implement <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Iterator.html">Iterator</a>, where at least <code>next()</code> and <code>hasNext()</code> should be implemented<sup class="footnote-reference"><a href="#next">1</a></sup>. Also, this concrete iterator is designed as an <em>inner</em> class, so it can access its parent class directly<sup class="footnote-reference"><a href="#inner">2</a></sup>.</p>
+<pre><code class="language-java">private class ReverseArrayListIterator implements Iterator&lt;Item&gt; {
+    private int i = elements.size();
+    @Override
+    public boolean hasNext() {
+        return i &gt; 0;
+    }
+
+    @Override
+    public Item next() {
+        return elements.get(--i);
+    }
+}
+</code></pre>
+<p>The complete code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/ArrayListStack.java">ArrayListStack.java</a>.</p>
+<p>By the way, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html">Iterable</a> has offered a default <code>forEach()</code> API since 1.8, so the print code can be shortened to </p>
+<pre><code class="language-java">stack.forEach(System.out::println);
+</code></pre>
+<h2 id="application-matching-parentheses--arithmetic-expression-evaluation"><a class="header" href="#application-matching-parentheses--arithmetic-expression-evaluation">Application: matching parentheses &amp; arithmetic expression evaluation</a></h2>
+<p>Readers can try to implement the client code using <code>ArrayListStack</code> for these two applications, and this is left as an exercise.</p>
+<h2 id="stack-based-on-array"><a class="header" href="#stack-based-on-array">Stack based on array</a></h2>
+<p>In <a href="./stack_python.html">Stack in Python</a>, we summarized the time complexity of the operations of a stack:</p>
+<div class="table-wrapper"><table><thead><tr><th>Operation</th><th>Running time</th></tr></thead><tbody>
+<tr><td>push()</td><td>\(O(1)\)</td></tr>
+<tr><td>pop()</td><td>\(O(1)\)</td></tr>
+<tr><td>is_empty()</td><td>\(O(1)\)</td></tr>
+<tr><td>size()</td><td>\(O(1)\)</td></tr>
+</tbody></table>
+</div>
+<p>We also pointed out that as for <code>push()</code> and <code>pop()</code>, the worst time is is <em>amortized</em> because it may have a bad time cost once a while. Now let's explore what happens exactly.</p>
+<p>First, both <code>ArrayList</code> in Java and <code>list</code> in Python are based on arrays whose size are fixed. So how can we <code>push()</code> a new item onto it when it is <em>full</em>? The solution is to resize the array and copy the items to a new array<sup class="footnote-reference"><a href="#resize">3</a></sup>. To understand this, we shall introduce two different concepts:</p>
+<ul>
+<li><strong>size</strong>: how many items are there in the collection?</li>
+<li><strong>capacity</strong>: how many items can this collection hold at most without resizing?</li>
+</ul>
+<pre><code class="language-java">List&lt;String&gt; list = new ArrayList&lt;&gt;();
+</code></pre>
+<p>The <em>size</em> of <code>list</code> is 0, and the default <em>capacity</em> is 10. So, even if you do not add any item into this list, it has an array with size of 10 inside. And after adding 10 items, the underlying array will be resized to a larger one in order to hold more data. During the resizing, a copying operation is required, so it can result in a bad running time once a while.</p>
+<p>Therefore, if we would like to use arrays to hold the data for stacks, we shall deal with the resizing manually. The complete code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/java/stack-queue/src/main/java/org/swufe/datastructure/ArrayStack.java">ArrayStack.java</a>.</p>
+<pre><code class="language-java">private void resize(int capacity) {
+    assert capacity &gt;= n;
+    a = Arrays.copyOf(a, capacity);
+}
+</code></pre>
+<hr />
+<p><sup class="footnote-reference"><a href="#next">1</a></sup> In Python, the <code>__next__()</code> can be regarded as the combination of <code>next()</code> and <code>hasNext()</code> here.</p>
+<p><sup class="footnote-reference"><a href="#inner">2</a></sup> Python's inner class does support this feature.</p>
+<p><sup class="footnote-reference"><a href="#resize">3</a></sup> The resizing operation also happens when the size is much smaller than the capacity.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../stack_queue/stack_python.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../stack_queue/queue.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../stack_queue/stack_python.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../stack_queue/queue.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

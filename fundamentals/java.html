@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Java Built-in Data Structures - Hands On Data Structures</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../fundamentals/fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fundamentals/intro.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../fundamentals/java.html" class="active"><strong aria-hidden="true">1.2.</strong> Java Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/python.html"><strong aria-hidden="true">1.3.</strong> Python Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/alg.html"><strong aria-hidden="true">1.4.</strong> Algorithm Analysis</a></li><li class="chapter-item expanded "><a href="../fundamentals/tdd.html"><strong aria-hidden="true">1.5.</strong> Test Driven Development</a></li><li class="chapter-item expanded "><a href="../fundamentals/exercise.html"><strong aria-hidden="true">1.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/intro.html"><strong aria-hidden="true">2.</strong> Stacks and Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack.html"><strong aria-hidden="true">2.1.</strong> Stacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack_python.html"><strong aria-hidden="true">2.1.1.</strong> Stacks in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/stack_java.html"><strong aria-hidden="true">2.1.2.</strong> Stacks in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/queue.html"><strong aria-hidden="true">2.2.</strong> Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/queue_python.html"><strong aria-hidden="true">2.2.1.</strong> Queues in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/queue_java.html"><strong aria-hidden="true">2.2.2.</strong> Queues in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/deque.html"><strong aria-hidden="true">2.3.</strong> Deques</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/deque_python.html"><strong aria-hidden="true">2.3.1.</strong> Deques in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/deque_java.html"><strong aria-hidden="true">2.3.2.</strong> Deques in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/exercise.html"><strong aria-hidden="true">2.4.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../list/intro.html"><strong aria-hidden="true">3.</strong> Lists</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/adt.html"><strong aria-hidden="true">3.1.</strong> The List ADT</a></li><li class="chapter-item expanded "><a href="../list/arraylist.html"><strong aria-hidden="true">3.2.</strong> Array List</a></li><li class="chapter-item expanded "><a href="../list/linkedlist.html"><strong aria-hidden="true">3.3.</strong> Linked List</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/linkedlist_python.html"><strong aria-hidden="true">3.3.1.</strong> Linked List in Python</a></li><li class="chapter-item expanded "><a href="../list/linkedlist_java.html"><strong aria-hidden="true">3.3.2.</strong> Linked List in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../list/double_link.html"><strong aria-hidden="true">3.4.</strong> Doubly Linked List</a></li><li class="chapter-item expanded "><a href="../list/case.html"><strong aria-hidden="true">3.5.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../list/exercise.html"><strong aria-hidden="true">3.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../tree/intro.html"><strong aria-hidden="true">4.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tree/general.html"><strong aria-hidden="true">4.1.</strong> General Trees</a></li><li class="chapter-item expanded "><a href="../tree/bst.html"><strong aria-hidden="true">4.2.</strong> Binary Search Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/bst2.html"><strong aria-hidden="true">4.3.</strong> Binary Search Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/balanced.html"><strong aria-hidden="true">4.4.</strong> Balanced Search Trees</a></li><li class="chapter-item expanded "><a href="../tree/rbt.html"><strong aria-hidden="true">4.5.</strong> Red Black Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/rbt2.html"><strong aria-hidden="true">4.6.</strong> Red Black Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/case.html"><strong aria-hidden="true">4.7.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../tree/exercise.html"><strong aria-hidden="true">4.8.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../pq/intro.html"><strong aria-hidden="true">5.</strong> Priority Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pq/imp.html"><strong aria-hidden="true">5.1.</strong> PQ Implementation (1)</a></li><li class="chapter-item expanded "><a href="../pq/imp2.html"><strong aria-hidden="true">5.2.</strong> PQ Implementation (2)</a></li><li class="chapter-item expanded "><a href="../pq/case.html"><strong aria-hidden="true">5.3.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../pq/indexed.html"><strong aria-hidden="true">5.4.</strong> Indexed Priority Queue</a></li><li class="chapter-item expanded "><a href="../pq/exercise.html"><strong aria-hidden="true">5.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/intro.html"><strong aria-hidden="true">6.</strong> Hash Tables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/direct.html"><strong aria-hidden="true">6.1.</strong> Direct-address Tables</a></li><li class="chapter-item expanded "><a href="../hash/table.html"><strong aria-hidden="true">6.2.</strong> Hash Tables</a></li><li class="chapter-item expanded "><a href="../hash/function.html"><strong aria-hidden="true">6.3.</strong> Hash Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/java.html"><strong aria-hidden="true">6.3.1.</strong> Hash in Java</a></li><li class="chapter-item expanded "><a href="../hash/python.html"><strong aria-hidden="true">6.3.2.</strong> Hash in Python</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/open.html"><strong aria-hidden="true">6.4.</strong> Open-addressing Hashing</a></li><li class="chapter-item expanded "><a href="../hash/case.html"><strong aria-hidden="true">6.5.</strong> Case Study</a></li></ol></li><li class="chapter-item expanded "><a href="../sorting/intro.html"><strong aria-hidden="true">7.</strong> Sorting</a></li><li class="chapter-item expanded "><a href="../graph/intro.html"><strong aria-hidden="true">8.</strong> Graphs</a></li><li class="chapter-item expanded "><a href="../appendix/intro.html"><strong aria-hidden="true">9.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/java.html"><strong aria-hidden="true">9.1.</strong> IDEA for Java</a></li><li class="chapter-item expanded "><a href="../appendix/pycharm.html"><strong aria-hidden="true">9.2.</strong> PyCharm for Python</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hands On Data Structures</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="java-built-in-data-structures"><a class="header" href="#java-built-in-data-structures">Java Built-in Data Structures</a></h1>
+<p>In this section, we will introduce arrays and three essential data structures (often referred as <em>collections</em>) in Java. A complete tutorial can be found <a href="https://docs.oracle.com/javase/tutorial/collections/">here</a>.</p>
+<blockquote>
+<p>A collection — sometimes called a container — is simply an object that groups multiple elements into a single unit. Collections are used to store, retrieve, manipulate, and communicate aggregate data.</p>
+</blockquote>
+<p>Collections (e.g., <code>ArrayList</code> mentioned in the last section) are indispensable ingredients in our daily programming work, and they represent data items that form a natural group.</p>
+<h2 id="array"><a class="header" href="#array">Array</a></h2>
+<p>An array is a low-level data structure in Java, instead of a kind of collection. Generally, <strong>if you don't have adequate reasons to choose an <em>array</em>, then a <em>list</em> is always preferred</strong>. But sometimes a solid understanding about arrays is necessary if you want to design you own data structures. See more at <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html">Arrays</a>.</p>
+<p>The method that we use to refer to individual values in an array is numbering and then <em>indexing</em> them. If we have N values, we think of them as being numbered from 0 to N-1.</p>
+<h3 id="creating-and-initializing-an-array"><a class="header" href="#creating-and-initializing-an-array">Creating and initializing an array</a></h3>
+<p>Making an array in a Java program involves three distinct steps:</p>
+<ul>
+<li>Declare the array name and type.</li>
+<li>Create the array</li>
+<li>Initialize the array</li>
+</ul>
+<p>The long form is to specify those three steps explicitly:</p>
+<pre><code class="language-java">double[] a; // declare
+a = new double[N]; // create
+for (int i = 0; i &lt; N; i++) {
+    a[i] = 3.14; // initialize
+}
+</code></pre>
+<p>And the declaration and creation can be written in a short form:</p>
+<pre><code class="language-java">double[] a = new double[N];
+</code></pre>
+<p>Furthermore, those three steps can be even shortened into one line:</p>
+<pre><code class="language-java">double[] a = { 3.14, 3.15, 3.16 };
+</code></pre>
+<p>Note that like most programming languages, Java would provide default values even if you do not initialize them, but it is a bad practice to rely on the compiler. So <strong>please make an initialization explicitly before using an array</strong>.</p>
+<h3 id="accessing-an-array"><a class="header" href="#accessing-an-array">Accessing an array</a></h3>
+<p>We can access an array via <em>indexing</em>:</p>
+<pre><code class="language-java">double d = a[0]; // get the first item
+a[0] = 42.0; // update the first item
+</code></pre>
+<p>You should pay attention to the indexing range, because it will raise an <code>OutOfBoundsException</code> if you use the index less than 0 or greater than N - 1.</p>
+<h3 id="iterating-an-array"><a class="header" href="#iterating-an-array">Iterating an array</a></h3>
+<p>You can use the tradition <code>for</code> loop to iterate an array:</p>
+<pre><code class="language-java">for (int i = 0; i &lt; N; i++) {
+    System.out.println(a[i]);
+}
+</code></pre>
+<p>But for modern Java, you should prefer to the enhanced <code>for-each</code>, since it is likely to make the <em>OutOfBoundsException</em> using the traditional method:</p>
+<pre><code class="language-java">for (double d : a) {
+    System.out.println(d);
+}
+</code></pre>
+<h3 id="generics-and-arrays"><a class="header" href="#generics-and-arrays">Generics and arrays</a></h3>
+<p>Suppose you have developed a <code>Library</code> class which manages books:</p>
+<pre><code class="language-java">public class Library {
+    private Book[] books;
+    
+    public void add(Book book) {
+        ...
+    }
+    ...
+}
+</code></pre>
+<p>Then how can you reuse this class to manage other types, let's say <code>Fruit</code> for a grocery? A naive method is to repeat the code:</p>
+<pre><code class="language-java">public class Grocery {
+    private Fruit[] fruits;
+    
+    public void add(Fruit fruit) {
+        ...
+    }
+    ...
+}
+</code></pre>
+<p>There is a golden rule in programming: <strong>don't repeat yourself</strong>, so we would like to manage either <code>Book</code> or <code>Fruit</code> using one piece of code. Since every class in Java is inherited from <code>Object</code>, what about <code>Object[]</code>? Well, it is feasible, but it is also error-prone, because it cannot prevent users adding both books and fruits to our system at the same time. To solve this problem, you should use generics. Generics have been a part of the language since Java 5, and see more at <a href="https://docs.oracle.com/javase/tutorial/java/generics/index.html">Generics</a>.</p>
+<p>But keep in mind that arrays and generics do not mix well. For example, the following code will result in <em>generic array creation</em> at compile time:</p>
+<pre><code class="language-java">T[] elements = new T[N];
+</code></pre>
+<p>Here I propose one solution to this problem. To manage different types of items, the <code>Manager</code> class accepts generics types (The complete code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/code/java/start/src/Manager.java">Manager.java</a>):</p>
+<pre><code class="language-java">public class Manager&lt;E&gt; {
+    private E[] elements;
+    private int size = 0;
+    private static final int INIT_CAPACITY = 16;
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public Manager() {
+        elements = (E[]) new Object[INIT_CAPACITY];
+    }
+
+    public void add(E item) {
+        ...
+    }
+    ...
+}
+</code></pre>
+<p>Since casting an <code>Object[]</code> to <code>E[]</code> is unsafe, we use <code>@SuppressWarnings(&quot;unchecked&quot;)</code><sup class="footnote-reference"><a href="#unchecked">1</a></sup> to tell the compiler that I know what I am doing, and please don't give me any warning. Don't get frustrated if you don't fully understand what the code above means, and we will go back to discuss the code in detail later. What you need to know now is to realize the importance of generics and possible traps when combining generics and arrays.</p>
+<p>By the way, it is very straightforward to make use of the generic class:</p>
+<pre><code class="language-java">Manager&lt;Book&gt; library = new Manager&lt;&gt;();
+library.add(new Book(&quot;Gone with the wind&quot;, &quot;Margaret Mitchell&quot;));
+library.display();
+</code></pre>
+<h3 id="common-operations-of-arrays"><a class="header" href="#common-operations-of-arrays">Common operations of arrays</a></h3>
+<p>As a Java programmer, you should get familiar with <code>java.util.Arrays</code> which offering plenty of handy methods. You can refer to <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Arrays.html">JDK API Doc</a>, and I will introduce some most commonly used methods in the following. Note that all methods are <em>static</em>.</p>
+<ul>
+<li><code>asList​(T... a)</code>: Returns a fixed-size list backed by the specified array<sup class="footnote-reference"><a href="#aslist">2</a></sup>.</li>
+</ul>
+<pre><code class="language-java">List&lt;String&gt; books = Arrays.asList(&quot;Gone with the Wind&quot;, &quot;Hands on Data Structures&quot;);
+</code></pre>
+<ul>
+<li><code>fill​(int[] a, int val)</code>: Assigns the specified int value to each element of the specified array of <code>int</code>s.</li>
+</ul>
+<pre><code class="language-java">int[] arr = new int[100];
+Arrays.fill(arr, 42);
+</code></pre>
+<ul>
+<li><code>copyOf​(int[] original, int newLength)</code>: Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.</li>
+</ul>
+<pre><code class="language-java">int[] arr = {1, 2, 3};
+// expand its size to 6
+arr = Arrays.copyOf(arr, 6);
+arr[3] = 4;
+</code></pre>
+<ul>
+<li><code>sort(int[] a)</code>: Sorts the specified array into ascending numerical order.</li>
+</ul>
+<pre><code class="language-java">int[] arr = {1, 9, 4, 2};
+Arrays.sort(arr);
+// now it becomes {1, 2, 4, 9}
+</code></pre>
+<h2 id="list"><a class="header" href="#list">List</a></h2>
+<p>Here I mainly talk about <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html">java.util.ArrayList</a>, which is a resizable-array implementation of <code>java.util.List</code>. Keep in mind that never use raw types for collections, including <code>List</code>, <code>Set</code> and <code>Map</code>, and make friends with generics! </p>
+<pre><code class="language-java">List&lt;String&gt; books = new ArrayList&lt;&gt;(); // generics
+List fruits = new ArrayList(); //  don't do this!
+</code></pre>
+<p>Basically, you can regard <code>List</code> as a more powerful array, and you are required to know and practice at least those methods:</p>
+<ul>
+<li><code>add()</code></li>
+<li><code>addAll()</code></li>
+<li><code>clear()</code></li>
+<li><code>contains()</code></li>
+<li><code>get()</code></li>
+<li><code>indexOf()</code></li>
+<li><code>iterator()</code></li>
+<li><code>remove()</code></li>
+<li><code>size()</code></li>
+<li><code>toArray()</code></li>
+</ul>
+<p>And of course, prefer to the enhanced <code>for-each</code> if you need to make an iteration over a list. <strong>Some legacy code may use <code>iterator()</code> method manually, but it is no longer preferred today</strong>. This suggestion also holds true other collections like <code>Map</code> and <code>List</code>.</p>
+<h3 id="collections"><a class="header" href="#collections">Collections</a></h3>
+<p><code>List</code> is a sub-interface of <code>Collection</code>. Like <code>java.util.Arrays</code>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html">java.util.Collections</a> provides plenty static handy methods. For example,</p>
+<ul>
+<li><code>sort​(List&lt;T&gt; list)</code>: Sorts the specified list into ascending order, according to the natural ordering of its elements.</li>
+</ul>
+<pre><code class="language-java">List&lt;Integer&gt; list = Arrays.asList(1, 9, 4, 2);
+Collections.sort(list);
+// now list is [1, 2, 4, 9]
+</code></pre>
+<ul>
+<li><code>reverse​(List&lt;?&gt; list)</code>: Reverses the order of the elements in the specified list.</li>
+</ul>
+<pre><code class="language-java">List&lt;Integer&gt; list = Arrays.asList(1, 9, 4, 2);
+Collections.reverse(list);
+// now list is [2, 4, 9, 1]
+</code></pre>
+<ul>
+<li><code>max​(Collection&lt;? extends T&gt; coll)</code>: Returns the maximum element of the given collection, according to the natural ordering of its elements.</li>
+</ul>
+<pre><code class="language-java">List&lt;Integer&gt; list = Arrays.asList(1, 9, 4, 2);
+int v = Collections.max(list); // v is 9
+</code></pre>
+<h2 id="map"><a class="header" href="#map">Map</a></h2>
+<p>Here I mainly talk about <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html">java.util.HashMap</a>. <code>Map</code> can be used to represent a mapping between a key and a value, and we assume that keys are unique. For example:</p>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody>
+<tr><td>Name</td><td>Age</td></tr>
+<tr><td>ISBN</td><td>Price</td></tr>
+<tr><td>City</td><td>Country</td></tr>
+<tr><td>Country</td><td>GDP</td></tr>
+</tbody></table>
+</div>
+<p>Different from <code>List</code>, a map should manage a collection of pairs. Let's consider a shopping cart which maintains pairs of ISBN (key) and amount (value).</p>
+<pre><code class="language-java">Map&lt;String, Integer&gt; cart = new HashMap&lt;&gt;();
+</code></pre>
+<p>Here we should specify the types of key and value as generics, respectively. To some extent, we can imagine a list as a map whose key is implicitly the index.</p>
+<p>To add an item (three books whose ISBN is <em>7801</em>) into this cart:</p>
+<pre><code class="language-java">cart.put(&quot;7801&quot;, 3);
+</code></pre>
+<p>To get an item by its key (i.e, <code>ISBN</code>):</p>
+<pre><code class="language-java">int amount = cart.get(&quot;7801&quot;);
+</code></pre>
+<p>Then what if the key does not exist? This is left as an exercise for readers. Now let's make an iteration over a map. </p>
+<pre><code class="language-java">for (Map.Entry&lt;String, Integer&gt; entry : cart.entrySet()) {
+    System.out.println(entry.getKey() + &quot; : &quot; + entry.getValue());
+}
+</code></pre>
+<p>You are required to know and practice at least those methods:</p>
+<ul>
+<li><code>clear()</code></li>
+<li><code>containsKey()</code></li>
+<li><code>entrySet()</code></li>
+<li><code>get()</code></li>
+<li><code>getOrDefault()</code></li>
+<li><code>isEmpty()</code></li>
+<li><code>keySet()</code></li>
+<li><code>put()</code></li>
+<li><code>remove()</code></li>
+<li><code>size()</code></li>
+<li><code>values()</code></li>
+</ul>
+<h2 id="set"><a class="header" href="#set">Set</a></h2>
+<p>Here I mainly talk about <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html">java.util.HashSet</a>. Unlike a <code>list</code>, items in a <code>set</code> are unique.</p>
+<pre><code class="language-java">Set&lt;String&gt; set = new HashSet&lt;&gt;();
+set.add(&quot;hello&quot;);
+set.add(&quot;world&quot;);
+System.out.println(set.size()); // 2
+set.add(&quot;hello&quot;);
+System.out.println(set.size()); // 2
+</code></pre>
+<p>Duplicate items are not allowed in a set, so the last statement will still print 2. Again, let's make an iteration:</p>
+<pre><code class="language-java">for (String s : set) {
+   System.out.println(s);
+}
+</code></pre>
+<p>Another key fact is that there is no order defined in a set, which is essentially <code>set</code> used in mathematics. For example, <code>(0, 1, 2)</code> and <code>(1, 0, 2)</code> are equivalent. </p>
+<pre><code class="language-java">Set&lt;Integer&gt; a = new HashSet&lt;&gt;(Arrays.asList(0, 1, 2));
+Set&lt;Integer&gt; b = new HashSet&lt;&gt;(Arrays.asList(1, 0, 2));
+System.out.println(a.equals(b)); // true
+</code></pre>
+<p>In addition, we can also conclude that indexing in a set is meaningless.</p>
+<p>You are required to know and practice at least those methods:</p>
+<ul>
+<li><code>add()</code></li>
+<li><code>clear()</code></li>
+<li><code>contains()</code></li>
+<li><code>isEmpty()</code></li>
+<li><code>remove()</code></li>
+<li><code>size()</code></li>
+</ul>
+<hr />
+<p><sup class="footnote-reference"><a href="#unchecked">1</a></sup> This line is optional, and it is fine to remove it.</p>
+<p><sup class="footnote-reference"><a href="#aslist">2</a></sup> Unlike regular lists, the one returned by <code>asList()</code> is a fixed-size one, so we cannot add/remove items on it.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../fundamentals/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../fundamentals/python.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../fundamentals/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../fundamentals/python.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

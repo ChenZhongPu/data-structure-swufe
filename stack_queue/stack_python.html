@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Stacks in Python - Hands On Data Structures</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Preface</a></li><li class="chapter-item expanded "><a href="../fundamentals/fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fundamentals/intro.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../fundamentals/java.html"><strong aria-hidden="true">1.2.</strong> Java Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/python.html"><strong aria-hidden="true">1.3.</strong> Python Built-in Data Structures</a></li><li class="chapter-item expanded "><a href="../fundamentals/alg.html"><strong aria-hidden="true">1.4.</strong> Algorithm Analysis</a></li><li class="chapter-item expanded "><a href="../fundamentals/tdd.html"><strong aria-hidden="true">1.5.</strong> Test Driven Development</a></li><li class="chapter-item expanded "><a href="../fundamentals/exercise.html"><strong aria-hidden="true">1.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/intro.html"><strong aria-hidden="true">2.</strong> Stacks and Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack.html"><strong aria-hidden="true">2.1.</strong> Stacks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/stack_python.html" class="active"><strong aria-hidden="true">2.1.1.</strong> Stacks in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/stack_java.html"><strong aria-hidden="true">2.1.2.</strong> Stacks in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/queue.html"><strong aria-hidden="true">2.2.</strong> Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/queue_python.html"><strong aria-hidden="true">2.2.1.</strong> Queues in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/queue_java.html"><strong aria-hidden="true">2.2.2.</strong> Queues in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/deque.html"><strong aria-hidden="true">2.3.</strong> Deques</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../stack_queue/deque_python.html"><strong aria-hidden="true">2.3.1.</strong> Deques in Python</a></li><li class="chapter-item expanded "><a href="../stack_queue/deque_java.html"><strong aria-hidden="true">2.3.2.</strong> Deques in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../stack_queue/exercise.html"><strong aria-hidden="true">2.4.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../list/intro.html"><strong aria-hidden="true">3.</strong> Lists</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/adt.html"><strong aria-hidden="true">3.1.</strong> The List ADT</a></li><li class="chapter-item expanded "><a href="../list/arraylist.html"><strong aria-hidden="true">3.2.</strong> Array List</a></li><li class="chapter-item expanded "><a href="../list/linkedlist.html"><strong aria-hidden="true">3.3.</strong> Linked List</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../list/linkedlist_python.html"><strong aria-hidden="true">3.3.1.</strong> Linked List in Python</a></li><li class="chapter-item expanded "><a href="../list/linkedlist_java.html"><strong aria-hidden="true">3.3.2.</strong> Linked List in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../list/double_link.html"><strong aria-hidden="true">3.4.</strong> Doubly Linked List</a></li><li class="chapter-item expanded "><a href="../list/case.html"><strong aria-hidden="true">3.5.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../list/exercise.html"><strong aria-hidden="true">3.6.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../tree/intro.html"><strong aria-hidden="true">4.</strong> Trees</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tree/general.html"><strong aria-hidden="true">4.1.</strong> General Trees</a></li><li class="chapter-item expanded "><a href="../tree/bst.html"><strong aria-hidden="true">4.2.</strong> Binary Search Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/bst2.html"><strong aria-hidden="true">4.3.</strong> Binary Search Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/balanced.html"><strong aria-hidden="true">4.4.</strong> Balanced Search Trees</a></li><li class="chapter-item expanded "><a href="../tree/rbt.html"><strong aria-hidden="true">4.5.</strong> Red Black Trees (1)</a></li><li class="chapter-item expanded "><a href="../tree/rbt2.html"><strong aria-hidden="true">4.6.</strong> Red Black Trees (2)</a></li><li class="chapter-item expanded "><a href="../tree/case.html"><strong aria-hidden="true">4.7.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../tree/exercise.html"><strong aria-hidden="true">4.8.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../pq/intro.html"><strong aria-hidden="true">5.</strong> Priority Queues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../pq/imp.html"><strong aria-hidden="true">5.1.</strong> PQ Implementation (1)</a></li><li class="chapter-item expanded "><a href="../pq/imp2.html"><strong aria-hidden="true">5.2.</strong> PQ Implementation (2)</a></li><li class="chapter-item expanded "><a href="../pq/case.html"><strong aria-hidden="true">5.3.</strong> Case Study</a></li><li class="chapter-item expanded "><a href="../pq/indexed.html"><strong aria-hidden="true">5.4.</strong> Indexed Priority Queue</a></li><li class="chapter-item expanded "><a href="../pq/exercise.html"><strong aria-hidden="true">5.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/intro.html"><strong aria-hidden="true">6.</strong> Hash Tables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/direct.html"><strong aria-hidden="true">6.1.</strong> Direct-address Tables</a></li><li class="chapter-item expanded "><a href="../hash/table.html"><strong aria-hidden="true">6.2.</strong> Hash Tables</a></li><li class="chapter-item expanded "><a href="../hash/function.html"><strong aria-hidden="true">6.3.</strong> Hash Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hash/java.html"><strong aria-hidden="true">6.3.1.</strong> Hash in Java</a></li><li class="chapter-item expanded "><a href="../hash/python.html"><strong aria-hidden="true">6.3.2.</strong> Hash in Python</a></li></ol></li><li class="chapter-item expanded "><a href="../hash/open.html"><strong aria-hidden="true">6.4.</strong> Open-addressing Hashing</a></li><li class="chapter-item expanded "><a href="../hash/case.html"><strong aria-hidden="true">6.5.</strong> Case Study</a></li></ol></li><li class="chapter-item expanded "><a href="../sorting/intro.html"><strong aria-hidden="true">7.</strong> Sorting</a></li><li class="chapter-item expanded "><a href="../graph/intro.html"><strong aria-hidden="true">8.</strong> Graphs</a></li><li class="chapter-item expanded "><a href="../appendix/intro.html"><strong aria-hidden="true">9.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/java.html"><strong aria-hidden="true">9.1.</strong> IDEA for Java</a></li><li class="chapter-item expanded "><a href="../appendix/pycharm.html"><strong aria-hidden="true">9.2.</strong> PyCharm for Python</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hands On Data Structures</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="stack-in-python"><a class="header" href="#stack-in-python">Stack In Python</a></h1>
+<p>Fortunately, the <code>list</code> in Python supports the operations required by stacks. To be specific,</p>
+<ul>
+<li><code>append()</code> is to add a new item at the <em>end</em> of the list, so it behaves exactly the same as <code>push()</code>.</li>
+<li><code>pop</code>(). Aha! The same method name as we expect.</li>
+</ul>
+<pre><code class="language-python">a = []
+a.append(5)
+a.append(3)
+v = a.pop() # 3
+v = a.pop() # 5
+a.append(7)
+a.append(9)
+a.append(6)
+v = a.pop() # 6
+</code></pre>
+<p>But, we cannot get its size and check the emptiness of a <code>list</code> in an object-oriented way. To this end, a better way is to encapsulate the data and related operations in a class. The following is the skeleton of <code>Stack</code>, and the complete code can be found at <a href="https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/stack-queue/stack.py">stack.py</a>. Because the list is an array, we call the following implementation <strong>array-based stack</strong>.</p>
+<pre><code class="language-python">class Stack:
+    &quot;&quot;&quot;A last-in, first-out (LIFO) data structure.&quot;&quot;&quot;
+
+    def __init__(self):
+        self._data = []
+
+    def push(self, item):
+        pass
+
+    def pop(self):
+        pass
+
+    def size(self):
+        pass
+
+    def is_empty(self):
+        pass
+</code></pre>
+<blockquote>
+<p>Python does not support the <em>private</em> variables. However, there is a convention that is followed by most Python code: a name prefixed with an underscore (e.g. _spam) should be treated as a non-public part of the API. </p>
+</blockquote>
+<p>As we can see, <code>Stack</code> wraps a list inside, and the implementations of these APIs are generally straightforward as long as you know the basic usage of a list.</p>
+<ul>
+<li><code>push()</code> is based on <code>append()</code>:</li>
+</ul>
+<pre><code class="language-python">def push(self, item):
+    self._data.append(item)
+</code></pre>
+<ul>
+<li><code>size()</code> is based on built-in <code>len()</code>:</li>
+</ul>
+<pre><code class="language-python">def size(self):
+    return len(self._data)
+</code></pre>
+<ul>
+<li><code>is_empty()</code> is to check whether its size equals 0:</li>
+</ul>
+<pre><code class="language-python">def is_empty(self):
+    return self.size() == 0
+</code></pre>
+<ul>
+<li><code>pop()</code> can use list's <code>pop()</code> directly:</li>
+</ul>
+<pre><code class="language-python">def pop(self):
+    return self._data.pop()
+</code></pre>
+<p>However, if the underlying data is empty, then <code>pop()</code> will throw an exception: <em>IndexError: pop from empty list</em>. We can further customize the error massage to display something like <em>Error: pop from empty stack</em>:</p>
+<pre><code class="language-python">def pop(self):
+    if self.is_empty():
+        raise IndexError('Pop from empty stack')
+    return self._data.pop()
+</code></pre>
+<p>Another common approach is to return a <code>None</code> when it is empty, but it would be troublesome if the item itself is a <code>None</code>:</p>
+<pre><code class="language-python">def pop(self):
+    if self.is_empty():
+        return None
+    return self._data.pop()
+</code></pre>
+<p>A third approach is to use a self-defined exception class, and we will adopt this implementation in this book.</p>
+<pre><code class="language-python">class NoElement(Exception):
+    &quot;&quot;&quot;Error attempting to access an element from an empty collection.&quot;&quot;&quot;
+    pass
+</code></pre>
+<pre><code class="language-python">def pop(self):
+    if self.is_empty():
+        raise NoElement('Pop from empty stack!')
+    return self._data.pop()
+</code></pre>
+<h2 id="iterator"><a class="header" href="#iterator">Iterator</a></h2>
+<p>By now you have probably noticed that most container objects can be looped over using a <code>for</code> statement:</p>
+<pre><code class="language-python">a = [1, 9, 4, 9]
+for i in a:
+    print(i)
+</code></pre>
+<p>Why can we use <code>for</code> to iterate the list? The iterator behind the scenes plays the magic<sup class="footnote-reference"><a href="#for">1</a></sup>! See more at <a href="https://docs.python.org/3/tutorial/classes.html#iterators">Iterators</a>.</p>
+<p>It is often a good practice to prepare a single class as the iterator which offers the <code>__next__()</code> method:</p>
+<pre><code class="language-python">class ReverseListIterator:
+    def __init__(self, data):
+        self._data = data
+        self._i = len(data)
+
+    def __next__(self):
+        if self._i == 0:
+            raise StopIteration
+        self._i -= 1
+        return self._data[self._i]
+</code></pre>
+<p>And <code>Stack</code>'s <code>__iter__()</code> method returns an instance of the iterator:</p>
+<pre><code class="language-python">def __iter__(self):
+    return ReverseListIterator(self._data)
+</code></pre>
+<p>We can also use the built-in <code>reversed()</code> iterator:</p>
+<pre><code class="language-python">def __iter__(self):
+    return reversed(self._data)
+</code></pre>
+<p>In this way, we can iterate the stack as we do for other collections:</p>
+<pre><code class="language-python">s = Stack()
+s.push(1)
+s.push(2)
+s.push(3)
+for i in s:
+    print(i)
+</code></pre>
+<h2 id="time-complexity"><a class="header" href="#time-complexity">Time complexity</a></h2>
+<p>The following table summarizes the array-based stack's time complexity:</p>
+<div class="table-wrapper"><table><thead><tr><th>Operation</th><th>Running time</th></tr></thead><tbody>
+<tr><td>push()</td><td>\(O(1)\)</td></tr>
+<tr><td>pop()</td><td>\(O(1)\)</td></tr>
+<tr><td>is_empty()</td><td>\(O(1)\)</td></tr>
+<tr><td>size()</td><td>\(O(1)\)</td></tr>
+</tbody></table>
+</div>
+<p>As we can see, all APIs are with a constant time complexity. </p>
+<p>Note that the time complexity of <code>push()</code> and <code>pop()</code> is <em>amortized</em>. Roughly speaking, it means \(O(1)\) happens most of time, but it may have a larger time complexity only once a while<sup class="footnote-reference"><a href="#resize">2</a></sup>; and on average, the worst complexity is still \(O(1)\). </p>
+<h2 id="application-1-matching-parentheses"><a class="header" href="#application-1-matching-parentheses">Application (1): matching parentheses</a></h2>
+<p>In this subsection, we explore an application of stacks by considering matching parentheses in arithmetic expressions. Here we assume that only parentheses <code>()</code>, braces <code>{}</code>, and brackets <code>[]</code> are allowed. This application is also found at <a href="https://leetcode.com/problems/valid-parentheses/">LeetCode</a>.</p>
+<p>Clearly, each opening symbol must match its corresponding closing symbol. For example:</p>
+<ul>
+<li>Correct: <code>()(()){([()])}</code></li>
+<li>Incorrect: <code>({[])}</code></li>
+</ul>
+<p>To what follows, we are going to design an algorithm to check whether an expression is matched in terms of parentheses:</p>
+<pre><code class="language-python">def is_matched(expr):
+    &quot;&quot;&quot;
+    Check whether an expression is matched in terms of parentheses
+
+    :param expr: an expression with parentheses
+    :return: True if matched; False otherwise
+    &quot;&quot;&quot;
+    pass
+</code></pre>
+<p>The idea of this algorithm can be described in plain English: </p>
+<ul>
+<li>Scan the expression for left to right.</li>
+<li>If the character belongs to openings (i.e., <code>([{</code>), it is pushed on a stack.</li>
+<li>If the character belongs to the closings (i.e., <code>)]}</code>), an item popped from the stack will be checked whether it is matched with the character or not. If so, continue to scan; otherwise, return <code>False</code>.</li>
+<li>After scanning, if the stack is empty, return <code>True</code>; otherwise, return <code>False</code>.</li>
+</ul>
+<p>The steps above can be translated into the code:</p>
+<pre><code class="language-python">def is_matched(expr):
+    openings = '([{'
+    closings = ')]}'
+    s = Stack()
+    for c in expr:
+        if c in openings:
+            s.push(c)
+        elif c in closings:
+            if s.is_empty():
+                return False
+            if closings.index(c) != openings.index(s.pop()):
+                return False
+    return s.is_empty()
+</code></pre>
+<h2 id="application-2-arithmetic-expression-evaluation"><a class="header" href="#application-2-arithmetic-expression-evaluation">Application (2): arithmetic expression evaluation</a></h2>
+<p>As another example<sup class="footnote-reference"><a href="#arithmetic">3</a></sup> of a stack, let's consider the basic arithmetic expression evaluation. For example,</p>
+<pre><code>(1 + ((2 + 3) * (4 * 5)))
+</code></pre>
+<p>If you multiply 4 by 5, add 3 to 2, multiply the result, and then add 1, you get the value 101. How to this calculation using Python?</p>
+<p>For simplicity, we begin with the following explicit recursive definition: an <em>arithmetic expression</em> is either a number, or a left parenthesis (i.e., <code>(</code>) followed by an arithmetic expression followed by an operator followed by another arithmetic expression followed by a right parenthesis (i.e., <code>)</code>). In other words, we rely on parentheses instead of precedence rules.</p>
+<p>For specificity, we support the familiar binary operators <code>*</code>, <code>+</code>, <code>-</code>, and <code>/</code>. A remarkably simple algorithm that was developed by E. W. Dijkstra in the 1960s uses two stacks (<strong>one for operands and one for operators</strong>) to do this job. Again, the idea of this algorithm can be described in plain English when scanning the expression according to four possible cases: </p>
+<ul>
+<li>Push <em>operands</em> onto the operand stack.</li>
+<li>Push <em>operators</em> onto the operator stack.</li>
+<li>Ignore <em>left</em> parentheses.</li>
+<li>On encountering a <em>right</em> parenthesis, pop an operator, pop the operands, and push onto the operand stack the result of applying the operator to those operands.</li>
+</ul>
+<p>After the final right parenthesis has been processed, there is one value on the stack, which is the value of the expression. For example, the algorithm computes the same value for all of these expressions:</p>
+<pre><code>( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) ) 
+( 1 + ( 5 * ( 4 * 5 ) ) )
+( 1 + ( 5 * 20 ) )
+( 1 + 100 )
+101
+</code></pre>
+<p>For simplicity, the code assume that the expression is fully parenthesized, with numbers and characters separated by whitespace:</p>
+<pre><code class="language-python">def compute(expr: str) -&gt; float:
+    &quot;&quot;&quot;
+    Dijkstra's two-stack algorithm for expression evaluation.
+
+    :param expr: an arithmetic expression
+    :return: computed value
+    &quot;&quot;&quot;
+    ops = Stack()
+    vals = Stack()
+    expr = expr.split(' ')
+    for c in expr:
+        if c == '(':
+            continue
+        elif c in '+-*/':
+            ops.push(c)
+        elif c == ')':
+            v = vals.pop()
+            op = ops.pop()
+            if op == '+':
+                v = vals.pop() + v
+            elif op == '-':
+                v = vals.pop() - v
+            elif op == '*':
+                v = vals.pop() * v
+            elif op == '/':
+                v = vals.pop() / v
+            vals.push(v)
+        else:
+            vals.push(float(c))
+    return vals.pop()
+</code></pre>
+<hr />
+<p><sup class="footnote-reference"><a href="#for">1</a></sup> It will call <code>__getitem__()</code> instead if <code>__iter__()</code> is not available.</p>
+<p><sup class="footnote-reference"><a href="#resize">2</a></sup> It is because of the resizing of an array.</p>
+<p><sup class="footnote-reference"><a href="#arithmetic">3</a></sup> This example comes from <em>Algorithms, 4th</em>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../stack_queue/stack.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../stack_queue/stack_java.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../stack_queue/stack.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../stack_queue/stack_java.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
