@@ -525,21 +525,4 @@ timeit.timeit(setup='books = [i for i in range(10000)]', stmt='books.insert(0, 4
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-	Design a class which has a list as its member variable, and has a method \alert{add()} to add a new item into it. And it also has another method implementing the following pseudocode:
-
-	\scalebox{.7}{
-		\begin{algorithm}[H]
-			\caption{indexOf(a, o)}
-			$n\gets a.size()$ \\
-			\For{$i\gets 0$ \KwTo $n$}{
-				\If{$a[i] == o$}{
-					\Return{i}
-				}
-			}
-			\Return{-1}
-		\end{algorithm}
-	}
-
-\end{frame}
 \end{document}
