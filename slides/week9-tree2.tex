@@ -24,11 +24,11 @@
 \usepackage{bookmark}
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    }
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
 \urlstyle{same}
 \usetheme{metropolis}
 \metroset{block=fill}
@@ -50,19 +50,17 @@
 
 \institute[] % (optional)
 {
-  School of Computing and Artificial Intelligence \\
-  \href{mailto:zpchen@swufe.edu.cn}{zpchen@swufe.edu.cn}
+	School of Computing and Artificial Intelligence \\
+	\href{mailto:zpchen@swufe.edu.cn}{zpchen@swufe.edu.cn}
 }
 
 \date[] % (optional)
-{SWUFE, Fall 2022}
-
+{SWUFE, Fall 2023}
 %End of title page configuration block
 %------------------------------------------------------------
 
 
-%------------------------------------------------------------
-%The next block of commands puts the table of contents at the 
+%------------------------------------------------------------ The next block of commands puts the table of contents at the 
 %beginning of each section and highlights the current section:
 
 % \AtBeginSection[]
@@ -89,249 +87,249 @@
 % \end{frame}
 %--------------------------------------------------------
 \begin{frame}
-    \frametitle{Small Quiz}
-\begin{enumerate}
-    \item Please draw the BST after inserting 4, 10, 8, 1, 2, and 7 sequentially.
-    \item If we use an \emph{in-order} method to traverse it, what shall we see?
-\end{enumerate}   
+	\frametitle{Small Quiz}
+	\begin{enumerate}
+		\item Please draw the BST after inserting 4, 10, 8, 1, 2, and 7 sequentially.
+		\item If we use an \emph{in-order} method to traverse it, what shall we see?
+	\end{enumerate}
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Small Quiz}
+	\frametitle{Small Quiz}
 
-Please fill in the blank of the following algorithm.
+	Please fill in the blank of the following algorithm.
 
-    \scalebox{.8}{  
-        \begin{algorithm}[H]
-        \caption{get(key)}
-        $x\gets root$ \\
-    \While{x $\neq$ null and x.key $\neq$ key}{
-        \If{\underline{\hspace{3cm}}}{
-            $x\gets x.left$
-        }\Else{
-            $x\gets x.right$
-        }
-    }
-    \Return{x}
-    \end{algorithm}
-    }
-    
+	\scalebox{.8}{
+		\begin{algorithm}[H]
+			\caption{get(key)}
+			$x\gets root$ \\
+			\While{x $\neq$ null and x.key $\neq$ key}{
+				\If{\underline{\hspace{3cm}}}{
+					$x\gets x.left$
+				}\Else{
+					$x\gets x.right$
+				}
+			}
+			\Return{x}
+		\end{algorithm}
+	}
+
 
 \end{frame}
 
 {
-    % \usebackgroundtemplate{\transparent{0.3}{\begin{picture}
-    %     \includegraphics[height=0.7\paperheight]{cover}
-    % \end{picture}    
-    % }}
+% \usebackgroundtemplate{\transparent{0.3}{\begin{picture}
+%     \includegraphics[height=0.7\paperheight]{cover}
+% \end{picture}    
+% }}
 \usebackgroundtemplate{
-  \tikz[overlay,remember picture] 
-  \node[opacity=0.3, at=(current page.south east),anchor=south east, yshift=2cm,xshift=4cm] {
-    \includegraphics[height=0.6\paperheight]{cover}};
+	\tikz[overlay,remember picture]
+	\node[opacity=0.3, at=(current page.south east),anchor=south east, yshift=2cm,xshift=4cm] {
+		\includegraphics[height=0.6\paperheight]{cover}};
 }
-    \begin{frame}
-        \section{\textcolor{darkmidnightblue}{1. Balanced Trees}}
-    \end{frame}
+\begin{frame}
+	\section{\textcolor{darkmidnightblue}{1. Balanced Trees}}
+\end{frame}
 
 }
 
 \begin{frame}[fragile]
-    \frametitle{1.1 What Is Balance?}
+	\frametitle{1.1 What Is Balance?}
 
-    \begin{columns}
-        \column{.4\textwidth}
-        \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-            font=\sffamily},
-          bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 4cm/#1,
-          level distance = 1.5cm}]
-        \node [bst] {4}
-            child {node [bst] {1}
-                child[edge from parent/.style={draw=none}] {node {}}
-                child {node [bst](n6) {2}
-                }
-            }
-            child {node (n10) [bst] {10}
-               child {node [bst] {8}
-                    child {node [bst] {7}}
-                    child[edge from parent/.style={draw=none}] {node {}}
-               }
-               child[edge from parent/.style={draw=none}] {node {}}
-            }
-        ;
-        \end{tikzpicture}
-        \column{.59\textwidth}
-       \faIcon{question-circle} Consider the following questions:
-       
-       \begin{itemize}
-        \item Given a BST, what is time complexity of common operations (e.g., \texttt{search()}, \texttt{put()})?
-        \item What is the height if inserting 1, 2, 4, 7, 8, and 10  sequentially?
-       \end{itemize}
-    \end{columns}
+	\begin{columns}
+		\column{.4\textwidth}
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 4cm/#1,
+						level distance = 1.5cm}]
+			\node [bst] {4}
+			child {node [bst] {1}
+					child[edge from parent/.style={draw=none}] {node {}}
+					child {node [bst](n6) {2}
+						}
+				}
+			child {node (n10) [bst] {10}
+					child {node [bst] {8}
+							child {node [bst] {7}}
+							child[edge from parent/.style={draw=none}] {node {}}
+						}
+					child[edge from parent/.style={draw=none}] {node {}}
+				}
+			;
+		\end{tikzpicture}
+		\column{.59\textwidth}
+		\faIcon{question-circle} Consider the following questions:
 
-\end{frame}
-
-\begin{frame}[fragile]
-
-   \begin{columns}
-    \column{.6\textwidth}
-    \begin{tikzpicture}
-        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-        text width=16em,anchor=south west,rounded corners]
-        {Thus, the set operations
-        are fast if the height of the search tree is small.};
-    \end{tikzpicture}
-
-    \begin{exampleblock}{Balanced Tree}
-        A search tree is \alert{balanced} if it can guarantee that basic dynamic-set operations take $O(\log{N})$ time in the worst case.
-    \end{exampleblock} 
-    \column{.39\textwidth}
-    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=.8pt, text centered,
-        font=\sffamily},
-      bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=1.8em}, ->,>=stealth',level/.style={sibling distance = 1.8cm,
-      level distance = 1.2cm}]
-    \node [bst] {1}
-        child[edge from parent/.style={draw=none}] {node {}
-        }
-        child {node [bst] {2}
-           child[edge from parent/.style={draw=none}] {node {}
-           }
-           child {node [bst] {4}
-                child[edge from parent/.style={draw=none}] {node {}}
-                child {node [bst] {7}
-                   child[edge from parent/.style={draw=none}] {node {}}
-                   child {node [bst] {8}
-                     child[edge from parent/.style={draw=none}] {node {}
-                       }
-                     child {node [bst] {10}}
-                   }
-                }
-           }
-        }
-    ;
-    \end{tikzpicture}
-\end{columns}
+		\begin{itemize}
+			\item Given a BST, what is time complexity of common operations (e.g., \texttt{search()}, \texttt{put()})?
+			\item What is the height if inserting 1, 2, 4, 7, 8, and 10  sequentially?
+		\end{itemize}
+	\end{columns}
 
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{1.2 Balanced Tree}
-\begin{exampleblock}{Perfectly Height-balanced}
- A tree is \alert{perfectly} height-balanced if the left and right subtrees of any node are the same height.
-\end{exampleblock}
 
-\begin{columns}
-    \column{.4\textwidth}<1->
-    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered, font=\sffamily}, bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em},level/.style={sibling distance = 3cm/#1,
-        level distance = 1.5cm}, scale=.95]
-\node [bst] {A}
-        child {node [bst] {B}
-            child {node [bst] {D}}
-            child {node [bst] {E}}
-        }
-        child {node [bst] {C}
-            child {node [bst] {F}}
-            child {node [bst] {G}}
-        }
-;
-    \end{tikzpicture}     
-    \column{.59\textwidth}<2->
-    But \textbf{perfect height balance} is very rare: it is only possible if there are exactly $2^{H+1} - 1$ nodes.
-\end{columns}
+	\begin{columns}
+		\column{.6\textwidth}
+		\begin{tikzpicture}
+			\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+				text width=16em,anchor=south west,rounded corners]
+			{Thus, the set operations
+				are fast if the height of the search tree is small.};
+		\end{tikzpicture}
+
+		\begin{exampleblock}{Balanced Tree}
+			A search tree is \alert{balanced} if it can guarantee that basic dynamic-set operations take $O(\log{N})$ time in the worst case.
+		\end{exampleblock}
+		\column{.39\textwidth}
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=.8pt, text centered,
+						font=\sffamily},
+				bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=1.8em}, ->,>=stealth',level/.style={sibling distance = 1.8cm,
+						level distance = 1.2cm}]
+			\node [bst] {1}
+			child[edge from parent/.style={draw=none}] {node {}
+				}
+			child {node [bst] {2}
+					child[edge from parent/.style={draw=none}] {node {}
+						}
+					child {node [bst] {4}
+							child[edge from parent/.style={draw=none}] {node {}}
+							child {node [bst] {7}
+									child[edge from parent/.style={draw=none}] {node {}}
+									child {node [bst] {8}
+											child[edge from parent/.style={draw=none}] {node {}
+												}
+											child {node [bst] {10}}
+										}
+								}
+						}
+				}
+			;
+		\end{tikzpicture}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{1.2 Balanced Tree}
+	\begin{exampleblock}{Perfectly Height-balanced}
+		A tree is \alert{perfectly} height-balanced if the left and right subtrees of any node are the same height.
+	\end{exampleblock}
+
+	\begin{columns}
+		\column{.4\textwidth}<1->
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered, font=\sffamily}, bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em},level/.style={sibling distance = 3cm/#1,
+						level distance = 1.5cm}, scale=.95]
+			\node [bst] {A}
+			child {node [bst] {B}
+					child {node [bst] {D}}
+					child {node [bst] {E}}
+				}
+			child {node [bst] {C}
+					child {node [bst] {F}}
+					child {node [bst] {G}}
+				}
+			;
+		\end{tikzpicture}
+		\column{.59\textwidth}<2->
+		But \textbf{perfect height balance} is very rare: it is only possible if there are exactly $2^{H+1} - 1$ nodes.
+	\end{columns}
 
 \end{frame}
 
 
 \begin{frame}
 
-    \section{\textcolor{darkmidnightblue}{2. AVL Tree}} 
-    An AVL tree (named after inventors \textbf{A}delson-\textbf{V}elsky and \textbf{L}andis) is a self-balancing binary search tree (BST).
+	\section{\textcolor{darkmidnightblue}{2. AVL Tree}}
+	An AVL tree (named after inventors \textbf{A}delson-\textbf{V}elsky and \textbf{L}andis) is a self-balancing binary search tree (BST).
 \end{frame}
 
 
 \begin{frame}[fragile]
-    \frametitle{2.1 AVL Definition}
-\begin{block}{AVL Balance Property}
-In an AVL tree, the heights of the two child subtrees of any node differ by \alert{at most one}.
-\end{block}
+	\frametitle{2.1 AVL Definition}
+	\begin{block}{AVL Balance Property}
+		In an AVL tree, the heights of the two child subtrees of any node differ by \alert{at most one}.
+	\end{block}
 
-\pause
-\begin{columns}
-    \column{.4\textwidth}
-    \faIcon{question-circle} Is this an AVL tree?
-    \column{.58\textwidth}
-    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-      level distance = 1.3cm}]
-    \node [bst] {4}
-        child {node [bst] {1}
-            child[edge from parent/.style={draw=none}] {node {}}
-            child {node [bst](n6) {2}
-            }
-        }
-        child {node (n10) [bst] {10}
-           child {node [bst] {8}
-                child {node [bst] {7}}
-                child[edge from parent/.style={draw=none}] {node {}}
-           }
-           child[edge from parent/.style={draw=none}] {node {}}
-        }
-    ;
-    \end{tikzpicture}
-\end{columns}
-
-\end{frame}
-
-\begin{frame}
-    \begin{lemma}
-        An AVL tree with $n$ nodes has height $O(\log{n})$. 
-    \end{lemma}
-
-    \begin{proof}
-We use $N(h)$ to denote the minimum number of nodes in an AVL tree with height $h$. Then we have
-
-\[
-    N(h) \geq
-\begin{cases}
-    0,& h = -1\\
-    1, & h = 0 \\
-    1 + 2N(h - 2), & h \geq 1 \\
-\end{cases}
-\]
-
-After $i$ steps, it is $N(h) \geq 1 + 2 + 4 + ... + 2^{i-1} + 2^iN(h-2i)$.
-    \end{proof}
-\end{frame}
-
-\begin{frame}
-\begin{proof}[Proof. (cont.)]
-It can be simplified to
-\[N(h) \geq 2^{i} - 1 + 2^iN(h-2i)\]
-
-We solve $h-2i \leq 0$ to get the base case, giving $i = \frac{h}{2}$. Then we have
-\[N(h) \geq 2^{h/2} - 1 + 2^{h/2}N(0) = 2^{h/2 + 1} - 1\] 
-
-So we basically just got an inequality relating the number of nodes $n$ and the height $h$ of an AVL tree, $n\geq 2^{h/2 + 1} - 1$, which yields $h \leq 2\log{(n + 1)} - 1$.
-\end{proof}
-    
+	\pause
+	\begin{columns}
+		\column{.4\textwidth}
+		\faIcon{question-circle} Is this an AVL tree?
+		\column{.58\textwidth}
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+						level distance = 1.3cm}]
+			\node [bst] {4}
+			child {node [bst] {1}
+					child[edge from parent/.style={draw=none}] {node {}}
+					child {node [bst](n6) {2}
+						}
+				}
+			child {node (n10) [bst] {10}
+					child {node [bst] {8}
+							child {node [bst] {7}}
+							child[edge from parent/.style={draw=none}] {node {}}
+						}
+					child[edge from parent/.style={draw=none}] {node {}}
+				}
+			;
+		\end{tikzpicture}
+	\end{columns}
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{A Shorter Proof (sketch)}
+	\begin{lemma}
+		An AVL tree with $n$ nodes has height $O(\log{n})$.
+	\end{lemma}
 
-    \[
-        N(h) \geq
-    \begin{cases}
-        0,& h = -1\\
-        1, & h = 0 \\
-        2N(h - 2), & h \geq 1 \\
-    \end{cases}
-    \]
-We get $N(h) > 2^{i}N(h-2i)$. Solving the base case, we get $N(h) > 2^{h/2}$. After taking logarithms:
+	\begin{proof}
+		We use $N(h)$ to denote the minimum number of nodes in an AVL tree with height $h$. Then we have
 
-\[h < 2\log{N(h)} = 2\log{n}\]
+		\[
+			N(h) \geq
+			\begin{cases}
+				0,             & h = -1   \\
+				1,             & h = 0    \\
+				1 + 2N(h - 2), & h \geq 1 \\
+			\end{cases}
+		\]
+
+		After $i$ steps, it is $N(h) \geq 1 + 2 + 4 + ... + 2^{i-1} + 2^iN(h-2i)$.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\begin{proof}[Proof. (cont.)]
+		It can be simplified to
+		\[N(h) \geq 2^{i} - 1 + 2^iN(h-2i)\]
+
+		We solve $h-2i \leq 0$ to get the base case, giving $i = \frac{h}{2}$. Then we have
+		\[N(h) \geq 2^{h/2} - 1 + 2^{h/2}N(0) = 2^{h/2 + 1} - 1\]
+
+		So we basically just got an inequality relating the number of nodes $n$ and the height $h$ of an AVL tree, $n\geq 2^{h/2 + 1} - 1$, which yields $h \leq 2\log{(n + 1)} - 1$.
+	\end{proof}
+
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{A Shorter Proof (sketch)}
+
+	\[
+		N(h) \geq
+		\begin{cases}
+			0,         & h = -1   \\
+			1,         & h = 0    \\
+			2N(h - 2), & h \geq 1 \\
+		\end{cases}
+	\]
+	We get $N(h) > 2^{i}N(h-2i)$. Solving the base case, we get $N(h) > 2^{h/2}$. After taking logarithms:
+
+	\[h < 2\log{N(h)} = 2\log{n}\]
 \end{frame}
 
 % \begin{frame}
@@ -343,10 +341,10 @@ We get $N(h) > 2^{i}N(h-2i)$. Solving the base case, we get $N(h) > 2^{h/2}$. Af
 % \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2.2 Design of AVL Trees}
-    
-\faIcon{question-circle} To implement a node in an AVL trees, what else do we need based on a regular BST node?
-    \begin{minted}[bgcolor=LightGray]{python}
+	\frametitle{2.2 Design of AVL Trees}
+
+	\faIcon{question-circle} To implement a node in an AVL trees, what else do we need based on a regular BST node?
+	\begin{minted}[bgcolor=LightGray]{python}
 class Node:
     def __init__(self, key, left=None, right=None):
         self.key = key
@@ -357,7 +355,7 @@ class Node:
 
 \begin{frame}[fragile]
 
-\begin{minted}[bgcolor=LightGray, baselinestretch=1.1]{python}
+	\begin{minted}[bgcolor=LightGray, baselinestretch=1.1]{python}
 class Node:
     def __init__(self, key, height=0, 
                  left=None, right=None):
@@ -370,49 +368,49 @@ class AVL:
     def __init__(self):
         self.root = None
 \end{minted}
-\faIcon{pen} How to get the height of an AVL tree?
+	\faIcon{pen} How to get the height of an AVL tree?
 \end{frame}
 
 \begin{frame}
-    \frametitle{Balance Factor}
-We can introduce \alert{balance factor} $BF(x)$ of node $x$, which is defined to be the height difference of its two child subtrees 
+	\frametitle{Balance Factor}
+	We can introduce \alert{balance factor} $BF(x)$ of node $x$, which is defined to be the height difference of its two child subtrees
 
-\[BF(x) = h(x.left) - h(x.right)\]
+	\[BF(x) = h(x.left) - h(x.right)\]
 
-According to the \textbf{AVL balance property}, $BF(x) \in \underline{\hspace{3cm}}$.
+	According to the \textbf{AVL balance property}, $BF(x) \in \underline{\hspace{3cm}}$.
 
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2.3 \texttt{get()} in AVL Trees}
+	\frametitle{2.3 \texttt{get()} in AVL Trees}
 
-It works exactly in the same way a BST does.
+	It works exactly in the same way a BST does.
 
-\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-    font=\sffamily},
-  bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-  level distance = 1.3cm}]
-\node [bst] {12}
-    child {node [bst] {8}
-        child {node [bst] {6}
-            child {node [bst] {4}}
-            child[edge from parent/.style={draw=none}] {node {}}
-        }
-        child {node [bst] {11}
-        }
-    }
-    child {node [bst] {18}
-       child {node [bst] {17}}
-       child[edge from parent/.style={draw=none}] {node {}}
-    }
-;
-\end{tikzpicture}
-    
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm}]
+		\node [bst] {12}
+		child {node [bst] {8}
+				child {node [bst] {6}
+						child {node [bst] {4}}
+						child[edge from parent/.style={draw=none}] {node {}}
+					}
+				child {node [bst] {11}
+					}
+			}
+		child {node [bst] {18}
+				child {node [bst] {17}}
+				child[edge from parent/.style={draw=none}] {node {}}
+			}
+		;
+	\end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}[fragile]
 
-\begin{minted}[bgcolor=LightGray,]{python}
+	\begin{minted}[bgcolor=LightGray,]{python}
 def get(self, key):
     def _get(x: Node):
         if x is None or key == x.key:
@@ -429,467 +427,467 @@ def get(self, key):
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2.4 \texttt{put()} in AVL Trees}
-\faIcon{lightbulb} What happens if we insert 1 into the AVL tree?
+	\frametitle{2.4 \texttt{put()} in AVL Trees}
+	\faIcon{lightbulb} What happens if we insert 1 into the AVL tree?
 
-\begin{columns}
-    \column{.49\textwidth}<1->
-    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-      level distance = 1.3cm}]
-    \node [bst] {12}
-        child {node [bst] {8}
-            child {node [bst] {6}
-                child {node [bst] {4}
-                    child {node [orangebst] {1}}
-                    child[edge from parent/.style={draw=none}] {node {}}
-                }
-                child[edge from parent/.style={draw=none}] {node {}}
-            }
-            child {node [bst] {11}
-            }
-        }
-        child {node [bst] {18}
-           child {node [bst] {17}}
-           child[edge from parent/.style={draw=none}] {node {}}
-        }
-    ;
-    \end{tikzpicture}    
-    \column{.6\textwidth}<2-> 
-    \begin{tikzpicture}
-        \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-        text width=15em,anchor=south west,rounded corners]
-        {Modifying an AVL tree may violate the balance property, so the parent subtree has to be \alert{rebalanced}.};
-    \end{tikzpicture}
-    \begin{enumerate}
-        \item Insert the key in the same way a BST does.
-        \item Re-balance.
-    \end{enumerate}
-\end{columns}
+	\begin{columns}
+		\column{.49\textwidth}<1->
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+						level distance = 1.3cm}]
+			\node [bst] {12}
+			child {node [bst] {8}
+					child {node [bst] {6}
+							child {node [bst] {4}
+									child {node [orangebst] {1}}
+									child[edge from parent/.style={draw=none}] {node {}}
+								}
+							child[edge from parent/.style={draw=none}] {node {}}
+						}
+					child {node [bst] {11}
+						}
+				}
+			child {node [bst] {18}
+					child {node [bst] {17}}
+					child[edge from parent/.style={draw=none}] {node {}}
+				}
+			;
+		\end{tikzpicture}
+		\column{.6\textwidth}<2->
+		\begin{tikzpicture}
+			\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+				text width=15em,anchor=south west,rounded corners]
+			{Modifying an AVL tree may violate the balance property, so the parent subtree has to be \alert{rebalanced}.};
+		\end{tikzpicture}
+		\begin{enumerate}
+			\item Insert the key in the same way a BST does.
+			\item Re-balance.
+		\end{enumerate}
+	\end{columns}
 
 \end{frame}
 
 {\setbeamercolor{palette primary}{fg=black, bg=yellow}
 \begin{frame}[standout]
-  Re-balance an AVL is mainly based on \alert{tree rotations} on a BST.
+	Re-balance an AVL is mainly based on \alert{tree rotations} on a BST.
 \end{frame}
 }
 
 \begin{frame}[fragile]
-    \frametitle{2.5 Rotations}
-There are two kinds of rotations: left rotations and right rotations.
-    
-\begin{tikzpicture}[bnode/.style = {align=center, inner sep=1pt, text centered, circle, white, font=\sffamily\bfseries, 
-    fill=orange, text width=1.5em},]
-    \node (lefttree) {}
-        child { node [bnode] {y}
-            child {node [bnode] {x}
-                child {node {$\alpha$}}
-                child {node {$\beta$}}
-            }
-            child {node {$\gamma$}}
-            };
-    
-    \draw [-stealth, line width=0.4mm, draw=blue](1,-1) -- (4,-1)node[midway,above,shape=rectangle,draw=none]{right rotate on $y$};
+	\frametitle{2.5 Rotations}
+	There are two kinds of rotations: left rotations and right rotations.
 
-    \draw [stealth-, line width=0.4mm, draw=blue](1,-2) -- (4,-2)node[midway,above,shape=rectangle,draw=none]{left rotate on $x$}; 
+	\begin{tikzpicture}[bnode/.style = {align=center, inner sep=1pt, text centered, circle, white, font=\sffamily\bfseries,
+					fill=orange, text width=1.5em},]
+		\node (lefttree) {}
+		child { node [bnode] {y}
+				child {node [bnode] {x}
+						child {node {$\alpha$}}
+						child {node {$\beta$}}
+					}
+				child {node {$\gamma$}}
+			};
 
-    \node (right) [right=5cm of lefttree] {}
-            child { node [bnode] {x}
-                child {node {$\alpha$}}
-                child {node [bnode] {y}
-                    child {node {$\beta$}}
-                    child {node {$\gamma$}}
-                    }
-    };
-\end{tikzpicture}
+		\draw [-stealth, line width=0.4mm, draw=blue](1,-1) -- (4,-1)node[midway,above,shape=rectangle,draw=none]{right rotate on $y$};
 
-\begin{tikzpicture}
-    \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
-    text width=26em,anchor=south west,rounded corners]
-    {It is clear that tree rotations still maintain the BST property.};
-\end{tikzpicture}
+		\draw [stealth-, line width=0.4mm, draw=blue](1,-2) -- (4,-2)node[midway,above,shape=rectangle,draw=none]{left rotate on $x$};
+
+		\node (right) [right=5cm of lefttree] {}
+		child { node [bnode] {x}
+				child {node {$\alpha$}}
+				child {node [bnode] {y}
+						child {node {$\beta$}}
+						child {node {$\gamma$}}
+					}
+			};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}
+		\node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
+			text width=26em,anchor=south west,rounded corners]
+		{It is clear that tree rotations still maintain the BST property.};
+	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Right Rotation}
-\scalebox{.9}{
-    \begin{algorithm}[H]
-        \caption{right-rotate(y)}
-        \KwIn{A node $y$ of an AVL tree}
-        \KwOut{The new root after a right rotation}
-        $x\gets y.left$ \\
-        $y.left\gets x.right$ \\
-        $x.right\gets y$ \\
-        \tcp{Update height (only for AVL trees)}
-        $y.height\gets max(h(y.left), h(y.right)) + 1$ \\
-        $x.height\gets max(h(x.left), h(x.right)) + 1$ \\
-        \Return{x}
-    \end{algorithm}
-}
+	\frametitle{Right Rotation}
+	\scalebox{.9}{
+		\begin{algorithm}[H]
+			\caption{right-rotate(y)}
+			\KwIn{A node $y$ of an AVL tree}
+			\KwOut{The new root after a right rotation}
+			$x\gets y.left$ \\
+			$y.left\gets x.right$ \\
+			$x.right\gets y$ \\
+			\tcp{Update height (only for AVL trees)}
+			$y.height\gets max(h(y.left), h(y.right)) + 1$ \\
+			$x.height\gets max(h(x.left), h(x.right)) + 1$ \\
+			\Return{x}
+		\end{algorithm}
+	}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Left Rotation}
+	\frametitle{Left Rotation}
 
-\scalebox{.9}{
-    \begin{algorithm}[H]
-        \caption{left-rotate(x)}
-        \KwIn{A node $y$ of an AVL tree}
-        \KwOut{The new root after a left rotation}
-        $y\gets x.right$ \\
-        $x.right\gets y.left$ \\
-        $y.left\gets x$ \\
-        \tcp{Update height (only for AVL trees)}
-        $x.height\gets max(h(x.left), h(x.right)) + 1$ \\
-        $y.height\gets max(h(y.left), h(y.right)) + 1$ \\
-        \Return{y}
-    \end{algorithm}
-}
-
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{2.6 Re-balance}
-\begin{tikzpicture}
-    \node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
-    text width=26em,anchor=south west,rounded corners]
-    {It is necessary if and only if the \alert{balance factor} is 2 or -2.};
-\end{tikzpicture}
-
-\textbf{Case 1 (left-left)}: If $bf(x) = 2$ and $key < x.left.key$, then we make a right-rotation on $x$.
-
-\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-    font=\sffamily},
-  bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-  level distance = 1.3cm}]
-  \node (lefttree) {}
-    child {node [bst] {x}
-       child {node [bst] {y}
-         child {node[red] {$\alpha$}}
-         child {node {$\beta$}}
-       }
-       child {node {$\gamma$}}
-    }
-  ;
-    \draw [-stealth, line width=0.4mm, draw=blue](2.5,-2) -- (4.5,-2)node[midway,above,shape=rectangle,draw=none]{right rotate};
-
-    \node [right=of lefttree, xshift=6cm] {}
-        child {node [bst] {y}
-            child {node [red] {$\alpha$}}
-            child {node [bst] {x}
-                child {node {$\beta$}}
-                child {node {$\gamma$}}
-            }
-        }
-    ;
-\end{tikzpicture}
+	\scalebox{.9}{
+		\begin{algorithm}[H]
+			\caption{left-rotate(x)}
+			\KwIn{A node $y$ of an AVL tree}
+			\KwOut{The new root after a left rotation}
+			$y\gets x.right$ \\
+			$x.right\gets y.left$ \\
+			$y.left\gets x$ \\
+			\tcp{Update height (only for AVL trees)}
+			$x.height\gets max(h(x.left), h(x.right)) + 1$ \\
+			$y.height\gets max(h(y.left), h(y.right)) + 1$ \\
+			\Return{y}
+		\end{algorithm}
+	}
 
 \end{frame}
 
 \begin{frame}[fragile]
+	\frametitle{2.6 Re-balance}
+	\begin{tikzpicture}
+		\node[fill=yellow,blur shadow={shadow xshift=-0.5ex},
+			text width=26em,anchor=south west,rounded corners]
+		{It is necessary if and only if the \alert{balance factor} is 2 or -2.};
+	\end{tikzpicture}
 
-    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-      level distance = 1.3cm}]
-    \node (lefttree) [bst] {12}
-        child {node [bst] {8}
-            child {node [bst](1n6) {6}
-                child {node [bst](1n4) {4}
-                    child {node [orangebst] {1}}
-                    child[edge from parent/.style={draw=none}] {node {}}
-                }
-                child[edge from parent/.style={draw=none}] {node {}}
-            }
-            child {node [bst] {11}
-            }
-        }
-        child {node [bst] {18}
-           child {node [bst] {17}}
-           child[edge from parent/.style={draw=none}] {node {}}
-        }
-    ;
-    \node[left, red] at (1n6.west) {$x$};
-    \node[left, red] at (1n4.west){$y$};
+	\textbf{Case 1 (left-left)}: If $bf(x) = 2$ and $key < x.left.key$, then we make a right-rotation on $x$.
 
-    \node [bst, right=of lefttree, xshift=5cm] {12}
-    child {node [bst] {8}
-        child {node [bst](2n4) {4}
-            child {node [orangebst] {1}
-            }
-            child {node [bst](2n6) {6}}
-        }
-        child {node [bst] {11}
-        }
-    }
-    child {node [bst] {18}
-       child {node [bst] {17}}
-       child[edge from parent/.style={draw=none}] {node {}}
-    }
-;
-\node[right, red] at (2n6.east) {$x$};
-\node[right, red] at (2n4.east) {$y$};
-    \end{tikzpicture}  
-\pause
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm}]
+		\node (lefttree) {}
+		child {node [bst] {x}
+				child {node [bst] {y}
+						child {node[red] {$\alpha$}}
+						child {node {$\beta$}}
+					}
+				child {node {$\gamma$}}
+			}
+		;
+		\draw [-stealth, line width=0.4mm, draw=blue](2.5,-2) -- (4.5,-2)node[midway,above,shape=rectangle,draw=none]{right rotate};
 
-\faIcon{lightbulb} Please prove that a right rotation can re-balance Case 1.
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Case 2}
-\textbf{Case 2 (right-right)}: If $bf(x) = -2$ and $key > x.right.key$, then we make left-rotation on $x$.
-
-\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-    font=\sffamily},
-  bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-  level distance = 1.3cm}]
-\node (lefttree) {}
-    child {node [bst] {x}
-        child {node {$\alpha$}}
-        child {node [bst] {y}
-            child {node {$\beta$}}
-            child {node [red] {$\gamma$}}
-        }
-    }
-;
-
-\draw [-stealth, line width=0.4mm, draw=blue](2.5,-2) -- (4.5,-2)node[midway,above,shape=rectangle,draw=none]{left rotate};
-
-\node [right=of lefttree, xshift=6cm] {}
-    child {node [bst] {y}
-        child {node [bst] {x}
-            child {node {$\alpha$}}
-            child {node {$\beta$}}
-        }
-        child {node [red] {$\gamma$}}
-    }
-;
-
-\end{tikzpicture}
-
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Case 3}
-\textbf{Case 3 (left-right)}: If $bf(x) = 2$ and $key > x.left.key$, then we make a left rotation on $x.left$, and then make a right rotation on $x$.
-    
-\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-    font=\sffamily},
-  bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-  level distance = 1.3cm}]
-\node (lefttree) {}
-    child {node [bst] {x}
-        child {node [bst] {y}
-            child {node {$\alpha$}}
-            child {node [bst] {z}
-                child {node {$\beta_1$}}
-                child {node {$\beta_2$}}
-            }
-        }
-        child {node {$\gamma$}}
-    }
-;
-
-\draw [-stealth, line width=0.4mm, draw=blue](1.5,-1) -- (3.5,-1)node[midway,above,shape=rectangle,draw=none]{left rotate};
-
-\node (midtree) [right=of lefttree, xshift=3.5cm] {}
-    child {node [bst] {x}
-        child {node [bst] {z}
-            child {node [bst] {y}
-                child {node {$\alpha$}}
-                child {node {$\beta_1$}}
-            }
-            child {node {$\beta_2$}}
-        }
-        child {node {$\gamma$}}
-    }
-;
-
-\draw [-stealth, line width=0.4mm, draw=blue](6.5,-1) -- (8.5,-1)node[midway,above,shape=rectangle,draw=none]{right rotate};
-
-\node (righttree) [right=of midtree, xshift=3.5cm] {}
-    child {node [bst] {z}
-        child {node [bst] {y}
-                child {node {$\alpha$}}
-                child {node {$\beta_1$}}
-            }
-        child {node [bst] {x}
-            child {node {$\beta_2$}}
-            child {node {$\gamma$}}
-        }
-    }
-;
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-      level distance = 1.3cm},]
-    \node (lefttree) [bst] {12}
-        child {node [bst] {8}
-            child {node [bst](1n6) {6}
-                child {node [bst](1n4) {4}
-                 child[edge from parent/.style={draw=none}] {node {}}
-                 child {node [orangebst] {5}}
-                }
-                child[edge from parent/.style={draw=none}] {node {}}
-            }
-            child {node [bst] {11}
-            }
-        }
-        child {node [bst] {18}
-           child {node [bst] {17}}
-           child[edge from parent/.style={draw=none}] {node {}}
-        }
-    ;
-    \node[left, red] at (1n6.west) {$x$};
-    \node[left, red] at (1n4.west){$y$};
-
-    \node [bst, right=of lefttree, xshift=5cm] {12}
-    child {node [bst] {8}
-        child {node [bst](2n6) {6}
-            child {node [orangebst] {5}
-              child {node [bst](2n4) {4}}
-              child[edge from parent/.style={draw=none}] {node {}}
-            }
-            child[edge from parent/.style={draw=none}] {node {}}
-        }
-        child {node [bst] {11}
-        }
-    }
-    child {node [bst] {18}
-       child {node [bst] {17}}
-       child[edge from parent/.style={draw=none}] {node {}}
-    }
-;
-\node[right, red] at (2n6.east) {$x$};
-\node[right, red] at (2n4.east) {$y$};
-    \end{tikzpicture}  
-    
-    \begin{tikzpicture}
-        \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
-        text width=26em,anchor=south west,rounded corners]
-        {After a left rotation, it becomes Case 1 (left-left).};
-    \end{tikzpicture}
+		\node [right=of lefttree, xshift=6cm] {}
+		child {node [bst] {y}
+				child {node [red] {$\alpha$}}
+				child {node [bst] {x}
+						child {node {$\beta$}}
+						child {node {$\gamma$}}
+					}
+			}
+		;
+	\end{tikzpicture}
 
 \end{frame}
 
 \begin{frame}[fragile]
 
-    \begin{tikzpicture}
-        \node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
-        text width=26em,anchor=south west,rounded corners]
-        {After a left rotation, it becomes Case 1 (left-left). 
-        
-        So we make a right rotation.};
-    \end{tikzpicture}
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm}]
+		\node (lefttree) [bst] {12}
+		child {node [bst] {8}
+				child {node [bst](1n6) {6}
+						child {node [bst](1n4) {4}
+								child {node [orangebst] {1}}
+								child[edge from parent/.style={draw=none}] {node {}}
+							}
+						child[edge from parent/.style={draw=none}] {node {}}
+					}
+				child {node [bst] {11}
+					}
+			}
+		child {node [bst] {18}
+				child {node [bst] {17}}
+				child[edge from parent/.style={draw=none}] {node {}}
+			}
+		;
+		\node[left, red] at (1n6.west) {$x$};
+		\node[left, red] at (1n4.west){$y$};
 
-    \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-      level distance = 1.3cm},]
+		\node [bst, right=of lefttree, xshift=5cm] {12}
+		child {node [bst] {8}
+				child {node [bst](2n4) {4}
+						child {node [orangebst] {1}
+							}
+						child {node [bst](2n6) {6}}
+					}
+				child {node [bst] {11}
+					}
+			}
+		child {node [bst] {18}
+				child {node [bst] {17}}
+				child[edge from parent/.style={draw=none}] {node {}}
+			}
+		;
+		\node[right, red] at (2n6.east) {$x$};
+		\node[right, red] at (2n4.east) {$y$};
+	\end{tikzpicture}
+	\pause
 
-    \node [bst](lefttree) {12}
-    child {node [bst] {8}
-        child {node [bst](1n6) {6}
-            child {node [orangebst](1n5) {5}
-              child {node [bst] {4}}
-              child[edge from parent/.style={draw=none}] {node {}}
-            }
-            child[edge from parent/.style={draw=none}] {node {}}
-        }
-        child {node [bst] {11}
-        }
-    }
-    child {node [bst] {18}
-       child {node [bst] {17}}
-       child[edge from parent/.style={draw=none}] {node {}}
-    }
-;
-\node[left, red] at (1n6.west) {$x$};
-\node[left, red] at (1n5.west) {$y$};
+	\faIcon{lightbulb} Please prove that a right rotation can re-balance Case 1.
+\end{frame}
 
-\node [bst, right=of lefttree, xshift=5cm] {12}
-    child {node [bst] {8}
-        child {node [orangebst](2n5) {5}
-            child {node [bst] {4}}
-            child {node [bst](2n6) {6}}
-        }
-        child {node [bst] {11}}
-    }
-    child {node [bst] {18}}
-;
+\begin{frame}[fragile]
+	\frametitle{Case 2}
+	\textbf{Case 2 (right-right)}: If $bf(x) = -2$ and $key > x.right.key$, then we make left-rotation on $x$.
 
-\node[right, red] at (2n6.east) {$x$};
-\node[right, red] at (2n5.east) {$y$};
-    \end{tikzpicture}  
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm}]
+		\node (lefttree) {}
+		child {node [bst] {x}
+				child {node {$\alpha$}}
+				child {node [bst] {y}
+						child {node {$\beta$}}
+						child {node [red] {$\gamma$}}
+					}
+			}
+		;
+
+		\draw [-stealth, line width=0.4mm, draw=blue](2.5,-2) -- (4.5,-2)node[midway,above,shape=rectangle,draw=none]{left rotate};
+
+		\node [right=of lefttree, xshift=6cm] {}
+		child {node [bst] {y}
+				child {node [bst] {x}
+						child {node {$\alpha$}}
+						child {node {$\beta$}}
+					}
+				child {node [red] {$\gamma$}}
+			}
+		;
+
+	\end{tikzpicture}
 
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Case 4}
-\textbf{Case 4 (right-left)}: If $bf(x) = -2$ and $key < x.right.key$, then we make a right rotation on $x.right$, and make a left rotation on $x$.
+	\frametitle{Case 3}
+	\textbf{Case 3 (left-right)}: If $bf(x) = 2$ and $key > x.left.key$, then we make a left rotation on $x.left$, and then make a right rotation on $x$.
 
-\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-    font=\sffamily},
-  bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-  level distance = 1.3cm}]
-\node (lefttree) {}
-    child {node [bst] {x}
-        child {node {$\alpha$}}
-        child {node [bst] {y}
-            child {node [bst] {z}
-                child {node {$\beta_1$}}
-                child {node {$\beta_2$}}
-            }
-            child {node {$\gamma$}}
-        }
-    }
-;
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm}]
+		\node (lefttree) {}
+		child {node [bst] {x}
+				child {node [bst] {y}
+						child {node {$\alpha$}}
+						child {node [bst] {z}
+								child {node {$\beta_1$}}
+								child {node {$\beta_2$}}
+							}
+					}
+				child {node {$\gamma$}}
+			}
+		;
 
-\draw [-stealth, line width=0.4mm, draw=blue](1.5,-1) -- (3.5,-1)node[midway,above,shape=rectangle,draw=none]{right rotate};
+		\draw [-stealth, line width=0.4mm, draw=blue](1.5,-1) -- (3.5,-1)node[midway,above,shape=rectangle,draw=none]{left rotate};
 
-\node [right=of lefttree, xshift=3.5cm] (midtree) {}
-    child {node [bst] {x}
-        child {node {$\alpha$}}
-        child {node [bst] {z}
-            child {node {$\beta_1$}
-            }
-            child {node [bst] {y}
-                child {node {$\beta_2$}}
-                child {node {$\gamma$}}
-            }
-        }
-    }
-;
+		\node (midtree) [right=of lefttree, xshift=3.5cm] {}
+		child {node [bst] {x}
+				child {node [bst] {z}
+						child {node [bst] {y}
+								child {node {$\alpha$}}
+								child {node {$\beta_1$}}
+							}
+						child {node {$\beta_2$}}
+					}
+				child {node {$\gamma$}}
+			}
+		;
 
-\draw [-stealth, line width=0.4mm, draw=blue](6.5,-1) -- (8.5,-1)node[midway,above,shape=rectangle,draw=none]{left rotate};
+		\draw [-stealth, line width=0.4mm, draw=blue](6.5,-1) -- (8.5,-1)node[midway,above,shape=rectangle,draw=none]{right rotate};
 
-\node [right=of midtree, xshift=4cm] {}
-   child {node [bst] {z}
-    child {node [bst] {x}
-        child {node {$\alpha$}}
-        child {node {$\beta_1$}}
-    }
-    child {node [bst] {y}
-     child {node {$\beta_2$}}
-     child {node {$\gamma$}}
-    }
-   }
-;
+		\node (righttree) [right=of midtree, xshift=3.5cm] {}
+		child {node [bst] {z}
+				child {node [bst] {y}
+						child {node {$\alpha$}}
+						child {node {$\beta_1$}}
+					}
+				child {node [bst] {x}
+						child {node {$\beta_2$}}
+						child {node {$\gamma$}}
+					}
+			}
+		;
+	\end{tikzpicture}
+\end{frame}
 
-\end{tikzpicture}
+\begin{frame}[fragile]
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm},]
+		\node (lefttree) [bst] {12}
+		child {node [bst] {8}
+				child {node [bst](1n6) {6}
+						child {node [bst](1n4) {4}
+								child[edge from parent/.style={draw=none}] {node {}}
+								child {node [orangebst] {5}}
+							}
+						child[edge from parent/.style={draw=none}] {node {}}
+					}
+				child {node [bst] {11}
+					}
+			}
+		child {node [bst] {18}
+				child {node [bst] {17}}
+				child[edge from parent/.style={draw=none}] {node {}}
+			}
+		;
+		\node[left, red] at (1n6.west) {$x$};
+		\node[left, red] at (1n4.west){$y$};
+
+		\node [bst, right=of lefttree, xshift=5cm] {12}
+		child {node [bst] {8}
+				child {node [bst](2n6) {6}
+						child {node [orangebst] {5}
+								child {node [bst](2n4) {4}}
+								child[edge from parent/.style={draw=none}] {node {}}
+							}
+						child[edge from parent/.style={draw=none}] {node {}}
+					}
+				child {node [bst] {11}
+					}
+			}
+		child {node [bst] {18}
+				child {node [bst] {17}}
+				child[edge from parent/.style={draw=none}] {node {}}
+			}
+		;
+		\node[right, red] at (2n6.east) {$x$};
+		\node[right, red] at (2n4.east) {$y$};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}
+		\node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
+			text width=26em,anchor=south west,rounded corners]
+		{After a left rotation, it becomes Case 1 (left-left).};
+	\end{tikzpicture}
 
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2.7 Complete \texttt{put()}}
 
-    \begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
+	\begin{tikzpicture}
+		\node[fill=blue!30,blur shadow={shadow xshift=-0.5ex},
+			text width=26em,anchor=south west,rounded corners]
+		{After a left rotation, it becomes Case 1 (left-left).
+
+			So we make a right rotation.};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm},]
+
+		\node [bst](lefttree) {12}
+		child {node [bst] {8}
+				child {node [bst](1n6) {6}
+						child {node [orangebst](1n5) {5}
+								child {node [bst] {4}}
+								child[edge from parent/.style={draw=none}] {node {}}
+							}
+						child[edge from parent/.style={draw=none}] {node {}}
+					}
+				child {node [bst] {11}
+					}
+			}
+		child {node [bst] {18}
+				child {node [bst] {17}}
+				child[edge from parent/.style={draw=none}] {node {}}
+			}
+		;
+		\node[left, red] at (1n6.west) {$x$};
+		\node[left, red] at (1n5.west) {$y$};
+
+		\node [bst, right=of lefttree, xshift=5cm] {12}
+		child {node [bst] {8}
+				child {node [orangebst](2n5) {5}
+						child {node [bst] {4}}
+						child {node [bst](2n6) {6}}
+					}
+				child {node [bst] {11}}
+			}
+		child {node [bst] {18}}
+		;
+
+		\node[right, red] at (2n6.east) {$x$};
+		\node[right, red] at (2n5.east) {$y$};
+	\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Case 4}
+	\textbf{Case 4 (right-left)}: If $bf(x) = -2$ and $key < x.right.key$, then we make a right rotation on $x.right$, and make a left rotation on $x$.
+
+	\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+					level distance = 1.3cm}]
+		\node (lefttree) {}
+		child {node [bst] {x}
+				child {node {$\alpha$}}
+				child {node [bst] {y}
+						child {node [bst] {z}
+								child {node {$\beta_1$}}
+								child {node {$\beta_2$}}
+							}
+						child {node {$\gamma$}}
+					}
+			}
+		;
+
+		\draw [-stealth, line width=0.4mm, draw=blue](1.5,-1) -- (3.5,-1)node[midway,above,shape=rectangle,draw=none]{right rotate};
+
+		\node [right=of lefttree, xshift=3.5cm] (midtree) {}
+		child {node [bst] {x}
+				child {node {$\alpha$}}
+				child {node [bst] {z}
+						child {node {$\beta_1$}
+							}
+						child {node [bst] {y}
+								child {node {$\beta_2$}}
+								child {node {$\gamma$}}
+							}
+					}
+			}
+		;
+
+		\draw [-stealth, line width=0.4mm, draw=blue](6.5,-1) -- (8.5,-1)node[midway,above,shape=rectangle,draw=none]{left rotate};
+
+		\node [right=of midtree, xshift=4cm] {}
+		child {node [bst] {z}
+				child {node [bst] {x}
+						child {node {$\alpha$}}
+						child {node {$\beta_1$}}
+					}
+				child {node [bst] {y}
+						child {node {$\beta_2$}}
+						child {node {$\gamma$}}
+					}
+			}
+		;
+
+	\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{2.7 Complete \texttt{put()}}
+
+	\begin{minted}[bgcolor=LightGray, baselinestretch=1]{python}
 def put(self, key):
     def _put(x: AVL.Node):
         # step 1: regular BST insert (TO DO)
@@ -905,8 +903,8 @@ def put(self, key):
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Step 1}
-    \begin{minted}[bgcolor=LightGray,]{python}
+	\frametitle{Step 1}
+	\begin{minted}[bgcolor=LightGray,]{python}
 # step 1: regular BST insert
 if x is None:
     return AVL.Node(key)
@@ -919,8 +917,8 @@ elif key > x.key:
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Step 4}
-\begin{minted}[bgcolor=LightGray]{python}
+	\frametitle{Step 4}
+	\begin{minted}[bgcolor=LightGray]{python}
 if bf > 1 and key < x.left.key:  # case 1
     return AVL._right_rotate(x)
 if bf < -1 and key > x.right.key:  # case 2
@@ -932,88 +930,88 @@ if bf < -1 and key < x.right.key:  # case 4
     x.right = AVL._right_rotate(x.right)
     return AVL._left_rotate(x)    
 \end{minted}
-    
+
 
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{2.8 \texttt{remove()} in AVL Trees}
+	\frametitle{2.8 \texttt{remove()} in AVL Trees}
 
-    \faIcon{lightbulb} What happens if we delete 11 from the AVL tree?
+	\faIcon{lightbulb} What happens if we delete 11 from the AVL tree?
 
-    \begin{columns}
-        \column{.4\textwidth}<1->
-        \begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
-            font=\sffamily},
-          bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
-          level distance = 1.5cm}, scale=.85]
-        \node [bst] {12}
-            child {node [bst] {8}
-                child {node [bst] {6}
-                    child {node [bst] {4}
-                    }
-                    child[edge from parent/.style={draw=none}] {node {}}
-                }
-                child {node [bst] {11}
-                }
-            }
-            child {node [bst] {18}
-               child {node [bst] {17}}
-               child[edge from parent/.style={draw=none}] {node {}}
-            }
-        ;
-        \end{tikzpicture}    
-        \column{.6\textwidth}<2-> 
-        \scalebox{.9}{
-            \begin{algorithm}[H]
-                \caption{remove(x, key)}
-                \tcp{step 1: regular BST delete (TO DO)}
-                \tcp{step 2: update the height}
-                $x.height\gets max(h(x.left), h(x.right)) + 1$ \\
-                \tcp{step 3: get the balance factor}
-                $bf\gets bf(x)$ \\
-                \tcp{step 4: re-balance (TO DO)}
-                \Return{x}
-            \end{algorithm}
-        }
-    \end{columns}
-    
+	\begin{columns}
+		\column{.4\textwidth}<1->
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=2em}, orangebst/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=orange, fill=orange, text width=1.5em}, ->,>=stealth',level/.style={sibling distance = 3.8cm/#1,
+						level distance = 1.5cm}, scale=.85]
+			\node [bst] {12}
+			child {node [bst] {8}
+					child {node [bst] {6}
+							child {node [bst] {4}
+								}
+							child[edge from parent/.style={draw=none}] {node {}}
+						}
+					child {node [bst] {11}
+						}
+				}
+			child {node [bst] {18}
+					child {node [bst] {17}}
+					child[edge from parent/.style={draw=none}] {node {}}
+				}
+			;
+		\end{tikzpicture}
+		\column{.6\textwidth}<2->
+		\scalebox{.9}{
+			\begin{algorithm}[H]
+				\caption{remove(x, key)}
+				\tcp{step 1: regular BST delete (TO DO)}
+				\tcp{step 2: update the height}
+				$x.height\gets max(h(x.left), h(x.right)) + 1$ \\
+				\tcp{step 3: get the balance factor}
+				$bf\gets bf(x)$ \\
+				\tcp{step 4: re-balance (TO DO)}
+				\Return{x}
+			\end{algorithm}
+		}
+	\end{columns}
+
 \end{frame}
 
 \begin{frame}
-    \frametitle{Review \texttt{remove()} on a BST}
-\scalebox{.7}{
-    \begin{algorithm}[H]
-        \caption{remove(x, key)}
-        \begin{multicols}{2}
-            \If{x == null}{
-                \Return{null}
-            }
-            \uIf{key $<$ x.key}{
-                $x.left\gets remove(x.left, key)$
-            }\uElseIf{key $>$ x.key}{
-                $x.right\gets remove(x.right, key)$
-            }\Else{
-                \If{x.right == null}{
-                    \Return{x.left}
-                }
-                \If{x.left == null}{
-                    \Return{x.right}
-                }
-                $t\gets x$ \\
-                $x\gets min(t.right)$ \\
-                $x.right\gets removeMin(t.right)$ \\
-                $x.left\gets t.left$
-            }
-            \Return{x}
-        \end{multicols}
-        \end{algorithm}
-}
+	\frametitle{Review \texttt{remove()} on a BST}
+	\scalebox{.7}{
+		\begin{algorithm}[H]
+			\caption{remove(x, key)}
+			\begin{multicols}{2}
+				\If{x == null}{
+					\Return{null}
+				}
+				\uIf{key $<$ x.key}{
+					$x.left\gets remove(x.left, key)$
+				}\uElseIf{key $>$ x.key}{
+					$x.right\gets remove(x.right, key)$
+				}\Else{
+					\If{x.right == null}{
+						\Return{x.left}
+					}
+					\If{x.left == null}{
+						\Return{x.right}
+					}
+					$t\gets x$ \\
+					$x\gets min(t.right)$ \\
+					$x.right\gets removeMin(t.right)$ \\
+					$x.left\gets t.left$
+				}
+				\Return{x}
+			\end{multicols}
+		\end{algorithm}
+	}
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Step 4}
-    \begin{minted}[bgcolor=LightGray]{python}
+	\frametitle{Step 4}
+	\begin{minted}[bgcolor=LightGray]{python}
 if bf > 1 and AVL._get_balance_factor(x.left) >= 0:
     return AVL._right_rotate(x) # case 1: left-left
 if bf < -1 and AVL._get_balance_factor(x.right) <= 0:
@@ -1030,291 +1028,291 @@ if bf < -1 and AVL._get_balance_factor(x.right) > 0:
 
 
 \begin{frame}
-  
-    \section{\textcolor{darkmidnightblue}{Conclusion}} 
-  
-    \begin{enumerate}
-      \item AVL Trees (\href{https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/tree/avl.py}{avl.py}, \href{https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/AVL.java}{AVL.java})
-      \item Right-rotate and right-rotate
-    \end{enumerate}
-  \end{frame}
 
-\begin{frame}
-    \frametitle{Homework 5}
-1. Please complete the proof of the lemma (5 marks).
-  \begin{lemma}
-    An AVL tree with $n$ nodes has height $O(\log{n})$. 
-    \end{lemma} 
-    \begin{proof}
-    Suppose the height of node $x$ is denoted by $h(x)$. We start by showing that \alert{the subtree rooted at any node x contains at least $\lfloor 1.5^{h(x)} \rfloor$ nodes}. If the height of $x$ is -1, then $x$ must be empty (i.e., a \texttt{null} node), and the subtree rooted at $x$ indeed contains at least $\lfloor 1.5^{-1} \rfloor = 0$ node.
-    \end{proof}
-    \end{frame}
-    
-    \begin{frame}
-        \begin{proof}[Proof. (cont.)]
-            It is clear it also holds true if the height of $x$ is 0. For the inductive step, consider a node $x$ that has a positive height. Then node $x$ has two children (maybe \texttt{null}). One of its child has a height of $h(x)-1$, and another has a height of at least $h(x) - 2$. 
-            
-            % We can apply the inductive hypothesis to include the subtrees rooted at them have at least $\lfloor 1.5^{h(x) - 1} \lfloor$ and $\lfloor 1.5^{h(x) - 2} \rfloor$ nodes, respectively. Thus, the subtree rooted at node $x$ has at least $\lfloor 1.5^{h(x) - 1} + 1.5^{h(x) - 2} + 1 = \frac{10}{9} \times 1.5^{h(x)} + 1\rfloor$ nodes, which proves the claim.
-            \end{proof}
-    \end{frame}
+	\section{\textcolor{darkmidnightblue}{Conclusion}}
 
-\begin{frame}
-    \frametitle{Homework 5}
-2. Given a binary tree with a \texttt{root}, please develop an algorithm to determine whether it is a valid AVL tree. Suppose each node in the tree contains \texttt{key}, \texttt{left}, \texttt{right}, and \texttt{height}. (10 marks)
-
-(\small{Hint: you can check first whether it is a BST, and then check the AVL property.})
-
+	\begin{enumerate}
+		\item AVL Trees (\href{https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/tree/avl.py}{avl.py}, \href{https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/java/tree/src/main/java/org/swufe/AVL.java}{AVL.java})
+		\item Right-rotate and right-rotate
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}
+	\frametitle{Homework 5}
+	1. Please complete the proof of the lemma (5 marks).
+	\begin{lemma}
+		An AVL tree with $n$ nodes has height $O(\log{n})$.
+	\end{lemma}
+	\begin{proof}
+		Suppose the height of node $x$ is denoted by $h(x)$. We start by showing that \alert{the subtree rooted at any node x contains at least $\lfloor 1.5^{h(x)} \rfloor$ nodes}. If the height of $x$ is -1, then $x$ must be empty (i.e., a \texttt{null} node), and the subtree rooted at $x$ indeed contains at least $\lfloor 1.5^{-1} \rfloor = 0$ node.
+	\end{proof}
+\end{frame}
 
-    \section{\textcolor{darkmidnightblue}{3. Red-black Tree}} 
-    Red-black tree is a kind of self-balancing binary search tree with one extra bit of storage per node: its color, which can be either \textcolor{red}{RED} or BLACK. 
+\begin{frame}
+	\begin{proof}[Proof. (cont.)]
+		It is clear it also holds true if the height of $x$ is 0. For the inductive step, consider a node $x$ that has a positive height. Then node $x$ has two children (maybe \texttt{null}). One of its child has a height of $h(x)-1$, and another has a height of at least $h(x) - 2$.
+
+		% We can apply the inductive hypothesis to include the subtrees rooted at them have at least $\lfloor 1.5^{h(x) - 1} \lfloor$ and $\lfloor 1.5^{h(x) - 2} \rfloor$ nodes, respectively. Thus, the subtree rooted at node $x$ has at least $\lfloor 1.5^{h(x) - 1} + 1.5^{h(x) - 2} + 1 = \frac{10}{9} \times 1.5^{h(x)} + 1\rfloor$ nodes, which proves the claim.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Homework 5}
+	2. Given a binary tree with a \texttt{root}, please develop an algorithm to determine whether it is a valid AVL tree. Suppose each node in the tree contains \texttt{key}, \texttt{left}, \texttt{right}, and \texttt{height}. (10 marks)
+
+	(\small{Hint: you can check first whether it is a BST, and then check the AVL property.})
+
+\end{frame}
+
+\begin{frame}
+
+	\section{\textcolor{darkmidnightblue}{3. Red-black Tree}}
+	Red-black tree is a kind of self-balancing binary search tree with one extra bit of storage per node: its color, which can be either \textcolor{red}{RED} or BLACK.
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{3.1 Red-black Tree Properties}
-\begin{enumerate}
-    \item Every node is either red or black.
-    \item The root is black.
-    \item Every leaf (\texttt{null}) is black.
-    \item If a node is red, then both its children are black.
-    \item For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
-\end{enumerate}
+	\frametitle{3.1 Red-black Tree Properties}
+	\begin{enumerate}
+		\item Every node is either red or black.
+		\item The root is black.
+		\item Every leaf (\texttt{null}) is black.
+		\item If a node is red, then both its children are black.
+		\item For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
+	\end{enumerate}
 
 \end{frame}
 
 \begin{frame}[fragile]
-    
-    \begin{tikzpicture}[
-        treenode/.style = {align=center, inner sep=1pt, text centered,
-    font=\sffamily},
-  arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-  arn_r/.style = {treenode, circle, red, draw=red, 
-    text width=1.5em, very thick},% arbre rouge noir, noeud rouge
-  arn_x/.style = {treenode, rectangle, draw=black,
-    minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
-    ,
-        ->,>=stealth',level/.style={sibling distance = 7cm/#1,
-        level distance = 1.5cm}, level 3/.style={sibling distance = 2cm}, level 4/.style={sibling distance = 0.8cm}] 
-      \node [arn_b] {33}
-          child{ node [arn_r] {15} 
-                  child{ node [arn_b] {10} 
-                      child{ node [arn_r] {5}
-                               child{ node [arn_b] {null}}
-                               child{ node [arn_b] {null}}} 
-                      child{ node [arn_b] {null} }
-                  }
-                  child{ node [arn_b] {20}
-                                  child{ node [arn_r] {18}
-                                  child{ node [arn_b] {null}}
-                                  child{ node [arn_b] {null}}}
-                                  child{ node [arn_b] {null}}
-                  }                            
-          }
-          child{ node [arn_r] {47}
-                  child{ node [arn_b] {38} 
-                                  child{ node [arn_r] {36}
-                                  child{ node [arn_b] {null}}
-                                  child{ node [arn_b] {null}}}
-                                  child{ node [arn_r] {39}
-                                  child{ node [arn_b] {null}}
-                                  child{ node [arn_b] {null}}}
-                  }
-                  child{ node [arn_b] {51}
-                                  child{ node [arn_r] {49}
-                                  child{ node [arn_b] {null}}
-                                  child{ node [arn_b] {null}}}
-                                  child{ node [arn_b] {null}}
-                  }
-              }; 
-      \end{tikzpicture}
-      
+
+	\begin{tikzpicture}[
+			treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+					fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+			arn_r/.style = {treenode, circle, red, draw=red,
+					text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+			arn_x/.style = {treenode, rectangle, draw=black,
+					minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
+			,
+			->,>=stealth',level/.style={sibling distance = 7cm/#1,
+					level distance = 1.5cm}, level 3/.style={sibling distance = 2cm}, level 4/.style={sibling distance = 0.8cm}]
+		\node [arn_b] {33}
+		child{ node [arn_r] {15}
+				child{ node [arn_b] {10}
+						child{ node [arn_r] {5}
+								child{ node [arn_b] {null}}
+								child{ node [arn_b] {null}}}
+						child{ node [arn_b] {null} }
+					}
+				child{ node [arn_b] {20}
+						child{ node [arn_r] {18}
+								child{ node [arn_b] {null}}
+								child{ node [arn_b] {null}}}
+						child{ node [arn_b] {null}}
+					}
+			}
+		child{ node [arn_r] {47}
+				child{ node [arn_b] {38}
+						child{ node [arn_r] {36}
+								child{ node [arn_b] {null}}
+								child{ node [arn_b] {null}}}
+						child{ node [arn_r] {39}
+								child{ node [arn_b] {null}}
+								child{ node [arn_b] {null}}}
+					}
+				child{ node [arn_b] {51}
+						child{ node [arn_r] {49}
+								child{ node [arn_b] {null}}
+								child{ node [arn_b] {null}}}
+						child{ node [arn_b] {null}}
+					}
+			};
+	\end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}[fragile]
-    \begin{tikzpicture}[
-        treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-      arn_r/.style = {treenode, circle, red, draw=red, 
-        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
-        ,
-        level/.style={sibling distance = 6cm/#1,
-        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
-        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
-      \node [arn_b] {33}
-          child{ node [arn_r] {15} 
-                  child{ node (n10) [arn_b] {10} 
-                      child{ node [arn_r] {5}
-                               } 
-                     child[noline] {node {}}
-                  }
-                  child{ node (n20) [arn_b] {20}
-                                  child{ node [arn_r] {18}
-                                  }
-                                  child [noline] {node {}}
-                  }                            
-          }
-          child{ node [arn_r] {47}
-                  child{ node [arn_b] {38} 
-                                  child{ node [arn_r] {36}}
-                                  child{ node [arn_r] {39}
-                                  }
-                  }
-                  child{ node (n51) [arn_b] {51}
-                                  child{ node [arn_r] {49}}
-                                  child [noline]{node {}}
-                  }
-              }; 
-      \end{tikzpicture}    
-      \begin{exampleblock}{black-height of node x}
-       The number of black nodes on any simple path from, but not including, a node x down to a leaf.        
-      \end{exampleblock}
+	\begin{tikzpicture}[
+			treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+					fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+			arn_r/.style = {treenode, circle, red, draw=red,
+					text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+			,
+			level/.style={sibling distance = 6cm/#1,
+					level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+			noline/.style={edge from parent/.style={black, line width=0.2mm}}]
+		\node [arn_b] {33}
+		child{ node [arn_r] {15}
+				child{ node (n10) [arn_b] {10}
+						child{ node [arn_r] {5}
+							}
+						child[noline] {node {}}
+					}
+				child{ node (n20) [arn_b] {20}
+						child{ node [arn_r] {18}
+							}
+						child [noline] {node {}}
+					}
+			}
+		child{ node [arn_r] {47}
+				child{ node [arn_b] {38}
+						child{ node [arn_r] {36}}
+						child{ node [arn_r] {39}
+							}
+					}
+				child{ node (n51) [arn_b] {51}
+						child{ node [arn_r] {49}}
+						child [noline]{node {}}
+					}
+			};
+	\end{tikzpicture}
+	\begin{exampleblock}{black-height of node x}
+		The number of black nodes on any simple path from, but not including, a node x down to a leaf.
+	\end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{3.2 Exercise}
-Which of the followings are valid red-black trees?
+	\frametitle{3.2 Exercise}
+	Which of the followings are valid red-black trees?
 
-\begin{columns}
-    \column{.5\textwidth}<1->
-    \begin{tikzpicture}[
-        treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-      arn_r/.style = {treenode, circle, red, draw=red, 
-        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
-        ,
-        level/.style={sibling distance = 4cm/#1,
-        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
-        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
-        \node (root) [arn_b] {30}
-         child {node [arn_r] {20}
-            child {node [arn_b] {25}}
-            child [noline] {node {}}
-         }
-         child {node [arn_r] {40}}
-        ;
-        \node [below=of root, yshift=-2cm]{(a)};
-    \end{tikzpicture}
-    \column{.5\textwidth}<2->
-    \begin{tikzpicture}[
-        treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-      arn_r/.style = {treenode, circle, red, draw=red, 
-        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
-        ,
-        level/.style={sibling distance = 4cm/#1,
-        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
-        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
-        \node (root) [arn_b] {30}
-         child {node [arn_r] {20}
-            child {node [arn_r] {10}}
-            child [noline] {node {}}
-         }
-         child {node [arn_r] {40}}
-        ;
-        \node [below=of root, yshift=-2cm]{(b)};
-    \end{tikzpicture}
+	\begin{columns}
+		\column{.5\textwidth}<1->
+		\begin{tikzpicture}[
+				treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+						fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+				arn_r/.style = {treenode, circle, red, draw=red,
+						text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+				,
+				level/.style={sibling distance = 4cm/#1,
+						level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+				noline/.style={edge from parent/.style={black, line width=0.2mm}}]
+			\node (root) [arn_b] {30}
+			child {node [arn_r] {20}
+					child {node [arn_b] {25}}
+					child [noline] {node {}}
+				}
+			child {node [arn_r] {40}}
+			;
+			\node [below=of root, yshift=-2cm]{(a)};
+		\end{tikzpicture}
+		\column{.5\textwidth}<2->
+		\begin{tikzpicture}[
+				treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+						fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+				arn_r/.style = {treenode, circle, red, draw=red,
+						text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+				,
+				level/.style={sibling distance = 4cm/#1,
+						level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+				noline/.style={edge from parent/.style={black, line width=0.2mm}}]
+			\node (root) [arn_b] {30}
+			child {node [arn_r] {20}
+					child {node [arn_r] {10}}
+					child [noline] {node {}}
+				}
+			child {node [arn_r] {40}}
+			;
+			\node [below=of root, yshift=-2cm]{(b)};
+		\end{tikzpicture}
 
-\end{columns}
+	\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{3.2 Exercise}
-Which of the followings are valid red-black trees?
-\begin{columns}
-    \column{.5\textwidth}<1->
-    \begin{tikzpicture}[
-        treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-      arn_r/.style = {treenode, circle, red, draw=red, 
-        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
-        ,
-        level/.style={sibling distance = 4cm/#1,
-        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
-        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
-        \node (root) [arn_b] {20}
-         child {node [arn_b] {10}
-            child [noline] {node {}}
-            child {node [arn_r] {12}
-             child [noline] {node {}}
-             child {node [arn_r]{15}}
-            }
-         }
-         child {node [arn_b] {30}
-           child {node [arn_r] {25}}
-           child [noline] {node {}}
-         }
-        ;
-        \node [below=of root, yshift=-3.5cm]{(c)};
-    \end{tikzpicture}
-    \column{.5\textwidth}<2->
-    \begin{tikzpicture}[
-        treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-      arn_r/.style = {treenode, circle, red, draw=red, 
-        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
-        ,
-        level/.style={sibling distance = 4cm/#1,
-        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
-        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
-        \node (root) [arn_b] {20}
-         child {node [arn_b] {12}
-            child {node [arn_r] {10}}
-            child {node [arn_r] {15}}
-         }
-         child {node [arn_b] {30}
-           child {node [arn_r] {25}}
-           child [noline] {node {}}
-         }
-        ;
-        \node [below=of root, yshift=-3.5cm]{(d)};
-    \end{tikzpicture}
-\end{columns}
+	\frametitle{3.2 Exercise}
+	Which of the followings are valid red-black trees?
+	\begin{columns}
+		\column{.5\textwidth}<1->
+		\begin{tikzpicture}[
+				treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+						fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+				arn_r/.style = {treenode, circle, red, draw=red,
+						text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+				,
+				level/.style={sibling distance = 4cm/#1,
+						level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+				noline/.style={edge from parent/.style={black, line width=0.2mm}}]
+			\node (root) [arn_b] {20}
+			child {node [arn_b] {10}
+					child [noline] {node {}}
+					child {node [arn_r] {12}
+							child [noline] {node {}}
+							child {node [arn_r]{15}}
+						}
+				}
+			child {node [arn_b] {30}
+					child {node [arn_r] {25}}
+					child [noline] {node {}}
+				}
+			;
+			\node [below=of root, yshift=-3.5cm]{(c)};
+		\end{tikzpicture}
+		\column{.5\textwidth}<2->
+		\begin{tikzpicture}[
+				treenode/.style = {align=center, inner sep=1pt, text centered,
+						font=\sffamily},
+				arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+						fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+				arn_r/.style = {treenode, circle, red, draw=red,
+						text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+				,
+				level/.style={sibling distance = 4cm/#1,
+						level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+				noline/.style={edge from parent/.style={black, line width=0.2mm}}]
+			\node (root) [arn_b] {20}
+			child {node [arn_b] {12}
+					child {node [arn_r] {10}}
+					child {node [arn_r] {15}}
+				}
+			child {node [arn_b] {30}
+					child {node [arn_r] {25}}
+					child [noline] {node {}}
+				}
+			;
+			\node [below=of root, yshift=-3.5cm]{(d)};
+		\end{tikzpicture}
+	\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{3.2 Exercise}
-    Which of the followings are valid red-black trees?
+	\frametitle{3.2 Exercise}
+	Which of the followings are valid red-black trees?
 
-    \begin{tikzpicture}[
-        treenode/.style = {align=center, inner sep=1pt, text centered,
-        font=\sffamily},
-      arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
-        fill=black, text width=1.5em},% arbre rouge noir, noeud noir
-      arn_r/.style = {treenode, circle, red, draw=red, 
-        text width=1.5em, very thick}% arbre rouge noir, noeud rouge
-        ,
-        level/.style={sibling distance = 4cm/#1,
-        level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
-        noline/.style={edge from parent/.style={black, line width=0.2mm}}] 
-        \node (root) [arn_b] {20}
-         child {node [arn_b] {10}
-         }
-         child {node [arn_r] {50}
-           child {node [arn_b] {40}
-            child {node [arn_r] {30}}
-            child [noline] {node {}}
-           }
-           child {node [arn_b] {90}
-            child {node [arn_r] {60}}
-            child [noline] {node {}}
-           }
-         }
-        ;
-        \node [below=of root, yshift=-3.5cm]{(e)};
-    \end{tikzpicture}
+	\begin{tikzpicture}[
+			treenode/.style = {align=center, inner sep=1pt, text centered,
+					font=\sffamily},
+			arn_b/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+					fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+			arn_r/.style = {treenode, circle, red, draw=red,
+					text width=1.5em, very thick}% arbre rouge noir, noeud rouge
+			,
+			level/.style={sibling distance = 4cm/#1,
+					level distance = 1.5cm}, level 3/.style={sibling distance = 1cm},
+			noline/.style={edge from parent/.style={black, line width=0.2mm}}]
+		\node (root) [arn_b] {20}
+		child {node [arn_b] {10}
+			}
+		child {node [arn_r] {50}
+				child {node [arn_b] {40}
+						child {node [arn_r] {30}}
+						child [noline] {node {}}
+					}
+				child {node [arn_b] {90}
+						child {node [arn_r] {60}}
+						child [noline] {node {}}
+					}
+			}
+		;
+		\node [below=of root, yshift=-3.5cm]{(e)};
+	\end{tikzpicture}
 
 \end{frame}
 \end{document}
