@@ -1,3 +1,7 @@
+class NoElementError(Exception):
+    pass
+
+
 class BST2:
     """A binary search tree"""
 
@@ -46,6 +50,46 @@ class BST2:
 
         return _search(self.root)
 
+    @staticmethod
+    def _remove_min(node):
+        if node.left is None:
+            return node.right
+        node.left = BST2._remove_min(node.left)
+        return node
+
+    def remove_min(self):
+        if self.root is None:
+            raise NoElementError
+        self.root = BST2._remove_min(self.root)
+
+    @staticmethod
+    def _min(node):
+        if node is None or node.left is None:
+            return node
+        return BST2._min(node.left)
+
+    def min(self):
+        return BST2._min(self.root)
+
+    def remove(self, key):
+        def _remove(x):
+            if x is None:
+                return None
+            if key < x.key:
+                x.left = _remove(x.left)
+            elif key > x.key:
+                x.right = _remove(x.right)
+            else:
+                if x.right is None:
+                    return x.left
+                if x.left is None:
+                    return x.right
+                x.key = BST2._min(x.right).key
+                x.right = BST2._remove_min(x.right)
+            return x
+
+        self.root = _remove(self.root)
+
     def in_order_print(self):
         def _in_order_rec(node):
             if node is not None:
@@ -62,4 +106,7 @@ if __name__ == "__main__":
     bst.insert(2)
     bst.insert(6)
     bst.insert(10)
+    bst.insert(1)
+    bst.insert(3)
+    bst.remove(4)
     bst.in_order_print()
