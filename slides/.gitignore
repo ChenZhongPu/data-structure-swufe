@@ -1,6 +1,7 @@
 *.pdf
 !/week0/*.pdf
 !/week11/*.pdf
+!/week12/*.pdf
 _minted-*/
 ## Core latex/pdflatex auxiliary files:
 *.aux
