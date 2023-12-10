@@ -502,7 +502,10 @@ class Search:
 \end{frame}
 
 \begin{frame}[fragile]
-
+	\begin{enumerate}
+		\item To visit a vertex, mark it as visited.
+		\item Visit (recursively) all the unvisited vertices adjacent to it.
+	\end{enumerate}
 	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
 class Search:
     def __init__(self, g: Graph, s):
@@ -626,6 +629,165 @@ class Paths:
 		\item The paths discovered by the algorithm are the shortest paths.
 		\item The paths discovered by the algorithm are the longest paths.
 		\item The paths discoverer by the algorithm depend on the representations of the graph.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{2.3 Breadth-first search (BFS)}
+	\begin{block}{BFS}
+		It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level.
+	\end{block}
+
+	\begin{center}
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered, font=\sffamily}, bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=1.5em},level/.style={sibling distance = 2.4cm/#1,
+						level distance = 1.5cm}, scale=.9, ]
+			\node [bst] {0}
+			child {node [bst] {2}
+					child {node [bst] {3}
+						}
+					child {node [bst] {4}
+						}
+				}
+			child {node [bst] {1}}
+			child {node [bst] {5}}
+			;
+		\end{tikzpicture}
+		As for a tree, it is also known as \alert{level-order} traversal.
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{tikzpicture}
+			\begin{scope}[every node/.style={circle,thick,draw}]
+				\node[red] (A) at (0,3) {0};
+				\node (B) at (1.5,1.5) {1};
+				\node (C) at (4,2.8) {2};
+				\node (D) at (3,-.5) {3};
+				\node (E) at (5,-2) {4};
+				\node (F) at (0,-1.8) {5} ;
+			\end{scope}
+
+			\begin{scope}[>={Stealth[black]},
+				every node/.style={fill=white,circle},
+				every edge/.style={draw}]
+				\path[line width=1mm]  (A) edge  (B);
+				\path[line width=1mm] (A) edge  (C);
+				\path (D) edge  (E);
+				\path [line width=1mm] (A) edge  (F);
+				\path   (D) edge  (F);
+				\path (C) edge (B);
+				\path [line width=1mm] (C) edge (D);
+				\path [line width=1mm](C) edge (E);
+			\end{scope}
+		\end{tikzpicture}
+		\column{0.5\textwidth}
+		\begin{tikzpicture}[treenode/.style = {align=center, inner sep=1pt, text centered, font=\sffamily}, bst/.style = {treenode, circle, black, font=\sffamily\bfseries, draw=black, text width=1.8em},level/.style={sibling distance = 2.4cm/#1,
+						level distance = 1.5cm}, scale=.95, ]
+			\node [bst] {0}
+			child {node [bst] {2}
+					child {node [bst] {3}
+						}
+					child {node [bst] {4}
+						}
+				}
+			child {node [bst] {1}}
+			child {node [bst] {5}}
+			;
+		\end{tikzpicture}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
+def bfs(self, graph: Graph, s):
+    q = queue()
+    q.enqueue(s)
+    self._marked[s] = True
+    while queue:
+        v = q.dequeue()
+        for w in graph.adj(v):
+            if not self._marked[w]:
+                self._marked[w] = True
+                self._edge_to[w] = v
+                q.enqueue(w)
+  \end{minted}
+	How about the time complexity of BFS?
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Proposition}
+		For any vertex $v$ reachable from $s$, the BFS algorithm computes a path from $s$ to $v$ with the fewest number of edges (\alert{the shortest path}).
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Exercise}
+	Consider a maze with a starting point and an endpoint represented by a 2D array containing 0s and 1s, where 0 denotes a pathway and 1 denotes a wall. Design an algorithm using Breadth-First Search (BFS) to determine whether there exists a path from the starting point to the endpoint.
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+	\begin{minted}[bgcolor=LightGray, fontsize=\small]{python}
+[
+  [0, 1, 0, 0, 0],
+  [0, 1, 0, 1, 0],
+  [0, 0, 0, 1, 0],
+  [1, 1, 1, 1, 0],
+  [0, 0, 0, 0, 0]
+]
+  \end{minted}
+
+	The starting point is at the top-left corner (0, 0), and the endpoint is at the bottom-right corner (4, 4).
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Application: Connected components}
+	\begin{block}{Definition}
+		A graph is \alert{connected} if there is a path from every vertex to every other in the graph. A graph that is \emph{not connected} consists of a set of \alert{connected components}, which are maximal connected subgraphs.
+	\end{block}
+
+	\begin{tikzpicture}
+		\begin{scope}[every node/.style={circle,thick,draw}]
+			\node (A) at (0,3.3) {0};
+			\node (B) at (1,2.3) {1};
+			\node (C) at (2.5,2.5) {2};
+			\node (D) at (1.3,1.4) {3};
+			\node (E) at (2.5,.8) {4};
+			\node (F) at (0, .8) {5} ;
+			\node (G) at (5, 3) {6} ;
+			\node (H) at (7, 3) {7};
+			\node (I) at (8.5, 3) {8};
+		\end{scope}
+
+		\begin{scope}[>={Stealth[black]},
+			every node/.style={fill=white,circle},
+			every edge/.style={draw, ultra thick}]
+			\path  (A) edge  (B);
+			\path  (A) edge  (C);
+			\path  (E) edge  (D);
+			\path  (A) edge  (F);
+			\path  (F) edge  (E);
+			\path  (F) edge  (D);
+			\path  (A) edge  (G);
+			\path  (G) edge  (E);
+			\path (H) edge (I);
+		\end{scope}
+	\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+
+	\section{\textcolor{darkmidnightblue}{Conclusion}}
+	\begin{enumerate}
+		\item Graph
+		\item DFS
+		\item BFS
 	\end{enumerate}
 \end{frame}
 \end{document}
