@@ -1,7 +1,9 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/", "destination": "/index/index.html" },
+    { "source": "/(.*)", "destination": "/$1/index.html" }
   ],
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "builds": [
+    { "src": "build-slides.js", "use": "@vercel/node" }
+  ]
 }
