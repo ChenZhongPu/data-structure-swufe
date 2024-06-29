@@ -1,23 +1,35 @@
-# Slidev
-
-Hello, World!
-
+---
+# You can also start simply with 'default'
+theme: dracula
+title: Data Structures-Week0
+info: |
+  ## Slides for Data Structure, SWUFE 
+  Source code can be found at [github](https://github.com/ChenZhongPu/data-structure-swufe)
+highlighter: shiki
+drawings:
+  persist: false
+transition: fade-out
+mdc: true
 ---
 
-# Page 2
+# Data Structures
 
-Directly use code blocks for highlighting
+## Introduction
 
-```ts
-console.log('Hello, World!')
-```
+CHEN Zhongpu, Fall 2024
 
----
-
-# Page 3
-
-You can directly use Windi CSS and Vue components to style and enrich your slides.
-
-<div class="p-3">
-  <Tweet id="20" />
+<div class="text-10px">
+School of Computing and Artificial Intelligence, SWUFE
 </div>
+
+<div class="absolute top-2 right-2 h-50px">
+    <img src="/swufefull.svg" class="h-full" alt="swufe logo"/>
+</div>
+
+---
+
+# About Me
+
+- 👨 CHEN Zhongpu （陈中普）
+- 🏫 Gezhi Building, Room 310
+-

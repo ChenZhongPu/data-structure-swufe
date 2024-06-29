@@ -11,4 +11,4 @@ The code can be found at <a href="https://github.com/ChenZhongPu/data-structure-
 
 # Table of Contents
 
-- [week0](/week0)
+- [week0](https://slides-ds.zhongpu.info/week0)
