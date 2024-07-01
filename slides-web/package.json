@@ -12,6 +12,11 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "slidev-theme-dracula": "^0.2.0",
-    "vue": "^3.4.30"
+    "vue": "^3.4.30",
+    "@iconify-json/flat-color-icons": "latest",
+    "@iconify-json/fa-solid": "latest",
+    "@iconify-json/logos": "latest",
+    "pseudocode": "latest",
+    "playwright-chromium": "latest"
   }
 }
