@@ -4,19 +4,17 @@
   "private": true,
   "scripts": {
     "build": "node build-slides.js",
-    "dev": "slidev --open",
+    "dev": "slidev --open index.md",
     "export": "slidev export"
   },
   "dependencies": {
+    "@iconify-json/fa-solid": "latest",
+    "@iconify-json/flat-color-icons": "latest",
+    "@iconify-json/logos": "latest",
     "@slidev/cli": "^0.49.12",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "slidev-theme-dracula": "^0.2.0",
-    "vue": "^3.4.30",
-    "@iconify-json/flat-color-icons": "latest",
-    "@iconify-json/fa-solid": "latest",
-    "@iconify-json/logos": "latest",
-    "pseudocode": "latest",
-    "playwright-chromium": "latest"
+    "vue": "^3.4.30"
   }
 }
