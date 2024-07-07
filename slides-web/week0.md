@@ -192,7 +192,6 @@ number.insert(0, 42)
 
 <div class="flex">
   <div>
-
 For example, say `List` is an ADT which stores a list of elements, and supports `indexOf(v)` operation.
 
 And those operations can be described using [algorithms](https://en.wikipedia.org/wiki/Algorithm).
@@ -219,34 +218,105 @@ graph TD
 
 <v-click>
 
-## How to Describe Algorithms? <fa-solid-file-code class="text-blue" />
+## How to Describe Algorithms? <arcticons-code-editor class="text-blue" />
 
 - Plain English
 - Flow chart
 - Source code (C, C++, Java, Python, ...)
 - Pseudo code
 
-</v-click>
-
 <p v-after class="absolute bottom-8 left-70 text-red">/suː.doʊ/ not genuine;<br/> superficially appears to be one thing, but is something else.</p>
+
+</v-click>
 
 ---
 
 # Pseudo Code
 
 <Latex>
-<pre id="quicksort" class="pseudocode">
-    \begin{algorithm}
-    \caption{Quicksort}
-    \begin{algorithmic}
-    \PROCEDURE{Quicksort}{$A, p, r$}
-        \IF{$p < r$}
-            \STATE $q = $ \CALL{Partition}{$A, p, r$}
-            \STATE \CALL{Quicksort}{$A, p, q - 1$}
-            \STATE \CALL{Quicksort}{$A, q + 1, r$}
-        \ENDIF
-    \ENDPROCEDURE
-    \end{algorithmic}
-    \end{algorithm}
+<pre class="pseudocode">
+\begin{algorithm}
+  \caption{indexOf(arr, target)}
+  \begin{algorithmic}
+\FOR{$i = 0$ to $arr.size - 1$}
+      \IF{$arr[i] == target$}
+        \RETURN $i$
+      \ENDIF
+\ENDFOR
+\RETURN $-1$
+  \end{algorithmic}
+\end{algorithm}
 </pre>
 </Latex>
+
+Note that there is no standard for pseudo code, so you can use any format you like (`algorithmic` and `algorithm2e` in [Latex](https://www.overleaf.com/learn/latex/Algorithms) are recommended).
+
+---
+
+# Data Structures are Everywhere
+
+| Domain                  | Example                                               | Data Structure                         |
+| ----------------------- | ----------------------------------------------------- | -------------------------------------- |
+| Database                | MySQL <logos-mysql />                                 | B-Tree, Hash Table                     |
+| Blockchain              | Bitcoin <logos-bitcoin />                             | Merkle Tree, Hash                      |
+| Social Network          | Facebook <logos-facebook />                           | Graph                                  |
+| Operating System        | Linux kernel <logos-linux-tux />                      | Linked List, Stack                     |
+| Artificial Intelligence | LLM <arcticons-openai-chatgpt class="text-red-400" /> | List, Queue, Stack, Hash Table, Tensor |
+
+---
+
+# What We Will Learn
+
+<div class="grid grid-cols-12">
+<div class="col-span-6">
+
+## Key Topics <flat-color-icons-todo-list />
+
+- Python built-in data structures
+- Algorithm analysis
+- List
+- Stack, Queue
+- Tree
+- Hash Table
+- Graph
+
+</div>
+<div class="col-span-6">
+
+## Pre-requisites and Tools <flat-color-icons-support />
+
+- Object-oriented programming in Python 3.8+ <logos-python />
+- IDE: PyCharm <logos-pycharm />, VSCode <logos-visual-studio-code />, Jupyter Notebook <logos-jupyter />
+- Google <logos-google-icon />, ChatGPT <arcticons-openai-chatgpt class="text-red-400" />, Github Copilot <logos-github-octocat />
+
+</div>
+</div>
+
+---
+
+# Books and Resources
+
+## Books <arcticons-thriftbooks class="text-blue" />
+
+- [Data Structures and Algorithms in Python](https://book.douban.com/subject/10607365/), by Michael T. Goodrich, Roberto Tamassia, Michael H. Goldwasser
+- [Algorithms](https://book.douban.com/subject/4854123/), by Robert Sedgewick, Kevin Wayne
+- [Introduction to Algorithms](https://book.douban.com/subject/20432061/), by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
+
+## Resources <arcticons-slide class="text-blue" />
+
+- Code: https://github.com/ChenZhongPu/data-structure-swufe
+- Slide: https://slide-ds.zhongpu.info/
+- [Educoder](https://www.educoder.net/classrooms/suq3fzcm?code=2YH6L)
+- TA: 刘银峰
+
+---
+
+# Evaluation
+
+```mermaid {scale: 0.8}
+pie title Evaluation
+    "Exams" : 60
+    "Exercises" : 40
+```
+
+## Plagiarism is strictly prohibited!

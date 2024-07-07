@@ -8,4 +8,5 @@ The code can be found at<a href="https://github.com/ChenZhongPu/data-structure-s
 
 # Table of Contents
 
-- [week0](https://slide-ds.zhongpu.info/week0)
+- [week0: intro](https://slide-ds.zhongpu.info/week0)
+- [week1: crash course in Python](https://slide-ds.zhongpu.info/week1)

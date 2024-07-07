@@ -1,7 +1,8 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/index/index.html" },
-    { "source": "/week0/(.*)?", "destination": "/week0/index.html" }
+    { "source": "/week0/(.*)?", "destination": "/week0/index.html" },
+    { "source": "/week1/(.*)?", "destination": "/week1/index.html" }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist"
