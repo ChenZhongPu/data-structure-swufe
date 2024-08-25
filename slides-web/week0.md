@@ -16,7 +16,7 @@ download: true
 
 # Data Structures
 
-## Lecture 1: Introduction
+## Lecture 0: Introduction
 
 CHEN Zhongpu, Fall 2024
 
@@ -83,7 +83,7 @@ graph TD
   </div>
 </div>
 
-## Example (1) <flat-color-icons-bookmark />
+## Example (1)
 
 Imagine you are building a system to manage a library's book inventory, and you need to check if a book is available.
 
@@ -218,7 +218,7 @@ graph TD
 
 <v-click>
 
-## How to Describe Algorithms? <arcticons-code-editor class="text-blue" />
+## How to Describe Algorithms? <arcticons-easy-coder class="text-blue" />
 
 - Plain English
 - Flow chart
@@ -249,19 +249,19 @@ graph TD
 </pre>
 </Latex>
 
-Note that there is no standard for pseudo code, so you can use any format you like (`algorithmic` and `algorithm2e` in [Latex](https://www.overleaf.com/learn/latex/Algorithms) are recommended).
+Note that there is no standard for pseudo code, so you can use any format you like (`algorithmic` and `algorithm2e` in [Latex](https://www.overleaf.com/learn/latex/Algorithms) <arcticons-detexify class="text-red-400" /> are recommended).
 
 ---
 
 # Data Structures are Everywhere
 
-| Domain                  | Example                                               | Data Structure                         |
-| ----------------------- | ----------------------------------------------------- | -------------------------------------- |
-| Database                | MySQL <logos-mysql />                                 | B-Tree, Hash Table                     |
-| Blockchain              | Bitcoin <logos-bitcoin />                             | Merkle Tree, Hash                      |
-| Social Network          | Facebook <logos-facebook />                           | Graph                                  |
-| Operating System        | Linux kernel <logos-linux-tux />                      | Linked List, Stack                     |
-| Artificial Intelligence | LLM <arcticons-openai-chatgpt class="text-red-400" /> | List, Queue, Stack, Hash Table, Tensor |
+| Domain                  | Example                                        | Data Structure                         |
+| ----------------------- | ---------------------------------------------- | -------------------------------------- |
+| Database                | MySQL <logos-mysql />                          | B-Tree, Hash Table                     |
+| Blockchain              | Bitcoin <logos-bitcoin />                      | Merkle Tree, Hash, Linked List         |
+| Social Network          | Facebook <logos-facebook />                    | Graph                                  |
+| Operating System        | Linux kernel <logos-linux-tux />               | Linked List, Stack                     |
+| Artificial Intelligence | LLM <logos-openai-icon class="text-red-400" /> | List, Queue, Stack, Hash Table, Tensor |
 
 ---
 
@@ -287,7 +287,7 @@ Note that there is no standard for pseudo code, so you can use any format you li
 
 - Object-oriented programming in Python 3.8+ <logos-python />
 - IDE: PyCharm <logos-pycharm />, VSCode <logos-visual-studio-code />, Jupyter Notebook <logos-jupyter />
-- Google <logos-google-icon />, ChatGPT <arcticons-openai-chatgpt class="text-red-400" />, Github Copilot <logos-github-octocat />
+- Google <logos-google-icon />, ChatGPT <arcticons-openai-chatgpt class="text-red-400" />, [Claude](https://claude.ai/), Github Copilot <logos-github-octocat />, [Codeium](https://codeium.com/)
 
 </div>
 </div>
@@ -315,8 +315,9 @@ Note that there is no standard for pseudo code, so you can use any format you li
 
 ```mermaid {scale: 0.8}
 pie title Evaluation
-    "Exams" : 60
+    "Exam" : 50
     "Exercises" : 40
+    "Programming": 10
 ```
 
 ## Plagiarism is strictly prohibited!

@@ -16,7 +16,7 @@ download: true
 
 # Data Structures
 
-## Lecture 2: Crash Course in Python
+## Lecture 1: Crash Course in Python
 
 CHEN Zhongpu, Fall 2024
 
@@ -159,3 +159,5 @@ IDEs like PyCharm <logos-pycharm /> and VSCode <logos-visual-studio-code />(with
 - Three to five students will form a group, and study [5. Data Sntructures](https://docs.python.org/3/tutorial/datastructures.html) carefully.
 - TA will ask each student one question related to [5. Data Structures](https://docs.python.org/3/tutorial/datastructures.html).
 - Each student asks TA at least one question.
+
+This task is expected to be done by Week 10.
