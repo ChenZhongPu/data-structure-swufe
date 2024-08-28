@@ -3,7 +3,9 @@
     { "source": "/", "destination": "/index/index.html" },
     { "source": "/week0/(.*)?", "destination": "/week0/index.html" },
     { "source": "/week1/(.*)?", "destination": "/week1/index.html" },
-    { "source": "/week2/(.*)?", "destination": "/week2/index.html" }
+    { "source": "/week2/(.*)?", "destination": "/week2/index.html" },
+    { "source": "/week3/(.*)?", "destination": "/week3/index.html" },
+    { "source": "/week4/(.*)?", "destination": "/week4/index.html" }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist"

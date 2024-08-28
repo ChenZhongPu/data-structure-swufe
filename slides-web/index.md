@@ -11,3 +11,5 @@ The code can be found at<a href="https://github.com/ChenZhongPu/data-structure-s
 - [week0: Intro](https://slide-ds.zhongpu.info/week0)
 - [week1: Crash Course in Python](https://slide-ds.zhongpu.info/week1)
 - [week2: Algorithm Analysis](https://slide-ds.zhongpu.info/week2)
+- [week3: Stack](https://slide-ds.zhongpu.info/week3)
+- [week4: Queue and Deque](https://slide-ds.zhongpu.info/week4)

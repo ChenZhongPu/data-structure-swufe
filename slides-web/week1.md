@@ -29,6 +29,22 @@ School of Computing and Artificial Intelligence, SWUFE
 
 ---
 
+# How to Learn Python
+
+## Basic <arcticons-123 />
+
+- Chapter 1: Python Primer
+- [The Python Tutorial](https://docs.python.org/3/tutorial/index.html)
+- [Python Crash Course, 3rd Edition](https://book.douban.com/subject/36235056/)
+
+## Advanced <arcticons-chess-pgn-master-pro />
+
+- [Fluent Python, 2nd Edition](https://book.douban.com/subject/34990079/)
+- [Effective Python](https://book.douban.com/subject/26709315/)
+- [Python Cookbook](https://book.douban.com/subject/26381341/)
+
+---
+
 # 1. Solving Problems in Python
 
 All questions are from _Data Structures & Algorithms in Python_:
@@ -76,26 +92,37 @@ class int:
     return self + other
 ```
 
-## ADT in OOP <flat-color-icons-electronics />
-
-<div class="grid grid-cols-12">
-
-  <div class="col-span-6">
+## OOP Example <flat-color-icons-electronics />
 
 ```python
 class MyClass:
     """A simple example class"""
-    i = 12345
+    def __init__(self):
+        self.value = "hello world"
 
     def f(self):
-        return 'hello world'
+        return self.value
+
+m = MyClass()
+print(m.f())
 ```
 
+---
+
+## Abstract Data Type (ADT) <arcticons-lego-builder />
+
+<div class="grid grid-cols-12">
+  <div class="col-span-7">
+
+> The notion of `abstraction` is to distill a complicated system to its most fundamental parts.
+
+You do not need to know how a data type is implemented in order to be able to use it.
+
   </div>
-  <div class="col-span-6">
+  <div class="col-span-5">
 
 ```mermaid {scale: 0.8}
-graph TD
+    graph TD
     A[ADT] -->|Encapsulation| B[Data]
     A -->|Encapsulation| C[Operations]
     B --> D[Attributes]
@@ -105,15 +132,46 @@ graph TD
   </div>
 </div>
 
+### ADT Example <arcticons-data-monitor />
+
+<div class="grid grid-cols-12">
+  <div class="col-span-6">
+Consider a rectangle data type, and it provides a method to return its area.
+  </div>
+
+  <div class="col-span-6">
+
+```mermaid
+classDiagram
+    class Rectangle {
+        -float width
+        -float height
+        +Rectangle(float width, float height)
+        +float area()
+    }
+```
+
+  </div>
+</div>
+
 ---
 
-## Exercise <logos-openapi-icon />
+## Exercise <arcticons-openai-chatgpt />
 
-Write a Python class `MyList` holding a list of integers, and implement the following methods:
+Write a Python class `MyList` holding a collection of integers, and implement the following methods:
 
 - add an integer to the list.
 - get the length of the list.
 - get the value at a given index.
+
+## Magic Methods <arcticons-magic />
+
+To write Pythonic code, you need to understand [special/magic methods](https://realpython.com/python-magic-methods/), a.k.a., `dunder methods`. For example,
+
+| Magic Method | Description                               |
+| ------------ | ----------------------------------------- |
+| `__init__()` | Provides an initializer in Python classes |
+| `__len__()`  | Support the `len()` function              |
 
 ---
 

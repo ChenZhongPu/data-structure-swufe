@@ -188,33 +188,15 @@ number.insert(0, 42)
 
 ---
 
-# Abstract Data Type
+# Algorithm
 
-<div class="flex">
-  <div>
-For example, say `List` is an ADT which stores a list of elements, and supports `indexOf(v)` operation.
-
-And those operations can be described using [algorithms](https://en.wikipedia.org/wiki/Algorithm).
+For example, say `List` is a data structure which stores a list of elements, and supports `indexOf(v)` operation. And those operations can be described using [algorithms](https://en.wikipedia.org/wiki/Algorithm).
 
 $$
 Algorithm + Data\ Structures = Program
 $$
 
 We're going to focus on <span class="text-red">data structures</span>, as well as some basic skills about <span class="text-red">algorithm designs</span> and <span class="text-red">algorithm analysis </span>.
-
-  </div>
-  <div>
-
-```mermaid
-graph TD
-    A[ADT] -->|Encapsulation| B[Data]
-    A -->|Encapsulation| C[Operations]
-    B --> D[Attributes]
-    C --> E[Methods]
-```
-
-  </div>
-</div>
 
 <v-click>
 
@@ -255,13 +237,13 @@ Note that there is no standard for pseudo code, so you can use any format you li
 
 # Data Structures are Everywhere
 
-| Domain                  | Example                                        | Data Structure                         |
-| ----------------------- | ---------------------------------------------- | -------------------------------------- |
-| Database                | MySQL <logos-mysql />                          | B-Tree, Hash Table                     |
-| Blockchain              | Bitcoin <logos-bitcoin />                      | Merkle Tree, Hash, Linked List         |
-| Social Network          | Facebook <logos-facebook />                    | Graph                                  |
-| Operating System        | Linux kernel <logos-linux-tux />               | Linked List, Stack                     |
-| Artificial Intelligence | LLM <logos-openai-icon class="text-red-400" /> | List, Queue, Stack, Hash Table, Tensor |
+| Domain                  | Example                                               | Data Structure                         |
+| ----------------------- | ----------------------------------------------------- | -------------------------------------- |
+| Database                | MySQL <logos-mysql />                                 | B-Tree, Hash Table                     |
+| Blockchain              | Bitcoin <logos-bitcoin />                             | Merkle Tree, Hash, Linked List         |
+| Social Network          | Facebook <logos-facebook />                           | Graph                                  |
+| Operating System        | Linux kernel <logos-linux-tux />                      | Linked List, Stack                     |
+| Artificial Intelligence | LLM <arcticons-openai-chatgpt class="text-red-400" /> | List, Queue, Stack, Hash Table, Tensor |
 
 ---
 
@@ -317,7 +299,7 @@ Note that there is no standard for pseudo code, so you can use any format you li
 pie title Evaluation
     "Exam" : 50
     "Exercises" : 40
-    "Programming": 10
+    "Labs": 10
 ```
 
 ## Plagiarism is strictly prohibited!
