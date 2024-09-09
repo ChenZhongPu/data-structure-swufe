@@ -56,7 +56,8 @@ end = time.time()
 elapsed = end - start
 ```
 
-In Python, [timeit](https://docs.python.org/3/library/timeit.html) is recommended measure execution time of small code snippets.
+- `time.perf_counter()` is recommended for measuring elapsed time due to its high resolution.
+- [timeit](https://docs.python.org/3/library/timeit.html) is recommended measure execution time of small code snippets.
 
 </v-click>
 

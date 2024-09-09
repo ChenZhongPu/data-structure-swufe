@@ -55,7 +55,11 @@ def find_max2(a):
     <img src="/week3/tray.png" alt="stack of trays" width="200">
 </div>
 
-## Last in, First out (LIFO) <arcticons-yandex-key />
+<div class="flex justify-center items-center h-60px mt-8px">
+
+## Last in, First out (LIFO)
+
+</div>
 
 ---
 
@@ -132,7 +136,7 @@ class Stack:
         pass
 ```
 
-Note that `len(s)` is in fact a more <span class="text-red">Pythonic</span> way to get the size of a collection.
+Note that `len(s)` is, in fact, a more <span class="text-red">Pythonic</span> way to get the size of a collection.
 </v-click>
 
 ---
@@ -200,38 +204,9 @@ To understand `amortized` time, you have to know how `list` in Python resizes.
 
 ## Capacity vs. Size <flat-color-icons-biotech />
 
-```mermaid {theme: 'neutral',look: 'handDrawn'}
-graph LR
-    subgraph Array[capacity=4, size=2]
-    A[0]
-    B[1]
-    C[2]
-    D[3]
-    end
-    style A fill:#7f8c8d ,stroke:#7F8C8D
-    style B fill:#7f8c8d,stroke:#7F8C8D
-    style C fill:#fff,stroke:#BDC3C7
-    style D fill:#fff,stroke:#BDC3C7
-```
+In the last step, there is no more space available, so it will be **enlarged** to a new list with capacity of 8, and all old elements will be copied into the new list. Thus, the time complexity is $O(n)$.
 
-In this case, the newly inserted element will be put at index 2, and the time complexity is $O(1)$.
-
-```mermaid
-graph LR
-    subgraph Array[capacity=4, size=4]
-    A[0]
-    B[1]
-    C[2]
-    D[3]
-    end
-    style A fill:#7f8c8d,stroke:#7F8C8D
-    style B fill:#7f8c8d,stroke:#7F8C8D
-    style C fill:#7f8c8d,stroke:#7F8C8D
-    style D fill:#7f8c8d,stroke:#7F8C8D
-
-```
-
-In this case, there is no more space available, so it will be enlarged to a new list with capacity of 8, and all old elements will be copied into the new list. Thus, the time complexity is $O(n)$.
+<img src="/week3/array-resize.svg" width="600" />
 
 <!--
 Each cell of an array must use the same number of bytes.
@@ -391,6 +366,9 @@ Alice devises a new implementation for stacks based on the `list`.
 
 How do you think of her idea?
 
+<div class="flex">
+    <div>
+
 ```python
 s = []
 s.insert(0, 'a')
@@ -401,9 +379,15 @@ print(s.pop(0)) # 'b'
 
 ```
 
+  </div>
+<img src="/week3/right-shift.svg" width="300" />
+</div>
+
 ---
 
-# 3. Example: Matching Delimiters
+# 3. Example
+
+## 1). Matching Delimiters <arcticons-musixmatch />
 
 An important task when processing arithmetic expressions is to make sure their delimiting symbols (e.g, `[(5+x)-(y+z)]`) match up correctly.
 
@@ -412,7 +396,7 @@ Here we assume only parentheses `()`, braces `{}`, and brackets `[]` are allowed
 - Correct: `()(()){([])}`
 - Incorrect: `({[])`
 
-## Key Point
+## Key Point <arcticons-key />
 
 The openings are pushed into a stack, and when a closing is encountered, it must match the opening at the top of the stack.
 
@@ -444,6 +428,25 @@ if closings.index(c) != openings.index(s.pop())
 ```
 
 What is the time complexity of this algorithm?
+
+---
+
+## 2). Program Execution <logos-c />
+
+A `stack` in the context of executing programs, often referred to as the `call stack`, is a fundamental data structure used in most programming languages to manage function calls and execution flow.
+
+```python
+
+>>> dis.dis('a[i] + b')
+  0           0 RESUME                   0
+
+  1           2 LOAD_NAME                0 (a)
+              4 LOAD_NAME                1 (i)
+              6 BINARY_SUBSCR
+             10 LOAD_NAME                2 (b)
+             12 BINARY_OP                0 (+)
+             16 RETURN_VALUE
+```
 
 ---
 

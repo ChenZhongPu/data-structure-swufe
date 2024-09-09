@@ -76,6 +76,12 @@ All questions are from _Data Structures & Algorithms in Python_:
 
 Please read Chapter 1-5, and Chapter 8, in official [Python Tutorial](https://docs.python.org/3/tutorial/index.html) <logos-python />.
 
+## Example: Library Catalog <arcticons-pocketbook />
+
+Suppose you are going to develop a library catalog system, and you need to maintain the ISBNs of books. The major operations is to check whether a book is in the library.
+
+Which data structure would you use?
+
 ---
 
 # 3. Object-oriented Programming in Python
@@ -137,6 +143,12 @@ You do not need to know how a data type is implemented in order to be able to us
 <div class="grid grid-cols-12">
   <div class="col-span-6">
 Consider a rectangle data type, and it provides a method to return its area.
+
+<ul>
+      <li>Compute the area on-the-fly</li>
+      <li>Store the area in an attribute</li>
+</ul>
+
   </div>
 
   <div class="col-span-6">
@@ -175,10 +187,34 @@ To write Pythonic code, you need to understand [special/magic methods](https://r
 
 ---
 
+## Example: [vector2d.py](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/start/vector2d.py) <logos-python />
+
+```python
+
+Addition:
+
+    >>> v1 = Vector(2, 4)
+    >>> v2 = Vector(2, 1)
+    >>> v1 + v2
+    Vector(4, 5)
+
+Multiplication:
+    >>> v = Vector(2, 4)
+    >>> 3 * v
+    Vector(6, 12)
+
+Abs:
+    >>> v = Vector(3, 4)
+    >>> abs(v)
+    5.0
+```
+
+---
+
 # 4. Tools
 
 <div class="grid grid-cols-12">
-<div class="col-span-7">
+<div class="col-span-5">
 
 ### [black](https://pypi.org/project/black/): for code formatting
 
@@ -198,11 +234,26 @@ def   messy_add( x ,y ) :
 
 </div>
 
-<div class="col-span-5">
+<div class="col-span-4">
 
 ### [pytest](https://pypi.org/project/pytest/): for unit testing
 
 <img src="https://docs.pytest.org/en/8.2.x/_static/pytest1.png" width="60%" />
+</div>
+
+<div class="col-span-3">
+
+### [doctest](https://docs.python.org/3/library/doctest.html): for testing in docstring
+
+```python
+def add(a, b):
+    """
+    >>> add(1, 2)
+    3
+    """
+    return a + b
+```
+
 </div>
 </div>
 
@@ -219,3 +270,7 @@ IDEs like PyCharm <logos-pycharm /> and VSCode <logos-visual-studio-code />(with
 - Each student asks TA at least one question.
 
 This task is expected to be done by Week 10.
+
+```
+
+```

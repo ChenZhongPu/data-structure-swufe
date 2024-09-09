@@ -288,7 +288,7 @@ Note that there is no standard for pseudo code, so you can use any format you li
 
 - Code: https://github.com/ChenZhongPu/data-structure-swufe
 - Slide: https://slide-ds.zhongpu.info/
-- [Educoder](https://www.educoder.net/classrooms/suq3fzcm?code=2YH6L)
+- Chaoxing (学习通). Invitation Code: 65304230
 - TA: 刘银峰
 
 ---
