@@ -5,7 +5,9 @@
   "scripts": {
     "build": "node build-slides.js",
     "dev": "slidev --open index.md",
-    "export": "slidev export"
+    "export": "slidev export",
+    "week0": "slidev --open week0.md",
+    "week1": "slidev --open week1.md"
   },
   "dependencies": {
     "@iconify-json/arcticons": "latest",

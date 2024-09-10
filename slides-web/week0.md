@@ -235,6 +235,12 @@ Note that there is no standard for pseudo code, so you can use any format you li
 
 ---
 
+# If Programming is to Build a House
+
+<img src="/week0/foundation.svg" class="h-400px" />
+
+---
+
 # Data Structures are Everywhere
 
 | Domain                  | Example                                               | Data Structure                         |
@@ -303,3 +309,38 @@ pie title Evaluation
 ```
 
 ## Plagiarism is strictly prohibited!
+
+---
+
+# Tip
+
+<div class="grid grid-cols-12">
+  <div class="col-span-7">
+
+```mermaid {scale: 0.6}
+
+xychart-beta
+title "Teaching Score"
+x-axis [2022, 2023]
+y-axis "Score" 70 --> 100
+bar [80, 89]
+line [80, 89]
+
+```
+
+  </div>
+
+  <div class="col-span-5">
+
+<v-click>
+
+## It takes time, so take your time <arcticons-emoji-electric-light-bulb class="text-blue" />
+
+</v-click>
+
+  </div>
+</div>
+
+```
+
+```
