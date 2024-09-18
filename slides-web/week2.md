@@ -241,7 +241,6 @@ Given a list `lst` whose size is `N`, how many primitive operations are there?
 - `sum(lst)`
 - `len(lst)`
 - `lst.append(1)`
-- `lst.append(2)`
 
 ---
 
