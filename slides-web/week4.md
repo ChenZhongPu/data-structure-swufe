@@ -50,7 +50,7 @@ print(s.pop())
 > [Queue](https://dictionary.cambridge.org/dictionary/english/queue): A line of people, usually standing or in cars, waiting for something.
 
 <div class="flex justify-center items-center h-220px mt-8px">
-    <img src="week4/atm.jpeg" class="h-full" alt="Parameters"/>
+    <img src="/week4/atm.jpeg" class="h-full" alt="Parameters"/>
 </div>
 
 <v-click>
@@ -96,7 +96,7 @@ We use two pointers to maintain the front and back of the queue.
 - `back`: the index where the next element will be inserted.
 
 <div class="flex justify-center items-center h-260px mt-8px">
-    <img src="week4/circle_queue.png" class="h-full" alt="Parameters"/>
+    <img src="/week4/circle_queue.png" class="h-full" alt="Parameters"/>
 </div>
 
 ---
@@ -104,7 +104,7 @@ We use two pointers to maintain the front and back of the queue.
 ## Circular Queue
 
 <div class="flex justify-center items-center h-260px mt-8px">
-    <img src="week4/circle_queue.png" class="h-full" alt="Circle Queue"/>
+    <img src="/week4/circle_queue.png" class="h-full" alt="Circle Queue"/>
 </div>
 
 - What will happen if we `enqueue` or `dequeue` on the circular queue?
@@ -151,7 +151,7 @@ def dequeue(self):
 What happens if `size` exceeds the `capacity` of the circular queue?
 
 <div class="flex justify-center items-center h-260px mt-8px">
-    <img src="week4/resize.png" class="h-full" alt="Resize"/>
+    <img src="/week4/resize.png" class="h-full" alt="Resize"/>
 </div>
 
 ---
@@ -186,7 +186,7 @@ It supports insertion and deletion at both the front and the back of the queue i
 - Remove from the back
 
 <div class="flex justify-center items-center h-220px mt-8px">
-    <img src="week4/circle_queue.png" class="h-full" alt="Parameters"/>
+    <img src="/week4/circle_queue.png" class="h-full" alt="Parameters"/>
 </div>
 
 ---
