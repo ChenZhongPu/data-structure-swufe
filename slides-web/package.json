@@ -10,7 +10,8 @@
     "week1": "slidev --open week1.md",
     "week2": "slidev --open week2.md",
     "week3": "slidev --open week3.md",
-    "week4": "slidev --open week4.md"
+    "week4": "slidev --open week4.md",
+    "week5": "slidev --open week5.md"
   },
   "dependencies": {
     "@iconify-json/arcticons": "latest",

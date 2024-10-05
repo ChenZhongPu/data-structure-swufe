@@ -278,9 +278,7 @@ Recursion (adjective: recursive) occurs when a thing is defined in terms of itse
 
 ### Example: Fibonacci Sequence
 
-$$F(0) = 0$$
-$$F(1) = 1$$
-$$F(n) = F(n-1) + F(n-2)$$
+$$F(0) = 0$$ $$F(1) = 1$$ $$F(n) = F(n-1) + F(n-2)$$
 
 </v-click>
 
@@ -376,3 +374,10 @@ def binary_search(a, target):
 ```
 
 What is the time complexity of the binary search?
+
+---
+
+# Summary
+
+- Queue, Circular Queue, Deque
+- Recursion
