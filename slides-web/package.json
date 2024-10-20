@@ -25,8 +25,5 @@
     "slidev-theme-dracula": "^0.2.0",
     "vue": "^3.4.30"
   },
-  "packageManager": "pnpm@8.7.5+sha1.735d4d0e6fc66c4d2d64b269b08e5995b19230ca",
-  "devDependencies": {
-    "@rollup/rollup-darwin-arm64": "^4.24.0"
-  }
+  "packageManager": "pnpm@8.7.5+sha1.735d4d0e6fc66c4d2d64b269b08e5995b19230ca"
 }
