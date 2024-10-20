@@ -491,9 +491,7 @@ Given a singly linked list, the time complexity of common operations can be summ
 - Linked List
 - Adding and removing elements on a linked list
 
-## Homework 3
+## Exercise
 
 - Implement Stack/Queue based on a singly linked list.
 - R-7.5 (assume that `size` attribute is not maintained)
-
-(You must show me the screenshot of the code and the test output)

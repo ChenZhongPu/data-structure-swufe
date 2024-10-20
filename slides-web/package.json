@@ -11,7 +11,8 @@
     "week2": "slidev --open week2.md",
     "week3": "slidev --open week3.md",
     "week4": "slidev --open week4.md",
-    "week5": "slidev --open week5.md"
+    "week5": "slidev --open week5.md",
+    "week6": "slidev --open week6.md"
   },
   "dependencies": {
     "@iconify-json/arcticons": "latest",
@@ -24,5 +25,8 @@
     "slidev-theme-dracula": "^0.2.0",
     "vue": "^3.4.30"
   },
-  "packageManager": "pnpm@8.7.5+sha1.735d4d0e6fc66c4d2d64b269b08e5995b19230ca"
+  "packageManager": "pnpm@8.7.5+sha1.735d4d0e6fc66c4d2d64b269b08e5995b19230ca",
+  "devDependencies": {
+    "@rollup/rollup-darwin-arm64": "^4.24.0"
+  }
 }

@@ -6,7 +6,8 @@
     { "source": "/week2/(.*)?", "destination": "/week2/index.html" },
     { "source": "/week3/(.*)?", "destination": "/week3/index.html" },
     { "source": "/week4/(.*)?", "destination": "/week4/index.html" },
-    { "source": "/week5/(.*)?", "destination": "/week5/index.html" }
+    { "source": "/week5/(.*)?", "destination": "/week5/index.html" },
+    { "source": "/week6/(.*)?", "destination": "/week6/index.html" }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist"
