@@ -5,14 +5,22 @@
   "scripts": {
     "build": "node build-slides.js",
     "dev": "slidev --open index.md",
-    "export": "slidev export",
+    "export-week0": "slidev export week0.md",
     "week0": "slidev --open week0.md",
+    "export-week1": "slidev export week1.md",
     "week1": "slidev --open week1.md",
+    "export-week2": "slidev export week2.md",
     "week2": "slidev --open week2.md",
+    "export-week3": "slidev export week3.md",
     "week3": "slidev --open week3.md",
+    "export-week4": "slidev export week4.md",
     "week4": "slidev --open week4.md",
+    "export-week5": "slidev export week5.md",
     "week5": "slidev --open week5.md",
-    "week6": "slidev --open week6.md"
+    "export-week6": "slidev export week6.md",
+    "week6": "slidev --open week6.md",
+    "export-week7": "slidev export week7.md",
+    "week7": "slidev --open week7.md"
   },
   "dependencies": {
     "@iconify-json/arcticons": "latest",

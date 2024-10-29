@@ -21,3 +21,4 @@ The code can be found at<a href="https://github.com/ChenZhongPu/data-structure-s
 - [week4: Queue and Deque](https://slide-ds.zhongpu.info/week4)
 - [week5: Linked List](https://slide-ds.zhongpu.info/week5)
 - [week6: Doubly Linked List](https://slide-ds.zhongpu.info/week6)
+- [week7: Tree](https://slide-ds.zhongpu.info/week7)
