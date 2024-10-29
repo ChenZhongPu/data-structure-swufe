@@ -193,4 +193,149 @@ t.next = x.next
 
 (4) Develop a recursive solution to the previous question.
 
+(5) Given a doubly linked list `L`, in which a node consists of `prev`, `item` and `next`. How to delete node `p` from `L`? ([Postgraduate entrance exam](https://blog.csdn.net/qq_51636863/article/details/134141751), 2016)
+
+- A. p.next.prev = p.prev; p.prev.next = p.prev;
+- B. p.next.prev = p.next; p.prev.next = p.next;
+- C. p.next.prev = p.next; p.prev.next = p.prev;
+- D. p.next.prev = p.prev; p.prev.next = p.next;
+
 Read more at [18 linked list problems](http://cslibrary.stanford.edu/105/LinkedListProblems.pdf) and [LeetCode](https://leetcode.com/problem-list/linked-list/).
+
+---
+
+# 5. Iteration
+
+> [Iteration](https://en.wikipedia.org/wiki/Iteration) is the repetition of a process in order to generate a sequence of outcomes.
+
+If a data structure is _iterable_, it means that it can be iterated over, e.g., in a `for` loop.
+
+```python
+for s in "hello":
+    print(s)
+```
+
+## [So, what makes a data structure _iterable_?](https://stackoverflow.com/questions/9884132/what-are-iterator-iterable-and-iteration)
+
+It has a method `__iter__()` that returns an _iterator_ object. In other words, `for s in "hello"` is, in fact,
+`for s in "hello".__iter__()`. An **iterator** is an object with a method `__next__()` that returns the next element in the sequence, if any, or raise a `StopIteration` exception to indicate that there are no further elements.
+
+```python
+numbers = [1, 2, 3]
+num_iter = iter(numbers)
+print(next(num_iter))  # 1
+print(next(num_iter))  # 2
+print(next(num_iter))  # 3
+# print(next(num_iter))  # StopIteration
+```
+
+---
+
+## To Make Stack Iterable
+
+```python
+class Stack:
+    """A last-in, first-out (LIFO) data structure."""
+
+    def __init__(self):
+        self._data = []
+
+    def push(self, item):
+        self._data.append(item)
+
+    def pop(self):
+        if self.is_empty():
+            raise Exception('Pop from empty stack!')
+        return self._data.pop()
+
+    def size(self):
+        return len(self._data)
+
+    def __iter__(self):
+      return reversed(self._data)
+```
+
+And you can also implement your own iterator class. See more in [stack.py](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/stack-queue/stack.py).
+
+---
+
+## To Make Linked List Iterable
+
+```python
+class LinkedList:
+  def __init__(self):
+    self._head = None
+    self._size = 0
+
+  def add_first(self, item):
+    self._head = Node(item, self._head)
+    self._size += 1
+
+  def __iter__(self):
+    return LinekdListIterator(self._head)
+
+class LinkedListIterator:
+  def __init__(self, head):
+    self._current = head
+
+  def __next__(self):
+    if self._current is None:
+      raise StopIteration
+    item = self._current.item
+    self._current = self._current.next
+    return item
+```
+
+---
+
+### Iterator vs. Iterable
+
+Please spot the bugs.
+
+```python
+lst = LinkedList()
+lst.add_first(1)
+lst.add_first(2)
+lst.add_first(3)
+
+for i in lst:
+    print(i)
+
+ite = LinkedListIterator(lst._head)
+
+for i in ite:
+    print(i)
+```
+
+By convention, an iterator must return itself as an iterator.
+
+```python
+class LinkedListIterator:
+  def __iter__(self):
+    return self
+```
+
+---
+
+### Generator
+
+In Python, making use of `generator` is a more elegant and Pythonic way to provide an iterator.
+
+```python
+class LinkedList:
+  def __init__(self):
+    self._head = None
+    self._size = 0
+
+  def add_first(self, item):
+    self._head = Node(item, self._head)
+    self._size += 1
+
+  def __iter__(self):
+    walk = self._head
+    while walk is not None:
+      yield walk.item
+      walk = walk.next
+```
+
+> A [generator](https://wiki.python.org/moin/Generators) in Python is a function that returns an iterator using the `yield` keyword.
