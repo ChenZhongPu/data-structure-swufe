@@ -26,7 +26,7 @@
     "@iconify-json/arcticons": "latest",
     "@iconify-json/flat-color-icons": "latest",
     "@iconify-json/logos": "latest",
-    "@slidev/cli": "^0.49.12",
+    "@slidev/cli": "^0.49.29",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "playwright-chromium": "latest",
