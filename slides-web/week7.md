@@ -265,7 +265,7 @@ The core idea: it works like `get()` by inserting the new key as a leaf node.
 
 Please draw the BST after inserting 5, 2, 4, 10, 8, 7, 42, in that order into an empty BST.
 
-<v-click>
+---
 
 ### Recursive put()
 
@@ -275,6 +275,135 @@ Please draw the BST after inserting 5, 2, 4, 10, 8, 7, 42, in that order into an
     <img src="/week7/put_alg2.png"  class="h-full" alt="node"/>
 </div>
 
-</v-click>
+---
+
+### Exercise
+
+How to count the number of nodes (i.e., `size()`) in a BST using a recursive implementation?
 
 ---
+
+## 4.4 BST: Ordered Operations
+
+A BST supports a myriad of ordered-based operations, such as `min()`, `max()`, `floor()`, and `ceiling()`.
+
+<div class="flex justify-center items-center h-300px mt-8px">
+    <img src="/week7/bst.png"  class="h-full" alt="node"/>
+</div>
+
+What is the maximum key in the BST? Where does it locate?
+
+---
+
+### max()
+
+Note that the maximum key is always located at the **rightmost** in a BST.
+
+<div class="flex justify-center items-center h-400px mt-8px">
+    <img src="/week7/max_alg.png"  class="h-full" alt="node"/>
+</div>
+
+---
+
+### Recursive max()
+
+<div class="flex justify-center items-center h-300px mt-8px">
+    <img src="/week7/max_alg2.png"  class="h-full" alt="node"/>
+</div>
+
+Try to implement `min()` by yourself.
+
+---
+
+## 4.5 BST: removeMin()
+
+To remove the node with the minimum key. Note that it is always located at the **leftmost** in a BST.
+
+<div class="flex justify-center items-center h-300px mt-8px">
+    <img src="/week7/bst.png"  class="h-full" alt="node"/>
+</div>
+
+To delete 1, to make 3's left be 1's right.
+
+---
+
+### removeMin()
+
+<div class="flex justify-center items-center h-400px mt-8px">
+    <img src="/week7/remove_min_alg.png"  class="h-full" alt="node"/>
+</div>
+
+---
+
+### Recursive removeMin()
+
+```python
+def _remove_min(x: Node):
+    if x.left is None:
+        return x.right
+    x.left = BST._remove_min(x.left)
+    return x
+
+def remove_min(self):
+    if self.is_empty():
+        raise NoElement
+    self._root = BST._remove_min(self._root)
+```
+
+---
+
+### Recursive remove()
+
+`remove(x)` removes the node with key `x` from the BST rooted at `x`, and then returns the new root.
+
+### Case 0: `x` has no child, return `null`
+
+### Case 1: `x` has one child, return the other child
+
+<div class="flex justify-center items-center h-300px mt-8px">
+    <img src="/week7/remove_1.png"  class="h-full" alt="node"/>
+</div>
+
+---
+
+### Recursive remove()
+
+`remove(x)` removes the node with key `x` from the BST rooted at `x`, and then returns the new root.
+
+### Case 2: `x` has two children, return the successor of `x` (i.e., `min(x.right)`), and then remove the successor (`removeMin(x.right)`)
+
+<div class="flex justify-center items-center h-300px mt-8px">
+    <img src="/week7/remove_2.png"  class="h-full" alt="node"/>
+</div>
+
+---
+
+```python
+def remove(self, key):
+    def _remove(x: BST.Node):
+        if x is None:
+            return None
+        if key < x.key:
+            x.left = _remove(x.left)
+        elif key > x.key:
+            x.right = _remove(x.right)
+        else:
+            if x.right is None:
+                return x.left
+            if x.left is None:
+                return x.right
+            t = x
+            x = BST._min(t.right)
+            x.right = BST._remove_min(t.right)
+            x.left = t.left
+        return x
+    self._root = _remove(self._root)
+```
+
+---
+
+# Conclusion
+
+- Tree
+- Binary Search Tree
+- Common operations (get, put, remove, min, max)
