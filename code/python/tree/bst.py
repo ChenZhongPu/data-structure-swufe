@@ -37,6 +37,7 @@ class BST:
                 x.right = _put(x.right)
             x.n = BST._size(x.left) + BST._size(x.right) + 1
             return x
+
         if key is None:
             raise KeyError
         self._root = _put(self._root)
@@ -49,6 +50,7 @@ class BST:
                 return _get(x.left)
             elif key > x.key:
                 return _get(x.right)
+
         if key is None:
             raise KeyError
         return _get(self._root)
@@ -78,6 +80,7 @@ class BST:
             x.right = _remove_max(x.right)
             x.n = BST._size(x.left) + BST._size(x.right) + 1
             return x
+
         if self.is_empty():
             raise NoElement
         self._root = _remove_max(self._root)
@@ -101,6 +104,7 @@ class BST:
                 x.left = t.left
             x.n = BST._size(x.left) + BST._size(x.right) + 1
             return x
+
         if key is None:
             raise KeyError
         self._root = _remove(self._root)
@@ -125,9 +129,48 @@ class BST:
                 return x
             else:
                 return _max(x.right)
+
         if self.is_empty():
             return NoElement
         return _max(self._root).key
+
+    def floor(self, key):
+        def _floor(x: BST.Node | None):
+            if x is None:
+                return None
+            if key == x.key:
+                return x.key
+            if key < x.key:
+                return _floor(x.left)
+            t = _floor(x.right)
+            if t is not None:
+                return t
+            else:
+                return x
+
+        t = _floor(self._root)
+        if t is None:
+            raise NoElement
+        return t.key
+
+    def ceiling(self, key):
+        def _ceiling(x: BST.Node | None):
+            if x is None:
+                return None
+            if key == x.key:
+                return x.key
+            if key > x.key:
+                return _ceiling(x.right)
+            t = _ceiling(x.left)
+            if t is not None:
+                return t
+            else:
+                return x
+
+        t = _ceiling(self._root)
+        if t is None:
+            raise NoElement
+        return t.key
 
     def height(self):
         def _height(x: BST.Node):
@@ -135,4 +178,15 @@ class BST:
                 return -1
             else:
                 return 1 + max(_height(x.left), _height(x.right))
+
         return _height(self._root)
+
+    def in_order_print(self):
+        def _in_order_print(x: BST.Node):
+            if x is None:
+                return
+            _in_order_print(x.left)
+            print(x.key)
+            _in_order_print(x.right)
+
+        _in_order_print(self._root)

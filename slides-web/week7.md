@@ -315,6 +315,77 @@ Try to implement `min()` by yourself.
 
 ---
 
+### floor()
+
+`floor(key)`: the largest key in the BST that is less than or equal to `key`.
+
+<div class="flex justify-center items-center h-300px mt-8px">
+    <img src="/week7/bst.png"  class="h-full" alt="node"/>
+</div>
+
+- `floor(5)`: 4; `floor(6)`: 6; `floor(7)`: 6; `floor(15)`: 14
+- `floor(0)`: None
+
+---
+
+### Recursive floor()
+
+`_floor(x, key)`: the largest key in the BST rooted at `x` that is less than or equal to `key`.
+
+<div class="flex justify-center items-center h-220px mt-50px">
+    <img src="/week7/bst.png"  class="h-full" alt="node"/>
+
+```python
+def _floor(x: BST.Node | None, key):
+    if x is None:
+        return None
+    if key == x.key:
+        return x.key
+    if key < x.key:
+        return _floor(x.left)
+    t = _floor(x.right)
+    if t is not None:
+        return t
+    else:
+        return x
+```
+
+</div>
+
+```python
+def floor(self, key):
+    t = _floor(self._root)
+    if t is None:
+        raise NoElement
+    return t.key
+```
+
+---
+
+### Iterative floor()
+
+```python
+def floor(self, key):
+    """Iterative version of floor."""
+    x = self._root
+    best = None
+    while x is not None:
+        if key == x.key:
+            return x.key
+        if key < x.key:
+            x = x.left
+        else:
+            best = x
+            x = x.right
+    if best is None:
+        raise NoElement
+    return best.key
+```
+
+Try to implement `ceiling()` by yourself.
+
+---
+
 ## 4.5 BST: removeMin()
 
 To remove the node with the minimum key. Note that it is always located at the **leftmost** in a BST.
@@ -402,8 +473,49 @@ def remove(self, key):
 
 ---
 
+# 5. Tree Transversal
+
+Generally, there are three ways to traverse a tree: **pre-order**, **in-order**, and **post-order**.
+
+- **Pre-order**: root, left, right
+- **In-order**: left, root, right
+- **Post-order**: left, right, root
+
+<div class="flex justify-center items-center h-300px mt-8px">
+    <img src="/week7/bst.png"  class="h-full" alt="node"/>
+</div>
+
+---
+
+## 5.1 In-order in BST
+
+If we project the BST into a line, the in-order traversal will sort the keys in ascending order.
+
+<div class="flex justify-center items-center h-400px mt-8px">
+    <img src="/week7/inorder.png"  class="h-full" alt="node"/>
+</div>
+
+---
+
+### Code
+
+```python
+def in_order_print(self):
+    def _in_order_print(x: BST.Node):
+        if x is None:
+            return
+        _in_order_print(x.left)
+        print(x.key)
+        _in_order_print(x.right)
+
+    _in_order_print(self._root)
+```
+
+---
+
 # Conclusion
 
 - Tree
 - Binary Search Tree
-- Common operations (get, put, remove, min, max)
+- Common operations (get, put, remove, min, max, floor, ceiling)
+- In-order/Pre-order/Post-order traversal
