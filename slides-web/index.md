@@ -22,3 +22,5 @@ The code can be found at<a href="https://github.com/ChenZhongPu/data-structure-s
 - [week5: Linked List](https://slide-ds.zhongpu.info/week5)
 - [week6: Doubly Linked List](https://slide-ds.zhongpu.info/week6)
 - [week7: Tree](https://slide-ds.zhongpu.info/week7)
+- [week8: Huffman Tree](https://slide-ds.zhongpu.info/week8)
+- [week9: Balanced Search Tree](https://slide-ds.zhongpu.info/week9)

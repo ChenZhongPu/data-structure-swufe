@@ -7,7 +7,10 @@
     { "source": "/week3/(.*)?", "destination": "/week3/index.html" },
     { "source": "/week4/(.*)?", "destination": "/week4/index.html" },
     { "source": "/week5/(.*)?", "destination": "/week5/index.html" },
-    { "source": "/week6/(.*)?", "destination": "/week6/index.html" }
+    { "source": "/week6/(.*)?", "destination": "/week6/index.html" },
+    { "source": "/week7/(.*)?", "destination": "/week7/index.html" },
+    { "source": "/week8/(.*)?", "destination": "/week8/index.html" },
+    { "source": "/week9/(.*)?", "destination": "/week9/index.html" }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist"

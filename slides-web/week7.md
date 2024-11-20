@@ -511,6 +511,8 @@ def in_order_print(self):
     _in_order_print(self._root)
 ```
 
+Try to implement pre-order and post-order traversal by yourself.
+
 ---
 
 # Conclusion

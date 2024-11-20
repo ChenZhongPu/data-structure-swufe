@@ -139,7 +139,7 @@ class BST:
             if x is None:
                 return None
             if key == x.key:
-                return x.key
+                return x
             if key < x.key:
                 return _floor(x.left)
             t = _floor(x.right)
@@ -158,7 +158,7 @@ class BST:
             if x is None:
                 return None
             if key == x.key:
-                return x.key
+                return x
             if key > x.key:
                 return _ceiling(x.right)
             t = _ceiling(x.left)
