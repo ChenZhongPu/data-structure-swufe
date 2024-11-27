@@ -408,3 +408,14 @@ The number of black nodes on any simple path from, but not including, a node $x$
 - Balanced search trees
 - AVL trees, Red-black trees
 - Rotations
+
+---
+
+# Cost Summary
+
+| Algorithm (data structure)                                                    | Search (worst case) | Insert (worst case) | Search (average case) | Insert (average case) | Efficiently ordered operations |
+| ----------------------------------------------------------------------------- | ------------------- | ------------------- | --------------------- | --------------------- | ------------------------------ |
+| <span class="text-red">sequential search (unordered array/linked list)</span> | $N$                 | $N$                 | $N/2$                 | $N$                   | no                             |
+| <span class="text-red">binary search (ordered array)</span>                   | $\log N$            | $N$                 | $\log N$              | $N/2$                 | yes                            |
+| <span class="text-red">BST</span>                                             | $N$                 | $N$                 | $1.39\log N$          | $1.39\log N$          | yes                            |
+| <span class="text-red">Red-black tree</span>                                  | $2\log N$           | $2\log N$           | $\log N$              | $\log N$              | yes                            |

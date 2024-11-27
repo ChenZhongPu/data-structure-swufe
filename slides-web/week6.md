@@ -155,7 +155,7 @@ def _add_between(self, item, predecessor, successor):
 
 ## Hands-on Data Structures <arcticons-handynewsreader />
 
-https://zhongpu.info/data-structure-swufe/
+<https://zhongpu.info/data-structure-swufe/>
 
 <div class="flex justify-center items-center h-140px mt-8px">
     <img src="/week6/handson.png"  class="h-full" alt="hands-on"/>

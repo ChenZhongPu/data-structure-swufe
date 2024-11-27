@@ -24,3 +24,4 @@ The code can be found at<a href="https://github.com/ChenZhongPu/data-structure-s
 - [week7: Tree](https://slide-ds.zhongpu.info/week7)
 - [week8: Huffman Tree](https://slide-ds.zhongpu.info/week8)
 - [week9: Balanced Search Tree](https://slide-ds.zhongpu.info/week9)
+- [week10: Heap](https://slide-ds.zhongpu.info/week10)
