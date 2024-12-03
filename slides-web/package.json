@@ -26,7 +26,9 @@
     "export-week9": "slidev export week9.md",
     "week9": "slidev --open week9.md",
     "export-week10": "slidev export week10.md",
-    "week10": "slidev --open week10.md"
+    "week10": "slidev --open week10.md",
+    "export-week11": "slidev export week11.md",
+    "week11": "slidev --open week11.md"
   },
   "dependencies": {
     "@iconify-json/arcticons": "latest",
