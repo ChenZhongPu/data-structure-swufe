@@ -39,7 +39,7 @@ graph TD
     85(("85"))
     60(("120"))
     40(("40"))
-    45(("110"))
+    45(("90"))
     30(("115"))
     25(("125"))
 
@@ -405,5 +405,5 @@ def build_huffman_tree(freq_dict):
 ## Summary
 
 - Priority queue
-- Queue
+- Heap
 - Swim and sink in heap

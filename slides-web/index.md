@@ -26,3 +26,4 @@ The code can be found at<a href="https://github.com/ChenZhongPu/data-structure-s
 - [week9: Balanced Search Tree](https://slide-ds.zhongpu.info/week9)
 - [week10: Heap](https://slide-ds.zhongpu.info/week10)
 - [week11: Hash Table](https://slide-ds.zhongpu.info/week11)
+- [week12: Graph](https://slide-ds.zhongpu.info/week12)
