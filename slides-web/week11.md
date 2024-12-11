@@ -112,6 +112,11 @@ Suppose each element has distinct key drawn from the universe $U = \{0, 1, \ldot
 - If the universe $U$ is large or infinite, storing a table $T$ may be impractical, or even impossible.
 - Keys can only be integers.
 
+### Solution <logos-blueprint />
+
+> Instead using the key as an array index directly,
+> we **compute** the array index from the key.
+
 ---
 
 ## 1.3 Hash Function
