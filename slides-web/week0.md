@@ -18,7 +18,7 @@ download: true
 
 ## Lecture 0: Introduction
 
-CHEN Zhongpu, Fall 2024
+CHEN Zhongpu, Fall 2025
 
 <div class="text-10px">
 School of Computing and Artificial Intelligence, SWUFE
@@ -35,7 +35,7 @@ School of Computing and Artificial Intelligence, SWUFE
   CHEN Zhongpu 陈中普; zpchen@swufe.edu.cn
 - <flat-color-icons-department /> Gezhi Building 格致楼, Room 310
 - <flat-color-icons-serial-tasks /> Database Systems, AI-driven Data Management
-- <flat-color-icons-home /> https://zhongpu.info
+- <flat-color-icons-home /> <https://zhongpu.info>
 
 <br/>
 
@@ -292,8 +292,8 @@ Note that there is no standard for pseudo code, so you can use any format you li
 
 ## Resources <arcticons-slide class="text-blue" />
 
-- Code: https://github.com/ChenZhongPu/data-structure-swufe
-- Slide: https://slide-ds.zhongpu.info/
+- Code: <https://github.com/ChenZhongPu/data-structure-swufe>
+- Slide: <https://slide-ds.zhongpu.info/>
 - Chaoxing (学习通). Invitation Code: 65304230
 - TA: 刘银峰
 
@@ -308,7 +308,7 @@ pie title Evaluation
     "Labs": 10
 ```
 
-## Plagiarism is strictly prohibited!
+## Plagiarism is strictly prohibited
 
 ---
 

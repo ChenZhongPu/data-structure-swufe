@@ -18,7 +18,7 @@ download: true
 
 ## Lecture 5: Linked List
 
-CHEN Zhongpu, Fall 2024
+CHEN Zhongpu, Fall 2025
 
 <div class="text-10px">
 School of Computing and Artificial Intelligence, SWUFE
@@ -325,7 +325,7 @@ head = head.next
     \begin{algorithm}
       \caption{removeFirst(head)}
       \begin{algorithmic}
-          \If{head == null} 
+          \If{head == null}
             \State raise an error (or do nothing)
           \EndIf
           \State head $\gets$ head.next
@@ -465,7 +465,7 @@ To remove the element at the end of the list. The core idea is to **locate the s
 
 ---
 
-# 3. Let's Write Code!
+# 3. Let's Write Code
 
 The complete code can be found at [linked_list.py](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/lists/linked_list.py).
 

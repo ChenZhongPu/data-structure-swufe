@@ -18,7 +18,7 @@ download: true
 
 ## Lecture 1: Crash Course in Python
 
-CHEN Zhongpu, Fall 2024
+CHEN Zhongpu, Fall 2025
 
 <div class="text-10px">
 School of Computing and Artificial Intelligence, SWUFE

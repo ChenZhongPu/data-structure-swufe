@@ -1,2 +1,0 @@
-# Sorting
-Sorting is the processing of rearranging a sequence of objects so as to put them in some logical order. For example, your credit card bill presents transactions in order by *date*. All computer systems have implementations of sorting algorithms, for use by the system and by users.

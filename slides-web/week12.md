@@ -18,7 +18,7 @@ download: true
 
 ## Lecture 12: Graph
 
-CHEN Zhongpu, Fall 2024
+CHEN Zhongpu, Fall 2025
 
 <div class="text-10px">
 School of Computing and Artificial Intelligence, SWUFE

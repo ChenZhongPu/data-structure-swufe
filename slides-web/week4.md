@@ -18,7 +18,7 @@ download: true
 
 ## Lecture 4: Queue and Deque
 
-CHEN Zhongpu, Fall 2024
+CHEN Zhongpu, Fall 2025
 
 <div class="text-10px">
 School of Computing and Artificial Intelligence, SWUFE
@@ -55,7 +55,7 @@ print(s.pop())
 
 <v-click>
 
-## A queue is a collection of objects that are inserted and removed according to the **first-in, first-out (FIFO)** principle.
+## A queue is a collection of objects that are inserted and removed according to the **first-in, first-out (FIFO)** principle
 
 </v-click>
 
