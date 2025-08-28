@@ -34,7 +34,7 @@ School of Computing and Artificial Intelligence, SWUFE
 - <flat-color-icons-businessman />
   CHEN Zhongpu 陈中普; zpchen@swufe.edu.cn
 - <flat-color-icons-department /> Gezhi Building 格致楼, Room 310
-- <flat-color-icons-serial-tasks /> Database Systems, AI-driven Data Management
+- <flat-color-icons-serial-tasks /> Database Systems, AI-driven Data Management, LLMs
 - <flat-color-icons-home /> <https://zhongpu.info>
 
 <br/>
@@ -135,14 +135,9 @@ def is_book_available(title):
 
 `Efficiency is All You Need!`
 
-```mermaid
-xychart-beta
-    title "ArrayList vs. Red-Black Tree"
-    x-axis size [1000000, 2000000, 3000000, 4000000, 5000000]
-    y-axis "time (ms)"
-    line [34, 69, 129, 179, 201]
-    line [0.1, 0.1, 0.1, 0.1, 0.1]
-```
+<div class="flex justify-center items-center h-240px mt-8px">
+    <img src="/week0/time.svg" class="h-full" alt="BIRD"/>
+</div>
 
   </div>
 </div>
@@ -275,7 +270,7 @@ Note that there is no standard for pseudo code, so you can use any format you li
 
 - Object-oriented programming in Python 3.8+ <logos-python />
 - IDE: PyCharm <logos-pycharm />, VSCode <logos-visual-studio-code />, Jupyter Notebook <logos-jupyter />
-- Google <logos-google-icon />, ChatGPT <arcticons-openai-chatgpt class="text-red-400" />, [Claude](https://claude.ai/), Github Copilot <logos-github-octocat />, [Codeium](https://codeium.com/)
+- Google <logos-google-icon />, ChatGPT <arcticons-openai-chatgpt class="text-red-400" />, [Claude](https://claude.ai/), Github Copilot <logos-github-octocat />
 
 </div>
 </div>
@@ -287,60 +282,37 @@ Note that there is no standard for pseudo code, so you can use any format you li
 ## Books <arcticons-thriftbooks class="text-blue" />
 
 - [Data Structures and Algorithms in Python](https://book.douban.com/subject/10607365/), by Michael T. Goodrich, Roberto Tamassia, Michael H. Goldwasser
-- [Algorithms](https://book.douban.com/subject/4854123/), by Robert Sedgewick, Kevin Wayne
-- [Introduction to Algorithms](https://book.douban.com/subject/20432061/), by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
+- [Hands on Data Structures](https://zhongpu.info/data-structure-swufe/), by Me
 
 ## Resources <arcticons-slide class="text-blue" />
 
 - Code: <https://github.com/ChenZhongPu/data-structure-swufe>
 - Slide: <https://slide-ds.zhongpu.info/>
-- Chaoxing (学习通). Invitation Code: 65304230
-- TA: 刘银峰
+- Chaoxing (学习通)
 
 ---
 
 # Evaluation
 
-```mermaid {scale: 0.8}
+```mermaid {scale: 0.7}
 pie title Evaluation
-    "Exam" : 50
-    "Exercises" : 40
-    "Labs": 10
+    "Exam (50%)" : 50
+    "Exercises (15%)": 15
+    "Self-judge (15%)": 15
+    "Labs (10%)": 10
+    "Teamwork (10%)": 10
 ```
 
-## Plagiarism is strictly prohibited
+### Plagiarism is strictly prohibited
+
+The self-judge part is inspired by [Jim Huang](https://wiki.csie.ncku.edu.tw/User/weihsinyeh). As for the teamwork, you are required to form a team of 3-5 students to ask at least 20 questions during the semester.
 
 ---
 
-# Tip
+# Richard Feynman
 
-<div class="grid grid-cols-12">
-  <div class="col-span-7">
+> Knowing Something is NOT knowing the name of it.
 
-```mermaid {scale: 0.6}
-
-xychart-beta
-title "Teaching Score"
-x-axis [2022, 2023]
-y-axis "Score" 70 --> 100
-bar [80, 89]
-line [80, 89]
-
-```
-
-  </div>
-
-  <div class="col-span-5">
-
-<v-click>
-
-## It takes time, so take your time <arcticons-emoji-electric-light-bulb class="text-blue" />
-
-</v-click>
-
-  </div>
+<div class="flex justify-center items-center h-400px mt-8px">
+    <img src="/week0/bird.jpg" class="h-full" alt="BIRD"/>
 </div>
-
-```
-
-```

@@ -211,7 +211,7 @@ Abs:
 
 ---
 
-# 4. Tools
+# 4. Tools (Optional)
 
 <div class="grid grid-cols-12">
 <div class="col-span-5">
@@ -263,14 +263,12 @@ IDEs like PyCharm <logos-pycharm /> and VSCode <logos-visual-studio-code />(with
 
 ---
 
-# Book Club <flat-color-icons-reading />
+# Tasks in this week
 
-- Three to five students will form a group, and study [5. Data Sntructures](https://docs.python.org/3/tutorial/datastructures.html) carefully.
-- TA will ask each student one question related to [5. Data Structures](https://docs.python.org/3/tutorial/datastructures.html).
-- Each student asks TA at least one question.
+## Teamwork <arcticons-microsoft-teams />
 
-This task is expected to be done by Week 10.
+- Form a team of 3-5 members. Send TA the team members' names and student IDs by next **Thursday**. BTW, _a good catch team name is recommended_.
 
-```
+## Bonus <arcticons-bahnbonus />
 
-```
+- Efficiency is important for programming. Please figure out how to measure the running time of [max-sum](https://github.com/ChenZhongPu/data-structure-swufe/tree/master/code/python/alg/max-sum) from both empirical and theoretical perspectives. Send me an email with your findings by next **Sunday**. (Optional)
