@@ -57,7 +57,7 @@ elapsed = end - start
 ```
 
 - `time.perf_counter()` is recommended for measuring elapsed time due to its high resolution.
-- [timeit](https://docs.python.org/3/library/timeit.html) is recommended measure execution time of small code snippets.
+  - [timeit](https://docs.python.org/3/library/timeit.html) and [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html) is recommended measure execution time of small code snippets.
 
 </v-click>
 
@@ -104,7 +104,7 @@ config:
 xychart-beta
     title "Running Time"
     x-axis "Input Size" [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-    y-axis "Time (ms)" 0 --> 150
+    y-axis "Time" 0 --> 150
     line [2, 4, 5, 5, 9, 17, 22, 35, 58, 118, 145]
 ```
 
@@ -173,7 +173,7 @@ xychart-beta
 
 $$T = f(n)$$
 
-How long will my take, as a function of the input size (in the worst case)?
+#### How long will my algorithm take, as a function of the input size (in the worst case)?
 
 ---
 
@@ -221,16 +221,28 @@ def bar(S):
 
 We assume that <span class="text-red">primitive operations</span> take <span class="text-red">constant</span> time to execute, such as the following:
 
-- Assigning an identifier to an object
-- Performing an arithmetic operation (for example, _adding two numbers_)
-- Comparing two numbers
-- Accessing a single element of a Python with an identifier
-- Calling a function (excluding operations executed within the function)
-- Returning from a function
+- Assigning an identifier to an object (`i = 42`)
+- Performing an arithmetic operation (for example, _adding two numbers_ `+ - * / // %`)
+- Comparing two numbers (`== != >= <= > <`)
+- Accessing a single element of a Python with an identifier (`dog`)
+- Calling a function (excluding operations executed within the function) (`sum() bark()`)
+- Returning from a function (`return`)
 
 <!--
 Instead of trying to determine the specific execution time of each primitive operations, we will simply count how many primitive operations are executed.
 -->
+
+```python
+def g(n):
+  pass
+
+def fun(N):
+  i = 0
+  for k in range(N):
+    i += k * k
+  g(i)
+  return i
+```
 
 ---
 
@@ -333,7 +345,7 @@ We should use big-O in <span class="text-red">tightest and simplest</span> terms
 
 ## Some Words of Caution <arcticons-foss-warn />
 
-Does the following statement make sense?
+Does the following statement make sense? (`True` or `False`)
 
 - Since $n^2 - n = O(n^2)$ and $n^2 - 1 = O(n^2)$, we can say $n^2 - n = n^2 - 1$.
 - An algorithm in $O(n)$ is always faster than one in $O(n^3)$.
@@ -349,7 +361,7 @@ It is also correct to say: f(n) \in O(g(n))
 
 ---
 
-## Examples <arcticons-emoji-newspaper />
+## Example 1 (prefix average) <arcticons-emoji-newspaper />
 
 Given a sequence $S$ consisting of $n$ numbers, we want to compute a sequence $A$ such that $A[j]$ is a <span class="text-red">prefix average</span>, that is
 
@@ -392,13 +404,36 @@ def prefix_average_2(S):
 
 ---
 
+## Example 2 (binary search) <arcticons-emoji-newspaper />
+
+Given a target value and a sorted array, return `True` if the target is found in the array. Otherwise, return `False`.
+
+What is the time complexity of this algorithm?
+
+```python
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return True
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return False
+```
+
+---
+
 # 4. Other Notations
 
 A comprehensive about algorithm analysis is out of the scope of
 this course.
 
-- $\Theta(n)$
 - $\Omega(n)$
+- $\Theta(n)$
+- $o(n)$
 
 <v-click>
 
@@ -457,8 +492,12 @@ plot 2**x
 - Big O notation
 - Evaluation through visualization
 
-## Homework 2 <arcticons-pentastic />
+## Homework 1 <arcticons-pentastic />
 
-- R-3.14
-- R-3.25
-- Plot the execution time as the function of $n$ for R-3.25.
+- 1. R-3.10
+- 2. R-3.14
+
+(_Choose one of the following two problems_)
+
+- 3. Show that $\log^k{N} = O(N)$.
+- 3. Write a Python function to get the integer result of $log(N)$. Note that you CANNOT use any math-related library. Analyze its time complexity.

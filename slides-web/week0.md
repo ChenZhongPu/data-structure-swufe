@@ -297,8 +297,8 @@ Note that there is no standard for pseudo code, so you can use any format you li
 ```mermaid {scale: 0.7}
 pie title Evaluation
     "Exam (50%)" : 50
-    "Exercises (15%)": 15
-    "Self-judge (15%)": 15
+    "Exercises (20%)": 20
+    "Self-judge (10%)": 10
     "Labs (10%)": 10
     "Teamwork (10%)": 10
 ```
