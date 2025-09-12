@@ -276,6 +276,10 @@ Note that there is no standard for pseudo code, so you can use any format you li
 </div>
 
 ---
+layout: image-right
+
+image: /week0/qq-2025.jpg
+---
 
 # Books and Resources
 
@@ -289,6 +293,7 @@ Note that there is no standard for pseudo code, so you can use any format you li
 - Code: <https://github.com/ChenZhongPu/data-structure-swufe>
 - Slide: <https://slide-ds.zhongpu.info/>
 - Chaoxing (学习通)
+- TA: 梁儒金
 
 ---
 
@@ -305,7 +310,7 @@ pie title Evaluation
 
 ### Plagiarism is strictly prohibited
 
-The self-judge part is inspired by [Jim Huang](https://wiki.csie.ncku.edu.tw/User/weihsinyeh). As for the teamwork, you are required to form a team of 3-5 students to ask at least 20 questions during the semester.
+The `self-judge` part is inspired by [Jim Huang](https://wiki.csie.ncku.edu.tw/User/weihsinyeh). As for the teamwork, you are required to form a team of **3-5** students to ask at least `15` questions during the semester.
 
 ---
 
@@ -313,6 +318,8 @@ The self-judge part is inspired by [Jim Huang](https://wiki.csie.ncku.edu.tw/Use
 
 > Knowing Something is NOT knowing the name of it.
 
-<div class="flex justify-center items-center h-400px mt-8px">
+<div class="flex justify-center items-center h-340px mt-8px">
     <img src="/week0/bird.jpg" class="h-full" alt="BIRD"/>
 </div>
+
+[A link](https://joyfulphysics.net/index.php/archives/388/)
