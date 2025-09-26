@@ -33,15 +33,27 @@ School of Computing and Artificial Intelligence, SWUFE
 
 What is the time complexity of the following code in the worst case?
 
-```python
+```python {*}{lines:true}
 def find_max(a):
   m = a[0]
   for i in a:
     if i > m:
-      m = i  return m
-
+      m = i    
+  return m
+```
+```python {*}{lines:true}
 def find_max2(a):
   return max(a)
+```
+```python {*}{lines:true}
+def foo(N):
+  s = 0
+  n = N
+  while n > 0:
+    for _ in range(n):
+      s += 1
+    n //= 2
+  return s
 ```
 
 ---
@@ -194,11 +206,11 @@ def pop(self):
 | `size()`     | $O(1)$     |
 | `is_empty()` | $O(1)$     |
 
-Note that the time complexity of `push()` and `pop()` is <span class="text-red">amortized</span>.
+Note that the time complexity of `push()` and `pop()` is [amortized](https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/amortize).
 
-> Basically, an amortized time is the average time taken per operation, if you do many operations.
+> Basically, an **amortized time** is the average time taken per operation, if you do many operations.
 
-To understand `amortized` time, you have to know how `list` in Python resizes.
+To understand [`amortized time`](https://en.wikipedia.org/wiki/Amortized_analysis), you have to know how `list` in Python resizes.
 
 ---
 
@@ -453,7 +465,9 @@ A `stack` in the context of executing programs, often referred to as the `call s
 # Conclusion
 
 - Stack
-- Array Resizing
+- [Array](https://en.wikipedia.org/wiki/Array_(data_structure)) Resizing
+- Python `list` in-depth
+- [Python TimeComplexity](https://wiki.python.org/moin/TimeComplexity)
 
 ## Task <arcticons-google-tasks />
 
