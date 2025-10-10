@@ -310,7 +310,7 @@ pie title Evaluation
 
 ### Plagiarism is strictly prohibited
 
-The `self-judge` part is inspired by [Jim Huang](https://wiki.csie.ncku.edu.tw/User/weihsinyeh). As for the teamwork, you are required to form a team of **3-5** students to ask at least `15` questions during the semester.
+The `self-judge` part is inspired by [Jim Huang](https://wiki.csie.ncku.edu.tw/User/weihsinyeh). As for the teamwork, you are required to form a team of **3-5** students to answer at least `15` questions during the semester.
 
 ---
 

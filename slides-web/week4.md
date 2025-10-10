@@ -41,7 +41,9 @@ s.push(8)
 print(s.pop())
 ```
 
-2. Suppose an initially empty stack `S` has executed a total of 25 `push` operations, 12 `top` operations, and 10 `pop` operations, 3 of which raised `Empty` errors that were caught and ignored. What is the current size of `S`? (R-6.2)
+2. Suppose an initially empty stack `S` has executed a total of 25 `push` operations, 12 `top` operations, and 10 `pop` operations, 3 of which raised `Empty` errors that were caught and ignored. What is the current size of `S`? (**R-6.2**)
+
+3. Implement a function with signature `transfer(S, T)` that transfers all elements from stack `S` onto stack `T`, so that the element that starts at the top of `S` is the first to be inserted onto `T`, and the element at the bottom of `S` ends up at the top of `T`. (**R-6.3**)
 
 ---
 
@@ -93,7 +95,7 @@ A better way is to use a circular queue, which is known as a **ring buffer**, or
 We use two pointers to maintain the front and back of the queue.
 
 - `front`: the index of the first element in the queue.
-- `back`: the index where the next element will be inserted.
+- `rear` (or `back`): the index where the next element will be inserted.
 
 <div class="flex justify-center items-center h-260px mt-8px">
     <img src="/week4/circle_queue.png" class="h-full" alt="Parameters"/>
@@ -103,7 +105,7 @@ We use two pointers to maintain the front and back of the queue.
 
 ## Circular Queue
 
-<div class="flex justify-center items-center h-260px mt-8px">
+<div class="flex justify-center items-center h-250px mt-8px">
     <img src="/week4/circle_queue.png" class="h-full" alt="Circle Queue"/>
 </div>
 
@@ -115,6 +117,8 @@ We use two pointers to maintain the front and back of the queue.
 front = (front + 1) % capacity
 rear = (rear + 1) % capacity
 ```
+
+[*Python Modulo in Practice*](https://realpython.com/python-modulo-operator/)
 
 ---
 
@@ -237,7 +241,6 @@ class RecentCounter(object):
 ```python
 from collections import deque
 
-
 class RecentCounter:
     def __init__(self):
         self.data = deque()
@@ -259,26 +262,27 @@ recentCounter.ping(3001);  // requests = [1, 100, 3001], range is [1,3001], retu
 recentCounter.ping(3002);  // requests = [1, 100, 3001, 3002], range is [2,3002], return 3
 ```
 
----
+----
 
-# 3. Exercise <arcticons-pentastic />
+# 3. Recursion
 
-- C-6.22 Postfix notation
-- [Data Structures in Postgraduate entrance examination](https://blog.csdn.net/qq_51636863/article/details/134141751)
+[Recursion](https://en.wikipedia.org/wiki/Recursion) (adjective: recursive) occurs when a thing is defined in terms of itself or of its type.
 
----
-
-# 4. Recursion
-
-> Recursion is a method where the solution to a problem depends on solutions to smaller instances of the same problem.
-
-Recursion (adjective: recursive) occurs when a thing is defined in terms of itself or of its type.
+<div class="flex justify-center items-center h-180px mt-8px">
+    <img src="/week4/recursion.jpg" class="h-full" alt="Parameters"/>
+</div>
 
 <v-click>
 
-### Example: Fibonacci Sequence
+### Example: [Fibonacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)
 
-$$F(0) = 0$$ $$F(1) = 1$$ $$F(n) = F(n-1) + F(n-2)$$
+> 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+
+$$F(0) = 0$$ 
+
+$$F(1) = 1$$ 
+
+$$F(n) = F(n-1) + F(n-2)$$
 
 </v-click>
 
@@ -381,3 +385,13 @@ What is the time complexity of the binary search?
 
 - Queue, Circular Queue, Deque
 - Recursion
+
+## Homework 2
+
+1. Suppose in a programming language, you can use print a single digit at a time. Please write a **recursive** function that can print an integer in the correct order. (You are not allowed to convert the integer into a string or use loops.)
+
+2. (Choose Either)
+
+- Develop a data type for a buffer in a text editor. The buffer should support the following operations: insert a character at the cursor position, delete the character at the cursor position, move the cursor left, and move the cursor right. (Hint: *Use two stacks* [editor_buffer.py](https://github.com/ChenZhongPu/data-structure-swufe/blob/master/code/python/stack-queue/editor_buffer.py))
+
+- C-6.22 (*You are asked to evaluate the postfix expression, not convert infix to postfix*)
