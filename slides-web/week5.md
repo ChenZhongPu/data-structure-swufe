@@ -31,26 +31,19 @@ School of Computing and Artificial Intelligence, SWUFE
 
 # Quiz
 
-- A queue implements a LIFO policy. (True or False)
-- What does `[None] * 10` do in Python?
-- [Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm) is a divide-and-conquer algorithm for fast multiplication of two numbers. Try to fix the bug in the following code.
+- Which data structure is suitable for implementing job scheduling in a **printer**?
+- How to compute $X^N$ efficiently?
 
 ```python
-def karatsuba(x, y):
-    x_str = str(x)
-    y_str = str(y)
-    if x == 0 or y == 0:
-        return 0
-    max_len = max(len(x_str), len(y_str))
-    half_len = max_len // 2
-    x_high = x // 10**half_len
-    x_low = x % 10**half_len
-    y_high = y // 10**half_len
-    y_low = y % 10**half_len
-    z0 = karatsuba(x_low, y_low)
-    z1 = karatsuba(x_high, y_high)
-    z2 = karatsuba(x_low + x_high, y_low + y_high)
-    return (z1 * 10**(2 * half_len)) + ((z2 - z1 - z0) * 10**half_len) + z0
+def my_pow(x, n):
+    if n == 0:
+        return 1
+    if n == 1:
+        return x
+    if n % 2 == 0:
+        return my_pow(x * x, n // 2)
+    else:
+        return my_pow(x * x, n // 2) * x
 ```
 
 ---
@@ -120,6 +113,8 @@ As a result, we can use `head` to represent the linked list.
 ---
 
 ## Node in Linked List <arcticons-angry-birds />
+
+([Class diagram](https://en.wikipedia.org/wiki/Class_diagram))
 
 ```mermaid
 classDiagram
@@ -218,7 +213,7 @@ The term **pseudo-code** refers to an informal, English-like notation for descri
 </pre>
 </Latex>
 
-<arcticons-symbol-question-mark /> What is the time complexity of it? And how to implement it using recursion?
+<arcticons-symbol-question-mark /> What is the time complexity of it? And how to implement it using **recursion**?
 
 ---
 
