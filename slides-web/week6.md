@@ -151,7 +151,7 @@ def _add_between(self, item, predecessor, successor):
 - Again, try to draw the doubly linked list and the pointers after adding a node.
 - Given `_add_between`, how to add a node at the beginning and the end?
 
-<v-click>
+<!-- <v-click>
 
 ## Hands-on Data Structures <arcticons-handynewsreader />
 
@@ -161,7 +161,7 @@ def _add_between(self, item, predecessor, successor):
     <img src="/week6/handson.png"  class="h-full" alt="hands-on"/>
 </div>
 
-</v-click>
+</v-click> -->
 
 ---
 
