@@ -72,15 +72,15 @@ A search tree is **balanced** if the height is guaranteed to be $\log N$.
 
 A binary tree with height $h$ can contain at most:
 
-$$2^0 + 2^1 + \cdots + 2^h = 2^{h+1} + 1$$
+$$2^0 + 2^1 + \cdots + 2^h = 2^{h+1} - 1$$
 
 It follows that for any tree wiht $N$ nodes and height $h$, we have:
 
-$$n \leq 2^{h+1} - 1$$
+$$N \leq 2^{h+1} - 1$$
 
 And that implies:
 
-$$h \geq ceil(\log{(N + 1)} - 1) \geq floor(\log{N})$$
+$$h \geq ceil(\log{(N + 1)} - 1) = floor(\log{N})$$
 
 In other words, the minimum height of a binary tree with $N$ nodes is $\log N$.
 
