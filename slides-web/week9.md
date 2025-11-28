@@ -359,6 +359,8 @@ What happens when we delete 11 from this AVL tree?
     <img src="/week9/delete.png"  class="h-full" alt="node"/>
 </div>
 
+See more at https://www.youtube.com/watch?v=DB1HFCEdLxA
+
 ---
 
 # 2. Red-Black Trees
