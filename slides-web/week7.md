@@ -473,9 +473,9 @@ def remove(self, key):
 
 ---
 
-# 5. Tree Transversal
+# 5. [Tree Traversal](https://en.wikipedia.org/wiki/Tree_traversal)
 
-Generally, there are three ways to traverse a tree: **pre-order**, **in-order**, and **post-order**.
+Generally, there are three ways to traverse a tree (*walk the tree*): **pre-order**, **in-order**, and **post-order**.
 
 - **Pre-order**: root, left, right
 - **In-order**: left, root, right
