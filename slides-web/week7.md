@@ -12,6 +12,7 @@ drawings:
 transition: slide-left
 mdc: true
 download: true
+selectable: true
 ---
 
 # Data Structures
