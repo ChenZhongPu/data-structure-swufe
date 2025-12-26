@@ -47,9 +47,9 @@ Trees are used to represent <span class="text-red-500">hierarchical</span> struc
 
 ### Definition <logos-freedomdefined />
 
-> A graph is a set of `vertices` and a collection of `edges` that each connect a pair of vertices.
+> A graph is a set of `vertices` (/ˈvɝː.t̬e.siːz/) and `edges` that each connect a pair of vertices.
 
-By convention, we use the names `0` through `V-1` for the vertices in a `V`-vertex graph.
+By convention, we use the names `0` through `V-1` for the vertices in a `V`-vertex (`/'vɝː.t̬eks/`) graph.
 
 <div class="flex justify-center items-center">
     <img src="/week12/01.png" class="h-80px" alt="graph"/>
@@ -217,11 +217,27 @@ if __name__ == "__main__":
     <img src="/week12/maze.png" class="h-200px" alt="graph"/>
 </div>
 
-How to find a path from one vertex to another in a graph? For example, search in a maze.
+How to find a path from one vertex to another in a graph? For example, [Six Degrees of Kevin Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon).
 
-<div class="flex justify-center items-center">
-    <img src="/week12/mazes.png" class="h-200px" alt="graph"/>
+
+<div class="grid grid-cols-12">
+  <div class="col-span-4">
+        <div class="flex justify-center items-center">
+            <img src="/week12/mazes.png" class="h-200px" alt="graph"/>
+        </div>
+  </div>
+  <div class="col-span-8">
+
+> Given $G = (V, E)$ and the source vertex $s \in V$, find all vertices reachable from $s$.
+
+    While there is an edge (v, w) 
+            with v visited and w not visited:
+        - Choose such an edge (v, w) // the exploration step
+        - Mark w as visited.
+  </div>
+
 </div>
+
 
 ---
 
@@ -427,7 +443,7 @@ The code can be found in [breadth_first_paths.py](https://github.com/ChenZhongPu
 
 ### BFS and Shortest Path <logos-arc />
 
-> For any vertex `v` reachable from `s`, BFS computes a shortest path from `s` to `v` (no paths from `s` to `v` has fewer edges).
+> For any vertex $v$ reachable from $s$, BFS computes the shortest path from $s$ to $v$ (no paths from $s$ to $v$ has fewer edges).
 
 **Proof**: It is easy to prove by induction that the queue always consists of zero or
 more vertices of distance $k$ from the source, followed by zero or more vertices of
@@ -436,6 +452,22 @@ property implies, in particular, that vertices enter and leave the queue in orde
 their distance from `s`. When a vertex `v` enters the queue, no shorter path to `v` will
 be found before it comes off the queue, and no path to `v` that is discovered after it
 comes off the queue can be shorter than `v`’s tree path length.
+
+
+<div class="grid grid-cols-12">
+  <div class="col-span-4">
+        <div class="flex justify-center items-center">
+            <img src="/week12/level.png" class="h-200px" alt="level"/>
+        </div>
+  </div>
+  <div class="col-span-8">
+
+
+> TL;DR: Suppose $s$ is the source vertex, for $v \in V$, $l(v)$ is exactly the number of edges in the shortest path from $s$ to $v$ (i.e., $dist(s, v)$).
+
+  </div>
+
+</div>
 
 > BFS takes time proportional to $|V| + |E|$ in the worst case.
 
