@@ -303,12 +303,8 @@ After a left rotation on x.left, it becomes Case 1 (Left-Left).
 
 ### Case 3: Left-Right <arcticons-3dmark />
 
-<div class="flex justify-center items-center h-220px mt-8px">
+<div class="flex justify-center items-center h-440px mt-8px">
     <img src="/week9/left-right-1.png"  class="h-full" alt="node"/>
-</div>
-
-<div class="flex justify-center items-center h-220px mt-8px">
-    <img src="/week9/left-right-2.png"  class="h-full" alt="node"/>
 </div>
 
 ---
