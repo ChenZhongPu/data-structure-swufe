@@ -11,7 +11,6 @@ drawings:
   persist: false
 transition: slide-left
 mdc: true
-download: true
 selectable: true
 ---
 
