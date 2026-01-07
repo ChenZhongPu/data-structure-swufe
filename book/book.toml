@@ -1,10 +1,29 @@
 [book]
-authors = ["CHEN zhongpu"]
+authors = [
+  "SHI Long",
+  "CHEN Zhongpu",
+  "YAO Bin",
+  "WANG Hailin",
+  "CHEN Zhenzhu",
+  "HUANG Shiluo",
+]
 language = "en"
-multilingual = false
 src = "src"
 title = "Hands On Data Structures"
 
 
-[output.html]
-mathjax-support = true
+[output.pandoc]
+disabled = false
+
+# 定义一个名为 "pdf" 的输出配置
+[output.pandoc.profile.pdf]
+output-file = "my-book.pdf" # 导出的文件名
+pdf-engine = "xelatex"      # 【重要】必须使用 xelatex 以支持中文
+
+# LaTeX 变量配置
+[output.pandoc.profile.pdf.variables]
+geometry = ["margin=2.5cm"] # 设置页边距
+fontsize = "12pt"           # 字号
+linkcolor = "blue"          # 超链接颜色
+toc = true                  # 是否生成目录
+toc-depth = 2               # 目录显示的层级深度
